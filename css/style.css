@@ -759,6 +759,28 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .tl-meta svg { width: 13px; height: 13px; }
 
+.tl-bullets {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 0;
+}
+.tl-bullets li {
+  display: flex;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.tl-bullet-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--y);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
 /* ============================================================
    ARTSWORKS PAGE — artsworks.html
    ============================================================ */
@@ -970,6 +992,247 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   transition: color var(--tr);
 }
 .footer .f-links a:hover { color: var(--y); }
+
+/* ============================================================
+   FOOTER NEW — Premium 4-column footer
+   ============================================================ */
+.footer-new {
+  position: relative;
+  background: linear-gradient(135deg, #0A1628 0%, #0D1F3C 100%);
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Subtle diagonal stripe texture */
+.fn-texture {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.015) 40px,
+      rgba(255,255,255,0.015) 41px
+    );
+  pointer-events: none;
+}
+
+.fn-inner {
+  position: relative;
+  z-index: 1;
+  padding: 90px 0 70px;
+}
+
+/* 4-column grid — col 1 wider, equal gaps */
+.fn-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1.3fr 1fr;
+  gap: 40px;
+  margin-bottom: 48px;
+  align-items: start;
+}
+
+/* All columns: left-aligned, all headings at same top level */
+.fn-col {
+  text-align: left;
+  align-self: start;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+/* Column heading */
+.fn-heading {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #1287c1;
+  margin-bottom: 20px;
+}
+
+/* ── Col 1: Brand ── */
+.fn-logo {
+  display: inline-block;
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 2.5px #fff;
+  margin-bottom: 14px;
+  transition: -webkit-text-stroke-color 0.3s;
+  line-height: 1;
+}
+.fn-logo:hover { -webkit-text-stroke-color: #1287c1; }
+
+.fn-tagline {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #1287c1;
+  margin-bottom: 14px;
+  letter-spacing: 0.3px;
+}
+
+.fn-desc {
+  font-size: 0.82rem;
+  color: #94A3B8;
+  line-height: 1.75;
+}
+
+/* ── Col 2: Quick Links ── */
+.fn-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.fn-links a {
+  font-size: 0.85rem;
+  color: #94A3B8;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+  transition: color 0.3s;
+  width: fit-content;
+}
+.fn-links a::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 0; height: 1.5px;
+  background: #1287c1;
+  border-radius: 99px;
+  transition: width 0.3s ease;
+}
+.fn-links a:hover { color: #fff; }
+.fn-links a:hover::after { width: 100%; }
+
+/* ── Col 3: Contact ── */
+.fn-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.fn-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.83rem;
+  color: #94A3B8;
+  line-height: 1.5;
+}
+.fn-contact-list li svg {
+  width: 16px; height: 16px;
+  color: #1287c1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.fn-contact-list a {
+  color: #94A3B8;
+  transition: color 0.3s;
+}
+.fn-contact-list a:hover { color: #fff; }
+
+/* ── Col 4: Social ── */
+.fn-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.fn-social {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  border: none;
+  background: none;
+  padding: 0;
+  color: #94A3B8;
+  font-size: 0.83rem;
+  transition: color 0.25s;
+}
+/* Circle around the SVG icon */
+.fn-social svg {
+  width: 18px;
+  height: 18px;
+  padding: 10px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(18,135,193,0.35);
+  box-sizing: content-box;
+  color: #1287c1;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(.4,0,.2,1);
+}
+/* Platform name from aria-label */
+.fn-social::after {
+  content: attr(aria-label);
+  font-size: 0.83rem;
+  color: #94A3B8;
+  transition: color 0.25s;
+  white-space: nowrap;
+}
+.fn-social:hover svg {
+  background: #1287c1;
+  border-color: #1287c1;
+  color: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(18,135,193,0.35);
+}
+.fn-social:hover,
+.fn-social:hover::after { color: #fff; }
+
+/* Bounce keyframe for social icons */
+@keyframes fn-bounce {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.18); }
+  70%  { transform: scale(1.06); }
+  100% { transform: scale(1.1); }
+}
+.fn-social:hover svg { animation: fn-bounce 0.3s ease forwards; }
+
+/* ── Divider ── */
+.fn-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(18,135,193,0.3) 20%, rgba(18,135,193,0.3) 80%, transparent);
+  margin-bottom: 24px;
+}
+
+/* ── Bottom bar ── */
+.fn-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 32px;
+}
+.fn-copy {
+  font-size: 0.78rem;
+  color: #64748B;
+  line-height: 1;
+}
+.fn-copy strong { color: #94A3B8; font-weight: 600; }
+.fn-made {
+  font-size: 0.78rem;
+  color: #64748B;
+  line-height: 1;
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .fn-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+  .fn-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 540px) {
+  .fn-grid { grid-template-columns: 1fr; gap: 28px; }
+  .fn-socials { flex-direction: row; flex-wrap: wrap; gap: 10px; }
+  .fn-bottom { flex-direction: column; align-items: center; text-align: center; }
+}
 
 /* ============================================================
    SECTION UTILITIES
