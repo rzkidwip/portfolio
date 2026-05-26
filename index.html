@@ -61,10 +61,10 @@
         </h1>
 
         <span class="hv2-role">
-          <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;color:var(--y-dark)">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;color:var(--y-dark);flex-shrink:0">
             <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
           </svg>
-          Corporate Communication &amp; Public Relations
+          <span id="hero-typing-text"></span><span id="hero-typing-cursor" class="typing-cursor">|</span>
         </span>
 
         <div class="hv2-divider"></div>
@@ -311,5 +311,24 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    (function () {
+      const FULL_TEXT = 'Corporate Communication, Employee Relations & Public Relations';
+      const el     = document.getElementById('hero-typing-text');
+      const cursor = document.getElementById('hero-typing-cursor');
+      let i = 0;
+
+      function type() {
+        if (i < FULL_TEXT.length) {
+          el.textContent += FULL_TEXT[i++];
+          setTimeout(type, 55 + Math.random() * 35);
+        } else {
+          cursor.style.display = 'none';
+        }
+      }
+
+      setTimeout(type, 500);
+    })();
+  </script>
 </body>
 </html>
