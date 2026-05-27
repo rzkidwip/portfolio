@@ -1189,29 +1189,52 @@
 
   <script src="js/main.js"></script>
   <script>
-    /* ----- Scroll Reveal ----- */
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.rv-reveal').forEach(el => revealObserver.observe(el));
+    /* ----- Scroll Reveal (robust) ----- */
+    function initReveal() {
+      var items = Array.from(document.querySelectorAll('.rv-reveal'));
+
+      function revealEl(el) { el.classList.add('visible'); }
+
+      /* Force-reveal anything already in viewport */
+      function revealInView() {
+        items.forEach(function(el) {
+          var r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight + 80) revealEl(el);
+        });
+      }
+
+      /* IntersectionObserver for below-fold elements */
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) { revealEl(e.target); obs.unobserve(e.target); }
+          });
+        }, { threshold: 0, rootMargin: '0px 0px 60px 0px' });
+        items.forEach(function(el) { obs.observe(el); });
+      } else {
+        items.forEach(revealEl);
+      }
+
+      /* Run immediately + on load as safety net */
+      revealInView();
+      window.addEventListener('load', revealInView);
+      window.addEventListener('scroll', revealInView, { passive: true });
+    }
+    initReveal();
 
     /* ----- Counter Animation ----- */
     function startCounters() {
-      document.querySelectorAll('.rv-count').forEach(el => {
-        const target = parseInt(el.dataset.target);
-        const suffix = el.dataset.suffix || '';
-        let current = 0;
-        const duration = 1400;
-        const steps = 60;
-        const increment = target / steps;
-        const interval = duration / steps;
-        const timer = setInterval(() => {
-          current += increment;
+      document.querySelectorAll('.rv-count').forEach(function(el) {
+        if (el.dataset.done) return;
+        el.dataset.done = '1';
+        var target = parseInt(el.dataset.target);
+        var suffix = el.dataset.suffix || '';
+        var current = 0;
+        var steps = 55;
+        var interval = 1400 / steps;
+        var inc = target / steps;
+        var timer = setInterval(function() {
+          current += inc;
           if (current >= target) {
             el.textContent = target + suffix;
             clearInterval(timer);
@@ -1221,23 +1244,15 @@
         }, interval);
       });
     }
-    const headerObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          startCounters();
-          headerObserver.disconnect();
-        }
-      });
-    }, { threshold: 0.4 });
-    const rvHeader = document.querySelector('.rv-header');
-    if (rvHeader) headerObserver.observe(rvHeader);
+    /* Start counters on load since header is visible immediately */
+    window.addEventListener('load', function() { setTimeout(startCounters, 300); });
 
     /* ----- Show More / Less ----- */
     function toggleExtra(btn) {
-      const card = btn.closest('.rv-tl-card');
-      const extra = card.querySelector('.rv-extra-bullets');
+      var card = btn.closest('.rv-tl-card');
+      var extra = card && card.querySelector('.rv-extra-bullets');
       if (!extra) return;
-      const isOpen = extra.classList.toggle('open');
+      var isOpen = extra.classList.toggle('open');
       btn.classList.toggle('open', isOpen);
       btn.querySelector('.rv-btn-text').textContent = isOpen ? 'Show less' : 'Show more';
     }
