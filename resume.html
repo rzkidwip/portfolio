@@ -42,14 +42,21 @@
       position: relative;
       z-index: 1;
     }
-    .rv-photo {
+    .rv-photo-wrap {
       width: 130px; height: 130px;
       border-radius: 50%;
-      object-fit: cover;
-      object-position: top;
+      overflow: hidden;
       border: 4px solid rgba(255,255,255,0.45);
       box-shadow: 0 8px 32px rgba(0,0,0,0.35);
       flex-shrink: 0;
+    }
+    .rv-photo {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: 50% 5%;
+      transform: scale(2.1);
+      transform-origin: 50% 10%;
+      display: block;
     }
     .rv-header-content { flex: 1; }
     .rv-header-content h1 {
@@ -644,7 +651,9 @@
   <header class="rv-header">
     <div class="rv-header-inner">
 
-      <img src="Profile Rizki.png" alt="Rizki Dwi Pangestu" class="rv-photo" />
+      <div class="rv-photo-wrap">
+        <img src="Profile Rizki.png" alt="Rizki Dwi Pangestu" class="rv-photo" />
+      </div>
 
       <div class="rv-header-content">
         <h1>Rizki Dwi Pangestu</h1>
