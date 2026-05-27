@@ -817,6 +817,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border: 1.5px solid var(--border);
   height: 62px;
   min-width: 90px;
+  max-width: 160px;
+  overflow: hidden;
   transition: transform 0.22s, box-shadow 0.22s;
   cursor: default;
 }
