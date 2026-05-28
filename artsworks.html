@@ -219,6 +219,28 @@
     }
     .pg-zoom-icon svg { width: 20px; height: 20px; color: #fff; }
 
+    /* COPYWRITING IMAGE TITLE BAR */
+    .pg-copy-title-bar {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 36px 12px 12px;
+      background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, transparent 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .pg-copy-bar-title {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.32;
+    }
+    .pg-copy-bar-pub {
+      font-size: 0.58rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.65);
+      margin-top: 3px;
+    }
+
     /* VIDEO PLAY ICON */
     .pg-play {
       position: absolute;
@@ -701,9 +723,9 @@
       { cat:'video', img:'https://img.youtube.com/vi/nGYBraTMgSY/maxresdefault.jpg', title:'Corporate Video Ep.2', company:'Hastari Corporation', url:'https://www.youtube.com/watch?v=nGYBraTMgSY' },
       { cat:'video', img:'https://img.youtube.com/vi/J784JqR4_WM/maxresdefault.jpg', title:'Corporate Video Ep.3', company:'Hastari Corporation', url:'https://www.youtube.com/watch?v=J784JqR4_WM' },
       // Copywriting — MAPEI Indonesia
-      { cat:'copywriting', img:null, title:'Produk Grouting Terbaik',  company:'MAPEI Indonesia', url:'https://www.mapei.com/id/en/blog/detail/blog/2022/07/14/produk-grouting-terbaik-untuk-area-basah' },
-      { cat:'copywriting', img:null, title:'Produk Mortar Terbaik',   company:'MAPEI Indonesia', url:'https://www.mapei.com/id/en/blog/detail/blog/2022/08/11/ini-dia-produk-mortar-terbaik-untuk-tambalan-tembok-bangunan-anda' },
-      { cat:'copywriting', img:null, title:'Waterproofing Membrane',  company:'MAPEI Indonesia', url:'https://www.mapei.com/id/en/blog/detail/blog/2022/06/20/waterproofing-membrane-solusi-anti-bocor-hingga-puluhan-tahun' },
+      { cat:'copywriting', img:'https://cdnmedia.mapei.com/images/librariesprovider26/default-album/grouting-cover-(1)8ccd588279c562e49128ff01007028e9.jpg?sfvrsn=a083a8f_0', title:'Produk Grouting Terbaik', company:'MAPEI Indonesia', url:'https://www.mapei.com/id/en/blog/detail/blog/2022/07/14/produk-grouting-terbaik-untuk-area-basah' },
+      { cat:'copywriting', img:'https://cdnmedia.mapei.com/images/librariesprovider26/default-album/mortar-(1)f030858279c562e49128ff01007028e9.jpg?sfvrsn=76f5e78f_0', title:'Produk Mortar Terbaik', company:'MAPEI Indonesia', url:'https://www.mapei.com/id/en/blog/detail/blog/2022/08/11/ini-dia-produk-mortar-terbaik-untuk-tambalan-tembok-bangunan-anda' },
+      { cat:'copywriting', img:'https://cdnmedia.mapei.com/images/librariesprovider26/default-album/membrane-3-(1)-(1)dfea428279c562e49128ff01007028e9.jpg?sfvrsn=592f208f_0', title:'Waterproofing Membrane', company:'MAPEI Indonesia', url:'https://www.mapei.com/id/en/blog/detail/blog/2022/06/20/waterproofing-membrane-solusi-anti-bocor-hingga-puluhan-tahun' },
       // Design — placeholders
       { cat:'design', img:null, title:'Design Work', company:'PwC Indonesia', url:null },
       { cat:'design', img:null, title:'Design Work', company:'Hastari Corp',  url:null },
@@ -747,6 +769,13 @@
           play.className = 'pg-play';
           play.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
           card.appendChild(play);
+        } else if (item.cat === 'copywriting') {
+          var titleBar = document.createElement('div');
+          titleBar.className = 'pg-copy-title-bar';
+          titleBar.innerHTML =
+            '<p class="pg-copy-bar-title">' + item.title + '</p>' +
+            '<p class="pg-copy-bar-pub">MAPEI Indonesia · Article</p>';
+          card.appendChild(titleBar);
         }
       } else if (item.cat === 'copywriting') {
         var ph = document.createElement('div');
