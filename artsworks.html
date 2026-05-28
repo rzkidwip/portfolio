@@ -3,11 +3,706 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Artsworks — Rizki Dwi Pangestu</title>
+  <title>My Works — Rizki Dwi Pangestu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ================================================================
+       ARTSWORKS PAGE — REDESIGN
+    ================================================================ */
+
+    /* ---------- HERO ---------- */
+    .aw-hero {
+      background: linear-gradient(135deg, #1287c1 0%, #0e6fa3 45%, #073d5e 100%);
+      padding: calc(var(--nav) + 72px) 0 80px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .aw-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='40' cy='40' r='30'/%3E%3Ccircle cx='40' cy='40' r='18'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .aw-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+    }
+    .aw-hero-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .aw-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 18px;
+    }
+    .aw-hero-eyebrow svg { width: 13px; height: 13px; }
+    .aw-hero-title {
+      font-size: clamp(3rem, 6.5vw, 5.2rem);
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -3px;
+      line-height: 0.95;
+      margin-bottom: 20px;
+    }
+    .aw-hero-subtitle {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.78);
+      font-weight: 400;
+      max-width: 540px;
+      margin: 0 auto 40px;
+      line-height: 1.68;
+    }
+    .aw-dl-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 16px 32px;
+      background: #fff;
+      color: #1287c1;
+      border-radius: 99px;
+      font-size: 0.93rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 6px 28px rgba(0,0,0,0.22);
+      transition: transform 0.22s, box-shadow 0.22s;
+      margin-bottom: 44px;
+    }
+    .aw-dl-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 38px rgba(0,0,0,0.28);
+    }
+    .aw-dl-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+    .aw-hero-stats {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 99px;
+      padding: 12px 28px;
+      backdrop-filter: blur(8px);
+    }
+    .aw-hero-stat {
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.92);
+      font-weight: 600;
+    }
+    .aw-hero-stat + .aw-hero-stat::before {
+      content: '·';
+      margin: 0 14px;
+      opacity: 0.45;
+      font-size: 1.3rem;
+      vertical-align: middle;
+    }
+
+    /* ---------- FILTER BAR ---------- */
+    .aw-filter-wrap {
+      padding: 40px 0 30px;
+      border-bottom: 1.5px solid var(--border);
+      margin-bottom: 44px;
+    }
+    .aw-filter-inner {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .aw-f-btn {
+      padding: 7px 18px;
+      border-radius: 99px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .aw-f-btn:hover {
+      border-color: #1287c1;
+      color: #1287c1;
+      background: rgba(18,135,193,0.06);
+    }
+    .aw-f-btn.active {
+      background: #1287c1;
+      border-color: #1287c1;
+      color: #fff;
+    }
+    .aw-count-label {
+      margin-left: auto;
+      font-size: 0.76rem;
+      color: var(--light);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .aw-count-label strong { color: var(--muted); font-weight: 700; }
+
+    /* ---------- GRID ---------- */
+    .aw-grid-section { padding-bottom: 80px; }
+    .aw-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    /* ---------- CARD ---------- */
+    .aw-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.28s cubic-bezier(.2,.82,.4,1), box-shadow 0.28s;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .aw-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .aw-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 56px rgba(0,0,0,0.12);
+    }
+
+    /* visual placeholder area */
+    .aw-card-visual {
+      height: 178px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    /* decorative circles */
+    .aw-card-visual::before {
+      content: '';
+      position: absolute;
+      top: -28px; right: -28px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+    }
+    /* hover blue tint */
+    .aw-card-visual-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(18,135,193,0.2);
+      opacity: 0;
+      transition: opacity 0.28s;
+    }
+    .aw-card:hover .aw-card-visual-overlay { opacity: 1; }
+
+    .aw-card-visual-icon {
+      width: 68px; height: 68px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.18);
+      border: 1.5px solid rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    .aw-card-visual-icon svg { width: 32px; height: 32px; color: rgba(255,255,255,0.92); }
+    .aw-card-visual-cat {
+      position: absolute;
+      bottom: 12px; left: 14px;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      z-index: 1;
+    }
+
+    /* card body */
+    .aw-card-body {
+      padding: 20px 22px 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .aw-card-cat-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      align-self: flex-start;
+    }
+    .aw-card-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.38;
+    }
+    .aw-card-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.68;
+      flex: 1;
+    }
+    .aw-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .aw-card-tag {
+      padding: 3px 9px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.67rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .aw-card-footer {
+      padding: 4px 22px 20px;
+    }
+    .aw-view-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 99px;
+      background: rgba(18,135,193,0.08);
+      border: 1.5px solid rgba(18,135,193,0.22);
+      color: #1287c1;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .aw-view-btn:hover {
+      background: #1287c1;
+      border-color: #1287c1;
+      color: #fff;
+    }
+    .aw-view-btn svg { width: 13px; height: 13px; }
+
+    /* category badge color variants */
+    .aw-badge-design      { background: rgba(18,135,193,0.10); color: #1287c1; }
+    .aw-badge-social      { background: rgba(124,58,237,0.10); color: #7c3aed; }
+    .aw-badge-video       { background: rgba(30,58,95,0.10);   color: #1e3a5f; }
+    .aw-badge-corp        { background: rgba(3,105,161,0.10);  color: #0369a1; }
+    .aw-badge-copy        { background: rgba(5,150,105,0.10);  color: #059669; }
+    .aw-badge-events      { background: rgba(217,119,6,0.10);  color: #d97706; }
+
+    /* ---------- ARTICLE LIST (inside copywriting card) ---------- */
+    .aw-article-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+    .aw-article-item {
+      padding: 11px 13px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 3px solid #059669;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .aw-pub-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #059669;
+      background: rgba(5,150,105,0.10);
+      border: 1px solid rgba(5,150,105,0.2);
+      padding: 2px 8px;
+      border-radius: 4px;
+      align-self: flex-start;
+    }
+    .aw-pub-badge svg { width: 9px; height: 9px; }
+    .aw-article-title {
+      font-size: 0.81rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .aw-article-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .aw-article-tag {
+      padding: 2px 7px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .aw-read-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #059669;
+      text-decoration: none;
+      align-self: flex-start;
+      transition: gap 0.18s;
+    }
+    .aw-read-btn:hover { gap: 8px; color: #047857; }
+    .aw-read-btn svg { width: 11px; height: 11px; }
+
+    /* ---------- VIDEO THUMBNAIL CARD ---------- */
+    .aw-card-thumb {
+      height: 178px;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .aw-card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.38s ease;
+    }
+    .aw-card:hover .aw-card-thumb img { transform: scale(1.06); }
+    .aw-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.28s;
+    }
+    .aw-card:hover .aw-thumb-overlay { background: rgba(0,0,0,0.50); }
+    .aw-play-btn {
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.93);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 22px rgba(0,0,0,0.32);
+      transition: transform 0.25s, background 0.25s;
+    }
+    .aw-card:hover .aw-play-btn {
+      transform: scale(1.13);
+      background: #fff;
+    }
+    .aw-play-btn svg { width: 22px; height: 22px; color: #cc0000; margin-left: 3px; }
+    .aw-thumb-platform {
+      position: absolute;
+      bottom: 10px; right: 12px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(0,0,0,0.55);
+      border-radius: 6px;
+      padding: 3px 8px;
+    }
+    .aw-thumb-platform svg { width: 13px; height: 13px; color: #fff; }
+    .aw-thumb-platform span {
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.5px;
+    }
+    .aw-card-company {
+      font-size: 0.73rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .aw-watch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 99px;
+      background: rgba(204,0,0,0.07);
+      border: 1.5px solid rgba(204,0,0,0.2);
+      color: #cc0000;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .aw-watch-btn:hover {
+      background: #cc0000;
+      border-color: #cc0000;
+      color: #fff;
+    }
+    .aw-watch-btn svg { width: 14px; height: 14px; }
+
+    /* ---------- CAROUSEL ---------- */
+    .aw-carousel {
+      position: relative;
+      overflow: hidden;
+      height: 320px;
+      flex-shrink: 0;
+    }
+    .aw-carousel-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.38s cubic-bezier(.4,0,.2,1);
+      will-change: transform;
+    }
+    .aw-carousel-slide {
+      width: 100%;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .aw-slide-link {
+      display: block;
+      width: 100%; height: 100%;
+      position: relative;
+    }
+    .aw-carousel-slide img {
+      width: 100%; height: 320px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.38s ease;
+    }
+    .aw-carousel-slide:hover img { transform: scale(1.05); }
+    .aw-carousel-slide .aw-thumb-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.3);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.28s;
+    }
+    .aw-carousel-slide:hover .aw-thumb-overlay { background: rgba(0,0,0,0.52); }
+    /* Arrows */
+    .aw-car-arrow {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.9);
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.22);
+      z-index: 3;
+      transition: background 0.18s, transform 0.18s;
+      padding: 0;
+    }
+    .aw-car-arrow:hover {
+      background: #fff;
+      transform: translateY(-50%) scale(1.1);
+    }
+    .aw-car-arrow svg { width: 17px; height: 17px; color: #1287c1; }
+    .aw-car-prev { left: 10px; }
+    .aw-car-next { right: 10px; }
+    /* Dots */
+    .aw-car-dots {
+      position: absolute;
+      bottom: 10px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 6px;
+      z-index: 3;
+    }
+    .aw-car-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.45);
+      border: 1.5px solid rgba(255,255,255,0.7);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .aw-car-dot.active {
+      background: #fff;
+      transform: scale(1.25);
+    }
+
+    /* ---------- PDF SECTION ---------- */
+    .aw-pdf-section {
+      padding: 68px 0 88px;
+      border-top: 1.5px solid var(--border);
+    }
+    .aw-pdf-head {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .aw-pdf-eyebrow {
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: #1287c1;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+    }
+    .aw-pdf-eyebrow svg { width: 14px; height: 14px; }
+    .aw-pdf-title {
+      font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -1.2px;
+      margin-bottom: 10px;
+      line-height: 1.1;
+    }
+    .aw-pdf-subtitle {
+      font-size: 0.88rem;
+      color: var(--muted);
+      max-width: 460px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .aw-pdf-frame-wrap {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1.5px solid var(--border);
+      box-shadow: 0 6px 32px rgba(0,0,0,0.08);
+      background: #f1f5f9;
+    }
+    .aw-pdf-frame-wrap iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      display: block;
+    }
+    .aw-pdf-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    /* ---------- SCROLL REVEAL ---------- */
+    .aw-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.52s ease, transform 0.52s ease;
+    }
+    .aw-reveal.visible { opacity: 1; transform: none; }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 900px) {
+      .aw-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .aw-grid { grid-template-columns: 1fr; }
+      .aw-hero-title { letter-spacing: -2px; }
+      .aw-filter-inner { gap: 6px; }
+      .aw-f-btn { font-size: 0.73rem; padding: 6px 12px; }
+      .aw-count-label { display: none; }
+      .aw-pdf-frame-wrap iframe { height: 400px; }
+    }
+
+    /* ---------- TAB CARD ---------- */
+    .aw-tabs-header {
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      background: var(--bg2);
+      border-bottom: 1.5px solid var(--border);
+      padding: 10px 12px 0;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+    .aw-tabs-header::-webkit-scrollbar { display: none; }
+    .aw-tab {
+      padding: 6px 13px 8px;
+      border-radius: 8px 8px 0 0;
+      border: 1.5px solid var(--border);
+      border-bottom: none;
+      background: var(--bg);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+      transition: color 0.18s, background 0.18s, border-color 0.18s;
+      flex-shrink: 0;
+    }
+    .aw-tab:hover { color: #1287c1; border-color: #1287c1; }
+    .aw-tab.active { background: #1287c1; color: #fff; border-color: #1287c1; }
+    .aw-tab-panel { display: none; }
+    .aw-tab-panel.active { display: block; }
+
+    /* ---------- PLACEHOLDER SLIDE ---------- */
+    .aw-ph {
+      height: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+      transition: filter 0.28s;
+    }
+    .aw-ph::before {
+      content: '';
+      position: absolute;
+      top: -24px; right: -24px;
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      pointer-events: none;
+    }
+    .aw-carousel-slide:hover .aw-ph { filter: brightness(0.85); }
+    .aw-ph-icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.18);
+      border: 1.5px solid rgba(255,255,255,0.28);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1;
+    }
+    .aw-ph-icon svg { width: 24px; height: 24px; color: rgba(255,255,255,0.88); }
+    .aw-ph-label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.92);
+      position: relative; z-index: 1;
+    }
+    .aw-ph-sub {
+      font-size: 0.62rem;
+      color: rgba(255,255,255,0.5);
+      font-weight: 500;
+      position: relative; z-index: 1;
+    }
+    .aw-ph-cs { background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%) !important; }
+    .aw-ph-cs .aw-ph-icon { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.08); }
+    .aw-ph-cs .aw-ph-icon svg { color: #9ca3af; }
+    .aw-ph-cs .aw-ph-label { color: #9ca3af; }
+  </style>
 </head>
 <body>
 
@@ -42,37 +737,273 @@
     </div>
   </nav>
 
-  <main class="artsworks-page">
+  <!-- ===== HERO ===== -->
+  <header class="aw-hero">
+    <div class="aw-hero-inner">
+      <p class="aw-hero-eyebrow">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C6.49 22 2 17.51 2 12S6.49 2 12 2s10 4.04 10 9c0 3.31-2.69 6-6 6h-1.77c-.28 0-.5.22-.5.5 0 .12.05.23.13.33.41.47.64 1.06.64 1.67A2.5 2.5 0 0112 22zm0-18c-4.41 0-8 3.59-8 8s3.59 8 8 8c.28 0 .5-.22.5-.5a.54.54 0 00-.14-.35c-.41-.46-.63-1.05-.63-1.65a2.5 2.5 0 012.5-2.5H16c2.21 0 4-1.79 4-4 0-3.86-3.59-7-8-7z"/></svg>
+        Portfolio
+      </p>
+      <h1 class="aw-hero-title">My Works</h1>
+      <p class="aw-hero-subtitle">A curated collection of real-world projects spanning corporate branding, content strategy, video production, and creative communication.</p>
+      <a href="Portfolio_Rizki Dwi Pangestu_2026.pdf" download class="aw-dl-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        Download Full Portfolio PDF
+      </a>
+      <div class="aw-hero-stats">
+        <span class="aw-hero-stat">3 Categories</span>
+        <span class="aw-hero-stat">20+ Projects</span>
+        <span class="aw-hero-stat">3+ Years</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main>
     <div class="container">
 
-      <div class="arts-header reveal">
-        <p class="section-eyebrow">Portfolio Karya</p>
-        <h1 class="arts-title">Artsworks</h1>
-        <p class="arts-subtitle">Kumpulan karya nyata dari berbagai perusahaan dan organisasi.</p>
+      <!-- FILTER BAR -->
+      <div class="aw-filter-wrap aw-reveal">
+        <div class="aw-filter-inner">
+          <button class="aw-f-btn active" data-filter="all">All</button>
+          <button class="aw-f-btn" data-filter="social-media">Social Media</button>
+          <button class="aw-f-btn" data-filter="design">Design</button>
+          <button class="aw-f-btn" data-filter="video">Video Production</button>
+          <span class="aw-count-label" id="aw-count-label"><strong id="aw-count">3</strong> projects</span>
+        </div>
       </div>
 
-      <!-- Filter bar -->
-      <div class="filter-bar" id="filter-bar">
-        <button class="f-btn active" data-filter="all">Semua</button>
-        <button class="f-btn" data-filter="social-media">Social Media</button>
-        <button class="f-btn" data-filter="video">Video Production</button>
-        <button class="f-btn" data-filter="design">Design</button>
-        <button class="f-btn" data-filter="corporate-comm">Corporate Comm</button>
-        <button class="f-btn" data-filter="events">Events</button>
+      <!-- PROJECT GRID -->
+      <div class="aw-grid-section">
+        <div class="aw-grid" id="aw-grid">
+
+          <!-- CARD 1 — Social Media (Tabs: PwC | Hastari | Life at Hastari | MRO) -->
+          <article class="aw-card aw-tabcard" data-cats="social-media">
+            <div class="aw-tabs-header">
+              <button class="aw-tab active" data-tab="sm-pwc">PwC Indonesia</button>
+              <button class="aw-tab" data-tab="sm-hastari">Hastari</button>
+              <button class="aw-tab" data-tab="sm-lah">Life at Hastari</button>
+              <button class="aw-tab" data-tab="sm-mro">MRO Indonesia</button>
+            </div>
+            <div class="aw-tab-panel active" data-panel="sm-pwc">
+              <div class="aw-carousel">
+                <div class="aw-carousel-track">
+                  <div class="aw-carousel-slide"><img src="image/artsworks/pwc-sosmed-1.jpg.jpg" alt="PwC Indonesia Social Media 1" /></div>
+                  <div class="aw-carousel-slide"><img src="image/artsworks/pwc-sosmed-2.jpg.jpg" alt="PwC Indonesia Social Media 2" /></div>
+                  <div class="aw-carousel-slide"><img src="image/artsworks/pwc-sosmed-3.jpg.jpg" alt="PwC Indonesia Social Media 3" /></div>
+                </div>
+                <button class="aw-car-arrow aw-car-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+                <button class="aw-car-arrow aw-car-next" aria-label="Next"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></button>
+                <div class="aw-car-dots"><span class="aw-car-dot active" data-idx="0"></span><span class="aw-car-dot" data-idx="1"></span><span class="aw-car-dot" data-idx="2"></span></div>
+              </div>
+            </div>
+            <div class="aw-tab-panel" data-panel="sm-hastari">
+              <div class="aw-carousel">
+                <div class="aw-carousel-track">
+                  <div class="aw-carousel-slide"><img src="image/artsworks/hastari-sosmed-1.jpg" alt="Hastari Social Media 1" /></div>
+                  <div class="aw-carousel-slide"><img src="image/artsworks/hastari-sosmed-2.jpg" alt="Hastari Social Media 2" /></div>
+                  <div class="aw-carousel-slide"><img src="image/artsworks/hastari-sosmed-3.jpg" alt="Hastari Social Media 3" /></div>
+                </div>
+                <button class="aw-car-arrow aw-car-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+                <button class="aw-car-arrow aw-car-next" aria-label="Next"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></button>
+                <div class="aw-car-dots"><span class="aw-car-dot active" data-idx="0"></span><span class="aw-car-dot" data-idx="1"></span><span class="aw-car-dot" data-idx="2"></span></div>
+              </div>
+            </div>
+            <div class="aw-tab-panel" data-panel="sm-lah">
+              <div class="aw-carousel">
+                <div class="aw-carousel-track">
+                  <div class="aw-carousel-slide"><img src="image/artsworks/lifeathastari-sosmed-1.jpg.jpg" alt="Life at Hastari Social Media 1" /></div>
+                  <div class="aw-carousel-slide"><img src="image/artsworks/lifeathastari-sosmed-2.jpg.jpg" alt="Life at Hastari Social Media 2" /></div>
+                  <div class="aw-carousel-slide"><img src="image/artsworks/lifeathastari-sosmed-3.jpg.jpg" alt="Life at Hastari Social Media 3" /></div>
+                </div>
+                <button class="aw-car-arrow aw-car-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+                <button class="aw-car-arrow aw-car-next" aria-label="Next"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></button>
+                <div class="aw-car-dots"><span class="aw-car-dot active" data-idx="0"></span><span class="aw-car-dot" data-idx="1"></span><span class="aw-car-dot" data-idx="2"></span></div>
+              </div>
+            </div>
+            <div class="aw-tab-panel" data-panel="sm-mro">
+              <div class="aw-carousel">
+                <div class="aw-carousel-track">
+                  <div class="aw-carousel-slide"><img src="image/artsworks/mro-sosmed-1.jpg.jpg" alt="MRO Indonesia Social Media 1" /></div>
+                  <div class="aw-carousel-slide"><img src="image/artsworks/mro-sosmed-2.jpg.jpg" alt="MRO Indonesia Social Media 2" /></div>
+                  <div class="aw-carousel-slide"><img src="image/artsworks/mro-sosmed-3.jpg.jpg" alt="MRO Indonesia Social Media 3" /></div>
+                </div>
+                <button class="aw-car-arrow aw-car-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+                <button class="aw-car-arrow aw-car-next" aria-label="Next"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></button>
+                <div class="aw-car-dots"><span class="aw-car-dot active" data-idx="0"></span><span class="aw-car-dot" data-idx="1"></span><span class="aw-car-dot" data-idx="2"></span></div>
+              </div>
+            </div>
+            <div class="aw-card-body">
+              <span class="aw-card-cat-badge aw-badge-social">Social Media</span>
+              <h3 class="aw-card-title">Social Media Content — Multi-Company</h3>
+              <p class="aw-card-desc">Produced 50+ content pieces across PwC Indonesia, Hastari Corporation, and MRO Indonesia — maintaining brand voice and driving engagement.</p>
+              <div class="aw-card-tags">
+                <span class="aw-card-tag">Content Planning</span>
+                <span class="aw-card-tag">Copywriting</span>
+                <span class="aw-card-tag">Visual Design</span>
+              </div>
+            </div>
+            <div class="aw-card-footer">
+              <a href="#" class="aw-view-btn">View Project <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></a>
+            </div>
+          </article>
+
+          <!-- CARD 2 — Design (Tabs: PwC | Hastari | MRO) — Coming Soon -->
+          <article class="aw-card aw-tabcard" data-cats="design">
+            <div class="aw-tabs-header">
+              <button class="aw-tab active" data-tab="d-pwc">PwC Indonesia</button>
+              <button class="aw-tab" data-tab="d-hastari">Hastari</button>
+              <button class="aw-tab" data-tab="d-mro">MRO Indonesia</button>
+            </div>
+            <div class="aw-tab-panel active" data-panel="d-pwc">
+              <div class="aw-carousel">
+                <div class="aw-carousel-track">
+                  <div class="aw-carousel-slide"><div class="aw-ph aw-ph-cs"><div class="aw-ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83zM3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/></svg></div><span class="aw-ph-label">Coming Soon</span></div></div>
+                  <div class="aw-carousel-slide"><div class="aw-ph aw-ph-cs"><div class="aw-ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83zM3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/></svg></div><span class="aw-ph-label">Coming Soon</span></div></div>
+                  <div class="aw-carousel-slide"><div class="aw-ph aw-ph-cs"><div class="aw-ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83zM3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/></svg></div><span class="aw-ph-label">Coming Soon</span></div></div>
+                </div>
+                <button class="aw-car-arrow aw-car-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+                <button class="aw-car-arrow aw-car-next" aria-label="Next"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></button>
+                <div class="aw-car-dots"><span class="aw-car-dot active" data-idx="0"></span><span class="aw-car-dot" data-idx="1"></span><span class="aw-car-dot" data-idx="2"></span></div>
+              </div>
+            </div>
+            <div class="aw-tab-panel" data-panel="d-hastari">
+              <div class="aw-carousel">
+                <div class="aw-carousel-track">
+                  <div class="aw-carousel-slide"><div class="aw-ph aw-ph-cs"><div class="aw-ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83zM3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/></svg></div><span class="aw-ph-label">Coming Soon</span></div></div>
+                  <div class="aw-carousel-slide"><div class="aw-ph aw-ph-cs"><div class="aw-ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83zM3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/></svg></div><span class="aw-ph-label">Coming Soon</span></div></div>
+                  <div class="aw-carousel-slide"><div class="aw-ph aw-ph-cs"><div class="aw-ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83zM3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/></svg></div><span class="aw-ph-label">Coming Soon</span></div></div>
+                </div>
+                <button class="aw-car-arrow aw-car-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+                <button class="aw-car-arrow aw-car-next" aria-label="Next"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></button>
+                <div class="aw-car-dots"><span class="aw-car-dot active" data-idx="0"></span><span class="aw-car-dot" data-idx="1"></span><span class="aw-car-dot" data-idx="2"></span></div>
+              </div>
+            </div>
+            <div class="aw-tab-panel" data-panel="d-mro">
+              <div class="aw-carousel">
+                <div class="aw-carousel-track">
+                  <div class="aw-carousel-slide"><div class="aw-ph aw-ph-cs"><div class="aw-ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83zM3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/></svg></div><span class="aw-ph-label">Coming Soon</span></div></div>
+                  <div class="aw-carousel-slide"><div class="aw-ph aw-ph-cs"><div class="aw-ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83zM3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/></svg></div><span class="aw-ph-label">Coming Soon</span></div></div>
+                  <div class="aw-carousel-slide"><div class="aw-ph aw-ph-cs"><div class="aw-ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83zM3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/></svg></div><span class="aw-ph-label">Coming Soon</span></div></div>
+                </div>
+                <button class="aw-car-arrow aw-car-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+                <button class="aw-car-arrow aw-car-next" aria-label="Next"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></button>
+                <div class="aw-car-dots"><span class="aw-car-dot active" data-idx="0"></span><span class="aw-car-dot" data-idx="1"></span><span class="aw-car-dot" data-idx="2"></span></div>
+              </div>
+            </div>
+            <div class="aw-card-body">
+              <span class="aw-card-cat-badge aw-badge-design">Design</span>
+              <h3 class="aw-card-title">Graphic Design — Multi-Company</h3>
+              <p class="aw-card-desc">Created visual design materials for PwC Indonesia, Hastari Corporation, and MRO Indonesia — infographics, banners, and brand assets.</p>
+              <div class="aw-card-tags">
+                <span class="aw-card-tag">Canva</span>
+                <span class="aw-card-tag">Adobe Illustrator</span>
+                <span class="aw-card-tag">Branding</span>
+              </div>
+            </div>
+            <div class="aw-card-footer">
+              <a href="#" class="aw-view-btn">View Project <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></a>
+            </div>
+          </article>
+
+          <!-- CARD 3 — Video (Tabs: UPI Podcast | PwC Corporate Video) -->
+          <article class="aw-card aw-tabcard" data-cats="video">
+            <div class="aw-tabs-header">
+              <button class="aw-tab active" data-tab="vid-upi">UPI Podcast</button>
+              <button class="aw-tab" data-tab="vid-pwc">PwC Corporate Video</button>
+            </div>
+            <div class="aw-tab-panel active" data-panel="vid-upi">
+              <div class="aw-carousel">
+                <div class="aw-carousel-track">
+                  <div class="aw-carousel-slide">
+                    <a href="https://www.youtube.com/watch?v=3PY5pB6on_0" target="_blank" rel="noopener" class="aw-slide-link">
+                      <img src="https://img.youtube.com/vi/3PY5pB6on_0/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/3PY5pB6on_0/hqdefault.jpg'" alt="UPI Podcast Episode 1" />
+                      <div class="aw-thumb-overlay"><div class="aw-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
+                    </a>
+                  </div>
+                  <div class="aw-carousel-slide">
+                    <a href="https://www.youtube.com/watch?v=TQZMEWhKAfs" target="_blank" rel="noopener" class="aw-slide-link">
+                      <img src="https://img.youtube.com/vi/TQZMEWhKAfs/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/TQZMEWhKAfs/hqdefault.jpg'" alt="UPI Podcast Episode 2" />
+                      <div class="aw-thumb-overlay"><div class="aw-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
+                    </a>
+                  </div>
+                  <div class="aw-carousel-slide">
+                    <a href="https://www.youtube.com/watch?v=a7nPrXnBrhY" target="_blank" rel="noopener" class="aw-slide-link">
+                      <img src="https://img.youtube.com/vi/a7nPrXnBrhY/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/a7nPrXnBrhY/hqdefault.jpg'" alt="UPI Podcast Episode 3" />
+                      <div class="aw-thumb-overlay"><div class="aw-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
+                    </a>
+                  </div>
+                </div>
+                <button class="aw-car-arrow aw-car-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+                <button class="aw-car-arrow aw-car-next" aria-label="Next"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></button>
+                <div class="aw-car-dots"><span class="aw-car-dot active" data-idx="0"></span><span class="aw-car-dot" data-idx="1"></span><span class="aw-car-dot" data-idx="2"></span></div>
+              </div>
+            </div>
+            <div class="aw-tab-panel" data-panel="vid-pwc">
+              <div class="aw-carousel">
+                <div class="aw-carousel-track">
+                  <div class="aw-carousel-slide"><div class="aw-ph aw-ph-cs"><div class="aw-ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div><span class="aw-ph-label">Coming Soon</span></div></div>
+                </div>
+              </div>
+            </div>
+            <div class="aw-card-body">
+              <span class="aw-card-cat-badge aw-badge-video">Video Production</span>
+              <h3 class="aw-card-title">Video Production — Multi-Platform</h3>
+              <p class="aw-card-company">UPI · PwC Indonesia · 10+ Productions</p>
+              <div class="aw-card-tags">
+                <span class="aw-card-tag">Video Editing</span>
+                <span class="aw-card-tag">Thumbnail Design</span>
+                <span class="aw-card-tag">YouTube</span>
+              </div>
+            </div>
+            <div class="aw-card-footer">
+              <a href="https://youtube.com/@upiofficial" target="_blank" rel="noopener" class="aw-watch-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+                View All Episodes
+              </a>
+            </div>
+          </article>
+        </div><!-- /aw-grid -->
+      </div><!-- /aw-grid-section -->
+
+    </div><!-- /container -->
+
+    <!-- ===== PDF SECTION ===== -->
+    <div class="aw-pdf-section">
+      <div class="container">
+
+        <div class="aw-pdf-head aw-reveal">
+          <p class="aw-pdf-eyebrow">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
+            Full Document
+          </p>
+          <h2 class="aw-pdf-title">Full Portfolio Document</h2>
+          <p class="aw-pdf-subtitle">Browse the complete portfolio directly in your browser — no download required.</p>
+        </div>
+
+        <div class="aw-pdf-frame-wrap aw-reveal">
+          <iframe
+            src="Portfolio_Rizki Dwi Pangestu_2026.pdf"
+            title="Portfolio Rizki Dwi Pangestu 2026"
+          ></iframe>
+        </div>
+
+        <div class="aw-pdf-actions aw-reveal">
+          <a href="Portfolio_Rizki Dwi Pangestu_2026.pdf" download class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:15px;height:15px"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            Download Portfolio PDF
+          </a>
+          <a href="CV_Rizki Dwi Pangestu_2026.pdf" download class="btn btn-ghost">
+            Download CV
+          </a>
+        </div>
+
       </div>
-
-      <!-- Empty state -->
-      <div class="arts-empty" id="arts-empty">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>
-        <p>Tidak ada proyek yang cocok.</p>
-      </div>
-
-      <!-- Cards container — diisi oleh artsworks.js -->
-      <div class="projects-list" id="projects-list"></div>
-
     </div>
+
   </main>
 
+  <!-- FOOTER -->
   <footer class="footer-new">
     <div class="fn-texture"></div>
     <div class="container fn-inner">
@@ -121,6 +1052,113 @@
   </footer>
 
   <script src="js/main.js"></script>
-  <script src="js/artsworks.js"></script>
+  <script>
+    /* ----- Filter ----- */
+    var filterBtns = document.querySelectorAll('.aw-f-btn');
+    var cards      = document.querySelectorAll('.aw-card');
+    var countEl    = document.getElementById('aw-count');
+
+    function applyFilter(cat) {
+      filterBtns.forEach(function(b) {
+        b.classList.toggle('active', b.dataset.filter === cat);
+      });
+      var count = 0;
+      cards.forEach(function(card) {
+        var cats = card.dataset.cats.split(' ');
+        var show = cat === 'all' || cats.includes(cat);
+        card.style.display = show ? '' : 'none';
+        if (show) count++;
+      });
+      if (countEl) countEl.textContent = count;
+    }
+
+    filterBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() { applyFilter(btn.dataset.filter); });
+    });
+
+    /* ----- Scroll reveal ----- */
+    function initReveal() {
+      var items = Array.from(document.querySelectorAll('.aw-reveal, .aw-card'));
+
+      function revealEl(el) { el.classList.add('visible'); }
+
+      function revealInView() {
+        items.forEach(function(el) {
+          if (el.style.display === 'none') return;
+          var r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight + 80) revealEl(el);
+        });
+      }
+
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) { revealEl(e.target); obs.unobserve(e.target); }
+          });
+        }, { threshold: 0, rootMargin: '0px 0px 60px 0px' });
+        items.forEach(function(el) { obs.observe(el); });
+      } else {
+        items.forEach(revealEl);
+      }
+
+      revealInView();
+      window.addEventListener('load', revealInView);
+      window.addEventListener('scroll', revealInView, { passive: true });
+    }
+
+    /* stagger delay on cards */
+    cards.forEach(function(card, i) {
+      card.style.transitionDelay = (i * 0.09) + 's';
+    });
+
+    /* ----- Carousels (generic) ----- */
+    document.querySelectorAll('.aw-carousel').forEach(function(carousel) {
+      var track   = carousel.querySelector('.aw-carousel-track');
+      var allDots = carousel.querySelectorAll('.aw-car-dot');
+      var prevBtn = carousel.querySelector('.aw-car-prev');
+      var nextBtn = carousel.querySelector('.aw-car-next');
+      if (!track) return;
+      var total   = track.querySelectorAll('.aw-carousel-slide').length;
+      var current = 0;
+      function goTo(i) {
+        current = (i + total) % total;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        allDots.forEach(function(d, idx) { d.classList.toggle('active', idx === current); });
+      }
+      carousel._goTo = goTo;
+      if (prevBtn) prevBtn.addEventListener('click', function(e) { e.preventDefault(); goTo(current - 1); });
+      if (nextBtn) nextBtn.addEventListener('click', function(e) { e.preventDefault(); goTo(current + 1); });
+      allDots.forEach(function(d) {
+        d.addEventListener('click', function() { goTo(parseInt(d.dataset.idx)); });
+      });
+      var startX = 0;
+      track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener('touchend', function(e) {
+        var diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+      }, { passive: true });
+    });
+
+    /* ----- Tabs ----- */
+    document.querySelectorAll('.aw-tabcard').forEach(function(card) {
+      var tabs   = card.querySelectorAll('.aw-tab');
+      var panels = card.querySelectorAll('.aw-tab-panel');
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          tabs.forEach(function(t) { t.classList.remove('active'); });
+          panels.forEach(function(p) { p.classList.remove('active'); });
+          tab.classList.add('active');
+          var target = card.querySelector('[data-panel="' + tab.dataset.tab + '"]');
+          if (target) {
+            target.classList.add('active');
+            var car = target.querySelector('.aw-carousel');
+            if (car && car._goTo) car._goTo(0);
+          }
+        });
+      });
+    });
+
+    initReveal();
+  </script>
 </body>
 </html>
