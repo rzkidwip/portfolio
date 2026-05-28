@@ -160,7 +160,7 @@
       transition: opacity 0.45s ease, transform 0.45s ease, box-shadow 0.28s;
     }
     .pg-card.visible { opacity: 1; transform: translateY(0); }
-    .pg-card:hover { box-shadow: 0 14px 44px rgba(0,0,0,0.18); }
+    .pg-card.visible:hover { transform: translateY(-5px); box-shadow: 0 18px 48px rgba(0,0,0,0.2); }
     .pg-card img {
       width: 100%; height: 100%;
       object-fit: cover;
@@ -236,39 +236,82 @@
     .pg-card:hover .pg-play { transform: translate(-50%,-50%) scale(1.12); }
     .pg-play svg { width: 20px; height: 20px; color: #cc0000; margin-left: 3px; }
 
-    /* COPYWRITING PLACEHOLDER */
+    /* COPYWRITING CARD */
     .pg-copy-ph {
       width: 100%; height: 100%;
-      background: linear-gradient(135deg, #fb923c 0%, #ea580c 100%);
+      background: #fff;
+      border-left: 5px solid #f97316;
       display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      padding: 20px; text-align: center; gap: 10px;
+      justify-content: center;
+      padding: 18px 18px 18px 20px;
+      gap: 7px;
     }
-    .pg-copy-icon {
-      width: 40px; height: 40px; border-radius: 11px;
-      background: rgba(255,255,255,0.2);
-      display: flex; align-items: center; justify-content: center;
+    .pg-copy-icon-lg { color: #f97316; margin-bottom: 2px; }
+    .pg-copy-icon-lg svg { width: 34px; height: 34px; }
+    .pg-copy-pub {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 0.54rem; font-weight: 800; letter-spacing: 1px;
+      text-transform: uppercase; color: #f97316;
+      background: rgba(249,115,22,0.08);
+      border: 1px solid rgba(249,115,22,0.2);
+      padding: 2px 8px; border-radius: 4px;
+      align-self: flex-start;
     }
-    .pg-copy-icon svg { width: 22px; height: 22px; color: #fff; }
-    .pg-copy-title { font-size: 0.82rem; font-weight: 700; color: #fff; line-height: 1.4; }
-    .pg-copy-company { font-size: 0.62rem; font-weight: 600; color: rgba(255,255,255,0.65); }
+    .pg-copy-title { font-size: 0.8rem; font-weight: 800; color: #111; line-height: 1.35; }
+    .pg-copy-mapei { font-size: 0.6rem; font-weight: 600; color: #6b7280; }
+    .pg-copy-read {
+      display: inline-flex; align-items: center; gap: 3px;
+      font-size: 0.68rem; font-weight: 700;
+      color: #f97316; margin-top: 2px;
+    }
 
-    /* DESIGN PLACEHOLDER */
+    /* DESIGN CARD */
     .pg-design-ph {
       width: 100%; height: 100%;
-      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+      background: linear-gradient(150deg, #3b0764 0%, #4c1d95 40%, #6d28d9 100%);
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       gap: 10px; padding: 20px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .pg-design-ph::before {
+      content: '';
+      position: absolute; top: -32px; right: -32px;
+      width: 110px; height: 110px; border-radius: 50%;
+      background: rgba(255,255,255,0.05); pointer-events: none;
+    }
+    .pg-design-ph::after {
+      content: '';
+      position: absolute; bottom: -20px; left: -20px;
+      width: 80px; height: 80px; border-radius: 50%;
+      background: rgba(255,255,255,0.04); pointer-events: none;
     }
     .pg-design-icon {
-      width: 40px; height: 40px; border-radius: 11px;
-      background: rgba(255,255,255,0.18);
+      width: 44px; height: 44px; border-radius: 13px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.2);
       display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1;
     }
-    .pg-design-icon svg { width: 22px; height: 22px; color: rgba(255,255,255,0.9); }
-    .pg-design-company { font-size: 0.82rem; font-weight: 700; color: rgba(255,255,255,0.92); }
-    .pg-design-cs { font-size: 0.58rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.52); }
+    .pg-design-icon svg { width: 24px; height: 24px; color: rgba(255,255,255,0.9); }
+    .pg-design-port {
+      font-size: 0.56rem; font-weight: 800; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
+      position: relative; z-index: 1;
+    }
+    .pg-design-company {
+      font-size: 0.88rem; font-weight: 800; color: #fff;
+      line-height: 1.2; position: relative; z-index: 1;
+    }
+    .pg-design-avail {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 0.54rem; font-weight: 700; letter-spacing: 0.8px;
+      text-transform: uppercase; color: rgba(255,255,255,0.65);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 3px 10px; border-radius: 99px;
+      position: relative; z-index: 1;
+    }
 
     /* LIGHTBOX */
     .lb-overlay {
@@ -490,15 +533,15 @@
         Portfolio
       </p>
       <h1 class="aw-hero-title">My Works</h1>
-      <p class="aw-hero-subtitle">A curated collection of real-world projects spanning corporate branding, content strategy, video production, and creative communication.</p>
+      <p class="aw-hero-subtitle">A curated collection of real work across Corporate Communication, Design &amp; Media Production</p>
       <a href="Portfolio_Rizki Dwi Pangestu_2026.pdf" download class="aw-dl-btn">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
         Download Full Portfolio PDF
       </a>
       <div class="aw-hero-stats">
         <span class="aw-hero-stat">4 Categories</span>
-        <span class="aw-hero-stat">21 Items</span>
-        <span class="aw-hero-stat">3+ Years</span>
+        <span class="aw-hero-stat">21+ Projects</span>
+        <span class="aw-hero-stat">6 Companies</span>
       </div>
     </div>
   </header>
@@ -515,7 +558,7 @@
           <button class="aw-f-btn" data-filter="video">Video</button>
           <button class="aw-f-btn" data-filter="copywriting">Copywriting</button>
           <button class="aw-f-btn" data-filter="design">Design</button>
-          <span class="aw-count-label"><strong id="aw-count">21</strong> items</span>
+          <span class="aw-count-label"><strong id="aw-count">24</strong> items</span>
         </div>
       </div>
 
@@ -653,6 +696,10 @@
       { cat:'video', img:'https://img.youtube.com/vi/3PY5pB6on_0/maxresdefault.jpg', title:'UPI Podcast Ep.1', company:'UPI', url:'https://www.youtube.com/watch?v=3PY5pB6on_0' },
       { cat:'video', img:'https://img.youtube.com/vi/TQZMEWhKAfs/maxresdefault.jpg', title:'UPI Podcast Ep.2', company:'UPI', url:'https://www.youtube.com/watch?v=TQZMEWhKAfs' },
       { cat:'video', img:'https://img.youtube.com/vi/a7nPrXnBrhY/maxresdefault.jpg', title:'UPI Podcast Ep.3', company:'UPI', url:'https://www.youtube.com/watch?v=a7nPrXnBrhY' },
+      // Video — Corporate Hastari Corporation
+      { cat:'video', img:'https://img.youtube.com/vi/CHlgPSt4YuQ/maxresdefault.jpg', title:'Corporate Video Ep.1', company:'Hastari Corporation', url:'https://www.youtube.com/watch?v=CHlgPSt4YuQ' },
+      { cat:'video', img:'https://img.youtube.com/vi/nGYBraTMgSY/maxresdefault.jpg', title:'Corporate Video Ep.2', company:'Hastari Corporation', url:'https://www.youtube.com/watch?v=nGYBraTMgSY' },
+      { cat:'video', img:'https://img.youtube.com/vi/J784JqR4_WM/maxresdefault.jpg', title:'Corporate Video Ep.3', company:'Hastari Corporation', url:'https://www.youtube.com/watch?v=J784JqR4_WM' },
       // Copywriting — MAPEI Indonesia
       { cat:'copywriting', img:null, title:'Produk Grouting Terbaik',  company:'MAPEI Indonesia', url:'https://www.mapei.com/id/en/blog/detail/blog/2022/07/14/produk-grouting-terbaik-untuk-area-basah' },
       { cat:'copywriting', img:null, title:'Produk Mortar Terbaik',   company:'MAPEI Indonesia', url:'https://www.mapei.com/id/en/blog/detail/blog/2022/08/11/ini-dia-produk-mortar-terbaik-untuk-tambalan-tembok-bangunan-anda' },
@@ -705,17 +752,19 @@
         var ph = document.createElement('div');
         ph.className = 'pg-copy-ph';
         ph.innerHTML =
-          '<div class="pg-copy-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></div>' +
+          '<div class="pg-copy-icon-lg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15h8v2H8zm0-4h8v2H8zm0-4h5v2H8z"/></svg></div>' +
+          '<span class="pg-copy-pub">Published &middot; MAPEI Indonesia</span>' +
           '<p class="pg-copy-title">' + item.title + '</p>' +
-          '<p class="pg-copy-company">' + item.company + '</p>';
+          '<span class="pg-copy-read">Read Article &rarr;</span>';
         card.appendChild(ph);
       } else {
         var ph = document.createElement('div');
         ph.className = 'pg-design-ph';
         ph.innerHTML =
-          '<div class="pg-design-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-3.31-2.69-6-6-6h-1.77c-.28 0-.5.22-.5.5 0 .12.05.23.13.33.41.47.64 1.06.64 1.67A2.5 2.5 0 0110.5 18H12a7 7 0 1 1 0-14z"/></svg></div>' +
+          '<div class="pg-design-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>' +
+          '<p class="pg-design-port">Design Portfolio</p>' +
           '<p class="pg-design-company">' + item.company + '</p>' +
-          '<p class="pg-design-cs">Coming Soon</p>';
+          '<span class="pg-design-avail">Available on Request</span>';
         card.appendChild(ph);
       }
 
@@ -799,8 +848,8 @@
           : 'linear-gradient(135deg,#8b5cf6,#6d28d9)';
         ph.style.background = bg;
         var iconSvg = item.cat === 'copywriting'
-          ? '<svg viewBox="0 0 24 24" fill="currentColor" style="width:28px;height:28px;color:#fff"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>'
-          : '<svg viewBox="0 0 24 24" fill="currentColor" style="width:28px;height:28px;color:rgba(255,255,255,0.9)"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-3.31-2.69-6-6-6h-1.77c-.28 0-.5.22-.5.5 0 .12.05.23.13.33.41.47.64 1.06.64 1.67A2.5 2.5 0 0110.5 18H12a7 7 0 1 1 0-14z"/></svg>';
+          ? '<svg viewBox="0 0 24 24" fill="currentColor" style="width:28px;height:28px;color:#fff"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15h8v2H8zm0-4h8v2H8zm0-4h5v2H8z"/></svg>'
+          : '<svg viewBox="0 0 24 24" fill="currentColor" style="width:28px;height:28px;color:rgba(255,255,255,0.9)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>';
         var sub = item.cat === 'copywriting'
           ? '<p style="font-size:0.78rem;color:rgba(255,255,255,0.65);margin-top:6px;">' + item.company + '</p>'
           : '<p style="font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:6px;">Coming Soon</p>';
