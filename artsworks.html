@@ -185,6 +185,7 @@
     }
     .pg-badge-social  { background: #1287c1; }
     .pg-badge-video   { background: #cc0000; }
+    .pg-badge-navy    { background: #1e3a5f; }
     .pg-badge-copy    { background: #f97316; }
     .pg-badge-design  { background: #7c3aed; }
 
@@ -445,6 +446,7 @@
     }
     .lb-badge-social { background: #1287c1; }
     .lb-badge-video  { background: #cc0000; }
+    .lb-badge-navy   { background: #1e3a5f; }
     .lb-badge-copy   { background: #f97316; }
     .lb-badge-design { background: #7c3aed; }
     .lb-info-title { font-size: 1rem; font-weight: 700; color: #fff; }
@@ -638,7 +640,7 @@
         </div>
         <a id="lb-visit" class="lb-visit" href="#" target="_blank" rel="noopener noreferrer" style="display:none">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Visit Link
+          <span id="lb-visit-text">Visit Link</span>
         </a>
       </div>
     </div>
@@ -715,13 +717,13 @@
       { cat:'social-media', img:'image/artsworks/mro-sosmed-2.jpg.jpg',         title:'Social Media Content', company:'MRO Indonesia',   url:null },
       { cat:'social-media', img:'image/artsworks/mro-sosmed-3.jpg.jpg',         title:'Social Media Content', company:'MRO Indonesia',   url:null },
       // Video — UPI Podcast
-      { cat:'video', img:'https://img.youtube.com/vi/3PY5pB6on_0/maxresdefault.jpg', title:'UPI Podcast Ep.1', company:'UPI', url:'https://www.youtube.com/watch?v=3PY5pB6on_0' },
-      { cat:'video', img:'https://img.youtube.com/vi/TQZMEWhKAfs/maxresdefault.jpg', title:'UPI Podcast Ep.2', company:'UPI', url:'https://www.youtube.com/watch?v=TQZMEWhKAfs' },
-      { cat:'video', img:'https://img.youtube.com/vi/a7nPrXnBrhY/maxresdefault.jpg', title:'UPI Podcast Ep.3', company:'UPI', url:'https://www.youtube.com/watch?v=a7nPrXnBrhY' },
+      { cat:'video', subcat:'podcast', img:'https://img.youtube.com/vi/3PY5pB6on_0/maxresdefault.jpg', title:'UPI Podcast Ep.1', company:'UPI', url:'https://www.youtube.com/watch?v=3PY5pB6on_0' },
+      { cat:'video', subcat:'podcast', img:'https://img.youtube.com/vi/TQZMEWhKAfs/maxresdefault.jpg', title:'UPI Podcast Ep.2', company:'UPI', url:'https://www.youtube.com/watch?v=TQZMEWhKAfs' },
+      { cat:'video', subcat:'podcast', img:'https://img.youtube.com/vi/a7nPrXnBrhY/maxresdefault.jpg', title:'UPI Podcast Ep.3', company:'UPI', url:'https://www.youtube.com/watch?v=a7nPrXnBrhY' },
       // Video — Corporate Hastari Corporation
-      { cat:'video', img:'https://img.youtube.com/vi/CHlgPSt4YuQ/maxresdefault.jpg', title:'Corporate Video Ep.1', company:'Hastari Corporation', url:'https://www.youtube.com/watch?v=CHlgPSt4YuQ' },
-      { cat:'video', img:'https://img.youtube.com/vi/nGYBraTMgSY/maxresdefault.jpg', title:'Corporate Video Ep.2', company:'Hastari Corporation', url:'https://www.youtube.com/watch?v=nGYBraTMgSY' },
-      { cat:'video', img:'https://img.youtube.com/vi/J784JqR4_WM/maxresdefault.jpg', title:'Corporate Video Ep.3', company:'Hastari Corporation', url:'https://www.youtube.com/watch?v=J784JqR4_WM' },
+      { cat:'video', subcat:'corporate', img:'https://img.youtube.com/vi/CHlgPSt4YuQ/maxresdefault.jpg', title:'Corporate Video Ep.1', company:'Hastari Corporation', url:'https://www.youtube.com/watch?v=CHlgPSt4YuQ' },
+      { cat:'video', subcat:'corporate', img:'https://img.youtube.com/vi/nGYBraTMgSY/maxresdefault.jpg', title:'Corporate Video Ep.2', company:'Hastari Corporation', url:'https://www.youtube.com/watch?v=nGYBraTMgSY' },
+      { cat:'video', subcat:'corporate', img:'https://img.youtube.com/vi/J784JqR4_WM/maxresdefault.jpg', title:'Corporate Video Ep.3', company:'Hastari Corporation', url:'https://www.youtube.com/watch?v=J784JqR4_WM' },
       // Copywriting — MAPEI Indonesia
       { cat:'copywriting', img:'https://cdnmedia.mapei.com/images/librariesprovider26/default-album/grouting-cover-(1)8ccd588279c562e49128ff01007028e9.jpg?sfvrsn=a083a8f_0', title:'Produk Grouting Terbaik', company:'MAPEI Indonesia', url:'https://www.mapei.com/id/en/blog/detail/blog/2022/07/14/produk-grouting-terbaik-untuk-area-basah' },
       { cat:'copywriting', img:'image/artsworks/mortar-cover.png', title:'Produk Mortar Terbaik', company:'MAPEI Indonesia', url:'https://www.mapei.com/id/en/blog/detail/blog/2022/08/11/ini-dia-produk-mortar-terbaik-untuk-tambalan-tembok-bangunan-anda' },
@@ -752,9 +754,13 @@
       card.style.transitionDelay = (idx * 0.055) + 's';
 
       // badge
+      var badgeText = CAT_LABELS[item.cat];
+      var badgeCls  = CAT_BADGE_CLS[item.cat];
+      if (item.subcat === 'podcast')   { badgeText = 'UPI Podcast';    badgeCls = 'pg-badge-video'; }
+      if (item.subcat === 'corporate') { badgeText = 'Corporate Video'; badgeCls = 'pg-badge-navy'; }
       var badge = document.createElement('span');
-      badge.className = 'pg-badge ' + CAT_BADGE_CLS[item.cat];
-      badge.textContent = CAT_LABELS[item.cat];
+      badge.className = 'pg-badge ' + badgeCls;
+      badge.textContent = badgeText;
       card.appendChild(badge);
 
       // content
@@ -891,9 +897,13 @@
       }
 
       // info bar
+      var lbBadgeText = CAT_LABELS[item.cat];
+      var lbBadgeCls  = LB_BADGE_CLS[item.cat];
+      if (item.subcat === 'podcast')   { lbBadgeText = 'UPI Podcast';    lbBadgeCls = 'lb-badge-video'; }
+      if (item.subcat === 'corporate') { lbBadgeText = 'Corporate Video'; lbBadgeCls = 'lb-badge-navy'; }
       var badge = document.getElementById('lb-badge');
-      badge.textContent = CAT_LABELS[item.cat];
-      badge.className = 'lb-info-badge ' + LB_BADGE_CLS[item.cat];
+      badge.textContent = lbBadgeText;
+      badge.className = 'lb-info-badge ' + lbBadgeCls;
       document.getElementById('lb-title').textContent = item.title;
       document.getElementById('lb-company').textContent = item.company;
 
@@ -903,6 +913,8 @@
         btn.style.display = 'inline-flex';
         btn.href = item.url;
         btn.className = 'lb-visit' + (item.cat === 'video' ? ' red' : item.cat === 'copywriting' ? ' orange' : '');
+        document.getElementById('lb-visit-text').textContent =
+          item.cat === 'video' ? 'Watch Video' : item.cat === 'copywriting' ? 'Read Article' : 'Visit Link';
       } else {
         btn.style.display = 'none';
       }
