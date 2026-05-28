@@ -289,12 +289,19 @@
     }
 
     /* DESIGN CARD */
+    @keyframes designGradient {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
     .pg-design-ph {
       width: 100%; height: 100%;
-      background: linear-gradient(150deg, #3b0764 0%, #4c1d95 40%, #6d28d9 100%);
+      background: linear-gradient(270deg, #1e1b4b, #312e81, #4c1d95, #1e3a5f, #0f172a);
+      background-size: 400% 400%;
+      animation: designGradient 10s ease infinite;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      gap: 10px; padding: 20px; text-align: center;
+      gap: 7px; padding: 16px; text-align: center;
       position: relative; overflow: hidden;
     }
     .pg-design-ph::before {
@@ -310,31 +317,44 @@
       background: rgba(255,255,255,0.04); pointer-events: none;
     }
     .pg-design-icon {
-      width: 44px; height: 44px; border-radius: 13px;
-      background: rgba(255,255,255,0.15);
+      width: 42px; height: 42px; border-radius: 12px;
+      background: rgba(255,255,255,0.12);
       border: 1px solid rgba(255,255,255,0.2);
       display: flex; align-items: center; justify-content: center;
       position: relative; z-index: 1;
     }
-    .pg-design-icon svg { width: 24px; height: 24px; color: rgba(255,255,255,0.9); }
+    .pg-design-icon svg { width: 22px; height: 22px; color: rgba(255,255,255,0.9); }
     .pg-design-port {
-      font-size: 0.56rem; font-weight: 800; letter-spacing: 2px;
-      text-transform: uppercase; color: rgba(255,255,255,0.5);
+      font-size: 0.52rem; font-weight: 800; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(255,255,255,0.45);
       position: relative; z-index: 1;
     }
     .pg-design-company {
-      font-size: 0.88rem; font-weight: 800; color: #fff;
+      font-size: 0.85rem; font-weight: 800; color: #fff;
       line-height: 1.2; position: relative; z-index: 1;
     }
-    .pg-design-avail {
-      display: inline-flex; align-items: center; gap: 4px;
-      font-size: 0.54rem; font-weight: 700; letter-spacing: 0.8px;
-      text-transform: uppercase; color: rgba(255,255,255,0.65);
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.18);
-      padding: 3px 10px; border-radius: 99px;
+    .pg-design-assets {
+      font-size: 0.6rem; font-weight: 700; color: rgba(255,255,255,0.55);
       position: relative; z-index: 1;
     }
+    .pg-design-conf {
+      font-size: 0.52rem; font-weight: 500; color: rgba(255,255,255,0.38);
+      line-height: 1.4; position: relative; z-index: 1;
+      max-width: 140px;
+    }
+    .pg-design-req {
+      display: inline-flex; align-items: center;
+      font-size: 0.64rem; font-weight: 700;
+      color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      padding: 5px 12px; border-radius: 99px;
+      text-decoration: none;
+      position: relative; z-index: 4;
+      transition: background 0.2s, color 0.2s;
+      margin-top: 2px;
+    }
+    .pg-design-req:hover { background: rgba(255,255,255,0.24); color: #fff; }
 
     /* LIGHTBOX */
     .lb-overlay {
@@ -463,8 +483,9 @@
       background: #1287c1; color: #fff;
     }
     .lb-visit:hover { opacity: 0.88; transform: translateY(-2px); }
-    .lb-visit.red { background: #cc0000; }
+    .lb-visit.red    { background: #cc0000; }
     .lb-visit.orange { background: #f97316; }
+    .lb-visit.purple { background: #7c3aed; }
     .lb-visit svg { width: 14px; height: 14px; flex-shrink: 0; }
 
     /* PDF SECTION */
@@ -729,9 +750,9 @@
       { cat:'copywriting', img:'image/artsworks/mortar-cover.png', title:'Produk Mortar Terbaik', company:'MAPEI Indonesia', url:'https://www.mapei.com/id/en/blog/detail/blog/2022/08/11/ini-dia-produk-mortar-terbaik-untuk-tambalan-tembok-bangunan-anda' },
       { cat:'copywriting', img:'https://cdnmedia.mapei.com/images/librariesprovider26/default-album/membrane-3-(1)-(1)dfea428279c562e49128ff01007028e9.jpg?sfvrsn=592f208f_0', title:'Waterproofing Membrane', company:'MAPEI Indonesia', url:'https://www.mapei.com/id/en/blog/detail/blog/2022/06/20/waterproofing-membrane-solusi-anti-bocor-hingga-puluhan-tahun' },
       // Design — placeholders
-      { cat:'design', img:null, title:'Design Work', company:'PwC Indonesia', url:null },
-      { cat:'design', img:null, title:'Design Work', company:'Hastari Corp',  url:null },
-      { cat:'design', img:null, title:'Design Work', company:'MRO Indonesia', url:null },
+      { cat:'design', img:null, title:'Design Work', company:'PwC Indonesia',   assets:'15+ Design Assets', url:'mailto:rdpangestu8@gmail.com' },
+      { cat:'design', img:null, title:'Design Work', company:'Hastari Corp',    assets:'20+ Design Assets', url:'mailto:rdpangestu8@gmail.com' },
+      { cat:'design', img:null, title:'Design Work', company:'MRO Indonesia',   assets:'10+ Design Assets', url:'mailto:rdpangestu8@gmail.com' },
     ];
 
     var CAT_LABELS = { 'social-media':'Social Media', 'video':'Video', 'copywriting':'Copywriting', 'design':'Design' };
@@ -795,11 +816,39 @@
       } else {
         var ph = document.createElement('div');
         ph.className = 'pg-design-ph';
-        ph.innerHTML =
-          '<div class="pg-design-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>' +
-          '<p class="pg-design-port">Design Portfolio</p>' +
-          '<p class="pg-design-company">' + item.company + '</p>' +
-          '<span class="pg-design-avail">Available on Request</span>';
+
+        var dIcon = document.createElement('div');
+        dIcon.className = 'pg-design-icon';
+        dIcon.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27-7.38 5.74zm.01-2.54l7.36-5.73L21 8.93l-9-7-9 7 1.63 1.28L12 15.98z"/></svg>';
+
+        var dPort = document.createElement('p');
+        dPort.className = 'pg-design-port';
+        dPort.textContent = 'Design Portfolio';
+
+        var dComp = document.createElement('p');
+        dComp.className = 'pg-design-company';
+        dComp.textContent = item.company;
+
+        var dAssets = document.createElement('p');
+        dAssets.className = 'pg-design-assets';
+        dAssets.textContent = item.assets || '';
+
+        var dConf = document.createElement('p');
+        dConf.className = 'pg-design-conf';
+        dConf.textContent = 'Confidential work available upon request';
+
+        var dReq = document.createElement('a');
+        dReq.className = 'pg-design-req';
+        dReq.href = 'mailto:rdpangestu8@gmail.com';
+        dReq.textContent = 'Request to View →';
+        dReq.addEventListener('click', function(e) { e.stopPropagation(); });
+
+        ph.appendChild(dIcon);
+        ph.appendChild(dPort);
+        ph.appendChild(dComp);
+        ph.appendChild(dAssets);
+        ph.appendChild(dConf);
+        ph.appendChild(dReq);
         card.appendChild(ph);
       }
 
@@ -912,9 +961,10 @@
       if (item.url) {
         btn.style.display = 'inline-flex';
         btn.href = item.url;
-        btn.className = 'lb-visit' + (item.cat === 'video' ? ' red' : item.cat === 'copywriting' ? ' orange' : '');
+        btn.className = 'lb-visit' +
+          (item.cat === 'video' ? ' red' : item.cat === 'copywriting' ? ' orange' : item.cat === 'design' ? ' purple' : '');
         document.getElementById('lb-visit-text').textContent =
-          item.cat === 'video' ? 'Watch Video' : item.cat === 'copywriting' ? 'Read Article' : 'Visit Link';
+          item.cat === 'video' ? 'Watch Video' : item.cat === 'copywriting' ? 'Read Article' : item.cat === 'design' ? 'Request to View' : 'Visit Link';
       } else {
         btn.style.display = 'none';
       }
