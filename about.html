@@ -328,10 +328,17 @@
     }
     .ctk-pill:hover .ctk-icon { filter: brightness(0) invert(1); }
     .ctk-icon {
-      width: 16px; height: 16px; object-fit: contain;
+      width: 20px; height: 20px; object-fit: contain;
       display: block; flex-shrink: 0; transition: filter 0.22s;
+      border-radius: 4px;
     }
-    .ctk-emoji-icon { font-size: 14px; line-height: 1; flex-shrink: 0; }
+    .ctk-icon-local {
+      width: 20px; height: 20px; object-fit: contain;
+      display: block; flex-shrink: 0; border-radius: 5px;
+      transition: transform 0.18s;
+    }
+    .ctk-pill:hover .ctk-icon-local { transform: scale(1.1); }
+    .ctk-emoji-icon { font-size: 16px; line-height: 1; flex-shrink: 0; }
     .ctk-badge {
       display: inline-flex; align-items: center; justify-content: center;
       width: 16px; height: 16px; border-radius: 3px;
@@ -612,10 +619,10 @@
             <span class="ctk-cat-name">Design &amp; Visual</span>
           </div>
           <div class="ctk-pills">
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/adobeillustrator/FF9A00" alt="" loading="lazy">Adobe Illustrator</span>
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/adobephotoshop/31A8FF" alt="" loading="lazy">Adobe Photoshop</span>
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/figma/F24E1E" alt="" loading="lazy">Figma</span>
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/canva/00C4CC" alt="" loading="lazy">Canva</span>
+            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/illustrator.png" alt="Adobe Illustrator" loading="lazy">Adobe Illustrator</span>
+            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/photoshop.png" alt="Adobe Photoshop" loading="lazy">Adobe Photoshop</span>
+            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/figma.png" alt="Figma" loading="lazy">Figma</span>
+            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/canva.png" alt="Canva" loading="lazy">Canva</span>
           </div>
         </div>
 
@@ -626,12 +633,12 @@
             <span class="ctk-cat-name">Video Production</span>
           </div>
           <div class="ctk-pills">
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/adobepremierepro/9999FF" alt="" loading="lazy">Adobe Premiere Pro</span>
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/adobeaftereffects/9999FF" alt="" loading="lazy">Adobe After Effects</span>
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/capcut/000000" alt="" loading="lazy">CapCut</span>
-            <span class="ctk-pill"><span class="ctk-emoji-icon">🎞️</span>VN</span>
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/wondersharecreatordbx/DC2626" alt="" loading="lazy" data-fallback="🎥" data-name="Filmora">Filmora</span>
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/davinciresolve/233A51" alt="" loading="lazy">DaVinci Resolve</span>
+            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/premiere-pro.png" alt="Adobe Premiere Pro" loading="lazy">Adobe Premiere Pro</span>
+            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/after-effects.png" alt="Adobe After Effects" loading="lazy">Adobe After Effects</span>
+            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/capcut.png" alt="CapCut" loading="lazy">CapCut</span>
+            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/vn.png" alt="VN" loading="lazy">VN</span>
+            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/filmora.png" alt="Filmora" loading="lazy">Filmora</span>
+            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/davinci.png" alt="DaVinci Resolve" loading="lazy">DaVinci Resolve</span>
           </div>
         </div>
 
@@ -642,9 +649,9 @@
             <span class="ctk-cat-name">Audio Production</span>
           </div>
           <div class="ctk-pills">
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/adobeaudition/9999FF" alt="" loading="lazy">Adobe Audition</span>
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/audacity/0000CC" alt="" loading="lazy">Audacity</span>
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/flstudio/FF7629" alt="" loading="lazy" data-fallback="🎵" data-name="FL Studio">FL Studio</span>
+            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/audition.png" alt="Adobe Audition" loading="lazy">Adobe Audition</span>
+            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/audacity.png" alt="Audacity" loading="lazy">Audacity</span>
+            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/fl-studio.jpg" alt="FL Studio" loading="lazy">FL Studio</span>
           </div>
         </div>
 
@@ -655,8 +662,8 @@
             <span class="ctk-cat-name">Live &amp; Broadcast</span>
           </div>
           <div class="ctk-pills">
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/vmix/059669" alt="" loading="lazy" data-fallback="📺" data-name="vMix">vMix</span>
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/obsstudio/302E31" alt="" loading="lazy">OBS Studio</span>
+            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/vmix.webp" alt="vMix" loading="lazy">vMix</span>
+            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/obs-studio.webp" alt="OBS Studio" loading="lazy">OBS Studio</span>
           </div>
         </div>
 
