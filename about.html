@@ -279,6 +279,60 @@
       .ab-stat { padding: 14px 18px; }
       .ab-stat-n { font-size: 1.3rem; }
     }
+
+    /* ---- COMMUNICATION TOOLKIT ---- */
+    .ctk-section { padding: 86px 0; background: #f8fafc; }
+    .ctk-eyebrow {
+      font-size: 0.65rem; font-weight: 800; letter-spacing: 3.5px;
+      text-transform: uppercase; color: #1287c1; margin-bottom: 8px; display: block;
+    }
+    .ctk-heading {
+      font-size: clamp(1.9rem, 3.5vw, 2.7rem); font-weight: 900;
+      color: var(--text); letter-spacing: -1.5px; margin-bottom: 10px;
+    }
+    .ctk-sub {
+      font-size: 0.88rem; color: var(--muted); max-width: 520px;
+      line-height: 1.7; margin-bottom: 52px;
+    }
+    .ctk-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px;
+    }
+    .ctk-card {
+      background: #fff; border-radius: 18px;
+      border: 1.5px solid var(--border); border-left: 4px solid var(--cat, #1287c1);
+      padding: 28px 28px 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.55s ease, transform 0.55s ease, box-shadow 0.28s;
+    }
+    .ctk-card.ctk-in { opacity: 1; transform: none; }
+    .ctk-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.10); }
+    .ctk-cat-head {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border);
+    }
+    .ctk-cat-emoji { font-size: 1.25rem; }
+    .ctk-cat-name { font-size: 0.88rem; font-weight: 800; color: var(--text); letter-spacing: -0.3px; }
+    .ctk-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .ctk-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 7px 14px; border-radius: 50px;
+      background: #fff; border: 1.5px solid #e2e8f0;
+      font-size: 0.78rem; font-weight: 600; color: var(--text);
+      cursor: default; white-space: nowrap;
+      transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.18s;
+    }
+    .ctk-pill:hover {
+      background: var(--cat, #1287c1); color: #fff;
+      border-color: transparent; transform: scale(1.05);
+    }
+    .ctk-pill:hover .ctk-icon { filter: brightness(0) invert(1); }
+    .ctk-icon {
+      width: 16px; height: 16px; object-fit: contain;
+      display: block; flex-shrink: 0; transition: filter 0.22s;
+    }
+    .ctk-emoji-icon { font-size: 14px; line-height: 1; flex-shrink: 0; }
+    @media (max-width: 860px) { .ctk-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -536,6 +590,140 @@
       </div>
     </div>
   </section>
+
+  <!-- ===== COMMUNICATION TOOLKIT ===== -->
+  <section class="ctk-section">
+    <div class="container">
+      <span class="ctk-eyebrow ab-reveal">TOOLS &amp; EXPERTISE</span>
+      <h2 class="ctk-heading ab-reveal">My Communication Toolkit</h2>
+      <p class="ctk-sub ab-reveal">From design to broadcast — the tools I use to craft and deliver strategic communication.</p>
+      <div class="ctk-grid">
+
+        <!-- Cat 1: Design & Visual -->
+        <div class="ctk-card" style="--cat:#7C3AED">
+          <div class="ctk-cat-head">
+            <span class="ctk-cat-emoji">🎨</span>
+            <span class="ctk-cat-name">Design &amp; Visual</span>
+          </div>
+          <div class="ctk-pills">
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/adobeillustrator/FF9A00" alt="" loading="lazy">Adobe Illustrator</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/adobephotoshop/31A8FF" alt="" loading="lazy">Adobe Photoshop</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/figma/F24E1E" alt="" loading="lazy">Figma</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/canva/00C4CC" alt="" loading="lazy">Canva</span>
+          </div>
+        </div>
+
+        <!-- Cat 2: Video Production -->
+        <div class="ctk-card" style="--cat:#DC2626">
+          <div class="ctk-cat-head">
+            <span class="ctk-cat-emoji">🎬</span>
+            <span class="ctk-cat-name">Video Production</span>
+          </div>
+          <div class="ctk-pills">
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/adobepremierepro/9999FF" alt="" loading="lazy">Adobe Premiere Pro</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/adobeaftereffects/9999FF" alt="" loading="lazy">Adobe After Effects</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/capcut/000000" alt="" loading="lazy">CapCut</span>
+            <span class="ctk-pill"><span class="ctk-emoji-icon">🎞️</span>VN</span>
+            <span class="ctk-pill"><span class="ctk-emoji-icon">🎥</span>Filmora</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/davinciresolve/233A51" alt="" loading="lazy">DaVinci Resolve</span>
+          </div>
+        </div>
+
+        <!-- Cat 3: Audio Production -->
+        <div class="ctk-card" style="--cat:#1E40AF">
+          <div class="ctk-cat-head">
+            <span class="ctk-cat-emoji">🎙️</span>
+            <span class="ctk-cat-name">Audio Production</span>
+          </div>
+          <div class="ctk-pills">
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/adobeaudition/9999FF" alt="" loading="lazy">Adobe Audition</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/audacity/0000CC" alt="" loading="lazy">Audacity</span>
+            <span class="ctk-pill"><span class="ctk-emoji-icon">🎵</span>FL Studio</span>
+          </div>
+        </div>
+
+        <!-- Cat 4: Live & Broadcast -->
+        <div class="ctk-card" style="--cat:#059669">
+          <div class="ctk-cat-head">
+            <span class="ctk-cat-emoji">📡</span>
+            <span class="ctk-cat-name">Live &amp; Broadcast</span>
+          </div>
+          <div class="ctk-pills">
+            <span class="ctk-pill"><span class="ctk-emoji-icon">📺</span>vMix</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/obsstudio/302E31" alt="" loading="lazy">OBS Studio</span>
+          </div>
+        </div>
+
+        <!-- Cat 5: Communication & Writing -->
+        <div class="ctk-card" style="--cat:#1287c1">
+          <div class="ctk-cat-head">
+            <span class="ctk-cat-emoji">✍️</span>
+            <span class="ctk-cat-name">Communication &amp; Writing</span>
+          </div>
+          <div class="ctk-pills">
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/microsoftword/2B579A" alt="" loading="lazy">Microsoft Word</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/microsoftpowerpoint/B7472A" alt="" loading="lazy">Microsoft PowerPoint</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/microsoftexcel/217346" alt="" loading="lazy">Microsoft Excel</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/googledocs/4285F4" alt="" loading="lazy">Google Docs</span>
+            <span class="ctk-pill"><span class="ctk-emoji-icon">📊</span>Google Slides</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/googlesheets/34A853" alt="" loading="lazy">Google Sheets</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/grammarly/15C39A" alt="" loading="lazy">Grammarly</span>
+          </div>
+        </div>
+
+        <!-- Cat 6: Social Media & Digital -->
+        <div class="ctk-card" style="--cat:#DB2777">
+          <div class="ctk-cat-head">
+            <span class="ctk-cat-emoji">📱</span>
+            <span class="ctk-cat-name">Social Media &amp; Digital</span>
+          </div>
+          <div class="ctk-pills">
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/meta/0081FB" alt="" loading="lazy">Meta Business Suite</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/linkedin/0A66C2" alt="" loading="lazy">LinkedIn Campaign Manager</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/googleanalytics/E37400" alt="" loading="lazy">Google Analytics</span>
+            <span class="ctk-pill"><span class="ctk-emoji-icon">🔍</span>Google Search Console</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/hootsuite/000000" alt="" loading="lazy">Hootsuite</span>
+          </div>
+        </div>
+
+        <!-- Cat 7: Collaboration & Productivity -->
+        <div class="ctk-card" style="--cat:#D97706">
+          <div class="ctk-cat-head">
+            <span class="ctk-cat-emoji">🤝</span>
+            <span class="ctk-cat-name">Collaboration &amp; Productivity</span>
+          </div>
+          <div class="ctk-pills">
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/zoom/2D8CFF" alt="" loading="lazy">Zoom</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/googlemeet/00897B" alt="" loading="lazy">Google Meet</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/microsoftteams/6264A7" alt="" loading="lazy">Microsoft Teams</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/mailchimp/FFE01B" alt="" loading="lazy">Mailchimp</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/trello/0052CC" alt="" loading="lazy">Trello</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/notion/000000" alt="" loading="lazy">Notion</span>
+            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/python/3776AB" alt="" loading="lazy">Python</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <script>
+    (function() {
+      var cards = document.querySelectorAll('.ctk-card');
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            var delay = parseInt(e.target.dataset.ctkDelay) || 0;
+            setTimeout(function() { e.target.classList.add('ctk-in'); }, delay);
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.06 });
+      cards.forEach(function(card, i) {
+        card.dataset.ctkDelay = i * 80;
+        obs.observe(card);
+      });
+    })();
+  </script>
 
   <!-- FOOTER -->
       <footer class="footer-new">
