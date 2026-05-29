@@ -2035,6 +2035,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-radius: 18px;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
+  margin-bottom: 20px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .ls-card:hover .ls-icon { transform: scale(1.08); }
