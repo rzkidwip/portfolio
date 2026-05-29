@@ -1,0 +1,743 @@
+﻿<!DOCTYPE html>
+<html lang="id" data-root="../">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me — Rizki Dwi Pangestu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    /* ================================================================
+       ABOUT ME — PREMIUM REDESIGN
+    ================================================================ */
+    html { scroll-behavior: smooth; }
+
+    /* ---- HERO ---- */
+    .ab-hero {
+      background: linear-gradient(135deg, #1287c1 0%, #0e6fa3 45%, #073d5e 100%);
+      padding: calc(var(--nav) + 80px) 0 110px;
+      position: relative; overflow: hidden;
+    }
+    .ab-hero::after {
+      content: ''; position: absolute; bottom: -1px; left: 0; right: 0;
+      height: 64px; background: linear-gradient(to bottom, transparent, var(--bg));
+      pointer-events: none;
+    }
+    .ab-grid {
+      display: grid; grid-template-columns: 260px 1fr;
+      gap: 68px; align-items: center; position: relative; z-index: 1;
+    }
+
+    /* Photo */
+    .ab-photo-wrap { display: flex; flex-direction: column; align-items: center; }
+    .ab-photo-outer { position: relative; width: 220px; height: 220px; }
+    @keyframes abGlow {
+      0%, 100% { box-shadow: 0 0 28px 8px rgba(18,135,193,0.55), 0 0 56px 18px rgba(18,135,193,0.22); }
+      50%       { box-shadow: 0 0 42px 14px rgba(18,135,193,0.78), 0 0 80px 28px rgba(18,135,193,0.36); }
+    }
+    .ab-photo-glow {
+      position: absolute; inset: -7px; border-radius: 50%;
+      animation: abGlow 3.2s ease-in-out infinite;
+      border: 3px solid rgba(255,255,255,0.32);
+    }
+    .ab-photo-img {
+      width: 220px; height: 220px; border-radius: 50%; overflow: hidden;
+      border: 4px solid rgba(255,255,255,0.88);
+      position: relative; z-index: 1;
+    }
+    .ab-photo-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; display: block; }
+
+    /* Shimmer badge */
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    .ab-badge {
+      margin-top: 20px;
+      padding: 8px 22px; border-radius: 99px;
+      font-size: 0.68rem; font-weight: 800; letter-spacing: 1.2px;
+      text-transform: uppercase; color: #fff; text-align: center;
+      background: linear-gradient(90deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.32) 40%, rgba(255,255,255,0.08) 70%);
+      background-size: 200% auto;
+      animation: shimmer 2.6s linear infinite;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    /* Text */
+    .ab-eyebrow {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 3.5px;
+      text-transform: uppercase; color: rgba(255,255,255,0.6);
+      margin-bottom: 6px;
+    }
+    .ab-name {
+      font-size: clamp(2.6rem, 4.8vw, 4rem); font-weight: 900;
+      color: #fff; letter-spacing: -2.5px; line-height: 1.0; margin-bottom: 12px;
+      min-height: 1.05em;
+    }
+    .ab-cursor {
+      display: inline-block; width: 3px; height: 0.85em; background: rgba(255,255,255,0.85);
+      vertical-align: text-bottom; margin-left: 3px;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    .ab-role { font-size: 1rem; color: rgba(255,255,255,0.7); font-weight: 500; margin-bottom: 18px; }
+    .ab-bio { font-size: 0.88rem; color: rgba(255,255,255,0.72); line-height: 1.74; margin-bottom: 10px; max-width: 500px; }
+
+    /* Stats */
+    .ab-stats {
+      display: flex; gap: 0; flex-wrap: wrap;
+      margin: 28px 0 26px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 16px; backdrop-filter: blur(8px);
+      width: fit-content; overflow: hidden;
+    }
+    .ab-stat {
+      display: flex; flex-direction: column; align-items: center; gap: 3px;
+      padding: 18px 26px;
+    }
+    .ab-stat + .ab-stat { border-left: 1px solid rgba(255,255,255,0.15); }
+    .ab-stat-n { font-size: 1.65rem; font-weight: 900; color: #fff; line-height: 1; }
+    .ab-stat-l { font-size: 0.58rem; font-weight: 700; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.8px; text-align: center; }
+
+    /* CTA Buttons */
+    .ab-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .ab-btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 99px;
+      background: #fff; color: #1287c1;
+      font-size: 0.88rem; font-weight: 800; font-family: inherit;
+      text-decoration: none; transition: transform 0.22s, box-shadow 0.22s;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+    }
+    .ab-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 38px rgba(0,0,0,0.3); }
+    .ab-btn-primary svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .ab-btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; border-radius: 99px;
+      background: transparent; color: #fff;
+      font-size: 0.88rem; font-weight: 700; font-family: inherit;
+      text-decoration: none; border: 1.5px solid rgba(255,255,255,0.42);
+      transition: background 0.22s, border-color 0.22s, transform 0.22s;
+    }
+    .ab-btn-ghost:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.72); transform: translateY(-3px); }
+    .ab-btn-ghost svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* Particles */
+    .ab-particle {
+      position: absolute; border-radius: 50%;
+      background: rgba(255,255,255,0.05); pointer-events: none;
+      animation: abFloat linear infinite;
+    }
+    @keyframes abFloat {
+      0%   { transform: translateY(0) scale(1); opacity: 0.6; }
+      60%  { opacity: 1; }
+      100% { transform: translateY(-130px) scale(1.2); opacity: 0; }
+    }
+
+    /* ---- SECTION COMMONS ---- */
+    .ab-section-eyebrow {
+      font-size: 0.65rem; font-weight: 800; letter-spacing: 3.5px;
+      text-transform: uppercase; color: #1287c1; margin-bottom: 8px;
+      display: block;
+    }
+    .ab-section-heading {
+      font-size: clamp(1.9rem, 3.5vw, 2.7rem); font-weight: 900;
+      color: var(--text); letter-spacing: -1.5px; margin-bottom: 10px;
+      position: relative; display: inline-block;
+    }
+    .ab-section-heading::after {
+      content: ''; position: absolute; bottom: -7px; left: 0;
+      height: 3px; width: 0; border-radius: 2px;
+      background: #1287c1; transition: width 0.7s cubic-bezier(.4,0,.2,1);
+    }
+    .ab-section-heading.line-on::after { width: 55%; }
+    .ab-section-sub { font-size: 0.88rem; color: var(--muted); max-width: 520px; line-height: 1.7; margin-bottom: 44px; }
+
+    /* ---- SCROLL REVEAL ---- */
+    .ab-reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.58s ease, transform 0.58s ease; }
+    .ab-reveal.in { opacity: 1; transform: none; }
+
+    /* ---- CORE COMPETENCY ---- */
+    .ab-comp-section { padding: 86px 0; background: var(--bg2); }
+    .ab-comp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
+    .ab-comp-card {
+      padding: 34px 28px; border-radius: 22px;
+      background: linear-gradient(145deg, #1287c1 0%, #0a5a8e 100%);
+      color: #fff; position: relative; overflow: hidden;
+      transition: transform 0.3s cubic-bezier(.2,.82,.4,1), box-shadow 0.3s;
+      cursor: default;
+    }
+    .ab-comp-card:nth-child(2) { background: linear-gradient(145deg, #0e70a5 0%, #073d5e 100%); }
+    .ab-comp-card:nth-child(3) { background: linear-gradient(145deg, #0a5280 0%, #052535 100%); }
+    .ab-comp-card::before {
+      content: ''; position: absolute; top: -28px; right: -28px;
+      width: 130px; height: 130px; border-radius: 50%;
+      background: rgba(255,255,255,0.07); pointer-events: none;
+    }
+    .ab-comp-card::after {
+      content: ''; position: absolute; bottom: -18px; left: -18px;
+      width: 90px; height: 90px; border-radius: 50%;
+      background: rgba(255,255,255,0.05); pointer-events: none;
+    }
+    .ab-comp-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 28px 72px rgba(18,135,193,0.42);
+    }
+    .ab-comp-icon { font-size: 2.2rem; margin-bottom: 18px; display: block; position: relative; z-index: 1; }
+    .ab-comp-title { font-size: 1.05rem; font-weight: 800; margin-bottom: 11px; position: relative; z-index: 1; }
+    .ab-comp-desc { font-size: 0.82rem; color: rgba(255,255,255,0.72); line-height: 1.68; position: relative; z-index: 1; }
+
+    /* ---- ACHIEVEMENTS ---- */
+    .ab-ach-section { padding: 86px 0; }
+    .ab-ach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 44px; }
+    .ab-ach-card {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 20px 22px; border-radius: 18px;
+      border: 1.5px solid; border-left: 4px solid;
+      background: #fff; transition: transform 0.28s cubic-bezier(.2,.82,.4,1), box-shadow 0.28s;
+    }
+    .ab-ach-card:hover { transform: translateY(-5px); }
+    .ab-ach-card.national { border-color: rgba(245,158,11,0.22); border-left-color: #f59e0b; background: rgba(254,252,244,0.8); }
+    .ab-ach-card.national:hover { box-shadow: 0 18px 52px rgba(245,158,11,0.2); }
+    .ab-ach-card.academic  { border-color: rgba(18,135,193,0.2);  border-left-color: #1287c1; background: rgba(244,250,255,0.8); }
+    .ab-ach-card.academic:hover  { box-shadow: 0 18px 52px rgba(18,135,193,0.18); }
+    .ab-ach-card.competition { border-color: rgba(16,185,129,0.2); border-left-color: #10b981; background: rgba(244,255,251,0.8); }
+    .ab-ach-card.competition:hover { box-shadow: 0 18px 52px rgba(16,185,129,0.18); }
+    .ab-ach-card.professional { border-color: rgba(124,58,237,0.2); border-left-color: #7c3aed; background: rgba(250,247,255,0.8); }
+    .ab-ach-card.professional:hover { box-shadow: 0 18px 52px rgba(124,58,237,0.18); }
+
+    .ab-ach-logo {
+      width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0;
+      background: #fff; border: 1.5px solid rgba(0,0,0,0.07);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.09);
+      overflow: hidden; position: relative;
+    }
+    .ab-ach-logo img {
+      width: 48px; height: 48px; object-fit: contain;
+      display: block;
+    }
+
+    .ab-ach-body { flex: 1; min-width: 0; }
+    .ab-ach-badge {
+      display: inline-block; padding: 2px 9px; border-radius: 5px;
+      font-size: 0.56rem; font-weight: 800; letter-spacing: 1px;
+      text-transform: uppercase; color: #fff; margin-bottom: 8px;
+    }
+    .ab-ach-card.national    .ab-ach-badge { background: #f59e0b; }
+    .ab-ach-card.academic    .ab-ach-badge { background: #1287c1; }
+    .ab-ach-card.competition .ab-ach-badge { background: #10b981; }
+    .ab-ach-card.professional .ab-ach-badge { background: #7c3aed; }
+    .ab-ach-name { font-size: 0.9rem; font-weight: 800; color: var(--text); line-height: 1.3; margin-bottom: 4px; }
+    .ab-ach-org  { font-size: 0.74rem; color: var(--muted); margin-bottom: 3px; }
+    .ab-ach-year { font-size: 0.64rem; font-weight: 700; color: var(--light); }
+
+    /* ---- SKILLS ---- */
+    .ab-skills-section { padding: 86px 0; background: var(--bg2); }
+    .ab-skills-rows { margin-top: 44px; display: flex; flex-direction: column; gap: 30px; }
+    .ab-skills-row-label {
+      font-size: 0.62rem; font-weight: 800; letter-spacing: 2.5px;
+      text-transform: uppercase; margin-bottom: 13px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .ab-skills-row-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .ab-skills-row { display: flex; flex-wrap: wrap; gap: 9px; }
+    .ab-skill-pill {
+      padding: 8px 17px; border-radius: 99px;
+      font-size: 0.78rem; font-weight: 600;
+      border: 1.5px solid; transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      cursor: default;
+    }
+    .ab-skill-pill.comm {
+      background: rgba(18,135,193,0.09); color: #1287c1; border-color: rgba(18,135,193,0.22);
+    }
+    .ab-skill-pill.comm:hover { background: rgba(18,135,193,0.18); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(18,135,193,0.24); }
+    .ab-skill-pill.creative {
+      background: rgba(124,58,237,0.08); color: #7c3aed; border-color: rgba(124,58,237,0.2);
+    }
+    .ab-skill-pill.creative:hover { background: rgba(124,58,237,0.16); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124,58,237,0.22); }
+    .ab-skill-pill.tools {
+      background: rgba(16,185,129,0.08); color: #059669; border-color: rgba(16,185,129,0.22);
+    }
+    .ab-skill-pill.tools:hover { background: rgba(16,185,129,0.16); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(16,185,129,0.22); }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 960px) {
+      .ab-grid { grid-template-columns: 1fr; gap: 44px; text-align: center; }
+      .ab-photo-wrap { align-items: center; }
+      .ab-stats { justify-content: center; margin-left: auto; margin-right: auto; }
+      .ab-btns { justify-content: center; }
+      .ab-bio { margin-left: auto; margin-right: auto; }
+      .ab-comp-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+      .ab-ach-grid { grid-template-columns: 1fr; }
+      .ab-section-heading::after { left: 50%; transform: translateX(-50%); }
+    }
+    @media (max-width: 540px) {
+      .ab-name { letter-spacing: -1.5px; }
+      .ab-stat { padding: 14px 18px; }
+      .ab-stat-n { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="../" class="nav-logo">Portfolio</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../about/" class="active">About Me</a></li>
+        <li><a href="../resume/">My Resume</a></li>
+        <li><a href="../#leadership">Leadership</a></li>
+        <li><a href="../services/">Services</a></li>
+        <li><a href="../writing/">Writing</a></li>
+        <li><a href="../videos/">Videos</a></li>
+        <li><a href="../artsworks/">Artsworks</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="nav-search">
+          <input type="search" id="search-input" placeholder="Search my project.." autocomplete="off" />
+          <button onclick="goSearch()" aria-label="Search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </div>
+        <a href="../about/" class="btn-hello">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+          Hello!
+        </a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="ab-hero" id="ab-hero">
+    <div class="container">
+      <div class="ab-grid">
+
+        <!-- Photo -->
+        <div class="ab-photo-wrap ab-reveal">
+          <div class="ab-photo-outer">
+            <div class="ab-photo-glow"></div>
+            <div class="ab-photo-img">
+              <img src="../Profile Rizki.png" alt="Rizki Dwi Pangestu">
+            </div>
+          </div>
+          <div class="ab-badge">Corporate Comm &amp; PR Specialist</div>
+        </div>
+
+        <!-- Text -->
+        <div class="ab-reveal" style="transition-delay:0.15s">
+          <p class="ab-eyebrow">Hi, I'm</p>
+          <h1 class="ab-name"><span id="ab-typed"></span><span class="ab-cursor" id="ab-cursor"></span></h1>
+          <p class="ab-role">Corporate Communication &amp; Public Relations</p>
+
+          <p class="ab-bio">Employee Relations and Corporate Communication professional with experience in employee engagement, internal communication, culture initiatives, employer branding, and project coordination.</p>
+          <p class="ab-bio">Proven ability to manage internal programs, cross-functional stakeholders, corporate publications, and employee experience initiatives within dynamic organizations.</p>
+
+          <div class="ab-stats" id="ab-stats">
+            <div class="ab-stat">
+              <span class="ab-stat-n" data-target="6" data-suffix="">0</span>
+              <span class="ab-stat-l">Companies</span>
+            </div>
+            <div class="ab-stat">
+              <span class="ab-stat-n" data-target="20" data-suffix="+">0+</span>
+              <span class="ab-stat-l">Projects</span>
+            </div>
+            <div class="ab-stat">
+              <span class="ab-stat-n" data-target="4" data-suffix="+">0+</span>
+              <span class="ab-stat-l">Years Exp</span>
+            </div>
+            <div class="ab-stat">
+              <span class="ab-stat-n" data-target="3.69" data-decimal="2" data-suffix="">0.00</span>
+              <span class="ab-stat-l">GPA</span>
+            </div>
+          </div>
+
+          <div class="ab-btns">
+            <a href="../resume/" class="ab-btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              View My Resume
+            </a>
+            <a href="../artsworks/" class="ab-btn-ghost">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8l4 4-4 4"/></svg>
+              Explore My Works
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CORE COMPETENCY ===== -->
+  <section class="ab-comp-section">
+    <div class="container">
+      <span class="ab-section-eyebrow ab-reveal">Core Expertise</span>
+      <h2 class="ab-section-heading ab-reveal">Core Competency</h2>
+      <p class="ab-section-sub ab-reveal">Three pillars that define my approach to corporate communication and brand management.</p>
+      <div class="ab-comp-grid">
+
+        <div class="ab-comp-card ab-reveal">
+          <span class="ab-comp-icon">🗣️</span>
+          <h3 class="ab-comp-title">Strategic Communication</h3>
+          <p class="ab-comp-desc">Crafting narratives that connect brands with people through targeted messaging, executive communication, and integrated campaign strategy.</p>
+        </div>
+
+        <div class="ab-comp-card ab-reveal" style="transition-delay:0.12s">
+          <span class="ab-comp-icon">👥</span>
+          <h3 class="ab-comp-title">People &amp; Culture</h3>
+          <p class="ab-comp-desc">Building meaningful engagement through internal communication programs, employee experience initiatives, and cultural transformation campaigns.</p>
+        </div>
+
+        <div class="ab-comp-card ab-reveal" style="transition-delay:0.24s">
+          <span class="ab-comp-icon">🎯</span>
+          <h3 class="ab-comp-title">Brand &amp; Media</h3>
+          <p class="ab-comp-desc">Managing corporate identity across all channels — from employer branding and social media to corporate publications and media relations.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACHIEVEMENTS ===== -->
+  <section class="ab-ach-section">
+    <div class="container">
+      <span class="ab-section-eyebrow ab-reveal">Pencapaian</span>
+      <h2 class="ab-section-heading ab-reveal">Achievements &amp; Honors</h2>
+      <p class="ab-section-sub ab-reveal">Recognition from national institutions, academic bodies, and industry competitions.</p>
+
+      <div class="ab-ach-grid">
+
+        <div class="ab-ach-card national ab-reveal">
+          <div class="ab-ach-logo">
+            <img src="../image/logos/logo-diktiristek.png" alt="Ditjen Diktiristek">
+          </div>
+          <div class="ab-ach-body">
+            <span class="ab-ach-badge">National Award</span>
+            <p class="ab-ach-name">Anugerah Humas Diktiristek 2022</p>
+            <p class="ab-ach-org">Ditjen Diktiristek, Kemendikbudristek</p>
+            <p class="ab-ach-year">December 2022</p>
+          </div>
+        </div>
+
+        <div class="ab-ach-card academic ab-reveal" style="transition-delay:0.1s">
+          <div class="ab-ach-logo">
+            <img src="../image/logos/logo-humas-upi.png" alt="Humas UPI" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="ab-ach-body">
+            <span class="ab-ach-badge">Academic</span>
+            <p class="ab-ach-name">Anugerah Humas UPI 2022</p>
+            <p class="ab-ach-org">Universitas Pendidikan Indonesia</p>
+            <p class="ab-ach-year">November 2022</p>
+          </div>
+        </div>
+
+        <div class="ab-ach-card academic ab-reveal" style="transition-delay:0.2s">
+          <div class="ab-ach-logo">
+            <img src="../image/logos/logo-bi.png" alt="Bank Indonesia">
+          </div>
+          <div class="ab-ach-body">
+            <span class="ab-ach-badge">Academic</span>
+            <p class="ab-ach-name">Bank Indonesia Scholarship Awardee</p>
+            <p class="ab-ach-org">Bank Indonesia — West Java</p>
+            <p class="ab-ach-year">April 2021</p>
+          </div>
+        </div>
+
+        <div class="ab-ach-card competition ab-reveal" style="transition-delay:0.3s">
+          <div class="ab-ach-logo">
+            <img src="../image/logos/logo-kuy.png" alt="KUY Entertainment" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="ab-ach-body">
+            <span class="ab-ach-badge">Competition</span>
+            <p class="ab-ach-name">Second Winner — Vlog Competition</p>
+            <p class="ab-ach-org">KUY Entertainment, West Java</p>
+            <p class="ab-ach-year">July 2020</p>
+          </div>
+        </div>
+
+        <div class="ab-ach-card professional ab-reveal" style="transition-delay:0.1s">
+          <div class="ab-ach-logo">
+            <img src="../image/logos/logo-bnsp.png" alt="BNSP">
+          </div>
+          <div class="ab-ach-body">
+            <span class="ab-ach-badge">Professional</span>
+            <p class="ab-ach-name">BNSP Public Relations Certification</p>
+            <p class="ab-ach-org">Badan Nasional Sertifikasi Profesi — No. PRO.519.00610</p>
+            <p class="ab-ach-year">July 2023</p>
+          </div>
+        </div>
+
+        <div class="ab-ach-card academic ab-reveal" style="transition-delay:0.2s">
+          <div class="ab-ach-logo">
+            <img src="../image/logos/logo-upi.png" alt="UPI" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="ab-ach-body">
+            <span class="ab-ach-badge">Academic</span>
+            <p class="ab-ach-name">Cumlaude GPA 3.69 — Bachelor of Communication</p>
+            <p class="ab-ach-org">Universitas Pendidikan Indonesia, Bandung</p>
+            <p class="ab-ach-year">December 2023</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="ab-skills-section">
+    <div class="container">
+      <span class="ab-section-eyebrow ab-reveal">Keahlian</span>
+      <h2 class="ab-section-heading ab-reveal">Skills &amp; Expertise</h2>
+      <p class="ab-section-sub ab-reveal">A versatile skill set built across communication strategy, creative production, and digital tools.</p>
+
+      <div class="ab-skills-rows">
+
+        <div class="ab-reveal">
+          <p class="ab-skills-row-label" style="color:#1287c1">🗣️ Communication</p>
+          <div class="ab-skills-row">
+            <span class="ab-skill-pill comm">Corporate Communication</span>
+            <span class="ab-skill-pill comm">Public Relations</span>
+            <span class="ab-skill-pill comm">Internal Communication</span>
+            <span class="ab-skill-pill comm">Employer Branding</span>
+            <span class="ab-skill-pill comm">Employee Relations</span>
+            <span class="ab-skill-pill comm">Press Release Writing</span>
+          </div>
+        </div>
+
+        <div class="ab-reveal" style="transition-delay:0.1s">
+          <p class="ab-skills-row-label" style="color:#7c3aed">🎨 Creative</p>
+          <div class="ab-skills-row">
+            <span class="ab-skill-pill creative">Content Strategy</span>
+            <span class="ab-skill-pill creative">Copywriting</span>
+            <span class="ab-skill-pill creative">Social Media Management</span>
+            <span class="ab-skill-pill creative">Event Management</span>
+            <span class="ab-skill-pill creative">Corporate Publication</span>
+            <span class="ab-skill-pill creative">Visual Storytelling</span>
+          </div>
+        </div>
+
+        <div class="ab-reveal" style="transition-delay:0.2s">
+          <p class="ab-skills-row-label" style="color:#059669">🛠️ Tools</p>
+          <div class="ab-skills-row">
+            <span class="ab-skill-pill tools">Canva</span>
+            <span class="ab-skill-pill tools">Adobe Premiere Pro</span>
+            <span class="ab-skill-pill tools">Adobe Illustrator</span>
+            <span class="ab-skill-pill tools">Microsoft Office</span>
+            <span class="ab-skill-pill tools">Google Workspace</span>
+            <span class="ab-skill-pill tools">Meta Business Suite</span>
+            <span class="ab-skill-pill tools">Figma</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+      <footer class="footer-new">
+
+    <!-- CTA SECTION -->
+    <div class="fn-cta">
+      <div class="container">
+        <div class="fn-cta-inner">
+          <div class="fn-cta-text">
+            <div class="fn-cta-line"></div>
+            <h2 class="fn-cta-title">Let's Work Together</h2>
+            <p class="fn-cta-sub">Open for collaborations, projects, and full-time opportunities in Corporate Communication, Employee Relations and Public Relations.</p>
+          </div>
+          <div class="fn-cta-btns">
+            <a href="mailto:rdpangestu8@gmail.com" class="fn-cta-btn-primary">Get In Touch &rarr;</a>
+            <a href="../artsworks/" class="fn-cta-btn-ghost">View My Works &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN FOOTER -->
+    <div class="fn-main">
+      <div class="container fn-inner">
+        <div class="fn-grid">
+
+          <!-- COL 1: BRAND -->
+          <div class="fn-col fn-brand">
+            <a href="../" class="fn-logo">Portfolio</a>
+            <p class="fn-tagline">Corporate Communication &amp; Public Relations</p>
+            <p class="fn-desc">Crafting strategic narratives that build brands and drive meaningful impact.</p>
+            <div class="fn-brand-divider"></div>
+            <div class="fn-brand-socials">
+              <a href="https://linkedin.com/in/rizkidwipangestu" target="_blank" class="fn-bs" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+              <a href="https://instagram.com/rizkidwipangestu" target="_blank" class="fn-bs" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+              <a href="mailto:rdpangestu8@gmail.com" class="fn-bs" aria-label="Email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+            </div>
+          </div>
+
+          <!-- COL 2: NAVIGATION -->
+          <div class="fn-col">
+            <h3 class="fn-heading">Navigation</h3>
+            <ul class="fn-links">
+              <li><a href="../about/">About Me</a></li>
+              <li><a href="../resume/">My Resume</a></li>
+              <li><a href="../#leadership">Leadership</a></li>
+              <li><a href="../services/">Services</a></li>
+              <li><a href="../writing/">Writing</a></li>
+              <li><a href="../videos/">Videos</a></li>
+              <li><a href="../artsworks/">Artsworks</a></li>
+            </ul>
+          </div>
+
+          <!-- COL 3: CONTACT -->
+          <div class="fn-col">
+            <h3 class="fn-heading">Contact</h3>
+            <ul class="fn-contact-list">
+              <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg><a href="mailto:rdpangestu8@gmail.com">rdpangestu8@gmail.com</a></li>
+              <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span>Bandung, Indonesia</span></li>
+            </ul>
+          </div>
+
+          <!-- COL 4: FIND ME ON -->
+          <div class="fn-col fn-social-col">
+            <h3 class="fn-heading">Find Me On</h3>
+            <div class="fn-socials">
+              <a href="https://linkedin.com/in/rizkidwipangestu" target="_blank" class="fn-social" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+              <a href="https://instagram.com/rizkidwipangestu" target="_blank" class="fn-social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+              <a href="mailto:rdpangestu8@gmail.com" class="fn-social" aria-label="Email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+            </div>
+          </div>
+
+        </div>
+        <div class="fn-divider"></div>
+      </div>
+    </div>
+
+    <!-- BOTTOM BAR -->
+    <div class="fn-bottom-wrap">
+      <div class="container">
+        <div class="fn-bottom">
+          <p class="fn-copy">&copy; 2026 <strong>Rizki Dwi Pangestu</strong>. All rights reserved.</p>
+          <p class="fn-made">Telling stories, one pixel at a time.</p>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+  <script>
+  (function(){
+    var cols = document.querySelectorAll('.fn-col');
+    if (!('IntersectionObserver' in window)) {
+      cols.forEach(function(c){ c.classList.add('fn-visible'); }); return;
+    }
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          var delay = parseInt(e.target.dataset.fnDelay) || 0;
+          setTimeout(function(){ e.target.classList.add('fn-visible'); }, delay);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    cols.forEach(function(c, i){ c.dataset.fnDelay = i * 100; obs.observe(c); });
+  })();
+  </script>
+
+  <script src="../js/main.js"></script>
+  <script>
+    /* ============================================================
+       PARTICLES
+    ============================================================ */
+    (function() {
+      var hero = document.getElementById('ab-hero');
+      for (var p = 0; p < 14; p++) {
+        var el = document.createElement('div');
+        el.className = 'ab-particle';
+        var size = Math.random() * 90 + 30;
+        el.style.cssText =
+          'width:' + size + 'px;' +
+          'height:' + size + 'px;' +
+          'left:' + (Math.random() * 100) + '%;' +
+          'top:' + (Math.random() * 100) + '%;' +
+          'animation-duration:' + (Math.random() * 9 + 7) + 's;' +
+          'animation-delay:' + (Math.random() * 5) + 's;' +
+          'opacity:' + (Math.random() * 0.35 + 0.08) + ';';
+        hero.appendChild(el);
+      }
+    })();
+
+    /* ============================================================
+       TYPING ANIMATION
+    ============================================================ */
+    (function() {
+      var full = 'Rizki Dwi Pangestu';
+      var typed = document.getElementById('ab-typed');
+      var cursor = document.getElementById('ab-cursor');
+      var i = 0;
+      function type() {
+        if (i < full.length) {
+          typed.textContent += full[i++];
+          setTimeout(type, 75);
+        }
+      }
+      setTimeout(type, 700);
+    })();
+
+    /* ============================================================
+       COUNTER ANIMATION
+    ============================================================ */
+    function runCounters() {
+      document.querySelectorAll('.ab-stat-n[data-target]').forEach(function(el) {
+        var target  = parseFloat(el.dataset.target);
+        var suffix  = el.dataset.suffix || '';
+        var decimal = parseInt(el.dataset.decimal) || 0;
+        var dur = 1600;
+        var start = null;
+        function step(ts) {
+          if (!start) start = ts;
+          var progress = Math.min((ts - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var val = target * eased;
+          el.textContent = (decimal > 0 ? val.toFixed(decimal) : Math.floor(val)) + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }
+
+    var statsObs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) { runCounters(); statsObs.disconnect(); }
+    }, { threshold: 0.5 });
+    var statsEl = document.getElementById('ab-stats');
+    if (statsEl) statsObs.observe(statsEl);
+
+    /* ============================================================
+       SCROLL REVEAL + HEADING UNDERLINE
+    ============================================================ */
+    var revealObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          var h = e.target.querySelector('.ab-section-heading') || (e.target.classList.contains('ab-section-heading') ? e.target : null);
+          if (h) setTimeout(function() { h.classList.add('line-on'); }, 200);
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px 50px 0px' });
+
+    document.querySelectorAll('.ab-reveal').forEach(function(el) { revealObs.observe(el); });
+
+    /* Separate observer for headings not inside .ab-reveal */
+    var headingObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { setTimeout(function() { e.target.classList.add('line-on'); }, 200); headingObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.ab-section-heading').forEach(function(h) { headingObs.observe(h); });
+  </script>
+</body>
+</html>
+
+

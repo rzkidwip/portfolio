@@ -1,0 +1,1359 @@
+﻿<!DOCTYPE html>
+<html lang="id" data-root="../">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Resume — Rizki Dwi Pangestu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css?v=3" />
+  <style>
+    /* ================================================================
+       RESUME PAGE — FULL REDESIGN
+    ================================================================ */
+
+    /* ---------- HEADER ---------- */
+    .rv-header {
+      background: linear-gradient(135deg, #1287c1 0%, #0e6fa3 45%, #073d5e 100%);
+      padding: calc(var(--nav) + 52px) 0 52px;
+      position: relative;
+      overflow: hidden;
+    }
+    .rv-header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='40' cy='40' r='30'/%3E%3Ccircle cx='40' cy='40' r='18'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .rv-header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+    }
+    .rv-header-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      position: relative;
+      z-index: 1;
+    }
+    .rv-photo-wrap {
+      width: 130px; height: 130px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid rgba(255,255,255,0.45);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+      flex-shrink: 0;
+    }
+    .rv-photo {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: 50% 5%;
+      transform: scale(2.1);
+      transform-origin: 50% 10%;
+      display: block;
+    }
+    .rv-header-content { flex: 1; }
+    .rv-header-content h1 {
+      font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -1.5px;
+      margin-bottom: 5px;
+      line-height: 1.1;
+    }
+    .rv-job-title {
+      font-size: 0.93rem;
+      color: rgba(255,255,255,0.82);
+      font-weight: 500;
+      margin-bottom: 14px;
+    }
+    .rv-header-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+    .rv-hbadge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 13px;
+      border-radius: 99px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.28);
+      font-size: 0.77rem;
+      color: #fff;
+      font-weight: 500;
+    }
+    .rv-stats {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .rv-stat { display: flex; flex-direction: column; }
+    .rv-stat-num {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+    }
+    .rv-stat-label {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.65);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+    .rv-download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      background: #fff;
+      color: #1287c1;
+      border-radius: 99px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      text-decoration: none;
+      flex-shrink: 0;
+      align-self: flex-start;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.22);
+      transition: transform 0.22s, box-shadow 0.22s;
+      white-space: nowrap;
+    }
+    .rv-download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.28);
+    }
+    .rv-download-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* ---------- MAIN LAYOUT ---------- */
+    .rv-page { padding: 60px 0 96px; }
+    .rv-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* ---------- SECTION TITLE ---------- */
+    .rv-sec-title {
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: #1287c1;
+      margin-bottom: 14px;
+      padding-bottom: 9px;
+      border-bottom: 2px solid #1287c1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .rv-sec-title svg { width: 14px; height: 14px; }
+
+    /* ---------- CARD BASE ---------- */
+    .rv-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+
+    /* ---------- CONTACT ---------- */
+    .rv-contact-list { display: flex; flex-direction: column; gap: 10px; }
+    .rv-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.81rem;
+      color: var(--muted);
+    }
+    .rv-contact-icon {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: #1287c1;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(18,135,193,0.3);
+    }
+    .rv-contact-icon svg { width: 15px; height: 15px; color: #fff; }
+    .rv-contact-item a { color: var(--muted); transition: color 0.2s; }
+    .rv-contact-item a:hover { color: #1287c1; }
+
+    /* ---------- EDUCATION ---------- */
+    .rv-edu-wrap {
+      background: rgba(18,135,193,0.05);
+      border: 1.5px solid rgba(18,135,193,0.18);
+      border-radius: 12px;
+      padding: 14px;
+    }
+    .rv-edu-year {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #1287c1;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .rv-edu-school {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .rv-edu-field {
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .rv-edu-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      border-top: 1px solid rgba(18,135,193,0.15);
+      padding-top: 10px;
+    }
+    .rv-gpa-block { display: flex; align-items: baseline; gap: 4px; }
+    .rv-gpa-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1287c1;
+      line-height: 1;
+    }
+    .rv-gpa-denom {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .rv-cum-badge {
+      display: inline-block;
+      padding: 4px 11px;
+      background: linear-gradient(135deg, #1287c1, #0a5a8c);
+      color: #fff;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-radius: 99px;
+    }
+
+    /* ---------- SKILLS ---------- */
+    .rv-skill-group { margin-bottom: 14px; }
+    .rv-skill-group:last-child { margin-bottom: 0; }
+    .rv-skill-glabel {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .rv-skill-glabel.comm  { color: #1287c1; }
+    .rv-skill-glabel.digi  { color: #059669; }
+    .rv-skill-glabel.soft  { color: #d97706; }
+    .rv-skill-glabel.design { color: #7c3aed; }
+    .rv-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+    .rv-pill {
+      padding: 4px 10px;
+      border-radius: 99px;
+      font-size: 0.71rem;
+      font-weight: 600;
+    }
+    .rv-pill.comm   { background: rgba(18,135,193,0.10);  color: #1287c1;  border: 1px solid rgba(18,135,193,0.22); }
+    .rv-pill.digi   { background: rgba(5,150,105,0.10);   color: #059669;  border: 1px solid rgba(5,150,105,0.22); }
+    .rv-pill.soft   { background: rgba(217,119,6,0.10);   color: #d97706;  border: 1px solid rgba(217,119,6,0.22); }
+    .rv-pill.design { background: rgba(124,58,237,0.10);  color: #7c3aed;  border: 1px solid rgba(124,58,237,0.22); }
+
+    /* ---------- CERTIFICATION ---------- */
+    .rv-cert-card {
+      background: linear-gradient(135deg, #1287c1 0%, #073d5e 100%);
+      border-radius: 16px;
+      padding: 20px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .rv-cert-card::before {
+      content: '';
+      position: absolute;
+      top: -24px; right: -24px;
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+    }
+    .rv-cert-card::after {
+      content: '';
+      position: absolute;
+      bottom: -32px; right: 24px;
+      width: 130px; height: 130px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .rv-cert-icon { font-size: 2rem; margin-bottom: 10px; }
+    .rv-cert-name {
+      font-size: 0.92rem;
+      font-weight: 800;
+      margin-bottom: 3px;
+      position: relative; z-index: 1;
+    }
+    .rv-cert-org {
+      font-size: 0.74rem;
+      opacity: 0.8;
+      margin-bottom: 14px;
+      position: relative; z-index: 1;
+    }
+    .rv-cert-detail-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative; z-index: 1;
+    }
+    .rv-cert-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .rv-cert-row-lbl {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.65;
+      min-width: 48px;
+    }
+    .rv-cert-row-val {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: rgba(255,255,255,0.14);
+      padding: 2px 9px;
+      border-radius: 6px;
+      font-family: 'Courier New', monospace;
+    }
+    .rv-cert-row-date {
+      font-size: 0.76rem;
+      font-weight: 700;
+      opacity: 0.9;
+    }
+
+    /* ---------- ACHIEVEMENTS ---------- */
+    .rv-achieve-list { display: flex; flex-direction: column; gap: 10px; }
+    .rv-achieve-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1.5px solid;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .rv-achieve-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+    .rv-achieve-card.gold {
+      background: rgba(251,191,36,0.06);
+      border-color: rgba(251,191,36,0.28);
+    }
+    .rv-achieve-card.blue {
+      background: rgba(18,135,193,0.06);
+      border-color: rgba(18,135,193,0.22);
+    }
+    .rv-achieve-card.national {
+      background: rgba(212,175,55,0.07);
+      border-color: rgba(212,175,55,0.35);
+    }
+    .rv-achieve-year {
+      font-size: 0.62rem; font-weight: 700;
+      color: var(--light); margin-top: 2px;
+    }
+    .rv-achieve-icon { font-size: 1.7rem; flex-shrink: 0; }
+    .rv-achieve-name {
+      font-size: 0.83rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .rv-achieve-org { font-size: 0.72rem; color: var(--muted); }
+
+    /* ---------- TOOLS ---------- */
+    .rv-tools-group { margin-bottom: 14px; }
+    .rv-tools-group:last-child { margin-bottom: 0; }
+    .rv-tools-glabel {
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 8px;
+    }
+    .rv-tools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+    }
+    .rv-tool-card {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 10px;
+      background: var(--bg2);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      transition: background 0.2s, border-color 0.2s, transform 0.18s;
+      cursor: default;
+    }
+    .rv-tool-card:hover {
+      background: rgba(18,135,193,0.08);
+      border-color: rgba(18,135,193,0.28);
+      transform: translateY(-1px);
+    }
+    .rv-tool-emoji { font-size: 1rem; }
+    .rv-tool-name { font-size: 0.71rem; font-weight: 600; color: var(--text); }
+
+    /* ---------- TIMELINE ---------- */
+    .rv-section-head {
+      margin-bottom: 24px;
+    }
+    .rv-timeline { position: relative; }
+    .rv-timeline::before {
+      content: '';
+      position: absolute;
+      left: 19px; top: 6px; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #1287c1 0%, rgba(18,135,193,0.08) 100%);
+    }
+    .rv-tl-item {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .rv-tl-dot {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2.5px solid #1287c1;
+      flex-shrink: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 6px;
+      box-shadow: 0 0 0 5px rgba(18,135,193,0.09);
+    }
+    .rv-tl-dot svg { width: 16px; height: 16px; color: #1287c1; }
+    .rv-tl-card {
+      flex: 1;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-left: 4px solid #1287c1;
+      border-radius: 0 16px 16px 16px;
+      padding: 18px 20px;
+      min-height: 120px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .rv-tl-card:hover {
+      box-shadow: 0 10px 30px rgba(0,0,0,0.09);
+      transform: translateY(-2px);
+    }
+    .rv-tl-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .rv-tl-info { flex: 1; min-width: 0; }
+    .rv-tl-badge {
+      display: inline-block;
+      font-size: 0.59rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 99px;
+      margin-bottom: 5px;
+    }
+    .rv-tl-badge.full   { background: #1287c1; color: #fff; }
+    .rv-tl-badge.intern { background: #059669; color: #fff; }
+    .rv-tl-badge.part   { background: #D97706; color: #fff; }
+    .rv-tl-company {
+      font-size: 0.97rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .rv-tl-role {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .rv-tl-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .rv-tl-period {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 10px;
+      border-radius: 99px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      font-size: 0.7rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .rv-tl-period svg { width: 11px; height: 11px; }
+    .rv-tl-loc {
+      font-size: 0.7rem;
+      color: var(--light);
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .rv-tl-loc svg { width: 11px; height: 11px; }
+    .rv-tl-logo {
+      width: 72px; height: 72px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      flex-shrink: 0;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .rv-tl-logo img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+    .rv-tl-logo.dark { background: #1c1c2e; border-color: #2d2d42; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    .rv-tl-logo img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+    .rv-tl-bullets {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 0;
+    }
+    .rv-tl-bullets li {
+      display: flex;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .rv-bullet-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #1287c1;
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+    .rv-extra-bullets { display: none; }
+    .rv-extra-bullets.open { display: flex; flex-direction: column; gap: 5px; }
+    .rv-show-more-btn {
+      margin-top: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: #1287c1;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px 0;
+      font-family: inherit;
+      transition: opacity 0.2s;
+    }
+    .rv-show-more-btn:hover { opacity: 0.65; }
+    .rv-show-more-btn svg { width: 13px; height: 13px; transition: transform 0.25s; }
+    .rv-show-more-btn.open svg { transform: rotate(180deg); }
+
+    /* ---------- DOWNLOAD CTA ---------- */
+    .rv-cta-row {
+      margin-top: 40px;
+      padding-top: 28px;
+      border-top: 1.5px solid var(--border);
+    }
+    .rv-cta-text {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .rv-cta-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* ---------- SCROLL REVEAL ---------- */
+    .rv-reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .rv-reveal.visible { opacity: 1; transform: none; }
+    .rv-reveal-delay-1 { transition-delay: 0.1s; }
+    .rv-reveal-delay-2 { transition-delay: 0.2s; }
+    .rv-reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 860px) {
+      .rv-header-inner { flex-direction: column; text-align: center; align-items: center; }
+      .rv-header-badges, .rv-stats { justify-content: center; }
+      .rv-download-btn { align-self: center; }
+      .rv-grid { grid-template-columns: 1fr; }
+      .rv-tools-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (max-width: 520px) {
+      .rv-tools-grid { grid-template-columns: 1fr 1fr; }
+      .rv-photo { width: 100px; height: 100px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="../" class="nav-logo">Portfolio</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../about/">About Me</a></li>
+        <li><a href="../resume/" class="active">My Resume</a></li>
+        <li><a href="../#leadership">Leadership</a></li>
+        <li><a href="../services/">Services</a></li>
+        <li><a href="../writing/">Writing</a></li>
+        <li><a href="../videos/">Videos</a></li>
+        <li><a href="../artsworks/">Artsworks</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="nav-search">
+          <input type="search" id="search-input" placeholder="Search my project.." autocomplete="off" />
+          <button onclick="goSearch()" aria-label="Search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </div>
+        <a href="../about/" class="btn-hello">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+          Hello!
+        </a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== RESUME HEADER ===== -->
+  <header class="rv-header">
+    <div class="rv-header-inner">
+
+      <div class="rv-photo-wrap">
+        <img src="../Profile Rizki.png" alt="Rizki Dwi Pangestu" class="rv-photo" />
+      </div>
+
+      <div class="rv-header-content">
+        <h1>Rizki Dwi Pangestu</h1>
+        <p class="rv-job-title">Employee Relations &amp; Corporate Branding Officer</p>
+        <div class="rv-header-badges">
+          <span class="rv-hbadge">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:12px;height:12px"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Bandung, Indonesia
+          </span>
+          <span class="rv-hbadge">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:12px;height:12px"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            Corporate Communication &amp; PR
+          </span>
+        </div>
+        <div class="rv-stats">
+          <div class="rv-stat">
+            <span class="rv-stat-num rv-count" data-target="6" data-suffix="">0</span>
+            <span class="rv-stat-label">Companies</span>
+          </div>
+          <div class="rv-stat">
+            <span class="rv-stat-num rv-count" data-target="4" data-suffix="+">0</span>
+            <span class="rv-stat-label">Years Exp.</span>
+          </div>
+          <div class="rv-stat">
+            <span class="rv-stat-num rv-count" data-target="30" data-suffix="+">0</span>
+            <span class="rv-stat-label">Projects</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="../CV_Rizki Dwi Pangestu_2026 (1).pdf" download class="rv-download-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        Download CV
+      </a>
+
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="rv-page">
+    <div class="container">
+      <div class="rv-grid">
+
+        <!-- ===== LEFT COLUMN ===== -->
+        <aside>
+
+          <!-- CONTACT INFO -->
+          <div class="rv-card rv-reveal">
+            <p class="rv-sec-title">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              Contact
+            </p>
+            <div class="rv-contact-list">
+              <div class="rv-contact-item">
+                <div class="rv-contact-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </div>
+                <a href="https://linkedin.com/in/rizkidwipangestu" target="_blank">linkedin.com/in/rizkidwipangestu</a>
+              </div>
+              <div class="rv-contact-item">
+                <div class="rv-contact-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </div>
+                <a href="mailto:rdpangestu8@gmail.com">rdpangestu8@gmail.com</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- EDUCATION -->
+          <div class="rv-card rv-reveal rv-reveal-delay-1">
+            <p class="rv-sec-title">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l4 2.18V17.5c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-6.32L21 9l-9-6zm5 12.5H7v-5.07l5 2.73 5-2.73v5.07zM12 13.5l-8-4.37 8-4.36 8 4.36-8 4.37z"/></svg>
+              Education
+            </p>
+            <div class="rv-edu-wrap">
+              <div class="rv-edu-year">2019 – 2023</div>
+              <div class="rv-edu-school">Indonesia University of Education</div>
+              <div class="rv-edu-field">Communication Science · S1</div>
+              <div class="rv-edu-bottom">
+                <div class="rv-gpa-block">
+                  <span class="rv-gpa-num">3.69</span>
+                  <span class="rv-gpa-denom">/ 4.0 GPA</span>
+                </div>
+                <span class="rv-cum-badge">Cumlaude</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SKILLS -->
+          <div class="rv-card rv-reveal rv-reveal-delay-2">
+            <p class="rv-sec-title">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm-1 14.93V16a1 1 0 012 0v.93A8 8 0 0112 4a8 8 0 011 15.93z"/></svg>
+              Skills
+            </p>
+
+            <div class="rv-skill-group">
+              <div class="rv-skill-glabel comm">
+                <svg viewBox="0 0 24 24" fill="currentColor" style="width:10px;height:10px"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+                Communication
+              </div>
+              <div class="rv-pills">
+                <span class="rv-pill comm">Corporate Communication</span>
+                <span class="rv-pill comm">Executive Comm Drafting</span>
+                <span class="rv-pill comm">Media &amp; Comm Monitoring</span>
+                <span class="rv-pill comm">Reputation Support</span>
+                <span class="rv-pill comm">Media Relations</span>
+                <span class="rv-pill comm">Corporate Publication</span>
+                <span class="rv-pill comm">Event Management</span>
+                <span class="rv-pill comm">Stakeholder Coordination</span>
+                <span class="rv-pill comm">Public Relations</span>
+                <span class="rv-pill comm">Interpersonal Communication</span>
+              </div>
+            </div>
+
+            <div class="rv-skill-group">
+              <div class="rv-skill-glabel digi">
+                <svg viewBox="0 0 24 24" fill="currentColor" style="width:10px;height:10px"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2z"/></svg>
+                Digital &amp; Social Media
+              </div>
+              <div class="rv-pills">
+                <span class="rv-pill digi">Digital Comm Strategy</span>
+                <span class="rv-pill digi">Content Production</span>
+                <span class="rv-pill digi">Employer Branding</span>
+              </div>
+            </div>
+
+            <div class="rv-skill-group">
+              <div class="rv-skill-glabel design">
+                <svg viewBox="0 0 24 24" fill="currentColor" style="width:10px;height:10px"><path d="M12 22C6.49 22 2 17.51 2 12S6.49 2 12 2s10 4.04 10 9c0 3.31-2.69 6-6 6h-1.77c-.28 0-.5.22-.5.5 0 .12.05.23.13.33.41.47.64 1.06.64 1.67A2.5 2.5 0 0112 22zm0-18c-4.41 0-8 3.59-8 8s3.59 8 8 8c.28 0 .5-.22.5-.5a.54.54 0 00-.14-.35c-.41-.46-.63-1.05-.63-1.65a2.5 2.5 0 012.5-2.5H16c2.21 0 4-1.79 4-4 0-3.86-3.59-7-8-7z"/></svg>
+                Design Tools
+              </div>
+              <div class="rv-pills">
+                <span class="rv-pill design">Adobe Creative Suite</span>
+              </div>
+            </div>
+
+            <div class="rv-skill-group">
+              <div class="rv-skill-glabel soft">
+                <svg viewBox="0 0 24 24" fill="currentColor" style="width:10px;height:10px"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                Soft Skills
+              </div>
+              <div class="rv-pills">
+                <span class="rv-pill soft">Problem Solving</span>
+                <span class="rv-pill soft">Team Collaboration</span>
+                <span class="rv-pill soft">Cross-functional Coordination</span>
+                <span class="rv-pill soft">Public Speaking</span>
+                <span class="rv-pill soft">Analytical Thinking</span>
+                <span class="rv-pill soft">Leadership</span>
+                <span class="rv-pill soft">Creativity &amp; Innovation</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CERTIFICATION -->
+          <div class="rv-card rv-reveal rv-reveal-delay-1" style="padding:0;overflow:hidden;background:none;border:none;box-shadow:none;">
+            <div class="rv-cert-card">
+              <div class="rv-cert-icon">🏅</div>
+              <div class="rv-cert-name">Public Relations Certification</div>
+              <div class="rv-cert-org">Badan Nasional Sertifikasi Profesi (BNSP)</div>
+              <div class="rv-cert-detail-row">
+                <div class="rv-cert-row">
+                  <span class="rv-cert-row-lbl">Reg. No.</span>
+                  <span class="rv-cert-row-val">PRO.519.00610 2023</span>
+                </div>
+                <div class="rv-cert-row">
+                  <span class="rv-cert-row-lbl">Issued</span>
+                  <span class="rv-cert-row-date">July 2023</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ACHIEVEMENTS -->
+          <div class="rv-card rv-reveal rv-reveal-delay-2">
+            <p class="rv-sec-title">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0011 15.9V18H9v2h6v-2h-2v-2.1a5.01 5.01 0 003.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg>
+              Achievement
+            </p>
+            <div class="rv-achieve-list">
+              <div class="rv-achieve-card national">
+                <span class="rv-achieve-icon">🏛️</span>
+                <div>
+                  <div class="rv-achieve-name">Anugerah Humas Diktiristek 2022</div>
+                  <div class="rv-achieve-org">Ditjen Diktiristek, Kemendikbudristek</div>
+                  <div class="rv-achieve-year">Dec 2022</div>
+                </div>
+              </div>
+              <div class="rv-achieve-card national">
+                <span class="rv-achieve-icon">🏆</span>
+                <div>
+                  <div class="rv-achieve-name">Anugerah Humas UPI</div>
+                  <div class="rv-achieve-org">Universitas Pendidikan Indonesia</div>
+                  <div class="rv-achieve-year">Nov 2022</div>
+                </div>
+              </div>
+              <div class="rv-achieve-card blue">
+                <span class="rv-achieve-icon">🏦</span>
+                <div>
+                  <div class="rv-achieve-name">Bank Indonesia Scholarship</div>
+                  <div class="rv-achieve-org">Penerima Beasiswa Bank Indonesia</div>
+                  <div class="rv-achieve-year">Apr 2021</div>
+                </div>
+              </div>
+              <div class="rv-achieve-card gold">
+                <span class="rv-achieve-icon">🥈</span>
+                <div>
+                  <div class="rv-achieve-name">Second Winner — Vlog Competition</div>
+                  <div class="rv-achieve-org">KUY Entertainment</div>
+                  <div class="rv-achieve-year">Jul 2020</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TOOLS & SOFTWARE -->
+          <div class="rv-card rv-reveal rv-reveal-delay-3">
+            <p class="rv-sec-title">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+              Tools &amp; Software
+            </p>
+
+            <div class="rv-tools-group">
+              <div class="rv-tools-glabel">Design &amp; Visual</div>
+              <div class="rv-tools-grid">
+                <div class="rv-tool-card"><span class="rv-tool-emoji">🎨</span><span class="rv-tool-name">Canva</span></div>
+                <div class="rv-tool-card"><span class="rv-tool-emoji">🖼️</span><span class="rv-tool-name">Photoshop</span></div>
+                <div class="rv-tool-card"><span class="rv-tool-emoji">✏️</span><span class="rv-tool-name">Illustrator</span></div>
+                <div class="rv-tool-card"><span class="rv-tool-emoji">🎬</span><span class="rv-tool-name">Premiere Pro</span></div>
+              </div>
+            </div>
+
+            <div class="rv-tools-group">
+              <div class="rv-tools-glabel">Content &amp; Writing</div>
+              <div class="rv-tools-grid">
+                <div class="rv-tool-card"><span class="rv-tool-emoji">📝</span><span class="rv-tool-name">MS Word</span></div>
+                <div class="rv-tool-card"><span class="rv-tool-emoji">📊</span><span class="rv-tool-name">PowerPoint</span></div>
+                <div class="rv-tool-card"><span class="rv-tool-emoji">📋</span><span class="rv-tool-name">Notion</span></div>
+                <div class="rv-tool-card"><span class="rv-tool-emoji">🗂️</span><span class="rv-tool-name">Google WS</span></div>
+              </div>
+            </div>
+
+            <div class="rv-tools-group">
+              <div class="rv-tools-glabel">Social Media &amp; Comm</div>
+              <div class="rv-tools-grid">
+                <div class="rv-tool-card"><span class="rv-tool-emoji">📱</span><span class="rv-tool-name">Hootsuite</span></div>
+                <div class="rv-tool-card"><span class="rv-tool-emoji">📈</span><span class="rv-tool-name">Meta Suite</span></div>
+                <div class="rv-tool-card"><span class="rv-tool-emoji">📧</span><span class="rv-tool-name">Mailchimp</span></div>
+                <div class="rv-tool-card"><span class="rv-tool-emoji">🔍</span><span class="rv-tool-name">GA4</span></div>
+              </div>
+            </div>
+          </div>
+
+        </aside>
+
+        <!-- ===== RIGHT COLUMN ===== -->
+        <section>
+
+          <div class="rv-section-head rv-reveal">
+            <p class="rv-sec-title">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.36 0-2.55-2.06-4.64-4.6-4.64C12.09.0 11 .5 10.2 1.28L8 3.5 5.8 1.28C5.01.5 3.91 0 2.6 0 .06 0-2 2.09-2 4.64c0 .48.11.92.18 1.36H-2v14h24V6zm-9 12H4V8h7v10zm9 0h-7V8h7v10z"/></svg>
+              Work Experience
+            </p>
+          </div>
+
+          <div class="rv-timeline">
+
+            <!-- Hastari Corporation -->
+            <div class="rv-tl-item rv-reveal">
+              <div class="rv-tl-dot">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 7h-4V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-6 0h-4V5h4v2z"/></svg>
+              </div>
+              <div class="rv-tl-card">
+                <div class="rv-tl-head">
+                  <div class="rv-tl-info">
+                    <span class="rv-tl-badge full">Full Time</span>
+                    <div class="rv-tl-company">Hastari Corporation</div>
+                    <div class="rv-tl-role">Employee Relations &amp; Corporate Branding Officer</div>
+                    <div class="rv-tl-meta">
+                      <span class="rv-tl-period">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2z"/></svg>
+                        Oct 2024 – Present
+                      </span>
+                      <span class="rv-tl-loc">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Jakarta
+                      </span>
+                    </div>
+                  </div>
+                  <div class="rv-tl-logo dark">
+                    <img src="../Hastari Corp with font white.png" alt="Hastari Corp">
+                  </div>
+                </div>
+                <ul class="rv-tl-bullets">
+                  <li><span class="rv-bullet-dot"></span>Managed end-to-end corporate communication and branding initiatives across digital platforms, internal channels, and employee engagement programs.</li>
+                  <li><span class="rv-bullet-dot"></span>Developed and executed social media content strategy including content planning, copywriting, visual direction, and publication scheduling.</li>
+                  <li><span class="rv-bullet-dot"></span>Led corporate branding and visual rebranding initiatives to strengthen company identity across all communication materials.</li>
+                </ul>
+                <div class="rv-extra-bullets">
+                  <ul class="rv-tl-bullets" style="margin-top:5px">
+                    <li><span class="rv-bullet-dot"></span>Produced executive communication materials including leadership messages, newsletters, campaign narratives, presentation decks, and internal publications.</li>
+                    <li><span class="rv-bullet-dot"></span>Coordinated cross-functional stakeholders across 5+ divisions for aligned communication messaging and smooth corporate initiative execution.</li>
+                    <li><span class="rv-bullet-dot"></span>Initiated and managed the company's internal corporate bulletin — successfully delivering 4 editions within one year.</li>
+                    <li><span class="rv-bullet-dot"></span>Planned and executed end-to-end corporate events including town halls, internal activations, company gatherings, and culture programs.</li>
+                  </ul>
+                </div>
+                <button class="rv-show-more-btn" onclick="toggleExtra(this)">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg>
+                  <span class="rv-btn-text">Show more</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- PwC Indonesia -->
+            <div class="rv-tl-item rv-reveal rv-reveal-delay-1">
+              <div class="rv-tl-dot">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 7h-4V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-6 0h-4V5h4v2z"/></svg>
+              </div>
+              <div class="rv-tl-card">
+                <div class="rv-tl-head">
+                  <div class="rv-tl-info">
+                    <span class="rv-tl-badge intern">Internship</span>
+                    <div class="rv-tl-company">PricewaterhouseCoopers (PwC Indonesia)</div>
+                    <div class="rv-tl-role">Marketing and Communication Intern</div>
+                    <div class="rv-tl-meta">
+                      <span class="rv-tl-period">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2z"/></svg>
+                        Jan 2024 – Jul 2024
+                      </span>
+                      <span class="rv-tl-loc">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Jakarta
+                      </span>
+                    </div>
+                  </div>
+                  <div class="rv-tl-logo">
+                    <img src="../pwc logo.png" alt="PwC Indonesia">
+                  </div>
+                </div>
+                <ul class="rv-tl-bullets">
+                  <li><span class="rv-bullet-dot"></span>Supported corporate marketing and communication initiatives by producing 30+ content materials across digital platforms.</li>
+                  <li><span class="rv-bullet-dot"></span>Ensured all company-produced materials adhered to established branding identity — applying expertise in publication design, presentation design, and social media material creation.</li>
+                  <li><span class="rv-bullet-dot"></span>Contributed to visual and multimedia materials for corporate campaigns and stakeholder engagement.</li>
+                  <li><span class="rv-bullet-dot"></span>Participated in internal coordination for campaign rollouts and communication dissemination.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- MojadiApp -->
+            <div class="rv-tl-item rv-reveal rv-reveal-delay-2">
+              <div class="rv-tl-dot">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 7h-4V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-6 0h-4V5h4v2z"/></svg>
+              </div>
+              <div class="rv-tl-card">
+                <div class="rv-tl-head">
+                  <div class="rv-tl-info">
+                    <span class="rv-tl-badge intern">Internship</span>
+                    <div class="rv-tl-company">PT. Mojadi Aplikasi Indonesia (MojadiApp)</div>
+                    <div class="rv-tl-role">Brand Representative Intern</div>
+                    <div class="rv-tl-meta">
+                      <span class="rv-tl-period">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2z"/></svg>
+                        Aug – Dec 2022
+                      </span>
+                      <span class="rv-tl-loc">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Jakarta
+                      </span>
+                    </div>
+                  </div>
+                  <div class="rv-tl-logo">
+                    <img src="../MojadiApp.png" alt="MojadiApp">
+                  </div>
+                </div>
+                <ul class="rv-tl-bullets">
+                  <li><span class="rv-bullet-dot"></span>Collaborated with media partners to publish activities organized by MojadiApp.</li>
+                  <li><span class="rv-bullet-dot"></span>Created content and advertising materials for MojadiApp products.</li>
+                  <li><span class="rv-bullet-dot"></span>Developed activation programs (Edufair, Edufest, Movement Short Movie Contest, School Visit) — contributing to a 5% increase in brand awareness.</li>
+                  <li><span class="rv-bullet-dot"></span>Acted as event host and promotional talent for company activations.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- MAPEI Indonesia -->
+            <div class="rv-tl-item rv-reveal">
+              <div class="rv-tl-dot">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 7h-4V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-6 0h-4V5h4v2z"/></svg>
+              </div>
+              <div class="rv-tl-card">
+                <div class="rv-tl-head">
+                  <div class="rv-tl-info">
+                    <span class="rv-tl-badge intern">Internship</span>
+                    <div class="rv-tl-company">MAPEI Indonesia</div>
+                    <div class="rv-tl-role">SEO Content Writer Intern</div>
+                    <div class="rv-tl-meta">
+                      <span class="rv-tl-period">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2z"/></svg>
+                        Jan – Jul 2022
+                      </span>
+                      <span class="rv-tl-loc">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Jakarta
+                      </span>
+                    </div>
+                  </div>
+                  <div class="rv-tl-logo">
+                    <img src="../mapei.png" alt="MAPEI Indonesia">
+                  </div>
+                </div>
+                <ul class="rv-tl-bullets">
+                  <li><span class="rv-bullet-dot"></span>Wrote more than 30 in-depth SEO articles published on the mapei.com website.</li>
+                  <li><span class="rv-bullet-dot"></span>Conducted research on business content materials in the building manufacturing sector according to Mapei Indonesia's business scope.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- UPI -->
+            <div class="rv-tl-item rv-reveal rv-reveal-delay-1">
+              <div class="rv-tl-dot">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 7h-4V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-6 0h-4V5h4v2z"/></svg>
+              </div>
+              <div class="rv-tl-card">
+                <div class="rv-tl-head">
+                  <div class="rv-tl-info">
+                    <span class="rv-tl-badge part">Part-time</span>
+                    <div class="rv-tl-company">Public Relation Contributor UPI</div>
+                    <div class="rv-tl-role">Junior Public Relations</div>
+                    <div class="rv-tl-meta">
+                      <span class="rv-tl-period">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2z"/></svg>
+                        Sept 2021 – Sept 2022
+                      </span>
+                      <span class="rv-tl-loc">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Bandung
+                      </span>
+                    </div>
+                  </div>
+                  <div class="rv-tl-logo">
+                    <img src="../logo upi.svg" alt="Universitas Pendidikan Indonesia">
+                  </div>
+                </div>
+                <ul class="rv-tl-bullets">
+                  <li><span class="rv-bullet-dot"></span>Produced UPI Podcast content on YouTube — consistently delivering 10+ video podcasts.</li>
+                  <li><span class="rv-bullet-dot"></span>Designed and produced UPI Podcast thumbnails for YouTube and Spotify.</li>
+                  <li><span class="rv-bullet-dot"></span>Edited organic content videos and handled content requests for Instagram @upiofficial.</li>
+                </ul>
+                <div class="rv-extra-bullets">
+                  <ul class="rv-tl-bullets" style="margin-top:5px">
+                    <li><span class="rv-bullet-dot"></span>Captured photos across the UPI environment for various activities and UPI magazine publication.</li>
+                    <li><span class="rv-bullet-dot"></span>Monitored, evaluated, and audited UPI's official social media accounts; conducted content research to make organic content more interactive.</li>
+                  </ul>
+                </div>
+                <button class="rv-show-more-btn" onclick="toggleExtra(this)">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg>
+                  <span class="rv-btn-text">Show more</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- MRO Indonesia -->
+            <div class="rv-tl-item rv-reveal rv-reveal-delay-2">
+              <div class="rv-tl-dot">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 7h-4V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-6 0h-4V5h4v2z"/></svg>
+              </div>
+              <div class="rv-tl-card">
+                <div class="rv-tl-head">
+                  <div class="rv-tl-info">
+                    <span class="rv-tl-badge part">Part-time</span>
+                    <div class="rv-tl-company">MRO Indonesia</div>
+                    <div class="rv-tl-role">Graphic Designer</div>
+                    <div class="rv-tl-meta">
+                      <span class="rv-tl-period">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2z"/></svg>
+                        Sep 2021 – Jan 2022
+                      </span>
+                      <span class="rv-tl-loc">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Jakarta
+                      </span>
+                    </div>
+                  </div>
+                  <div class="rv-tl-logo">
+                    <img src="../MRO Indonesia.png" alt="MRO Indonesia">
+                  </div>
+                </div>
+                <ul class="rv-tl-bullets">
+                  <li><span class="rv-bullet-dot"></span>Created more than 10 designs per week — including post feeds and Instagram stories for @mroindonesia.</li>
+                  <li><span class="rv-bullet-dot"></span>Responsible for the overall visual appearance of MRO Indonesia on Instagram.</li>
+                </ul>
+              </div>
+            </div>
+
+          </div><!-- /rv-timeline -->
+
+          <!-- CTA ROW -->
+          <div class="rv-cta-row rv-reveal">
+            <p class="rv-cta-text">Tertarik untuk bekerja sama? Mari terhubung!</p>
+            <div class="rv-cta-btns">
+              <a href="mailto:rdpangestu8@gmail.com" class="btn btn-primary">
+                <svg viewBox="0 0 24 24" fill="currentColor" style="width:15px;height:15px"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                Hubungi Saya
+              </a>
+              <a href="../artsworks/" class="btn btn-ghost">Lihat Karya</a>
+            </div>
+          </div>
+
+        </section>
+
+      </div><!-- /rv-grid -->
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+      <footer class="footer-new">
+
+    <!-- CTA SECTION -->
+    <div class="fn-cta">
+      <div class="container">
+        <div class="fn-cta-inner">
+          <div class="fn-cta-text">
+            <div class="fn-cta-line"></div>
+            <h2 class="fn-cta-title">Let's Work Together</h2>
+            <p class="fn-cta-sub">Open for collaborations, projects, and full-time opportunities in Corporate Communication, Employee Relations and Public Relations.</p>
+          </div>
+          <div class="fn-cta-btns">
+            <a href="mailto:rdpangestu8@gmail.com" class="fn-cta-btn-primary">Get In Touch &rarr;</a>
+            <a href="../artsworks/" class="fn-cta-btn-ghost">View My Works &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN FOOTER -->
+    <div class="fn-main">
+      <div class="container fn-inner">
+        <div class="fn-grid">
+
+          <!-- COL 1: BRAND -->
+          <div class="fn-col fn-brand">
+            <a href="../" class="fn-logo">Portfolio</a>
+            <p class="fn-tagline">Corporate Communication &amp; Public Relations</p>
+            <p class="fn-desc">Crafting strategic narratives that build brands and drive meaningful impact.</p>
+            <div class="fn-brand-divider"></div>
+            <div class="fn-brand-socials">
+              <a href="https://linkedin.com/in/rizkidwipangestu" target="_blank" class="fn-bs" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+              <a href="https://instagram.com/rizkidwipangestu" target="_blank" class="fn-bs" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+              <a href="mailto:rdpangestu8@gmail.com" class="fn-bs" aria-label="Email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+            </div>
+          </div>
+
+          <!-- COL 2: NAVIGATION -->
+          <div class="fn-col">
+            <h3 class="fn-heading">Navigation</h3>
+            <ul class="fn-links">
+              <li><a href="../about/">About Me</a></li>
+              <li><a href="../resume/">My Resume</a></li>
+              <li><a href="../#leadership">Leadership</a></li>
+              <li><a href="../services/">Services</a></li>
+              <li><a href="../writing/">Writing</a></li>
+              <li><a href="../videos/">Videos</a></li>
+              <li><a href="../artsworks/">Artsworks</a></li>
+            </ul>
+          </div>
+
+          <!-- COL 3: CONTACT -->
+          <div class="fn-col">
+            <h3 class="fn-heading">Contact</h3>
+            <ul class="fn-contact-list">
+              <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg><a href="mailto:rdpangestu8@gmail.com">rdpangestu8@gmail.com</a></li>
+              <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span>Bandung, Indonesia</span></li>
+            </ul>
+          </div>
+
+          <!-- COL 4: FIND ME ON -->
+          <div class="fn-col fn-social-col">
+            <h3 class="fn-heading">Find Me On</h3>
+            <div class="fn-socials">
+              <a href="https://linkedin.com/in/rizkidwipangestu" target="_blank" class="fn-social" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+              <a href="https://instagram.com/rizkidwipangestu" target="_blank" class="fn-social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+              <a href="mailto:rdpangestu8@gmail.com" class="fn-social" aria-label="Email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+            </div>
+          </div>
+
+        </div>
+        <div class="fn-divider"></div>
+      </div>
+    </div>
+
+    <!-- BOTTOM BAR -->
+    <div class="fn-bottom-wrap">
+      <div class="container">
+        <div class="fn-bottom">
+          <p class="fn-copy">&copy; 2026 <strong>Rizki Dwi Pangestu</strong>. All rights reserved.</p>
+          <p class="fn-made">Telling stories, one pixel at a time.</p>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+  <script>
+  (function(){
+    var cols = document.querySelectorAll('.fn-col');
+    if (!('IntersectionObserver' in window)) {
+      cols.forEach(function(c){ c.classList.add('fn-visible'); }); return;
+    }
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          var delay = parseInt(e.target.dataset.fnDelay) || 0;
+          setTimeout(function(){ e.target.classList.add('fn-visible'); }, delay);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    cols.forEach(function(c, i){ c.dataset.fnDelay = i * 100; obs.observe(c); });
+  })();
+  </script>
+
+  <script src="../js/main.js"></script>
+  <script>
+    /* ----- Scroll Reveal (robust) ----- */
+    function initReveal() {
+      var items = Array.from(document.querySelectorAll('.rv-reveal'));
+
+      function revealEl(el) { el.classList.add('visible'); }
+
+      /* Force-reveal anything already in viewport */
+      function revealInView() {
+        items.forEach(function(el) {
+          var r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight + 80) revealEl(el);
+        });
+      }
+
+      /* IntersectionObserver for below-fold elements */
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) { revealEl(e.target); obs.unobserve(e.target); }
+          });
+        }, { threshold: 0, rootMargin: '0px 0px 60px 0px' });
+        items.forEach(function(el) { obs.observe(el); });
+      } else {
+        items.forEach(revealEl);
+      }
+
+      /* Run immediately + on load as safety net */
+      revealInView();
+      window.addEventListener('load', revealInView);
+      window.addEventListener('scroll', revealInView, { passive: true });
+    }
+    initReveal();
+
+    /* ----- Counter Animation ----- */
+    function startCounters() {
+      document.querySelectorAll('.rv-count').forEach(function(el) {
+        if (el.dataset.done) return;
+        el.dataset.done = '1';
+        var target = parseInt(el.dataset.target);
+        var suffix = el.dataset.suffix || '';
+        var current = 0;
+        var steps = 55;
+        var interval = 1400 / steps;
+        var inc = target / steps;
+        var timer = setInterval(function() {
+          current += inc;
+          if (current >= target) {
+            el.textContent = target + suffix;
+            clearInterval(timer);
+          } else {
+            el.textContent = Math.floor(current) + suffix;
+          }
+        }, interval);
+      });
+    }
+    /* Start counters on load since header is visible immediately */
+    window.addEventListener('load', function() { setTimeout(startCounters, 300); });
+
+    /* ----- Show More / Less ----- */
+    function toggleExtra(btn) {
+      var card = btn.closest('.rv-tl-card');
+      var extra = card && card.querySelector('.rv-extra-bullets');
+      if (!extra) return;
+      var isOpen = extra.classList.toggle('open');
+      btn.classList.toggle('open', isOpen);
+      btn.querySelector('.rv-btn-text').textContent = isOpen ? 'Show less' : 'Show more';
+    }
+  </script>
+</body>
+</html>
+
+
