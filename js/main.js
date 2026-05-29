@@ -49,8 +49,7 @@ if (searchInput) {
 function goSearch() {
   const q = (searchInput?.value || '').trim();
   if (!q) return;
-  const root = document.documentElement.dataset.root || './';
-  window.location.href = root + 'artsworks/?q=' + encodeURIComponent(q);
+  window.location.href = `artsworks.html?q=${encodeURIComponent(q)}`;
 }
 
 /* ----- Scroll-reveal ----- */
