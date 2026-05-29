@@ -2057,18 +2057,19 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 /* Badge */
 .ls-type-badge {
-  font-size: 0.62rem;
+  font-size: 0.60rem;
   font-weight: 800;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.4px;
   text-transform: uppercase;
   color: #0a5a8a;
   background: #dbeeff;
   padding: 5px 13px;
   border-radius: 50px;
   border: 1.5px solid rgba(18,135,193,0.22);
-  white-space: nowrap;
   display: inline-block;
   margin-bottom: 14px;
+  max-width: 100%;
+  line-height: 1.5;
 }
 /* Position title */
 .ls-position {
