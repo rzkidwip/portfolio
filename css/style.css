@@ -1976,15 +1976,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 /* ---- Individual Card ---- */
 .ls-card {
-  background: #fff;
+  background: linear-gradient(160deg, #ffffff 0%, #F0F7FF 100%);
   border: 1.5px solid rgba(0,0,0,0.07);
   border-radius: var(--rl);
   padding: 34px 30px 28px;
   position: relative;
   overflow: hidden;
-  transition: transform 0.38s cubic-bezier(.4,0,.2,1),
-              box-shadow 0.38s cubic-bezier(.4,0,.2,1),
-              border-color 0.38s ease;
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1),
+              box-shadow 0.3s cubic-bezier(.4,0,.2,1),
+              border-color 0.3s ease;
   display: flex;
   flex-direction: column;
   box-shadow: 0 2px 12px rgba(0,0,0,0.05);
@@ -1992,15 +1992,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* Watermark number */
 .ls-card-num {
   position: absolute;
-  top: 14px; right: 18px;
-  font-size: 5.5rem;
+  top: 8px; right: 16px;
+  font-size: 9rem;
   font-weight: 900;
-  color: rgba(18,135,193,0.055);
+  color: rgba(18,135,193,0.06);
   line-height: 1;
-  letter-spacing: -4px;
+  letter-spacing: -6px;
   pointer-events: none;
   user-select: none;
-  transition: color 0.38s ease;
+  transition: color 0.3s ease;
   font-family: inherit;
 }
 /* Top accent bar */
@@ -2015,12 +2015,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   transition: transform 0.42s cubic-bezier(.4,0,.2,1);
 }
 .ls-card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(18,135,193,0.20);
-  box-shadow: 0 28px 70px rgba(18,135,193,0.13), 0 6px 20px rgba(0,0,0,0.06);
+  transform: translateY(-8px);
+  border-color: rgba(18,135,193,0.22);
+  box-shadow: 0 32px 80px rgba(18,135,193,0.15), 0 8px 24px rgba(0,0,0,0.07);
 }
-.ls-card:hover::before { transform: scaleX(1); }
-.ls-card:hover .ls-card-num { color: rgba(18,135,193,0.10); }
+.ls-card:hover::before { transform: scaleX(1); background: linear-gradient(90deg, #1b9ed8, #1287c1); }
+.ls-card:hover .ls-card-num { color: rgba(18,135,193,0.12); }
 
 /* Card top row */
 .ls-card-top {
@@ -2044,8 +2044,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .ls-icon svg  { width: 28px; height: 28px; color: #fff; }
 .ls-icon-logo {
   background: #fff;
-  border: 1.5px solid var(--border);
-  box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+  border: 1.5px solid rgba(18,135,193,0.14);
+  box-shadow: 0 4px 16px rgba(18,135,193,0.12), 0 1px 4px rgba(0,0,0,0.06);
   padding: 6px;
   overflow: hidden;
 }
@@ -2061,12 +2061,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-weight: 800;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--y);
-  background: var(--y-soft);
-  padding: 5px 12px;
-  border-radius: var(--pill);
-  border: 1.5px solid rgba(18,135,193,0.18);
+  color: #0a5a8a;
+  background: #dbeeff;
+  padding: 5px 13px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(18,135,193,0.22);
   white-space: nowrap;
+  display: inline-block;
+  margin-bottom: 14px;
 }
 /* Position title */
 .ls-position {
@@ -2083,7 +2085,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   padding-bottom: 18px;
   border-bottom: 1.5px solid rgba(0,0,0,0.06);
 }
-.ls-org-name { font-size: 0.83rem; font-weight: 700; color: var(--y-dark); margin-bottom: 4px; }
+.ls-org-name { font-size: 0.83rem; font-weight: 800; color: #1287c1; margin-bottom: 4px; }
 .ls-org-period {
   display: flex;
   align-items: center;
@@ -2110,12 +2112,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   line-height: 1.65;
 }
 .ls-bullet-dot {
-  width: 7px; height: 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; height: 18px;
   border-radius: 50%;
-  background: linear-gradient(135deg,#1287c1,#1b9ed8);
+  background: rgba(18,135,193,0.10);
   flex-shrink: 0;
-  margin-top: 6px;
-  box-shadow: 0 0 0 2.5px rgba(18,135,193,0.15);
+  margin-top: 2px;
+  color: #1287c1;
+  font-size: 0.7rem;
+  font-weight: 900;
+  line-height: 1;
 }
 /* View Certificate button */
 .ls-cert-btn {
