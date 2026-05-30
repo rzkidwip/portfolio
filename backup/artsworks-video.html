@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Production — Rizki Dwi Pangestu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .dt-hero {
+      background: linear-gradient(135deg, #cc0000 0%, #a00000 45%, #5a0000 100%);
+      padding: calc(var(--nav) + 56px) 0 60px;
+      position: relative; overflow: hidden;
+    }
+    .dt-hero::after { content:''; position:absolute; bottom:-1px; left:0; right:0; height:50px; background:linear-gradient(to bottom,transparent,var(--bg)); }
+    .dt-hero-inner { position:relative; z-index:1; }
+    .back-btn { display:inline-flex; align-items:center; gap:7px; font-size:0.8rem; font-weight:700; color:rgba(255,255,255,0.78); text-decoration:none; padding:7px 16px; border-radius:99px; border:1.5px solid rgba(255,255,255,0.28); background:rgba(255,255,255,0.08); transition:background 0.2s,color 0.2s; margin-bottom:28px; }
+    .back-btn:hover { background:rgba(255,255,255,0.18); color:#fff; }
+    .dt-eyebrow { font-size:0.65rem; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-bottom:10px; display:block; }
+    .dt-title { font-size:clamp(2rem,5vw,3.8rem); font-weight:900; color:#fff; letter-spacing:-2px; line-height:1; margin-bottom:14px; }
+    .dt-subtitle { font-size:0.95rem; color:rgba(255,255,255,0.72); max-width:520px; line-height:1.65; }
+
+    .dt-filter-wrap { padding:36px 0 28px; border-bottom:1.5px solid var(--border); margin-bottom:40px; }
+    .dt-filter-inner { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+    .dt-f-btn { padding:7px 18px; border-radius:99px; border:1.5px solid var(--border); background:transparent; font-size:0.8rem; font-weight:600; color:var(--muted); cursor:pointer; font-family:inherit; transition:all 0.2s; white-space:nowrap; }
+    .dt-f-btn:hover { border-color:#cc0000; color:#cc0000; background:rgba(204,0,0,0.06); }
+    .dt-f-btn.active { background:#cc0000; border-color:#cc0000; color:#fff; }
+
+    .dt-section { padding-bottom:80px; }
+    .dt-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+
+    .vd-card {
+      position:relative; aspect-ratio:16/9; overflow:hidden; border-radius:14px;
+      cursor:pointer; background:#111;
+      opacity:0; transform:translateY(22px);
+      transition:opacity 0.45s ease, transform 0.45s ease, box-shadow 0.28s;
+    }
+    .vd-card.vis { opacity:1; transform:translateY(0); }
+    .vd-card.vis:hover { transform:translateY(-5px); box-shadow:0 18px 48px rgba(0,0,0,0.25); }
+    .vd-card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.38s ease; }
+    .vd-card:hover img { transform:scale(1.06); }
+    .vd-badge { position:absolute; top:10px; left:10px; z-index:3; padding:3px 10px; border-radius:6px; font-size:0.58rem; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#fff; pointer-events:none; }
+    .vb-podcast { background:#cc0000; }
+    .vb-corp { background:#1e3a5f; }
+
+    .vd-play {
+      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      width:54px; height:54px; border-radius:50%;
+      background:rgba(255,255,255,0.92);
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:0 4px 20px rgba(0,0,0,0.4); z-index:3;
+      transition:transform 0.25s, background 0.25s; pointer-events:none;
+    }
+    .vd-card:hover .vd-play { transform:translate(-50%,-50%) scale(1.14); }
+    .vd-play svg { width:22px; height:22px; color:#cc0000; margin-left:3px; }
+
+    .vd-title-bar {
+      position:absolute; bottom:0; left:0; right:0;
+      padding:36px 12px 12px;
+      background:linear-gradient(to top,rgba(0,0,0,0.82) 0%,transparent 100%);
+      z-index:2; pointer-events:none;
+    }
+    .vd-bar-title { font-size:0.78rem; font-weight:700; color:#fff; line-height:1.3; }
+    .vd-bar-sub { font-size:0.6rem; font-weight:600; color:rgba(255,255,255,0.62); margin-top:2px; }
+
+    .aw-reveal { opacity:0; transform:translateY(20px); transition:opacity 0.52s ease,transform 0.52s ease; }
+    .aw-reveal.visible { opacity:1; transform:none; }
+
+    @media (max-width:900px) { .dt-grid { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:540px) { .dt-grid { grid-template-columns:repeat(2,1fr); gap:10px; } }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Portfolio</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="resume.html">My Resume</a></li>
+        <li><a href="index.html#leadership">Leadership</a></li>
+        <li><a href="services.html">Expertise</a></li>
+        <li><a href="artsworks.html" class="active">Artsworks</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="nav-search">
+          <input type="search" id="search-input" placeholder="Search my project.." autocomplete="off" />
+          <button onclick="goSearch()" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+        </div>
+        <a href="about.html" class="btn-hello"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>Hello!</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <header class="dt-hero">
+    <div class="container dt-hero-inner">
+      <a href="artsworks.html" class="back-btn">← Back to Portfolio</a>
+      <span class="dt-eyebrow">Video Production</span>
+      <h1 class="dt-title">Corporate Video<br>Production</h1>
+      <p class="dt-subtitle">Corporate event documentation, podcast production, and video content creation for UPI and Hastari Corporation.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="dt-filter-wrap aw-reveal">
+        <div class="dt-filter-inner">
+          <button class="dt-f-btn active" data-filter="all">All</button>
+          <button class="dt-f-btn" data-filter="podcast">UPI Podcast</button>
+          <button class="dt-f-btn" data-filter="corporate">Hastari Corporate</button>
+        </div>
+      </div>
+      <div class="dt-section">
+        <div class="dt-grid" id="dt-grid"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer-new">
+    <div class="fn-cta"><div class="container"><div class="fn-cta-inner"><div class="fn-cta-text"><div class="fn-cta-line"></div><h2 class="fn-cta-title">Let's Work Together</h2><p class="fn-cta-sub">Open for collaborations, projects, and full-time opportunities in Corporate Communication, Employee Relations and Public Relations.</p></div><div class="fn-cta-btns"><a href="mailto:rdpangestu8@gmail.com" class="fn-cta-btn-primary">Get In Touch &rarr;</a><a href="artsworks.html" class="fn-cta-btn-ghost">View My Works &rarr;</a></div></div></div></div>
+    <div class="fn-main"><div class="container fn-inner"><div class="fn-grid"><div class="fn-col fn-brand"><a href="index.html" class="fn-logo">Portfolio</a><p class="fn-tagline">Corporate Communication &amp; Public Relations</p><p class="fn-desc">Crafting strategic narratives that build brands and drive meaningful impact.</p><div class="fn-brand-divider"></div><div class="fn-brand-socials"><a href="https://linkedin.com/in/rizkidwipangestu" target="_blank" class="fn-bs" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://instagram.com/rizkidwipangestu" target="_blank" class="fn-bs" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a><a href="mailto:rdpangestu8@gmail.com" class="fn-bs" aria-label="Email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a></div></div><div class="fn-col"><h3 class="fn-heading">Navigation</h3><ul class="fn-links"><li><a href="about.html">About Me</a></li><li><a href="resume.html">My Resume</a></li><li><a href="index.html#leadership">Leadership</a></li><li><a href="services.html">Expertise</a></li><li><a href="artsworks.html">Artsworks</a></li></ul></div><div class="fn-col"><h3 class="fn-heading">Contact</h3><ul class="fn-contact-list"><li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg><a href="mailto:rdpangestu8@gmail.com">rdpangestu8@gmail.com</a></li><li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span>Bandung, Indonesia</span></li></ul></div><div class="fn-col fn-social-col"><h3 class="fn-heading">Find Me On</h3><div class="fn-socials"><a href="https://linkedin.com/in/rizkidwipangestu" target="_blank" class="fn-social" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://instagram.com/rizkidwipangestu" target="_blank" class="fn-social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a><a href="mailto:rdpangestu8@gmail.com" class="fn-social" aria-label="Email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a></div></div></div><div class="fn-divider"></div></div></div>
+    <div class="fn-bottom-wrap"><div class="container"><div class="fn-bottom"><p class="fn-copy">&copy; 2026 <strong>Rizki Dwi Pangestu</strong>. All rights reserved.</p><p class="fn-made">Telling stories, one pixel at a time.</p></div></div></div>
+  </footer>
+
+  <script>(function(){var cols=document.querySelectorAll('.fn-col');if(!('IntersectionObserver' in window)){cols.forEach(function(c){c.classList.add('fn-visible');});return;}var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var delay=parseInt(e.target.dataset.fnDelay)||0;setTimeout(function(){e.target.classList.add('fn-visible');},delay);obs.unobserve(e.target);}});},{threshold:0.1});cols.forEach(function(c,i){c.dataset.fnDelay=i*100;obs.observe(c);});})();</script>
+  <script src="js/main.js"></script>
+  <script>
+    var ITEMS = [
+      { filter:'podcast',   img:'https://img.youtube.com/vi/3PY5pB6on_0/maxresdefault.jpg', title:'UPI Podcast Ep.1', company:'Kantor Humas UPI', url:'https://www.youtube.com/watch?v=3PY5pB6on_0',   badge:'vb-podcast', badgeText:'UPI Podcast' },
+      { filter:'podcast',   img:'https://img.youtube.com/vi/TQZMEWhKAfs/maxresdefault.jpg', title:'UPI Podcast Ep.2', company:'Kantor Humas UPI', url:'https://www.youtube.com/watch?v=TQZMEWhKAfs',   badge:'vb-podcast', badgeText:'UPI Podcast' },
+      { filter:'podcast',   img:'https://img.youtube.com/vi/a7nPrXnBrhY/maxresdefault.jpg', title:'UPI Podcast Ep.3', company:'Kantor Humas UPI', url:'https://www.youtube.com/watch?v=a7nPrXnBrhY',   badge:'vb-podcast', badgeText:'UPI Podcast' },
+      { filter:'corporate', img:'https://img.youtube.com/vi/CHlgPSt4YuQ/maxresdefault.jpg', title:'Corporate Video Ep.1', company:'Hastari Corporation', url:'https://www.youtube.com/watch?v=CHlgPSt4YuQ', badge:'vb-corp', badgeText:'Corporate Video' },
+      { filter:'corporate', img:'https://img.youtube.com/vi/nGYBraTMgSY/maxresdefault.jpg', title:'Corporate Video Ep.2', company:'Hastari Corporation', url:'https://www.youtube.com/watch?v=nGYBraTMgSY', badge:'vb-corp', badgeText:'Corporate Video' },
+      { filter:'corporate', img:'https://img.youtube.com/vi/J784JqR4_WM/maxresdefault.jpg', title:'Corporate Video Ep.3', company:'Hastari Corporation', url:'https://www.youtube.com/watch?v=J784JqR4_WM', badge:'vb-corp', badgeText:'Corporate Video' },
+    ];
+
+    var currentFilter = 'all';
+
+    function getFiltered() { return currentFilter === 'all' ? ITEMS : ITEMS.filter(function(i){ return i.filter === currentFilter; }); }
+
+    var revObs = new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');revObs.unobserve(e.target);}});},{threshold:0.04,rootMargin:'0px 0px 80px 0px'});
+
+    function renderGrid() {
+      var filtered = getFiltered();
+      var grid = document.getElementById('dt-grid');
+      grid.innerHTML = '';
+      filtered.forEach(function(item, idx) {
+        var card = document.createElement('div');
+        card.className = 'vd-card';
+        card.style.transitionDelay = (idx * 0.055) + 's';
+
+        var badge = document.createElement('span');
+        badge.className = 'vd-badge ' + item.badge;
+        badge.textContent = item.badgeText;
+        card.appendChild(badge);
+
+        var img = document.createElement('img');
+        img.src = item.img; img.alt = item.title; img.loading = 'lazy';
+        card.appendChild(img);
+
+        var play = document.createElement('div');
+        play.className = 'vd-play';
+        play.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+        card.appendChild(play);
+
+        var bar = document.createElement('div');
+        bar.className = 'vd-title-bar';
+        bar.innerHTML = '<p class="vd-bar-title">' + item.title + '</p><p class="vd-bar-sub">' + item.company + '</p>';
+        card.appendChild(bar);
+
+        card.addEventListener('click', function(){ window.open(item.url, '_blank'); });
+        grid.appendChild(card);
+      });
+      setTimeout(function(){ grid.querySelectorAll('.vd-card').forEach(function(el){ revObs.observe(el); }); }, 16);
+    }
+
+    document.querySelectorAll('.dt-f-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        document.querySelectorAll('.dt-f-btn').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        renderGrid();
+      });
+    });
+
+    var staticObs = new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');staticObs.unobserve(e.target);}});},{threshold:0.08});
+    document.querySelectorAll('.aw-reveal').forEach(function(el){staticObs.observe(el);});
+
+    renderGrid();
+  </script>
+</body>
+</html>
+

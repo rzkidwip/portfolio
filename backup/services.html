@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What I Do — Rizki Dwi Pangestu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ================================================================
+       WHAT I DO — EXPERTISE PAGE
+    ================================================================ */
+    html { scroll-behavior: smooth; }
+
+    /* ---- HERO ---- */
+    .wid-hero {
+      background: linear-gradient(135deg, #1287c1 0%, #0e6fa3 45%, #073d5e 100%);
+      padding: calc(var(--nav) + 80px) 0 110px;
+      position: relative; overflow: hidden; text-align: center;
+    }
+    .wid-hero::after {
+      content: ''; position: absolute; bottom: -1px; left: 0; right: 0;
+      height: 64px; background: linear-gradient(to bottom, transparent, var(--bg));
+      pointer-events: none;
+    }
+    .wid-particle {
+      position: absolute; border-radius: 50%;
+      background: rgba(255,255,255,0.05); pointer-events: none;
+      animation: widFloat linear infinite;
+    }
+    @keyframes widFloat {
+      0%   { transform: translateY(0) scale(1); opacity: 0.6; }
+      60%  { opacity: 1; }
+      100% { transform: translateY(-130px) scale(1.2); opacity: 0; }
+    }
+    .wid-hero-inner { position: relative; z-index: 1; }
+    .wid-badge {
+      display: inline-block; margin-bottom: 20px;
+      padding: 8px 22px; border-radius: 99px;
+      font-size: 0.7rem; font-weight: 800; letter-spacing: 1px;
+      text-transform: uppercase; color: #fff;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .wid-eyebrow {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 3.5px;
+      text-transform: uppercase; color: rgba(255,255,255,0.6);
+      margin-bottom: 10px; display: block;
+    }
+    .wid-title {
+      font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 900;
+      color: #fff; letter-spacing: -2.5px; line-height: 1.0; margin-bottom: 18px;
+    }
+    .wid-subtitle {
+      font-size: 1rem; color: rgba(255,255,255,0.72);
+      max-width: 540px; margin: 0 auto; line-height: 1.72;
+    }
+
+    /* ---- SECTION ---- */
+    .wid-section { padding: 90px 0; }
+
+    /* ---- HEADER ---- */
+    .wid-sec-eyebrow {
+      font-size: 0.65rem; font-weight: 800; letter-spacing: 3.5px;
+      text-transform: uppercase; color: #1287c1; margin-bottom: 8px; display: block;
+    }
+    .wid-sec-heading {
+      font-size: clamp(1.9rem, 3.5vw, 2.7rem); font-weight: 900;
+      color: var(--text); letter-spacing: -1.5px; margin-bottom: 10px;
+      position: relative; display: inline-block;
+    }
+    .wid-sec-heading::after {
+      content: ''; position: absolute; bottom: -7px; left: 0;
+      height: 3px; width: 0; border-radius: 2px;
+      background: #1287c1; transition: width 0.7s cubic-bezier(.4,0,.2,1);
+    }
+    .wid-sec-heading.line-on::after { width: 55%; }
+    .wid-sec-sub {
+      font-size: 0.88rem; color: var(--muted); max-width: 520px; line-height: 1.7;
+    }
+
+    /* ---- GRID ---- */
+    .wid-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 22px; margin-top: 52px;
+    }
+    .wid-card {
+      background: #fff; border-radius: 20px;
+      border: 1.5px solid var(--border); border-left: 4px solid var(--accent, #1287c1);
+      padding: 32px 30px 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.55s ease, transform 0.55s ease,
+                  box-shadow 0.28s, border-left-color 0.28s;
+    }
+    .wid-card.wid-in { opacity: 1; transform: none; }
+    .wid-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 52px rgba(0,0,0,0.12);
+    }
+    .wid-card-icon {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--icon-bg, rgba(18,135,193,0.1));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 18px;
+    }
+    .wid-card-title {
+      font-size: 1.05rem; font-weight: 800; color: var(--text);
+      margin-bottom: 10px; letter-spacing: -0.3px;
+    }
+    .wid-card-desc {
+      font-size: 0.84rem; color: var(--muted); line-height: 1.72; margin-bottom: 18px;
+    }
+    .wid-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .wid-tag {
+      padding: 5px 12px; border-radius: 99px;
+      font-size: 0.7rem; font-weight: 600;
+      background: #f1f5f9; color: #475569;
+      border: 1px solid #e2e8f0;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .wid-card:hover .wid-tag {
+      background: var(--icon-bg, rgba(18,135,193,0.08));
+      color: var(--accent, #1287c1);
+      border-color: transparent;
+    }
+
+    /* ---- CTA ---- */
+    .wid-cta {
+      margin-top: 72px;
+      background: linear-gradient(135deg, #1287c1 0%, #0e6fa3 45%, #073d5e 100%);
+      border-radius: 28px; padding: 64px 48px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .wid-cta::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 220px; height: 220px; border-radius: 50%;
+      background: rgba(255,255,255,0.06); pointer-events: none;
+    }
+    .wid-cta::after {
+      content: ''; position: absolute; bottom: -40px; left: -40px;
+      width: 160px; height: 160px; border-radius: 50%;
+      background: rgba(255,255,255,0.04); pointer-events: none;
+    }
+    .wid-cta-inner { position: relative; z-index: 1; }
+    .wid-cta-title {
+      font-size: clamp(1.7rem, 3.2vw, 2.4rem); font-weight: 900;
+      color: #fff; letter-spacing: -1.2px; margin-bottom: 14px;
+    }
+    .wid-cta-sub {
+      font-size: 0.93rem; color: rgba(255,255,255,0.72);
+      max-width: 480px; margin: 0 auto 32px; line-height: 1.7;
+    }
+    .wid-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .wid-btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 30px; border-radius: 99px;
+      background: #fff; color: #1287c1;
+      font-size: 0.88rem; font-weight: 800; font-family: inherit;
+      text-decoration: none; transition: transform 0.22s, box-shadow 0.22s;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+    }
+    .wid-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 38px rgba(0,0,0,0.3); }
+    .wid-btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 30px; border-radius: 99px;
+      background: transparent; color: #fff;
+      font-size: 0.88rem; font-weight: 700; font-family: inherit;
+      text-decoration: none; border: 1.5px solid rgba(255,255,255,0.42);
+      transition: background 0.22s, border-color 0.22s, transform 0.22s;
+    }
+    .wid-btn-ghost:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.72); transform: translateY(-3px); }
+
+    /* ---- REVEAL ---- */
+    .wid-reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.58s ease, transform 0.58s ease; }
+    .wid-reveal.wid-in-rev { opacity: 1; transform: none; }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 860px) {
+      .wid-grid { grid-template-columns: 1fr; }
+      .wid-cta { padding: 48px 28px; }
+    }
+    @media (max-width: 540px) {
+      .wid-title { letter-spacing: -1.5px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Portfolio</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="resume.html">My Resume</a></li>
+        <li><a href="index.html#leadership">Leadership</a></li>
+        <li><a href="services.html" class="active">Expertise</a></li>
+        <li><a href="artsworks.html">Artsworks</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="nav-search">
+          <input type="search" id="search-input" placeholder="Search my project.." autocomplete="off" />
+          <button onclick="goSearch()" aria-label="Search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </div>
+        <a href="about.html" class="btn-hello">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+          Hello!
+        </a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="wid-hero" id="wid-hero">
+    <div class="container">
+      <div class="wid-hero-inner">
+        <div class="wid-badge">Open to Opportunities ✦</div>
+        <span class="wid-eyebrow">EXPERTISE</span>
+        <h1 class="wid-title">What I Do</h1>
+        <p class="wid-subtitle">Areas I specialize in — and where I thrive. Open for full-time roles, project collaborations, and freelance opportunities.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERTISE CARDS ===== -->
+  <section class="wid-section">
+    <div class="container">
+      <span class="wid-sec-eyebrow wid-reveal">Areas of Expertise</span>
+      <h2 class="wid-sec-heading wid-reveal">My Specializations</h2>
+      <p class="wid-sec-sub wid-reveal">Six core areas where I bring strategic value, creative execution, and measurable impact.</p>
+
+      <div class="wid-grid">
+
+        <div class="wid-card" style="--accent:#1287c1;--icon-bg:rgba(18,135,193,0.1)">
+          <div class="wid-card-icon">📢</div>
+          <h3 class="wid-card-title">Corporate Communication</h3>
+          <p class="wid-card-desc">Managing internal and external communication frameworks — from stakeholder messaging and executive communication to corporate publications and culture narratives.</p>
+          <div class="wid-tags">
+            <span class="wid-tag">Internal Comm</span>
+            <span class="wid-tag">Stakeholder Mgmt</span>
+            <span class="wid-tag">Executive Communication</span>
+            <span class="wid-tag">Corporate Publication</span>
+          </div>
+        </div>
+
+        <div class="wid-card" style="--accent:#7C3AED;--icon-bg:rgba(124,58,237,0.1)">
+          <div class="wid-card-icon">📰</div>
+          <h3 class="wid-card-title">Public Relations &amp; Media</h3>
+          <p class="wid-card-desc">Building and protecting brand reputation through strategic PR, press release writing, media relations, and crisis communication.</p>
+          <div class="wid-tags">
+            <span class="wid-tag">Press Release</span>
+            <span class="wid-tag">Media Relations</span>
+            <span class="wid-tag">Crisis Comm</span>
+            <span class="wid-tag">Brand Reputation</span>
+          </div>
+        </div>
+
+        <div class="wid-card" style="--accent:#F97316;--icon-bg:rgba(249,115,22,0.1)">
+          <div class="wid-card-icon">✍️</div>
+          <h3 class="wid-card-title">Content &amp; Copywriting</h3>
+          <p class="wid-card-desc">Crafting persuasive, on-brand content across all formats — articles, campaigns, corporate publications, and digital content.</p>
+          <div class="wid-tags">
+            <span class="wid-tag">SEO Writing</span>
+            <span class="wid-tag">Copywriting</span>
+            <span class="wid-tag">Corporate Writing</span>
+            <span class="wid-tag">Campaign Content</span>
+          </div>
+        </div>
+
+        <div class="wid-card" style="--accent:#059669;--icon-bg:rgba(5,150,105,0.1)">
+          <div class="wid-card-icon">📱</div>
+          <h3 class="wid-card-title">Social Media Management</h3>
+          <p class="wid-card-desc">Managing brand social media presence with strategic content planning, visual direction, community engagement, and performance analytics.</p>
+          <div class="wid-tags">
+            <span class="wid-tag">Content Strategy</span>
+            <span class="wid-tag">Visual Direction</span>
+            <span class="wid-tag">Community Mgmt</span>
+            <span class="wid-tag">Analytics</span>
+          </div>
+        </div>
+
+        <div class="wid-card" style="--accent:#DC2626;--icon-bg:rgba(220,38,38,0.1)">
+          <div class="wid-card-icon">🎪</div>
+          <h3 class="wid-card-title">Event Management</h3>
+          <p class="wid-card-desc">End-to-end planning and execution of corporate events, town halls, press conferences, product launches, and employee engagement activities.</p>
+          <div class="wid-tags">
+            <span class="wid-tag">Corporate Events</span>
+            <span class="wid-tag">Town Hall</span>
+            <span class="wid-tag">Press Conference</span>
+            <span class="wid-tag">Documentation</span>
+          </div>
+        </div>
+
+        <div class="wid-card" style="--accent:#D97706;--icon-bg:rgba(217,119,6,0.1)">
+          <div class="wid-card-icon">🏢</div>
+          <h3 class="wid-card-title">Employer Branding</h3>
+          <p class="wid-card-desc">Positioning organizations as employers of choice through EVP development, culture campaigns, talent attraction, and employee advocacy programs.</p>
+          <div class="wid-tags">
+            <span class="wid-tag">EVP</span>
+            <span class="wid-tag">Talent Attraction</span>
+            <span class="wid-tag">Culture Campaign</span>
+            <span class="wid-tag">Employee Advocacy</span>
+          </div>
+        </div>
+
+      </div><!-- /wid-grid -->
+
+      <!-- CTA -->
+      <div class="wid-cta wid-reveal">
+        <div class="wid-cta-inner">
+          <h2 class="wid-cta-title">Let's Create Something Meaningful</h2>
+          <p class="wid-cta-sub">Whether you're looking for a dedicated team member or a trusted project collaborator — I'd love to connect.</p>
+          <div class="wid-cta-btns">
+            <a href="mailto:rdpangestu8@gmail.com" class="wid-btn-primary">Get In Touch &rarr;</a>
+            <a href="artsworks.html" class="wid-btn-ghost">View My Works &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer-new">
+
+    <div class="fn-cta">
+      <div class="container">
+        <div class="fn-cta-inner">
+          <div class="fn-cta-text">
+            <div class="fn-cta-line"></div>
+            <h2 class="fn-cta-title">Let's Work Together</h2>
+            <p class="fn-cta-sub">Open for collaborations, projects, and full-time opportunities in Corporate Communication, Employee Relations and Public Relations.</p>
+          </div>
+          <div class="fn-cta-btns">
+            <a href="mailto:rdpangestu8@gmail.com" class="fn-cta-btn-primary">Get In Touch &rarr;</a>
+            <a href="artsworks.html" class="fn-cta-btn-ghost">View My Works &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fn-main">
+      <div class="container fn-inner">
+        <div class="fn-grid">
+
+          <div class="fn-col fn-brand">
+            <a href="index.html" class="fn-logo">Portfolio</a>
+            <p class="fn-tagline">Corporate Communication &amp; Public Relations</p>
+            <p class="fn-desc">Crafting strategic narratives that build brands and drive meaningful impact.</p>
+            <div class="fn-brand-divider"></div>
+            <div class="fn-brand-socials">
+              <a href="https://linkedin.com/in/rizkidwipangestu" target="_blank" class="fn-bs" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+              <a href="https://instagram.com/rizkidwipangestu" target="_blank" class="fn-bs" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+              <a href="mailto:rdpangestu8@gmail.com" class="fn-bs" aria-label="Email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+            </div>
+          </div>
+
+          <div class="fn-col">
+            <h3 class="fn-heading">Navigation</h3>
+            <ul class="fn-links">
+              <li><a href="about.html">About Me</a></li>
+              <li><a href="resume.html">My Resume</a></li>
+              <li><a href="index.html#leadership">Leadership</a></li>
+              <li><a href="services.html">Expertise</a></li>
+              <li><a href="artsworks.html">Artsworks</a></li>
+            </ul>
+          </div>
+
+          <div class="fn-col">
+            <h3 class="fn-heading">Contact</h3>
+            <ul class="fn-contact-list">
+              <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg><a href="mailto:rdpangestu8@gmail.com">rdpangestu8@gmail.com</a></li>
+              <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span>Bandung, Indonesia</span></li>
+            </ul>
+          </div>
+
+          <div class="fn-col fn-social-col">
+            <h3 class="fn-heading">Find Me On</h3>
+            <div class="fn-socials">
+              <a href="https://linkedin.com/in/rizkidwipangestu" target="_blank" class="fn-social" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+              <a href="https://instagram.com/rizkidwipangestu" target="_blank" class="fn-social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+              <a href="mailto:rdpangestu8@gmail.com" class="fn-social" aria-label="Email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+            </div>
+          </div>
+
+        </div>
+        <div class="fn-divider"></div>
+      </div>
+    </div>
+
+    <div class="fn-bottom-wrap">
+      <div class="container">
+        <div class="fn-bottom">
+          <p class="fn-copy">&copy; 2026 <strong>Rizki Dwi Pangestu</strong>. All rights reserved.</p>
+          <p class="fn-made">Telling stories, one pixel at a time.</p>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <script>
+  (function(){
+    var cols = document.querySelectorAll('.fn-col');
+    if (!('IntersectionObserver' in window)) {
+      cols.forEach(function(c){ c.classList.add('fn-visible'); }); return;
+    }
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          var delay = parseInt(e.target.dataset.fnDelay) || 0;
+          setTimeout(function(){ e.target.classList.add('fn-visible'); }, delay);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    cols.forEach(function(c, i){ c.dataset.fnDelay = i * 100; obs.observe(c); });
+  })();
+  </script>
+
+  <script src="js/main.js"></script>
+  <script>
+    /* Particles */
+    (function() {
+      var hero = document.getElementById('wid-hero');
+      for (var p = 0; p < 12; p++) {
+        var el = document.createElement('div');
+        el.className = 'wid-particle';
+        var size = Math.random() * 90 + 30;
+        el.style.cssText =
+          'width:' + size + 'px;height:' + size + 'px;' +
+          'left:' + (Math.random() * 100) + '%;' +
+          'top:' + (Math.random() * 100) + '%;' +
+          'animation-duration:' + (Math.random() * 9 + 7) + 's;' +
+          'animation-delay:' + (Math.random() * 5) + 's;' +
+          'opacity:' + (Math.random() * 0.35 + 0.08) + ';';
+        hero.appendChild(el);
+      }
+    })();
+
+    /* Card stagger */
+    (function() {
+      var cards = document.querySelectorAll('.wid-card');
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            var delay = parseInt(e.target.dataset.widDelay) || 0;
+            setTimeout(function() { e.target.classList.add('wid-in'); }, delay);
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.06 });
+      cards.forEach(function(card, i) {
+        card.dataset.widDelay = i * 90;
+        obs.observe(card);
+      });
+    })();
+
+    /* Scroll reveal + heading underline */
+    var revealObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('wid-in-rev');
+          var h = e.target.querySelector('.wid-sec-heading') ||
+                  (e.target.classList.contains('wid-sec-heading') ? e.target : null);
+          if (h) setTimeout(function() { h.classList.add('line-on'); }, 200);
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px 50px 0px' });
+    document.querySelectorAll('.wid-reveal').forEach(function(el) { revealObs.observe(el); });
+
+    var headingObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          setTimeout(function() { e.target.classList.add('line-on'); }, 200);
+          headingObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.wid-sec-heading').forEach(function(h) { headingObs.observe(h); });
+  </script>
+</body>
+</html>
