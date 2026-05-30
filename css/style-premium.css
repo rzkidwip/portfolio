@@ -1,0 +1,923 @@
+/* ================================================================
+   STYLE PREMIUM — Rizki Dwi Pangestu Portfolio
+   Manrope + Inter typography system
+================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ----------------------------------------------------------------
+   VARIABLES OVERRIDE
+---------------------------------------------------------------- */
+:root {
+  --y:           #1287c1;
+  --y-dark:      #0f6fa3;
+  --y-soft:      rgba(18,135,193,0.10);
+  --y-glow:      0 8px 30px rgba(18,135,193,0.22);
+  --black:       #0F172A;
+  --text:        #0F172A;
+  --muted:       #475569;
+  --light:       #94A3B8;
+  --bg:          #FFFFFF;
+  --bg2:         #F8FAFC;
+  --bg3:         #F1F5F9;
+  --border:      #E2E8F0;
+  --shadow:      0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+  --shadow-lg:   0 8px 30px rgba(18,135,193,0.12);
+  --r:           12px;
+  --rl:          16px;
+  --tr:          all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ----------------------------------------------------------------
+   SCROLLBAR + SELECTION
+---------------------------------------------------------------- */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: #F1F5F9; }
+::-webkit-scrollbar-thumb { background: #1287c1; border-radius: 3px; }
+::selection { background: #1287c1; color: #fff; }
+
+/* ----------------------------------------------------------------
+   GLOBAL TYPOGRAPHY
+---------------------------------------------------------------- */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  color: #0F172A;
+  line-height: 1.7;
+}
+
+/* All headings → Manrope */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Manrope', sans-serif;
+}
+h1 { font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-weight: 700; letter-spacing: -0.01em; }
+h3 { font-weight: 600; }
+
+p, li { font-weight: 400; line-height: 1.7; }
+
+/* Named heading classes → Manrope */
+.cover-big, .cover-name,
+.hv2-name, .hv2-title,
+.ab-name, .ab-section-heading,
+.section-heading,
+.resume-title,
+.arts-title, .arts-heading,
+.exp-heading,
+.tl-company, .ls-position,
+.p-company,
+.fn-cta-title,
+.wid-title, .wid-sec-heading, .wid-cta-title,
+.ctk-heading,
+.ab-comp-title,
+.service-title,
+.writing-title, .video-title,
+.rs-item-title {
+  font-family: 'Manrope', sans-serif;
+}
+
+/* Named label / body classes → Inter */
+.section-eyebrow, .ab-section-eyebrow,
+.ctk-eyebrow, .ab-eyebrow,
+.wid-sec-eyebrow, .wid-eyebrow,
+.exp-label, .cover-tag,
+.hv2-greeting, .hv2-bio, .hv2-findme-label,
+.ab-role, .ab-bio, .ab-section-sub,
+.ab-stat-l, .ab-badge,
+.ab-comp-desc,
+.tl-type, .tl-role, .tl-meta,
+.ls-stat-label, .ls-type-badge, .ls-org-name, .ls-org-period,
+.ls-bullets li,
+.p-label, .p-desc, .p-cat, .p-tool,
+.skill-pill, .ab-skill-pill,
+.wid-tag, .wid-subtitle, .wid-sec-sub,
+.wid-card-desc, .wid-cta-sub,
+.wid-btn-primary, .wid-btn-ghost,
+.ctk-pill, .ctk-cat-name,
+.fn-logo, .fn-heading, .fn-links a,
+.fn-contact-list li, .fn-copy, .fn-made,
+.fn-cta-sub, .fn-cta-btn-primary, .fn-cta-btn-ghost,
+.resume-subtitle, .arts-subtitle,
+.writing-cat, .writing-excerpt, .video-cat, .video-meta,
+.cover-role, .cover-quote,
+.service-desc,
+.f-btn, .btn, .btn-hello,
+.nav-links a {
+  font-family: 'Inter', sans-serif;
+}
+
+/* ----------------------------------------------------------------
+   NAVBAR
+---------------------------------------------------------------- */
+.navbar.scrolled {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.nav-logo {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+}
+
+.nav-links a {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #475569;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: #1287c1;
+  font-weight: 600;
+}
+
+.btn-hello {
+  background: #1287c1;
+  border-color: #1287c1;
+  border-radius: 50px;
+  padding: 10px 24px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #fff;
+}
+.btn-hello:hover {
+  background: #0f6fa3;
+  border-color: #0f6fa3;
+  box-shadow: 0 8px 20px rgba(18,135,193,0.30);
+  transform: translateY(-1px);
+}
+.btn-hello svg { color: #fff; }
+
+.nav-search {
+  background: #F8FAFC;
+  border: 1.5px solid #E2E8F0;
+}
+.nav-search input { font-family: 'Inter', sans-serif; }
+
+/* ----------------------------------------------------------------
+   HERO SECTIONS
+---------------------------------------------------------------- */
+/* Dot texture: ab-hero */
+.ab-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+}
+/* ensure .ab-hero children above the dots */
+.ab-hero .container { position: relative; z-index: 1; }
+
+/* Dot texture: wid-hero */
+.wid-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+/* hero-v2 on index — add dots as extra background layer */
+.hero-v2 {
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px),
+    radial-gradient(ellipse 520px 440px at 90% 12%, rgba(0,210,245,0.32) 0%, transparent 58%),
+    radial-gradient(ellipse 480px 400px at 6% 85%, rgba(0,220,235,0.26) 0%, transparent 55%),
+    radial-gradient(ellipse 380px 320px at 52% 52%, rgba(20,165,220,0.15) 0%, transparent 62%),
+    linear-gradient(148deg, #1287c1 0%, #0e6fa3 42%, #0A1628 100%);
+  background-size: 28px 28px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+}
+
+/* Badge style in heroes */
+.hv2-role,
+.ab-badge,
+.wid-badge {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 50px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+/* ----------------------------------------------------------------
+   SECTION TITLES (global)
+---------------------------------------------------------------- */
+.section-eyebrow,
+.ab-section-eyebrow,
+.exp-label,
+.ctk-eyebrow,
+.wid-sec-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: #1287c1;
+}
+
+/* Decorative underline on .section-heading */
+.section-heading {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  color: #0F172A;
+  letter-spacing: -0.01em;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 16px;
+}
+.section-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 48px; height: 3px;
+  background: #1287c1;
+  border-radius: 2px;
+}
+
+/* ----------------------------------------------------------------
+   BUTTONS — global
+---------------------------------------------------------------- */
+.btn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: 50px;
+  padding: 12px 28px;
+  transition: all 0.25s ease;
+}
+.btn-primary {
+  background: #1287c1;
+  color: #fff;
+  border-color: #1287c1;
+}
+.btn-primary:hover {
+  background: #0f6fa3;
+  border-color: #0f6fa3;
+  box-shadow: 0 8px 20px rgba(18,135,193,0.30);
+  transform: translateY(-1px);
+}
+.btn-ghost {
+  color: #475569;
+  border-color: #E2E8F0;
+}
+.btn-ghost:hover {
+  border-color: #1287c1;
+  color: #1287c1;
+  background: transparent;
+}
+
+/* Hero white buttons */
+.hero-v2 .btn-primary {
+  background: #fff;
+  color: #1287c1;
+  border-color: #fff;
+}
+.hero-v2 .btn-primary:hover {
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 8px 20px rgba(255,255,255,0.22);
+  transform: translateY(-1px);
+}
+.hero-v2 .btn-ghost {
+  color: rgba(255,255,255,0.88);
+  border: 2px solid rgba(255,255,255,0.6);
+  background: transparent;
+}
+.hero-v2 .btn-ghost:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: #fff;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* ----------------------------------------------------------------
+   CARDS — unified style
+---------------------------------------------------------------- */
+.tl-card,
+.ach-card,
+.service-card,
+.writing-card,
+.video-card,
+.wid-card,
+.ctk-card {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.tl-card:hover,
+.ach-card:hover,
+.service-card:hover,
+.writing-card:hover,
+.video-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(18,135,193,0.12);
+  border-color: rgba(18,135,193,0.3);
+}
+
+/* Project cards */
+.p-card {
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  background: #F8FAFC;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+}
+.p-card:hover {
+  border-color: rgba(18,135,193,0.3);
+  box-shadow: 0 8px 30px rgba(18,135,193,0.12);
+  transform: translateY(-4px);
+}
+
+/* Leadership cards */
+.ls-card {
+  background: linear-gradient(160deg, #ffffff 0%, #F8FAFC 100%);
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.ls-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(18,135,193,0.12);
+  border-color: rgba(18,135,193,0.3);
+}
+
+/* ----------------------------------------------------------------
+   BADGES & TAGS
+---------------------------------------------------------------- */
+/* Category pills */
+.p-cat {
+  background: #EBF5FF;
+  color: #1287c1;
+  border-radius: 50px;
+  border: 1px solid rgba(18,135,193,0.15);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.8125rem;
+}
+
+/* Tool pills */
+.p-tool {
+  background: #F8FAFC;
+  color: #475569;
+  border: 1px solid #E2E8F0;
+  border-radius: 50px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+
+/* Skill pills */
+.skill-pill {
+  background: #F8FAFC;
+  color: #475569;
+  border: 1px solid #E2E8F0;
+  border-radius: 50px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  padding: 4px 14px;
+  transition: all 0.25s ease;
+}
+.skill-pill:hover {
+  background: #EBF5FF;
+  color: #1287c1;
+  border-color: rgba(18,135,193,0.3);
+  transform: translateY(-1px);
+}
+
+/* Status badges */
+.tl-type-full {
+  background: #DCFCE7;
+  color: #166534;
+  border: 1px solid #BBF7D0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+.tl-type-intern {
+  background: #FEF3C7;
+  color: #92400E;
+  border: 1px solid #FDE68A;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+.tl-type-part {
+  background: #EDE9FE;
+  color: #5B21B6;
+  border: 1px solid #DDD6FE;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+
+/* Leadership type badge */
+.ls-type-badge {
+  background: #EBF5FF;
+  color: #0f6fa3;
+  border: 1px solid rgba(18,135,193,0.18);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+}
+
+/* ----------------------------------------------------------------
+   TIMELINE — Resume
+---------------------------------------------------------------- */
+.timeline::before {
+  width: 2px;
+  background: linear-gradient(to bottom, #1287c1 0%, rgba(18,135,193,0.08) 100%);
+}
+.tl-dot {
+  width: 12px;
+  height: 12px;
+  background: #1287c1;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 3px #EBF5FF;
+}
+
+/* ----------------------------------------------------------------
+   SECTION BACKGROUNDS
+---------------------------------------------------------------- */
+.ab-comp-section,
+.ab-skills-section,
+.ctk-section,
+.achievements-section,
+.exp-section {
+  background: #F8FAFC;
+}
+
+.ab-ach-section,
+.wid-section {
+  background: #FFFFFF;
+}
+
+/* ----------------------------------------------------------------
+   FILTER BUTTONS (Artsworks)
+---------------------------------------------------------------- */
+.f-btn {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  color: #475569;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border-radius: 50px;
+}
+.f-btn:hover {
+  border-color: #1287c1;
+  color: #1287c1;
+  background: #EBF5FF;
+}
+.f-btn.active {
+  background: #1287c1;
+  color: #fff;
+  border-color: #1287c1;
+}
+
+/* ----------------------------------------------------------------
+   COMPANY LOGOS STRIP
+---------------------------------------------------------------- */
+.company-logo-item {
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.company-logo-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  border-color: rgba(18,135,193,0.25);
+}
+
+/* ----------------------------------------------------------------
+   SOCIAL BUTTONS (Cover page)
+---------------------------------------------------------------- */
+.social-btn {
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.social-btn:hover {
+  background: #1287c1;
+  border-color: #1287c1;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(18,135,193,0.30);
+  transform: translateY(-3px);
+}
+
+/* ----------------------------------------------------------------
+   COVER PAGE
+---------------------------------------------------------------- */
+.cover-big {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.cover-name {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+}
+.cover-tag {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+.cover-quote {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  border-left: 3px solid #1287c1;
+}
+
+/* ----------------------------------------------------------------
+   INDEX PAGE — Hero v2
+---------------------------------------------------------------- */
+.hv2-name {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.hv2-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+}
+.hv2-bio {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+}
+.hv2-greeting {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+.hv2-findme-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+.hv2-social {
+  border: 1.5px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.12);
+  transition: all 0.25s ease;
+}
+.hv2-social:hover {
+  background: #fff;
+  border-color: #fff;
+  color: #1287c1;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255,255,255,0.18);
+}
+
+/* Leadership stats bar */
+.ls-stats-bar {
+  background: linear-gradient(135deg, #1287c1 0%, #0A1628 100%);
+  border-radius: 16px;
+}
+.ls-stat-num {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+}
+.ls-stat-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+/* ----------------------------------------------------------------
+   ABOUT PAGE
+---------------------------------------------------------------- */
+.ab-name {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.ab-role,
+.ab-bio {
+  font-family: 'Inter', sans-serif;
+}
+.ab-bio { line-height: 1.7; }
+.ab-section-heading {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.ab-section-sub {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #475569;
+  line-height: 1.7;
+}
+.ab-stat-n {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+}
+.ab-stat-l {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+.ab-comp-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+}
+.ab-comp-desc {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+}
+.ab-ach-name,
+.ab-ach-badge {
+  font-family: 'Inter', sans-serif;
+}
+.ab-ach-name { font-weight: 600; }
+.ab-ach-badge { font-weight: 700; }
+.ab-skill-pill {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.8125rem;
+}
+.ab-skills-row-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+/* Toolkit (about.html) */
+.ctk-heading {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.ctk-card {
+  border-radius: 16px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+}
+.ctk-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.10); }
+.ctk-cat-name {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+}
+.ctk-pill {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  border: 1.5px solid #E2E8F0;
+}
+
+/* ----------------------------------------------------------------
+   RESUME PAGE
+---------------------------------------------------------------- */
+.resume-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.resume-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #475569;
+}
+.rs-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  color: #1287c1;
+  border-bottom: 2px solid #1287c1;
+}
+.rs-dot { background: #1287c1; }
+.rs-contact-icon { background: #1287c1; }
+.tl-company {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+}
+.tl-role,
+.tl-meta {
+  font-family: 'Inter', sans-serif;
+}
+.tl-role { color: #475569; }
+.tl-meta { color: #94A3B8; }
+.tl-type {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+.tl-bullets li {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #475569;
+  line-height: 1.65;
+}
+.companies-strip {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+}
+.companies-strip-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #94A3B8;
+}
+
+/* ----------------------------------------------------------------
+   ARTSWORKS PAGE
+---------------------------------------------------------------- */
+.arts-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.arts-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #475569;
+}
+.p-company {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+}
+.p-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+.p-desc {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+/* ----------------------------------------------------------------
+   SERVICES / WHAT I DO PAGE
+---------------------------------------------------------------- */
+.wid-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.wid-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+}
+.wid-sec-heading {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.wid-sec-sub {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #475569;
+}
+.wid-card-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+}
+.wid-card-desc {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #475569;
+}
+.wid-tag {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  background: #F8FAFC;
+  color: #475569;
+  border: 1px solid #E2E8F0;
+}
+.wid-card:hover .wid-tag {
+  background: #EBF5FF;
+  color: #1287c1;
+  border-color: transparent;
+}
+.wid-cta-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.wid-cta-sub {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+}
+.wid-btn-primary,
+.wid-btn-ghost {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+}
+
+/* ----------------------------------------------------------------
+   WRITING & VIDEOS PAGES
+---------------------------------------------------------------- */
+.writing-title,
+.video-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+}
+.writing-cat,
+.video-cat {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+.writing-excerpt,
+.video-meta {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #475569;
+}
+.writing-read {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: #1287c1;
+}
+
+/* ----------------------------------------------------------------
+   FOOTER
+---------------------------------------------------------------- */
+.fn-cta {
+  background: linear-gradient(135deg, #1287c1 0%, #0A1628 100%);
+  padding: 72px 0;
+}
+.fn-cta-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.fn-cta-sub {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+.fn-cta-btn-primary,
+.fn-cta-btn-ghost {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+}
+.fn-main { background: #0F172A; }
+.fn-logo {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+}
+.fn-heading {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  color: #1287c1;
+}
+.fn-links a {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: #94A3B8;
+}
+.fn-links a:hover { color: #fff; padding-left: 6px; }
+.fn-contact-list li {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: #94A3B8;
+}
+.fn-copy,
+.fn-made {
+  font-family: 'Inter', sans-serif;
+  color: #475569;
+}
+.fn-copy strong { color: #64748B; }
+.fn-bottom-wrap { background: #0A1628; }
+
+/* ----------------------------------------------------------------
+   LEADERSHIP SECTION
+---------------------------------------------------------------- */
+.ls-position {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  color: #0F172A;
+}
+.ls-org-name { color: #1287c1; font-weight: 700; }
+.ls-org-period,
+.ls-bullets li {
+  font-family: 'Inter', sans-serif;
+}
+.ls-cert-btn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  border-color: rgba(18,135,193,0.30);
+  color: #1287c1;
+  border-radius: 50px;
+}
+.ls-cert-btn:hover {
+  background: #1287c1;
+  border-color: #1287c1;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(18,135,193,0.30);
+  transform: translateY(-1px);
+}
