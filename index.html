@@ -15,29 +15,29 @@
   #bgCanvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;}
   .mhero-content{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;text-align:center;padding:24px 28px;max-width:600px;margin:0 auto;width:100%;}
   .hero-nav .nav-logo{font-weight:800!important;letter-spacing:.12em!important;text-transform:uppercase;}
-  .mhero-photo-wrap{margin-bottom:16px;}
-  .mhero-ring-outer{width:130px;height:130px;border-radius:50%;border:1.5px solid rgba(18,135,193,.25);display:flex;align-items:center;justify-content:center;}
-  .mhero-ring-inner{width:114px;height:114px;border-radius:50%;border:2px solid rgba(18,135,193,.5);background:rgba(18,135,193,.14);display:flex;align-items:center;justify-content:center;animation:pulse-ring 3s ease-in-out infinite;}
-  .mhero-photo{width:100px;height:100px;border-radius:50%;object-fit:cover;display:block;}
-  .mhero-greeting{font-size:15px;font-weight:600;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase;text-align:center;margin:0 0 12px;}
-  .mhero-name{margin-bottom:12px;line-height:1.15;}
-  .mhero-name-plain{display:block;font-size:42px;font-weight:800;color:#fff;}
-  .mhero-name-grad{display:block;font-size:42px;font-weight:800;background:linear-gradient(90deg,#1287c1,#38c6f5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-  .mhero-subtitle{font-size:14px;font-weight:600;color:rgba(255,255,255,.55);margin:0 0 22px;min-height:20px;}
+  .mhero-photo-wrap{margin-bottom:20px;}
+  .mhero-ring-outer{width:160px;height:160px;border-radius:50%;border:1.5px solid rgba(18,135,193,.25);display:flex;align-items:center;justify-content:center;}
+  .mhero-ring-inner{width:140px;height:140px;border-radius:50%;border:2px solid rgba(18,135,193,.5);background:rgba(18,135,193,.14);display:flex;align-items:center;justify-content:center;animation:pulse-ring 3s ease-in-out infinite;}
+  .mhero-photo{width:124px;height:124px;border-radius:50%;object-fit:cover;display:block;}
+  .mhero-greeting{font-size:16px;font-weight:600;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase;text-align:center;margin:0 0 10px;}
+  .mhero-name{margin-bottom:14px;line-height:1.15;}
+  .mhero-name-plain{display:block;font-size:52px;font-weight:800;color:#fff;}
+  .mhero-name-grad{display:block;font-size:52px;font-weight:800;background:linear-gradient(90deg,#1287c1,#38c6f5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .mhero-subtitle{font-size:16px;font-weight:600;color:rgba(255,255,255,.55);margin:0 0 28px;min-height:22px;}
   #cyclingText{border-right:1.5px solid rgba(18,135,193,.7);padding-right:2px;animation:blink-cursor .7s step-end infinite;}
   @keyframes blink-cursor{0%,100%{border-color:rgba(18,135,193,.7)}50%{border-color:transparent}}
-  .mhero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:100%;margin-bottom:16px;}
-  .mhero-stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px 8px;display:flex;flex-direction:column;align-items:center;gap:3px;}
+  .mhero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;width:100%;max-width:520px;margin-bottom:16px;}
+  .mhero-stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:18px 10px;display:flex;flex-direction:column;align-items:center;gap:4px;}
   .mhero-stat-accent{background:rgba(18,135,193,.18)!important;border-color:rgba(18,135,193,.35)!important;}
   .mhero-stat-accent .mhero-stat-num{color:#5ec8f5!important;}
-  .mhero-stat-num{font-size:20px;font-weight:800;color:#fff;line-height:1;}
-  .mhero-stat-label{font-size:9px;font-weight:600;color:rgba(255,255,255,.45);letter-spacing:.03em;}
-  .mhero-ctas{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;margin-bottom:20px;}
-  .mhero-btn-primary,.mhero-btn-ghost{padding:14px 0;border-radius:14px;font-size:13px;font-weight:700;text-align:center;text-decoration:none;font-family:'Manrope',sans-serif;display:block;transition:opacity .2s;}
+  .mhero-stat-num{font-size:24px;font-weight:800;color:#fff;line-height:1;}
+  .mhero-stat-label{font-size:10px;font-weight:600;color:rgba(255,255,255,.45);letter-spacing:.03em;}
+  .mhero-ctas{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%;max-width:520px;margin-bottom:20px;}
+  .mhero-btn-primary,.mhero-btn-ghost{padding:16px 0;border-radius:16px;font-size:14px;font-weight:700;text-align:center;text-decoration:none;font-family:'Manrope',sans-serif;display:block;transition:opacity .2s;}
   .mhero-btn-primary{background:#1287c1;color:#fff;}
   .mhero-btn-ghost{background:rgba(255,255,255,.05);color:#fff;border:1px solid rgba(255,255,255,.12);}
-  .mhero-socials{display:flex;gap:12px;margin-bottom:28px;}
-  .mhero-social-icon{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.75);text-decoration:none;transition:background .2s,border-color .2s;flex-shrink:0;}
+  .mhero-socials{display:flex;gap:14px;margin-top:24px;margin-bottom:28px;}
+  .mhero-social-icon{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.75);text-decoration:none;transition:background .2s,border-color .2s;flex-shrink:0;}
   .mhero-social-icon:hover{background:rgba(18,135,193,.2);border-color:rgba(18,135,193,.4);}
   .mhero-scroll{width:26px;height:26px;border-radius:50%;background:rgba(18,135,193,.25);border:1px solid rgba(18,135,193,.4);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.75);animation:bounce 2s ease-in-out infinite;}
   @keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
@@ -45,8 +45,9 @@
   @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
   @media(max-width:640px){
     .mhero-content{padding:24px 28px;}
-    .mhero-name-plain,.mhero-name-grad{font-size:34px;}
-    .mhero-subtitle{font-size:12px;}
+    .mhero-name-plain,.mhero-name-grad{font-size:38px;}
+    .mhero-subtitle{font-size:13px;}
+    .mhero-stats,.mhero-ctas{max-width:100%;}
   }
   </style>
 </head>
