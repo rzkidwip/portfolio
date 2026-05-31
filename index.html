@@ -11,20 +11,21 @@
   <link rel="stylesheet" href="css/style-premium.css" />
   <style>
   /* ===== DARK HERO — mobile-first ===== */
-  .mhero{position:relative;background:#050f1a;min-height:100vh;overflow:hidden;font-family:'Manrope',sans-serif;display:flex;flex-direction:column;}
+  .mhero{position:relative;background:#050f1a;min-height:100vh;overflow:hidden;font-family:'Manrope',sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;}
   #bgCanvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;}
-  .mhero-content{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;text-align:center;padding:90px 24px 56px;max-width:480px;margin:0 auto;width:100%;}
+  .mhero-content{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;text-align:center;padding:24px;max-width:480px;margin:0 auto;width:100%;}
   .hero-nav .nav-logo{font-weight:800!important;letter-spacing:.12em!important;text-transform:uppercase;}
   .mhero-photo-wrap{margin-bottom:14px;}
   .mhero-ring-outer{width:104px;height:104px;border-radius:50%;border:1.5px solid rgba(18,135,193,.25);display:flex;align-items:center;justify-content:center;}
   .mhero-ring-inner{width:90px;height:90px;border-radius:50%;border:2px solid rgba(18,135,193,.5);background:rgba(18,135,193,.14);display:flex;align-items:center;justify-content:center;animation:pulse-ring 3s ease-in-out infinite;}
   .mhero-photo{width:80px;height:80px;border-radius:50%;object-fit:cover;display:block;}
-  .mhero-badge{display:inline-block;background:rgba(18,135,193,.2);border:1px solid rgba(18,135,193,.4);border-radius:20px;padding:5px 14px;font-size:8.5px;font-weight:800;color:#6dd4f8;letter-spacing:.07em;text-transform:uppercase;margin-bottom:12px;}
+  .mhero-greeting{font-size:13px;font-weight:600;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase;text-align:center;margin:0 0 12px;}
   .mhero-name{margin-bottom:10px;line-height:1.2;}
   .mhero-name-plain{display:block;font-size:26px;font-weight:800;color:#fff;}
   .mhero-name-grad{display:block;font-size:26px;font-weight:800;background:linear-gradient(90deg,#1287c1,#38c6f5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
   .mhero-subtitle{font-size:10px;font-weight:600;color:rgba(255,255,255,.55);margin:0 0 20px;min-height:16px;}
-  #cyclingText{border-right:1.5px solid rgba(18,135,193,.7);padding-right:2px;}
+  #cyclingText{border-right:1.5px solid rgba(18,135,193,.7);padding-right:2px;animation:blink-cursor .7s step-end infinite;}
+  @keyframes blink-cursor{0%,100%{border-color:rgba(18,135,193,.7)}50%{border-color:transparent}}
   .mhero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;width:100%;max-width:320px;margin-bottom:14px;}
   .mhero-stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:9px 4px;display:flex;flex-direction:column;align-items:center;gap:2px;}
   .mhero-stat-accent{background:rgba(18,135,193,.18)!important;border-color:rgba(18,135,193,.35)!important;}
@@ -57,22 +58,6 @@
         <li><a href="services.html">Expertise</a></li>
         <li><a href="artsworks.html">Artsworks</a></li>
       </ul>
-      <div class="nav-right">
-        <div class="nav-search">
-          <input type="search" id="search-input" placeholder="Search my project.." autocomplete="off" />
-          <button onclick="goSearch()" aria-label="Search">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-          </button>
-        </div>
-        <a href="about.html" class="btn-hello">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-          </svg>
-          Hello!
-        </a>
-      </div>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -93,10 +78,8 @@
         </div>
       </div>
 
-      <!-- Badge pill -->
-      <div class="mhero-badge" style="animation:fadeup 0.6s ease 0.8s both">
-        CORPORATE COMM &amp; PR SPECIALIST
-      </div>
+      <!-- Greeting -->
+      <p class="mhero-greeting" style="animation:fadeup 0.6s ease 0.8s both">Hi, I'm</p>
 
       <!-- Name -->
       <div class="mhero-name" style="animation:fadeup 0.6s ease 0.9s both">
@@ -504,25 +487,17 @@
     animate();
   })();
 
-  /* ===== CYCLING TYPING ANIMATION ===== */
+  /* ===== TYPING ANIMATION — single shot ===== */
   (function(){
-    const phrases=['Corporate Communication','Employee Relations','Public Relations'];
+    const TEXT='Corporate Communication, Employee Relations & Public Relations';
     const el=document.getElementById('cyclingText');
     if(!el) return;
-    let pi=0, ci=0, del=false;
-    function tick(){
-      const ph=phrases[pi];
-      if(!del){
-        el.textContent=ph.slice(0,++ci);
-        if(ci===ph.length){ setTimeout(()=>{del=true;tick();},28*60); return; }
-        setTimeout(tick,75);
-      } else {
-        el.textContent=ph.slice(0,--ci);
-        if(ci===0){ del=false; pi=(pi+1)%phrases.length; setTimeout(tick,380); return; }
-        setTimeout(tick,40);
-      }
+    let i=0;
+    function type(){
+      if(i<TEXT.length){ el.textContent=TEXT.slice(0,++i); setTimeout(type,55); }
+      else { el.style.borderRight='none'; el.style.animation='none'; }
     }
-    setTimeout(tick,1200);
+    setTimeout(type,800);
   })();
   </script>
 </body>
