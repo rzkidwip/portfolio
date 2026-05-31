@@ -6,9 +6,43 @@
   <title>Rizki Dwi Pangestu — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/style-premium.css" />
+  <style>
+  /* ===== DARK HERO — mobile-first ===== */
+  .mhero{position:relative;background:#050f1a;min-height:100vh;overflow:hidden;font-family:'Manrope',sans-serif;display:flex;flex-direction:column;}
+  #bgCanvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;}
+  .mhero-content{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;text-align:center;padding:90px 24px 56px;max-width:480px;margin:0 auto;width:100%;}
+  .hero-nav .nav-logo{font-weight:800!important;letter-spacing:.12em!important;text-transform:uppercase;}
+  .mhero-photo-wrap{margin-bottom:14px;}
+  .mhero-ring-outer{width:104px;height:104px;border-radius:50%;border:1.5px solid rgba(18,135,193,.25);display:flex;align-items:center;justify-content:center;}
+  .mhero-ring-inner{width:90px;height:90px;border-radius:50%;border:2px solid rgba(18,135,193,.5);background:rgba(18,135,193,.14);display:flex;align-items:center;justify-content:center;animation:pulse-ring 3s ease-in-out infinite;}
+  .mhero-photo{width:80px;height:80px;border-radius:50%;object-fit:cover;display:block;}
+  .mhero-badge{display:inline-block;background:rgba(18,135,193,.2);border:1px solid rgba(18,135,193,.4);border-radius:20px;padding:5px 14px;font-size:8.5px;font-weight:800;color:#6dd4f8;letter-spacing:.07em;text-transform:uppercase;margin-bottom:12px;}
+  .mhero-name{margin-bottom:10px;line-height:1.2;}
+  .mhero-name-plain{display:block;font-size:26px;font-weight:800;color:#fff;}
+  .mhero-name-grad{display:block;font-size:26px;font-weight:800;background:linear-gradient(90deg,#1287c1,#38c6f5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .mhero-subtitle{font-size:10px;font-weight:600;color:rgba(255,255,255,.55);margin:0 0 20px;min-height:16px;}
+  #cyclingText{border-right:1.5px solid rgba(18,135,193,.7);padding-right:2px;}
+  .mhero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;width:100%;max-width:320px;margin-bottom:14px;}
+  .mhero-stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:9px 4px;display:flex;flex-direction:column;align-items:center;gap:2px;}
+  .mhero-stat-accent{background:rgba(18,135,193,.18)!important;border-color:rgba(18,135,193,.35)!important;}
+  .mhero-stat-accent .mhero-stat-num{color:#5ec8f5!important;}
+  .mhero-stat-num{font-size:15px;font-weight:800;color:#fff;line-height:1;}
+  .mhero-stat-label{font-size:9px;font-weight:600;color:rgba(255,255,255,.45);letter-spacing:.03em;}
+  .mhero-ctas{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:320px;margin-bottom:18px;}
+  .mhero-btn-primary,.mhero-btn-ghost{padding:11px 0;border-radius:14px;font-size:12px;font-weight:700;text-align:center;text-decoration:none;font-family:'Manrope',sans-serif;display:block;transition:opacity .2s;}
+  .mhero-btn-primary{background:#1287c1;color:#fff;}
+  .mhero-btn-ghost{background:rgba(255,255,255,.05);color:#fff;border:1px solid rgba(255,255,255,.12);}
+  .mhero-socials{display:flex;gap:10px;margin-bottom:28px;}
+  .mhero-social-icon{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.75);text-decoration:none;transition:background .2s,border-color .2s;flex-shrink:0;}
+  .mhero-social-icon:hover{background:rgba(18,135,193,.2);border-color:rgba(18,135,193,.4);}
+  .mhero-scroll{width:26px;height:26px;border-radius:50%;background:rgba(18,135,193,.25);border:1px solid rgba(18,135,193,.4);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.75);animation:bounce 2s ease-in-out infinite;}
+  @keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes pulse-ring{0%,100%{box-shadow:0 0 0 0 rgba(18,135,193,0)}50%{box-shadow:0 0 0 8px rgba(18,135,193,.15),0 0 20px rgba(18,135,193,.2)}}
+  @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+  </style>
 </head>
 <body>
 
@@ -46,90 +80,89 @@
   </nav>
 
   <!-- ===== HERO ===== -->
-  <main class="hero-v2">
-    <div class="hv2-inner">
+  <section class="mhero" id="mhero">
+    <canvas id="bgCanvas"></canvas>
+    <div class="mhero-content">
 
-      <!-- LEFT: teks -->
-      <div class="hv2-left">
-
-        <div class="hv2-greeting">Hello! &nbsp;👋</div>
-
-        <h1 class="hv2-title">
-          I am
-          <span class="hv2-name">Rizki Dwi<br>Pangestu</span>
-        </h1>
-
-        <span class="hv2-role">
-          <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;color:var(--y-dark);flex-shrink:0">
-            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
-          </svg>
-          <span id="hero-typing-text"></span><span id="hero-typing-cursor" class="typing-cursor">|</span>
-        </span>
-
-        <div class="hv2-divider"></div>
-
-        <p class="hv2-bio">
-          I craft strategic narratives that build brands, engage people, and drive
-          measurable outcomes — from internal communication campaigns and employer
-          branding to corporate publications, events, and digital content creation.
-        </p>
-
-        <div class="hv2-ctas">
-          <a href="artsworks.html" class="btn btn-primary">
-            Explore My Works
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px">
-              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-            </svg>
-          </a>
-          <a href="resume.html" class="btn btn-ghost">My Resume</a>
-        </div>
-
-        <div class="hv2-findme">
-          <span class="hv2-findme-label">Find Me On</span>
-          <div class="hv2-socials">
-
-            <a href="https://linkedin.com/in/rizkidwipangestu" target="_blank" class="hv2-social" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-              </svg>
-            </a>
-
-            <a href="https://instagram.com/rizkidwipangestu" target="_blank" class="hv2-social" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
-              </svg>
-            </a>
-
-            <a href="https://wa.me/6289537921710" target="_blank" class="hv2-social" aria-label="WhatsApp">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
-              </svg>
-            </a>
-
-            <a href="mailto:rdpangestu8@gmail.com" class="hv2-social" aria-label="Email">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
-              </svg>
-            </a>
-
+      <!-- Profile photo with rings -->
+      <div class="mhero-photo-wrap" style="animation:fadeup 0.6s ease 0.7s both">
+        <div class="mhero-ring-outer">
+          <div class="mhero-ring-inner">
+            <img src="Rizki Photoo.png" alt="Rizki Dwi Pangestu" class="mhero-photo" />
           </div>
         </div>
+      </div>
 
-      </div><!-- /hv2-left -->
+      <!-- Badge pill -->
+      <div class="mhero-badge" style="animation:fadeup 0.6s ease 0.8s both">
+        CORPORATE COMM &amp; PR SPECIALIST
+      </div>
 
-      <!-- RIGHT: foto profil -->
-      <div class="hv2-right">
-        <div class="hv2-deco-ring"></div>
-        <img
-          src="Rizki Photoo.png"
-          alt="Rizki Dwi Pangestu"
-          class="hv2-photo"
-        />
-      </div><!-- /hv2-right -->
+      <!-- Name -->
+      <div class="mhero-name" style="animation:fadeup 0.6s ease 0.9s both">
+        <span class="mhero-name-plain">Rizki Dwi</span>
+        <span class="mhero-name-grad">Pangestu</span>
+      </div>
 
-    </div><!-- /hv2-inner -->
+      <!-- Typing subtitle -->
+      <p class="mhero-subtitle" style="animation:fadeup 0.6s ease 1.0s both">
+        <span id="cyclingText"></span>
+      </p>
 
-  </main>
+      <!-- Stats row -->
+      <div class="mhero-stats" style="animation:fadeup 0.6s ease 1.1s both">
+        <div class="mhero-stat">
+          <span class="mhero-stat-num">6</span>
+          <span class="mhero-stat-label">Co.</span>
+        </div>
+        <div class="mhero-stat">
+          <span class="mhero-stat-num">20+</span>
+          <span class="mhero-stat-label">Proj.</span>
+        </div>
+        <div class="mhero-stat">
+          <span class="mhero-stat-num">4+</span>
+          <span class="mhero-stat-label">Yrs</span>
+        </div>
+        <div class="mhero-stat mhero-stat-accent">
+          <span class="mhero-stat-num">3.69</span>
+          <span class="mhero-stat-label">GPA</span>
+        </div>
+      </div>
+
+      <!-- CTA buttons -->
+      <div class="mhero-ctas" style="animation:fadeup 0.6s ease 1.2s both">
+        <a href="resume.html" class="mhero-btn-primary">View Resume</a>
+        <a href="artsworks.html" class="mhero-btn-ghost">My Works &#8594;</a>
+      </div>
+
+      <!-- Social icons -->
+      <div class="mhero-socials" style="animation:fadeup 0.6s ease 1.3s both">
+        <a href="https://linkedin.com/in/rizkidwipangestu" target="_blank" class="mhero-social-icon" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+        <a href="https://instagram.com/rizkidwipangestu" target="_blank" class="mhero-social-icon" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="mailto:rdpangestu8@gmail.com" class="mhero-social-icon" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="mhero-scroll">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </div>
+
+    </div>
+  </section>
 
   <!-- ===== LEADERSHIP EXPERIENCE ===== -->
   <section class="leadership-section" id="leadership">
@@ -377,23 +410,120 @@
 
   <script src="js/main.js"></script>
   <script>
-    (function () {
-      const FULL_TEXT = 'Corporate Communication, Employee Relations & Public Relations';
-      const el     = document.getElementById('hero-typing-text');
-      const cursor = document.getElementById('hero-typing-cursor');
-      let i = 0;
+  /* ===== CANVAS BACKGROUND ANIMATION ===== */
+  (function(){
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+    let orbs, mesh, parts;
 
-      function type() {
-        if (i < FULL_TEXT.length) {
-          el.textContent += FULL_TEXT[i++];
-          setTimeout(type, 55 + Math.random() * 35);
-        } else {
-          cursor.style.display = 'none';
+    function resize(){
+      const hero = document.getElementById('mhero');
+      canvas.width  = hero.offsetWidth  || window.innerWidth;
+      canvas.height = hero.offsetHeight || window.innerHeight;
+      initScene();
+    }
+
+    function initScene(){
+      const W = canvas.width, H = canvas.height;
+      orbs = [
+        {x:W*.20,y:H*.13,r:80, vx:.12, vy:.15, c:[18,135,193]},
+        {x:W*.78,y:H*.07,r:70, vx:-.14,vy:.18, c:[6,58,140]},
+        {x:W*.50,y:H*.38,r:90, vx:.16, vy:-.12,c:[12,90,170]},
+        {x:W*.12,y:H*.62,r:65, vx:.18, vy:.10, c:[18,135,193]},
+        {x:W*.82,y:H*.55,r:100,vx:-.10,vy:-.20,c:[6,58,140]},
+      ];
+      mesh = Array.from({length:10},()=>({
+        x:Math.random()*W, y:Math.random()*H,
+        vx:(Math.random()-.5)*.5, vy:(Math.random()-.5)*.5,
+      }));
+      parts = Array.from({length:28},()=>({
+        x:Math.random()*W, y:Math.random()*H,
+        r:.4+Math.random()*1.4,
+        vx:(Math.random()-.5)*.3, vy:(Math.random()-.5)*.3,
+        a:.3+Math.random()*.5,
+      }));
+    }
+
+    function drawOrb(o){
+      const g = ctx.createRadialGradient(o.x,o.y,0,o.x,o.y,o.r);
+      g.addColorStop(0,'rgba('+o.c.join(',')+',0.28)');
+      g.addColorStop(1,'rgba('+o.c.join(',')+',0)');
+      ctx.beginPath(); ctx.arc(o.x,o.y,o.r,0,Math.PI*2);
+      ctx.fillStyle=g; ctx.fill();
+    }
+
+    function animate(){
+      const W=canvas.width, H=canvas.height;
+      ctx.clearRect(0,0,W,H);
+
+      orbs.forEach(o=>{
+        o.x+=o.vx; o.y+=o.vy;
+        if(o.x-o.r<0||o.x+o.r>W) o.vx*=-1;
+        if(o.y-o.r<0||o.y+o.r>H) o.vy*=-1;
+        drawOrb(o);
+      });
+
+      mesh.forEach(p=>{
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<0||p.x>W) p.vx*=-1;
+        if(p.y<0||p.y>H) p.vy*=-1;
+      });
+      for(let i=0;i<mesh.length;i++){
+        for(let j=i+1;j<mesh.length;j++){
+          const dx=mesh[i].x-mesh[j].x, dy=mesh[i].y-mesh[j].y;
+          const d=Math.sqrt(dx*dx+dy*dy);
+          if(d<110){
+            const a=(1-d/110)*.4;
+            ctx.beginPath(); ctx.moveTo(mesh[i].x,mesh[i].y); ctx.lineTo(mesh[j].x,mesh[j].y);
+            ctx.strokeStyle='rgba(18,135,193,'+a+')'; ctx.lineWidth=.5; ctx.stroke();
+            for(let k=j+1;k<mesh.length;k++){
+              if(Math.hypot(mesh[i].x-mesh[k].x,mesh[i].y-mesh[k].y)<110&&
+                 Math.hypot(mesh[j].x-mesh[k].x,mesh[j].y-mesh[k].y)<110){
+                ctx.beginPath();
+                ctx.moveTo(mesh[i].x,mesh[i].y); ctx.lineTo(mesh[j].x,mesh[j].y); ctx.lineTo(mesh[k].x,mesh[k].y);
+                ctx.closePath(); ctx.fillStyle='rgba(18,135,193,'+(a*.35)+')'; ctx.fill();
+              }
+            }
+          }
         }
       }
 
-      setTimeout(type, 500);
-    })();
+      parts.forEach(p=>{
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<0||p.x>W) p.vx*=-1;
+        if(p.y<0||p.y>H) p.vy*=-1;
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle='rgba(94,200,245,'+p.a+')'; ctx.fill();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    animate();
+  })();
+
+  /* ===== CYCLING TYPING ANIMATION ===== */
+  (function(){
+    const phrases=['Corporate Communication','Employee Relations','Public Relations'];
+    const el=document.getElementById('cyclingText');
+    if(!el) return;
+    let pi=0, ci=0, del=false;
+    function tick(){
+      const ph=phrases[pi];
+      if(!del){
+        el.textContent=ph.slice(0,++ci);
+        if(ci===ph.length){ setTimeout(()=>{del=true;tick();},28*60); return; }
+        setTimeout(tick,75);
+      } else {
+        el.textContent=ph.slice(0,--ci);
+        if(ci===0){ del=false; pi=(pi+1)%phrases.length; setTimeout(tick,380); return; }
+        setTimeout(tick,40);
+      }
+    }
+    setTimeout(tick,1200);
+  })();
   </script>
 </body>
 </html>
