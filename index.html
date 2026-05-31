@@ -54,19 +54,20 @@
     .mhero-stats,.mhero-ctas{max-width:100%;}
   }
   @media(min-width:768px){
-    .mhero-content{flex-direction:row;align-items:center;justify-content:flex-start;gap:0;padding:0;max-width:none;}
-    .mhero-left{flex:1;padding-left:80px;align-items:flex-start;text-align:left;}
-    .mhero-right{display:none;}
-    .mhero-photo-abs{display:block;position:absolute;bottom:0;right:80px;height:75vh;width:auto;object-fit:contain;object-position:bottom;z-index:3;}
-    .mhero-greeting{font-size:16px;margin:0 0 8px;}
-    .mhero-name-plain,.mhero-name-grad{font-size:56px;}
-    .mhero-subtitle{font-size:15px;margin:0 0 24px;}
-    .mhero-stats{max-width:460px;gap:10px;}
-    .mhero-stat{padding:16px 8px;}
-    .mhero-stat-num{font-size:22px;}
-    .mhero-ctas{max-width:460px;}
-    .mhero-btn-primary,.mhero-btn-ghost{padding:14px 0;font-size:13px;}
-    .mhero-socials{margin-top:20px;}
+    .mhero-content{flex-direction:row;align-items:center;justify-content:space-between;gap:0;padding:80px 80px 0;max-width:none;min-height:100vh;}
+    .mhero-left{flex:1;align-items:flex-start;text-align:left;}
+    .mhero-right{display:flex;flex-shrink:0;align-items:flex-end;justify-content:flex-end;margin-bottom:0;}
+    .mhero-ring-d,.mhero-photo-glow{display:none;}
+    .mhero-photo-abs{display:block;height:90vh;width:auto;object-fit:contain;object-position:bottom;align-self:flex-end;margin-bottom:0;}
+    .mhero-greeting{font-size:18px;margin:0 0 10px;}
+    .mhero-name-plain,.mhero-name-grad{font-size:64px;}
+    .mhero-subtitle{font-size:16px;margin:0 0 28px;}
+    .mhero-stat-num{font-size:26px;}
+    .mhero-stat{padding:18px 10px;}
+    .mhero-stats{gap:12px;max-width:520px;}
+    .mhero-btn-primary,.mhero-btn-ghost{padding:16px 0;font-size:14px;}
+    .mhero-ctas{gap:14px;max-width:520px;}
+    .mhero-socials{margin-top:24px;}
   }
   </style>
 </head>
@@ -92,7 +93,6 @@
   <!-- ===== HERO ===== -->
   <section class="mhero" id="mhero">
     <canvas id="bgCanvas"></canvas>
-    <img src="Rizki Photoo.png" alt="Rizki Dwi Pangestu" class="mhero-photo-abs" />
     <div class="mhero-content">
 
       <!-- MOBILE: foto di atas / DESKTOP: sisi kanan -->
@@ -105,6 +105,7 @@
             </div>
           </div>
         </div>
+        <img src="Rizki Photoo.png" alt="Rizki Dwi Pangestu" class="mhero-photo-abs" />
       </div>
 
       <!-- MOBILE: teks di bawah / DESKTOP: sisi kiri -->
