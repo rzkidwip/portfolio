@@ -15,7 +15,10 @@
   #bgCanvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;}
   .mhero-content{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;text-align:center;padding:60px 28px 60px;max-width:600px;margin:0 auto;width:100%;}
   .hero-nav .nav-logo{font-weight:800!important;letter-spacing:.12em!important;text-transform:uppercase;}
-  .mhero-photo-wrap{margin-bottom:12px;}
+  .mhero-right{position:relative;display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+  .mhero-left{display:flex;flex-direction:column;align-items:center;text-align:center;width:100%;}
+  .mhero-photo-glow{display:none;}
+  .mhero-ring-d{display:flex;align-items:center;justify-content:center;}
   .mhero-ring-outer{width:160px;height:160px;border-radius:50%;border:1.5px solid rgba(18,135,193,.25);display:flex;align-items:center;justify-content:center;}
   .mhero-ring-inner{width:140px;height:140px;border-radius:50%;border:2px solid rgba(18,135,193,.5);background:rgba(18,135,193,.14);display:flex;align-items:center;justify-content:center;animation:pulse-ring 3s ease-in-out infinite;}
   .mhero-photo{width:124px;height:124px;border-radius:50%;object-fit:cover;display:block;}
@@ -49,6 +52,20 @@
     .mhero-subtitle{font-size:13px;}
     .mhero-stats,.mhero-ctas{max-width:100%;}
   }
+  @media(min-width:768px){
+    .mhero-content{flex-direction:row;align-items:center;justify-content:space-between;gap:48px;padding:0 80px;max-width:none;}
+    .mhero-left{flex:1;align-items:flex-start;text-align:left;order:1;}
+    .mhero-right{flex-shrink:0;order:2;margin-bottom:0;}
+    .mhero-photo-glow{display:block;position:absolute;width:250px;height:250px;border-radius:50%;background:rgba(18,135,193,.12);filter:blur(40px);z-index:0;top:50%;left:50%;transform:translate(-50%,-50%);}
+    .mhero-ring-d{width:220px;height:220px;border-radius:50%;border:1px solid rgba(18,135,193,.15);position:relative;z-index:1;}
+    .mhero-ring-outer{width:195px;height:195px;}
+    .mhero-ring-inner{width:170px;height:170px;}
+    .mhero-photo{width:150px;height:150px;}
+    .mhero-name-plain,.mhero-name-grad{font-size:48px;}
+    .mhero-subtitle{font-size:14px;}
+    .mhero-stats{max-width:440px;}
+    .mhero-ctas{max-width:440px;}
+  }
   </style>
 </head>
 <body>
@@ -75,72 +92,80 @@
     <canvas id="bgCanvas"></canvas>
     <div class="mhero-content">
 
-      <!-- Profile photo with rings -->
-      <div class="mhero-photo-wrap" style="animation:fadeup 0.6s ease 0.7s both">
-        <div class="mhero-ring-outer">
-          <div class="mhero-ring-inner">
-            <img src="Rizki Photoo.png" alt="Rizki Dwi Pangestu" class="mhero-photo" />
+      <!-- MOBILE: foto di atas / DESKTOP: sisi kanan -->
+      <div class="mhero-right" style="animation:fadeup 0.6s ease 0.7s both">
+        <div class="mhero-photo-glow"></div>
+        <div class="mhero-ring-d">
+          <div class="mhero-ring-outer">
+            <div class="mhero-ring-inner">
+              <img src="Rizki Photoo.png" alt="Rizki Dwi Pangestu" class="mhero-photo" />
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Greeting -->
-      <p class="mhero-greeting" style="animation:fadeup 0.6s ease 0.8s both">Hi, I'm</p>
+      <!-- MOBILE: teks di bawah / DESKTOP: sisi kiri -->
+      <div class="mhero-left">
 
-      <!-- Name -->
-      <div class="mhero-name" style="animation:fadeup 0.6s ease 0.9s both">
-        <span class="mhero-name-plain">Rizki Dwi</span>
-        <span class="mhero-name-grad">Pangestu</span>
-      </div>
+        <!-- Greeting -->
+        <p class="mhero-greeting" style="animation:fadeup 0.6s ease 0.8s both">Hi, I'm</p>
 
-      <!-- Typing subtitle -->
-      <p class="mhero-subtitle" style="animation:fadeup 0.6s ease 1.0s both">
-        <span id="cyclingText"></span>
-      </p>
-
-      <!-- Stats row -->
-      <div class="mhero-stats" style="animation:fadeup 0.6s ease 1.1s both">
-        <div class="mhero-stat">
-          <span class="mhero-stat-num">6</span>
-          <span class="mhero-stat-label">Co.</span>
+        <!-- Name -->
+        <div class="mhero-name" style="animation:fadeup 0.6s ease 0.9s both">
+          <span class="mhero-name-plain">Rizki Dwi</span>
+          <span class="mhero-name-grad">Pangestu</span>
         </div>
-        <div class="mhero-stat">
-          <span class="mhero-stat-num">20+</span>
-          <span class="mhero-stat-label">Proj.</span>
-        </div>
-        <div class="mhero-stat">
-          <span class="mhero-stat-num">4+</span>
-          <span class="mhero-stat-label">Yrs</span>
-        </div>
-        <div class="mhero-stat mhero-stat-accent">
-          <span class="mhero-stat-num">3.69</span>
-          <span class="mhero-stat-label">GPA</span>
-        </div>
-      </div>
 
-      <!-- CTA buttons -->
-      <div class="mhero-ctas" style="animation:fadeup 0.6s ease 1.2s both">
-        <a href="resume.html" class="mhero-btn-primary">View Resume</a>
-        <a href="artsworks.html" class="mhero-btn-ghost">My Works &#8594;</a>
-      </div>
+        <!-- Typing subtitle -->
+        <p class="mhero-subtitle" style="animation:fadeup 0.6s ease 1.0s both">
+          <span id="cyclingText"></span>
+        </p>
 
-      <!-- Social icons -->
-      <div class="mhero-socials" style="animation:fadeup 0.6s ease 1.3s both">
-        <a href="https://linkedin.com/in/rizkidwipangestu" target="_blank" class="mhero-social-icon" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
-          </svg>
-        </a>
-        <a href="https://instagram.com/rizkidwipangestu" target="_blank" class="mhero-social-icon" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-          </svg>
-        </a>
-        <a href="mailto:rdpangestu8@gmail.com" class="mhero-social-icon" aria-label="Email">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
-          </svg>
-        </a>
+        <!-- Stats row -->
+        <div class="mhero-stats" style="animation:fadeup 0.6s ease 1.1s both">
+          <div class="mhero-stat">
+            <span class="mhero-stat-num">6</span>
+            <span class="mhero-stat-label">Co.</span>
+          </div>
+          <div class="mhero-stat">
+            <span class="mhero-stat-num">20+</span>
+            <span class="mhero-stat-label">Proj.</span>
+          </div>
+          <div class="mhero-stat">
+            <span class="mhero-stat-num">4+</span>
+            <span class="mhero-stat-label">Yrs</span>
+          </div>
+          <div class="mhero-stat mhero-stat-accent">
+            <span class="mhero-stat-num">3.69</span>
+            <span class="mhero-stat-label">GPA</span>
+          </div>
+        </div>
+
+        <!-- CTA buttons -->
+        <div class="mhero-ctas" style="animation:fadeup 0.6s ease 1.2s both">
+          <a href="resume.html" class="mhero-btn-primary">View Resume</a>
+          <a href="artsworks.html" class="mhero-btn-ghost">My Works &#8594;</a>
+        </div>
+
+        <!-- Social icons -->
+        <div class="mhero-socials" style="animation:fadeup 0.6s ease 1.3s both">
+          <a href="https://linkedin.com/in/rizkidwipangestu" target="_blank" class="mhero-social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          <a href="https://instagram.com/rizkidwipangestu" target="_blank" class="mhero-social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <a href="mailto:rdpangestu8@gmail.com" class="mhero-social-icon" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </a>
+        </div>
+
       </div>
 
     </div>
