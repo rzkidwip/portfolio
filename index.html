@@ -70,6 +70,53 @@
     .mhero-ctas{gap:14px;max-width:520px;}
     .mhero-socials{margin-top:24px;}
   }
+  /* === Navbar right: search + contact (index desktop only) === */
+  @keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .idx-nav-right { display: none; align-items: center; gap: 10px; flex-shrink: 0; }
+  @media (min-width: 768px) { .idx-nav-right { display: flex; } }
+  .idx-search { position: relative; display: flex; align-items: center; }
+  .idx-search-icon {
+    position: absolute; left: 11px; width: 14px; height: 14px;
+    pointer-events: none; transition: color 0.3s;
+    color: rgba(255,255,255,0.65);
+  }
+  .idx-search input {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    border-radius: 20px;
+    padding: 7px 16px 7px 36px;
+    font-size: 13px; font-family: inherit;
+    outline: none; width: 180px;
+    transition: all 0.3s ease;
+  }
+  .idx-search input::placeholder { color: rgba(255,255,255,0.6); }
+  .navbar.scrolled .idx-search-icon { color: #999; }
+  .navbar.scrolled .idx-search input {
+    background: #f5f5f5; border-color: #e0e0e0; color: #0d2a3d;
+  }
+  .navbar.scrolled .idx-search input::placeholder { color: #999; }
+  .idx-contact-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background-image: linear-gradient(135deg, #1287c1, #38c6f5, #0d5a8a, #1287c1);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+    border: none; color: #fff; border-radius: 20px;
+    padding: 8px 18px; font-size: 12px; font-weight: 700;
+    font-family: inherit; text-decoration: none; cursor: pointer;
+    box-shadow: 0 4px 15px rgba(18,135,193,0.4);
+    transition: box-shadow 0.3s, transform 0.3s;
+    white-space: nowrap;
+  }
+  .idx-contact-btn:hover {
+    box-shadow: 0 6px 20px rgba(18,135,193,0.6);
+    transform: scale(1.03);
+  }
+  .idx-contact-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
   </style>
 </head>
 <body>
@@ -85,6 +132,16 @@
         <li><a href="services.html">Expertise</a></li>
         <li><a href="artsworks.html">Artsworks</a></li>
       </ul>
+      <div class="idx-nav-right">
+        <div class="idx-search">
+          <svg class="idx-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="search-input" placeholder="Search my project.." autocomplete="off" />
+        </div>
+        <a href="mailto:rdpangestu8@gmail.com" class="idx-contact-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          Contact Me
+        </a>
+      </div>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>

@@ -4,35 +4,63 @@
 
 /* ----- Navbar scroll effect ----- */
 const navbar = document.getElementById('navbar');
-if (navbar) {
+if (navbar && navbar.classList.contains('hero-nav')) {
   window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 10);
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
   }, { passive: true });
-  if (window.scrollY > 10) navbar.classList.add('scrolled');
+  if (window.scrollY > 50) navbar.classList.add('scrolled');
 }
 
-/* ----- Hamburger menu ----- */
-const hamburger = document.getElementById('hamburger');
-const navLinks  = document.getElementById('nav-links');
+/* ----- Mobile hamburger menu ----- */
+(function () {
+  const hamburger = document.getElementById('hamburger');
+  if (!hamburger) return;
 
-if (hamburger && navLinks) {
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    navLinks.classList.toggle('open');
+  const filename = window.location.pathname.split('/').pop() || 'index.html';
+  const isArtsworks = filename === 'artsworks.html' || filename.startsWith('artsworks-');
+
+  const menuItems = [
+    { href: 'about.html',            label: 'About Me',   active: filename === 'about.html' },
+    { href: 'resume.html',           label: 'My Resume',  active: filename === 'resume.html' },
+    { href: 'index.html#leadership', label: 'Leadership', active: false },
+    { href: 'services.html',         label: 'Expertise',  active: filename === 'services.html' },
+    { href: 'artsworks.html',        label: 'Artsworks',  active: isArtsworks },
+  ];
+
+  const overlay = document.createElement('div');
+  overlay.className = 'mobile-overlay';
+  document.body.appendChild(overlay);
+
+  const menu = document.createElement('nav');
+  menu.className = 'mobile-menu';
+  menuItems.forEach(function (item) {
+    const a = document.createElement('a');
+    a.href = item.href;
+    a.textContent = item.label;
+    if (item.active) a.classList.add('active');
+    a.addEventListener('click', close);
+    menu.appendChild(a);
   });
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      navLinks.classList.remove('open');
-    });
+  document.body.appendChild(menu);
+
+  function open() {
+    hamburger.classList.add('open');
+    overlay.classList.add('open');
+    menu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    hamburger.classList.remove('open');
+    overlay.classList.remove('open');
+    menu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', function () {
+    menu.classList.contains('open') ? close() : open();
   });
-  document.addEventListener('click', e => {
-    if (!navbar.contains(e.target)) {
-      hamburger.classList.remove('open');
-      navLinks.classList.remove('open');
-    }
-  });
-}
+  overlay.addEventListener('click', close);
+})();
 
 /* ----- Search: Enter key navigates to artsworks ----- */
 const searchInput = document.getElementById('search-input');

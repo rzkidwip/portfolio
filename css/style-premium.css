@@ -138,16 +138,43 @@ p, li { font-weight: 400; line-height: 1.7; }
    NAVBAR
 ---------------------------------------------------------------- */
 .navbar.scrolled {
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid #E2E8F0;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #ffffff;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  border-bottom: none;
+}
+.navbar.scrolled .nav-logo {
+  color: #1287c1;
+  -webkit-text-stroke: none;
+}
+.navbar.scrolled .nav-links a {
+  color: #0d2a3d;
+}
+.navbar.scrolled .nav-links a:hover,
+.navbar.scrolled .nav-links a.active {
+  color: #1287c1;
+}
+.navbar.scrolled .nav-links a::after {
+  background: #1287c1;
+}
+.navbar.scrolled .hamburger span { background: #0d2a3d; }
+.navbar.scrolled .nav-search {
+  background: #f5f5f5;
+  border: 1.5px solid #e0e0e0;
+}
+.navbar.scrolled .nav-search input::placeholder { color: #999; }
+.navbar.scrolled .nav-search button { color: #999; }
+.navbar.scrolled .btn-hello {
+  background: #1287c1;
+  border-color: #1287c1;
+  color: #fff;
 }
 
 .nav-logo {
   font-family: 'Manrope', sans-serif;
   font-weight: 800;
+  letter-spacing: 0.08em;
 }
 
 .nav-links a {
@@ -949,3 +976,42 @@ p, li { font-weight: 400; line-height: 1.7; }
   box-shadow: 0 8px 20px rgba(18,135,193,0.30);
   transform: translateY(-1px);
 }
+
+/* ================================================================
+   ARTSWORKS DETAIL — SHARED HERO & UI IMPROVEMENTS
+================================================================ */
+@keyframes awFadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes awFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.dt-hero .back-btn    { animation: awFadeIn 0.3s ease both; }
+.dt-hero .dt-eyebrow  { animation: awFadeUp 0.4s ease 0.1s  both; }
+.dt-hero .dt-title    { animation: awFadeUp 0.5s ease 0.2s  both; }
+.dt-hero .dt-subtitle { animation: awFadeUp 0.5s ease 0.35s both; }
+
+.dt-hero-deco {
+  position: absolute; inset: 0;
+  pointer-events: none; z-index: 0; overflow: hidden;
+}
+.dt-hero-wave {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  line-height: 0; pointer-events: none; z-index: 3;
+}
+.dt-hero-wave svg { display: block; width: 100%; }
+
+.aw-disclaimer {
+  background: #f0f8ff;
+  border-left: 3px solid #1287c1;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 0 0 48px;
+  font-size: 13px;
+  color: #5a7080;
+  font-style: italic;
+  line-height: 1.65;
+}
+.aw-disclaimer a { color: #1287c1; text-decoration: underline; }

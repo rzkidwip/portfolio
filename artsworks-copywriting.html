@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
@@ -90,11 +90,26 @@
       .art-img-overlay { background: linear-gradient(to bottom, transparent 60%, rgba(255,255,255,0.15)); }
       .art-body { padding: 24px; }
     }
+    /* --- Hero overrides --- */
+    .dt-hero { padding:100px 0 64px; }
+    .dt-hero::after { display:none; }
+    .back-btn { display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:700; color:rgba(255,255,255,0.9); text-decoration:none; padding:8px 18px; border-radius:20px; border:1px solid rgba(255,255,255,0.3); background:rgba(255,255,255,0.15); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); transition:background 0.2s; margin-bottom:24px; }
+    .back-btn:hover { background:rgba(255,255,255,0.25); color:#fff; }
+    .dt-eyebrow { font-size:12px; letter-spacing:0.1em; margin-bottom:12px; }
+    .dt-title { font-size:clamp(36px,5vw,56px); letter-spacing:-1.5px; line-height:1.08; margin-bottom:16px; }
+    .dt-subtitle { font-size:16px; color:rgba(255,255,255,0.85); max-width:560px; line-height:1.6; margin:0; }
+    .dt-hero-inner { position:relative; z-index:2; }
+    .dt-hero-deco { animation:awFadeIn 0.6s ease 0.4s both; }
+    .art-section { padding-top:48px; }
+    .art-card { transition:transform 0.3s ease,box-shadow 0.3s ease; }
+    .art-card:hover { transform:translateY(-6px); box-shadow:0 12px 32px rgba(0,0,0,0.12); }
+    @keyframes cwBlink { 0%,100%{opacity:1} 50%{opacity:0} }
+    @media (max-width:768px) { .dt-title { font-size:36px; } .dt-subtitle { font-size:14px; max-width:100%; } }
   </style>
 </head>
 <body>
 
-  <nav class="navbar scrolled" id="navbar">
+  <nav class="navbar hero-nav" id="navbar">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">Portfolio</a>
       <ul class="nav-links" id="nav-links">
@@ -116,6 +131,18 @@
   </nav>
 
   <header class="dt-hero">
+    <div class="dt-hero-deco" aria-hidden="true">
+      <!-- 5 text line mockups right -->
+      <svg style="position:absolute;top:50%;right:80px;transform:translateY(-50%);" width="100" height="68" viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="90" height="3" rx="2" fill="rgba(255,255,255,0.2)"/>
+        <rect x="0" y="13" width="70" height="3" rx="2" fill="rgba(255,255,255,0.16)"/>
+        <rect x="0" y="26" width="55" height="3" rx="2" fill="rgba(255,255,255,0.2)"/>
+        <rect x="0" y="39" width="70" height="3" rx="2" fill="rgba(255,255,255,0.16)"/>
+        <rect x="0" y="52" width="45" height="3" rx="2" fill="rgba(255,255,255,0.2)"/>
+      </svg>
+      <!-- underscore cursor bottom-right -->
+      <div style="position:absolute;bottom:40px;right:80px;width:28px;height:3px;background:rgba(255,255,255,0.5);border-radius:2px;animation:cwBlink 1s step-end infinite;"></div>
+    </div>
     <div class="container dt-hero-inner">
       <a href="artsworks.html" class="back-btn">← Back to Portfolio</a>
       <span class="dt-eyebrow">Copywriting</span>
@@ -200,6 +227,7 @@
 
         </div>
       </div>
+      <p class="aw-disclaimer">Some works are confidential and cannot be displayed publicly. <a href="mailto:rdpangestu8@gmail.com">Contact me</a> for full portfolio.</p>
     </div>
   </main>
 

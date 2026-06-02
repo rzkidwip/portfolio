@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
@@ -71,11 +71,36 @@
 
     @media (max-width:900px) { .dt-grid { grid-template-columns:repeat(2,1fr); } }
     @media (max-width:540px) { .dt-grid { grid-template-columns:repeat(2,1fr); gap:10px; } }
+
+    .yt-embed-section { padding-bottom:80px; }
+    .yt-embed-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .yt-embed-card { border-radius:12px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,0.12); }
+    .yt-embed-ratio { position:relative; width:100%; padding-top:56.25%; }
+    .yt-embed-ratio iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:none; }
+    .yt-disclaimer { font-size:13px; font-style:italic; color:rgba(0,0,0,0.45); border-left:3px solid #1287c1; padding-left:12px; margin-top:32px; margin-bottom:80px; }
+    @media (max-width:900px) { .yt-embed-grid { grid-template-columns:1fr; } }
+
+    .sec-header { margin-bottom:24px; }
+    .sec-title { font-size:1.4rem; font-weight:800; letter-spacing:-0.5px; color:#111; margin:0 0 4px; }
+    .sec-sub { font-size:0.78rem; color:var(--muted); font-weight:500; margin:0; }
+    .sec-divider { margin-top:48px; border-top:1px solid rgba(0,0,0,0.08); margin-bottom:40px; }
+    /* --- Hero overrides --- */
+    .dt-hero { padding:100px 0 64px; }
+    .dt-hero::after { display:none; }
+    .back-btn { display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:700; color:rgba(255,255,255,0.9); text-decoration:none; padding:8px 18px; border-radius:20px; border:1px solid rgba(255,255,255,0.3); background:rgba(255,255,255,0.15); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); transition:background 0.2s; margin-bottom:24px; }
+    .back-btn:hover { background:rgba(255,255,255,0.25); color:#fff; }
+    .dt-eyebrow { font-size:12px; letter-spacing:0.1em; margin-bottom:12px; }
+    .dt-title { font-size:clamp(36px,5vw,56px); letter-spacing:-1.5px; line-height:1.08; margin-bottom:16px; }
+    .dt-subtitle { font-size:16px; color:rgba(255,255,255,0.85); max-width:560px; line-height:1.6; margin:0; }
+    .dt-hero-inner { position:relative; z-index:2; }
+    .dt-hero-deco { animation:awFadeIn 0.6s ease 0.4s both; }
+    .dt-f-btn:hover:not(.active) { border-color:rgba(204,0,0,0.4); color:#cc0000; background:rgba(204,0,0,0.07); }
+    @media (max-width:768px) { .dt-title { font-size:36px; } .dt-subtitle { font-size:14px; max-width:100%; } }
   </style>
 </head>
 <body>
 
-  <nav class="navbar scrolled" id="navbar">
+  <nav class="navbar hero-nav" id="navbar">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">Portfolio</a>
       <ul class="nav-links" id="nav-links">
@@ -97,13 +122,25 @@
   </nav>
 
   <header class="dt-hero">
+    <div class="dt-hero-deco" aria-hidden="true">
+      <!-- film strips bottom-right -->
+      <svg style="position:absolute;bottom:30px;right:0;" width="200" height="36" viewBox="0 0 200 36" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="0" width="180" height="8" rx="4" fill="rgba(255,255,255,0.15)"/>
+        <rect x="60" y="22" width="120" height="8" rx="4" fill="rgba(255,255,255,0.12)"/>
+      </svg>
+      <!-- dot 3x3 cluster top-right -->
+      <svg style="position:absolute;top:80px;right:80px;" width="62" height="62" viewBox="0 0 62 62" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="8" r="2.5" fill="rgba(255,255,255,0.2)"/><circle cx="29" cy="8" r="2.5" fill="rgba(255,255,255,0.2)"/><circle cx="50" cy="8" r="2.5" fill="rgba(255,255,255,0.2)"/>
+        <circle cx="8" cy="29" r="2.5" fill="rgba(255,255,255,0.16)"/><circle cx="29" cy="29" r="2.5" fill="rgba(255,255,255,0.2)"/><circle cx="50" cy="29" r="2.5" fill="rgba(255,255,255,0.16)"/>
+        <circle cx="8" cy="50" r="2.5" fill="rgba(255,255,255,0.2)"/><circle cx="29" cy="50" r="2.5" fill="rgba(255,255,255,0.16)"/><circle cx="50" cy="50" r="2.5" fill="rgba(255,255,255,0.2)"/>
+      </svg>
+    </div>
     <div class="container dt-hero-inner">
-      <a href="artsworks.html" class="back-btn">← Back to Portfolio</a>
-      <span class="dt-eyebrow">Video Production</span>
+      <a href="artsworks.html" class="back-btn">← Back to Portfolio</a><span class="dt-eyebrow">Video Production</span>
       <h1 class="dt-title">Corporate Video<br>Production</h1>
       <p class="dt-subtitle">Corporate event documentation, podcast production, and video content creation for UPI and Hastari Corporation.</p>
     </div>
-  </header>
+      </header>
 
   <main>
     <div class="container">
@@ -112,11 +149,53 @@
           <button class="dt-f-btn active" data-filter="all">All</button>
           <button class="dt-f-btn" data-filter="podcast">UPI Podcast</button>
           <button class="dt-f-btn" data-filter="corporate">Hastari Corporate</button>
+          <button class="dt-f-btn" data-filter="pwc">PwC Indonesia</button>
         </div>
       </div>
-      <div class="dt-section">
-        <div class="dt-grid" id="dt-grid"></div>
+
+      <div class="dt-section aw-reveal" data-section="podcast">
+        <div class="sec-header">
+          <h2 class="sec-title">UPI Podcast</h2>
+          <p class="sec-sub">GenBI UPI · 2021–2023</p>
+        </div>
+        <div class="dt-grid" id="dt-grid-podcast"></div>
       </div>
+
+      <div class="dt-section aw-reveal" data-section="corporate" style="padding-bottom:0">
+        <div class="sec-header">
+          <h2 class="sec-title">Hastari Corporation</h2>
+          <p class="sec-sub">Content Creator & Video Production · 2023–2024</p>
+        </div>
+        <div class="dt-grid" id="dt-grid-corporate"></div>
+      </div>
+
+      <div class="sec-divider" id="sec-divider"></div>
+
+      <div class="yt-embed-section aw-reveal" data-section="pwc">
+        <div class="sec-header">
+          <h2 class="sec-title">PwC Indonesia</h2>
+          <p class="sec-sub">Marketing & Communication Intern · Jan–Jul 2024</p>
+        </div>
+        <div class="yt-embed-grid">
+          <div class="yt-embed-card">
+            <div class="yt-embed-ratio">
+              <iframe src="https://www.youtube.com/embed/aYurJd59ARU" title="PwC Indonesia Video 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="yt-embed-card">
+            <div class="yt-embed-ratio">
+              <iframe src="https://www.youtube.com/embed/-Z_GxkkEn6w" title="PwC Indonesia Video 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="yt-embed-card">
+            <div class="yt-embed-ratio">
+              <iframe src="https://www.youtube.com/embed/xQzprLzuQ28" title="PwC Indonesia Video 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="yt-disclaimer">Some works are confidential and cannot be displayed publicly.</p>
     </div>
   </main>
 
@@ -138,17 +217,13 @@
       { filter:'corporate', img:'https://img.youtube.com/vi/J784JqR4_WM/maxresdefault.jpg', title:'Corporate Video Ep.3', company:'Hastari Corporation', url:'https://www.youtube.com/watch?v=J784JqR4_WM', badge:'vb-corp', badgeText:'Corporate Video' },
     ];
 
-    var currentFilter = 'all';
-
-    function getFiltered() { return currentFilter === 'all' ? ITEMS : ITEMS.filter(function(i){ return i.filter === currentFilter; }); }
-
     var revObs = new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');revObs.unobserve(e.target);}});},{threshold:0.04,rootMargin:'0px 0px 80px 0px'});
 
-    function renderGrid() {
-      var filtered = getFiltered();
-      var grid = document.getElementById('dt-grid');
+    function renderSection(containerId, filterKey) {
+      var items = ITEMS.filter(function(i){ return i.filter === filterKey; });
+      var grid = document.getElementById(containerId);
       grid.innerHTML = '';
-      filtered.forEach(function(item, idx) {
+      items.forEach(function(item, idx) {
         var card = document.createElement('div');
         card.className = 'vd-card';
         card.style.transitionDelay = (idx * 0.055) + 's';
@@ -182,15 +257,19 @@
       btn.addEventListener('click', function(){
         document.querySelectorAll('.dt-f-btn').forEach(function(b){ b.classList.remove('active'); });
         btn.classList.add('active');
-        currentFilter = btn.dataset.filter;
-        renderGrid();
+        var filter = btn.dataset.filter;
+        document.querySelectorAll('[data-section]').forEach(function(sec){
+          sec.style.display = (filter === 'all' || sec.dataset.section === filter) ? '' : 'none';
+        });
+        document.getElementById('sec-divider').style.display = (filter === 'all') ? '' : 'none';
       });
     });
 
     var staticObs = new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');staticObs.unobserve(e.target);}});},{threshold:0.08});
     document.querySelectorAll('.aw-reveal').forEach(function(el){staticObs.observe(el);});
 
-    renderGrid();
+    renderSection('dt-grid-podcast', 'podcast');
+    renderSection('dt-grid-corporate', 'corporate');
   </script>
 </body>
 </html>
