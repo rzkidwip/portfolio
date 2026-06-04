@@ -276,6 +276,92 @@
       background: #7c3aed;
     }
 
+    /* WEB DESIGN COVER — browser mockup thumbnail */
+    .cat-cover-web {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #1e1b4b;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cat-browser-mockup {
+      width: 82%;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.55);
+      position: relative;
+      z-index: 1;
+    }
+    .cat-browser-bar {
+      background: #2d2b55;
+      padding: 8px 12px;
+      border-radius: 8px 8px 0 0;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .cat-browser-dots {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .cat-browser-dots span {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      display: block;
+    }
+    .cat-browser-dots span:nth-child(1) { background: #ff5f57; }
+    .cat-browser-dots span:nth-child(2) { background: #febc2e; }
+    .cat-browser-dots span:nth-child(3) { background: #28c840; }
+    .cat-browser-url-bar {
+      flex: 1;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+      padding: 3px 10px;
+      font-size: 9px;
+      color: rgba(255,255,255,0.5);
+      font-family: 'Courier New', monospace;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cat-browser-screen {
+      position: relative;
+      overflow: hidden;
+      height: 94px;
+    }
+    .cat-browser-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    .cat-browser-screen-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent, rgba(30,27,75,0.6));
+    }
+    .cat-btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 9px 20px;
+      background: transparent;
+      color: #6366f1;
+      border: 1.5px solid #6366f1;
+      border-radius: 99px;
+      font-size: 0.79rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      flex-shrink: 0;
+    }
+    .cat-btn-outline:hover { background: rgba(99,102,241,0.1); }
+
     /* CARD BODY */
     .cat-body { padding: 20px 22px 22px; }
     .cat-title {
@@ -500,28 +586,25 @@
             </div>
           </article>
 
-          <!-- Card 3: Copywriting -->
-          <article class="cat-card" data-cats="copywriting">
-            <div class="cat-cover-copy">
-              <span class="cat-label cl-copy">Copywriting</span>
-              <div class="cat-copy-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15h8v2H8zm0-4h8v2H8zm0-4h5v2H8z"/></svg>
-              </div>
-              <p class="cat-copy-title">SEO &amp; Corporate Copywriting</p>
-              <p class="cat-copy-sub">30+ Articles · MAPEI Indonesia</p>
+          <!-- Card 3: Corporate Comm -->
+          <article class="cat-card" data-cats="design">
+            <div class="cat-cover">
+              <img src="image/artsworks/lifeathastari-sosmed-3.jpg.jpg" alt="Internal Communication" loading="lazy" />
+              <div class="cat-cover-overlay"></div>
+              <span class="cat-label cl-corp">Corporate Comm</span>
             </div>
             <div class="cat-body">
-              <h2 class="cat-title">SEO &amp; Corporate Copywriting</h2>
-              <p class="cat-desc">Research-driven SEO articles and corporate content published on official brand channels for B2B manufacturing industry.</p>
-              <div class="cat-stats">1 Client · 30+ Articles · B2B Industry</div>
+              <h2 class="cat-title">Internal Communication &amp; Events</h2>
+              <p class="cat-desc">Internal communication content, corporate event documentation, and employee engagement programs for corporate organizations.</p>
+              <div class="cat-stats">Hastari Corp · 5+ Events · 2024–Present</div>
               <div class="cat-tags">
-                <span class="cat-tag">SEO Writing</span>
-                <span class="cat-tag">Research</span>
-                <span class="cat-tag">Technical Writing</span>
-                <span class="cat-tag">B2B Content</span>
+                <span class="cat-tag">Internal Comm</span>
+                <span class="cat-tag">Event Management</span>
+                <span class="cat-tag">Corporate Publication</span>
+                <span class="cat-tag">Employee Engagement</span>
               </div>
               <div class="cat-footer">
-                <a href="artsworks-copywriting.html" class="cat-btn">View Works →</a>
+                <a href="artsworks-corporate.html" class="cat-btn">View Works →</a>
               </div>
             </div>
           </article>
@@ -549,7 +632,33 @@
             </div>
           </article>
 
-          <!-- Card 5: Design -->
+          <!-- Card 5: Copywriting -->
+          <article class="cat-card" data-cats="copywriting">
+            <div class="cat-cover-copy">
+              <span class="cat-label cl-copy">Copywriting</span>
+              <div class="cat-copy-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15h8v2H8zm0-4h8v2H8zm0-4h5v2H8z"/></svg>
+              </div>
+              <p class="cat-copy-title">SEO &amp; Corporate Copywriting</p>
+              <p class="cat-copy-sub">30+ Articles · MAPEI Indonesia</p>
+            </div>
+            <div class="cat-body">
+              <h2 class="cat-title">SEO &amp; Corporate Copywriting</h2>
+              <p class="cat-desc">Research-driven SEO articles and corporate content published on official brand channels for B2B manufacturing industry.</p>
+              <div class="cat-stats">1 Client · 30+ Articles · B2B Industry</div>
+              <div class="cat-tags">
+                <span class="cat-tag">SEO Writing</span>
+                <span class="cat-tag">Research</span>
+                <span class="cat-tag">Technical Writing</span>
+                <span class="cat-tag">B2B Content</span>
+              </div>
+              <div class="cat-footer">
+                <a href="artsworks-copywriting.html" class="cat-btn">View Works →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6: Design -->
           <article class="cat-card" data-cats="design">
             <div class="cat-cover-design">
               <span class="cat-label-design-overlay">Design</span>
@@ -575,25 +684,35 @@
             </div>
           </article>
 
-          <!-- Card 6: Corporate Comm -->
+          <!-- Card 7: Web Design -->
           <article class="cat-card" data-cats="design">
-            <div class="cat-cover">
-              <img src="image/artsworks/lifeathastari-sosmed-3.jpg.jpg" alt="Internal Communication" loading="lazy" />
-              <div class="cat-cover-overlay"></div>
-              <span class="cat-label cl-corp">Corporate Comm</span>
+            <div class="cat-cover-web">
+              <span class="cat-label" style="background:#6366f1;">WEB DESIGN</span>
+              <div class="cat-browser-mockup">
+                <div class="cat-browser-bar">
+                  <div class="cat-browser-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="cat-browser-url-bar">hastari-website.vercel.app</div>
+                </div>
+                <div class="cat-browser-screen">
+                  <img src="hastari-website-preview.png" alt="Hastari Corporation Website Preview" />
+                  <div class="cat-browser-screen-overlay"></div>
+                </div>
+              </div>
             </div>
             <div class="cat-body">
-              <h2 class="cat-title">Internal Communication &amp; Events</h2>
-              <p class="cat-desc">Internal communication content, corporate event documentation, and employee engagement programs for corporate organizations.</p>
-              <div class="cat-stats">Hastari Corp · 5+ Events · 2024–Present</div>
+              <h2 class="cat-title">Corporate Website Design</h2>
+              <p class="cat-desc">End-to-end corporate website design for Hastari Corporation — structure, content architecture, and visual direction.</p>
+              <div class="cat-stats">1 Client · Full Website · In Development</div>
               <div class="cat-tags">
-                <span class="cat-tag">Internal Comm</span>
-                <span class="cat-tag">Event Management</span>
-                <span class="cat-tag">Corporate Publication</span>
-                <span class="cat-tag">Employee Engagement</span>
+                <span class="cat-tag">Web Design</span>
+                <span class="cat-tag">UI/UX</span>
+                <span class="cat-tag">Corporate Branding</span>
               </div>
-              <div class="cat-footer">
-                <a href="artsworks-corporate.html" class="cat-btn">View Works →</a>
+              <div class="cat-footer" style="flex-direction:column;align-items:flex-start;">
+                <a href="mailto:rdpangestu8@gmail.com?subject=Request%20Portfolio%20-%20Hastari%20Website&body=Hi%20Rizki%2C%20I%27d%20like%20to%20request%20access%20to%20view%20the%20Hastari%20Corporation%20website%20portfolio." class="cat-btn-outline">Request to View →</a>
+                <span style="font-size:11px;color:#999;font-style:italic;margin-top:6px;">🔒 Available upon request</span>
               </div>
             </div>
           </article>
@@ -673,7 +792,7 @@
             <h3 class="fn-heading">Contact</h3>
             <ul class="fn-contact-list">
               <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg><a href="mailto:rdpangestu8@gmail.com">rdpangestu8@gmail.com</a></li>
-              <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span>Bandung, Indonesia</span></li>
+              <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span>Jakarta, Indonesia</span></li>
             </ul>
           </div>
           <div class="fn-col fn-social-col">

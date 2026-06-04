@@ -10,75 +10,48 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/style-premium.css" />
   <style>
-    .dt-hero { background:linear-gradient(135deg,#1e3a5f 0%,#142849 45%,#0a1628 100%); padding:calc(var(--nav) + 56px) 0 60px; position:relative; overflow:hidden; }
-    .dt-hero::after { content:''; position:absolute; bottom:-1px; left:0; right:0; height:50px; background:linear-gradient(to bottom,transparent,var(--bg)); }
-    .dt-hero-inner { position:relative; z-index:1; }
-    .back-btn { display:inline-flex; align-items:center; gap:7px; font-size:0.8rem; font-weight:700; color:rgba(255,255,255,0.78); text-decoration:none; padding:7px 16px; border-radius:99px; border:1.5px solid rgba(255,255,255,0.28); background:rgba(255,255,255,0.08); transition:background 0.2s,color 0.2s; margin-bottom:28px; }
-    .back-btn:hover { background:rgba(255,255,255,0.18); color:#fff; }
-    .dt-eyebrow { font-size:0.65rem; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-bottom:10px; display:block; }
-    .dt-title { font-size:clamp(2rem,5vw,3.8rem); font-weight:900; color:#fff; letter-spacing:-2px; line-height:1; margin-bottom:14px; }
-    .dt-subtitle { font-size:0.95rem; color:rgba(255,255,255,0.72); max-width:520px; line-height:1.65; }
+    /* HERO */
+    .dt-hero { background:linear-gradient(135deg,#1e3a5f 0%,#142849 45%,#0a1628 100%); padding:100px 0 64px; position:relative; overflow:hidden; }
+    .dt-hero-inner { position:relative; z-index:2; }
+    .dt-hero-deco { animation:awFadeIn 0.6s ease 0.4s both; }
+    .back-btn { display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:700; color:rgba(255,255,255,0.9); text-decoration:none; padding:8px 18px; border-radius:20px; border:1px solid rgba(255,255,255,0.3); background:rgba(255,255,255,0.15); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); transition:background 0.2s; margin-bottom:24px; }
+    .back-btn:hover { background:rgba(255,255,255,0.25); color:#fff; }
+    .dt-eyebrow { font-size:12px; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-bottom:12px; display:block; }
+    .dt-title { font-size:clamp(36px,5vw,56px); font-weight:900; color:#fff; letter-spacing:-1.5px; line-height:1.08; margin-bottom:16px; }
+    .dt-subtitle { font-size:16px; color:rgba(255,255,255,0.85); max-width:560px; line-height:1.6; margin:0; }
 
-    .dt-section { padding:48px 0 80px; }
-    .dt-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-    .dt-card { position:relative; aspect-ratio:1/1; overflow:hidden; border-radius:14px; cursor:pointer; background:#f1f5f9; opacity:0; transform:translateY(22px); transition:opacity 0.45s ease,transform 0.45s ease,box-shadow 0.28s; }
-    .dt-card.vis { opacity:1; transform:translateY(0); }
-    .dt-card.vis:hover { transform:translateY(-5px); box-shadow:0 18px 48px rgba(0,0,0,0.2); }
-    .dt-card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.38s ease; }
-    .dt-card:hover img { transform:scale(1.07); }
-    .dt-badge { position:absolute; top:10px; left:10px; z-index:3; padding:3px 10px; border-radius:6px; font-size:0.58rem; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#fff; pointer-events:none; background:#1e3a5f; }
-    .dt-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.58); opacity:0; transition:opacity 0.28s; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; z-index:2; pointer-events:none; }
-    .dt-card:hover .dt-overlay { opacity:1; }
-    .dt-overlay-name { font-size:0.88rem; font-weight:700; color:#fff; text-align:center; padding:0 16px; line-height:1.35; }
-    .dt-zoom { width:42px; height:42px; border-radius:50%; border:2px solid rgba(255,255,255,0.75); display:flex; align-items:center; justify-content:center; }
-    .dt-zoom svg { width:20px; height:20px; color:#fff; }
+    /* OVERVIEW STATS */
+    .cs-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:48px 0; }
+    .cs-stat-card { background:#f8fafc; border:1px solid #e8f4fb; border-radius:12px; padding:24px; text-align:center; }
+    .cs-stat-num { font-size:28px; font-weight:800; color:#1287c1; line-height:1.1; margin-bottom:6px; }
+    .cs-stat-lbl { font-size:12px; color:#5a7080; font-weight:500; line-height:1.4; }
 
-    /* INFO NOTE */
-    .dt-note { background:#f8fafc; border:1.5px solid var(--border); border-radius:12px; padding:20px 24px; margin-bottom:36px; display:flex; align-items:flex-start; gap:14px; }
-    .dt-note-icon { width:36px; height:36px; border-radius:10px; background:#1e3a5f; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
-    .dt-note-icon svg { width:18px; height:18px; color:#fff; }
-    .dt-note-text p { font-size:0.82rem; color:var(--muted); line-height:1.65; margin:0; }
-    .dt-note-text p + p { margin-top:6px; }
-    .dt-note-text strong { color:var(--text); font-weight:700; }
-    .dt-req { display:inline-flex; align-items:center; gap:6px; font-size:0.78rem; font-weight:700; color:#1287c1; text-decoration:none; margin-top:8px; }
-    .dt-req:hover { text-decoration:underline; }
+    /* CASE STUDY CARDS */
+    .cs-case-section { margin-bottom:40px; }
+    .cs-card { background:#fff; border:1px solid #e8f4fb; border-left:4px solid #1287c1; border-radius:12px; padding:28px 32px; margin-bottom:20px; }
+    .cs-card-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:8px; }
+    .cs-card-label { font-size:11px; color:#1287c1; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; }
+    .cs-impact-badge { background:#1287c1; color:#fff; border-radius:20px; padding:4px 12px; font-size:11px; font-weight:700; white-space:nowrap; }
+    .cs-card-title { font-size:20px; font-weight:800; color:#0d2a3d; margin:0 0 10px; line-height:1.3; }
+    .cs-card-desc { font-size:14px; color:#5a7080; line-height:1.7; margin:0 0 16px; }
+    .cs-card-tags { display:flex; flex-wrap:wrap; gap:6px; }
+    .cs-tag { background:#f0f8ff; color:#1287c1; font-size:11px; font-weight:600; padding:4px 12px; border-radius:99px; }
 
-    .lb-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.93); z-index:9999; display:flex; align-items:center; justify-content:center; padding:20px; opacity:0; pointer-events:none; transition:opacity 0.25s; }
-    .lb-overlay.active { opacity:1; pointer-events:all; }
-    .lb-inner { position:relative; width:100%; max-width:820px; }
-    .lb-counter { position:absolute; top:-46px; left:0; font-size:0.75rem; font-weight:600; color:rgba(255,255,255,0.45); }
-    .lb-close { position:absolute; top:-46px; right:0; width:36px; height:36px; border-radius:50%; border:1.5px solid rgba(255,255,255,0.28); background:rgba(255,255,255,0.07); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background 0.18s; }
-    .lb-close:hover { background:rgba(255,255,255,0.18); }
-    .lb-close svg { width:17px; height:17px; color:#fff; }
-    .lb-arrow { position:absolute; top:40%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.10); border:1.5px solid rgba(255,255,255,0.22); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background 0.18s; z-index:10; }
-    .lb-arrow:hover { background:rgba(255,255,255,0.22); }
-    .lb-arrow svg { width:22px; height:22px; color:#fff; }
-    .lb-prev { left:-60px; } .lb-next { right:-60px; }
-    .lb-img-wrap { width:100%; background:#111; border-radius:12px 12px 0 0; overflow:hidden; display:flex; align-items:center; justify-content:center; min-height:200px; }
-    .lb-img-wrap img { max-width:100%; max-height:62vh; object-fit:contain; display:block; }
-    .lb-info { background:#1c1c1e; border-radius:0 0 12px 12px; padding:18px 24px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
-    .lb-info-left { display:flex; flex-direction:column; gap:5px; }
-    .lb-info-badge { display:inline-block; padding:2px 9px; border-radius:5px; font-size:0.58rem; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#fff; background:#1e3a5f; align-self:flex-start; }
-    .lb-info-title { font-size:1rem; font-weight:700; color:#fff; }
-    .lb-info-company { font-size:0.8rem; color:rgba(255,255,255,0.52); }
+    /* CONFIDENTIAL NOTICE */
+    .cs-confidential { background:linear-gradient(135deg,#0a2d45,#1287c1); border-radius:16px; padding:32px 36px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:80px; }
+    .cs-conf-left { display:flex; align-items:flex-start; gap:16px; flex:1; min-width:0; }
+    .cs-conf-icon { font-size:28px; flex-shrink:0; line-height:1.3; }
+    .cs-conf-title { font-size:20px; font-weight:800; color:#fff; margin:0 0 6px; line-height:1.2; }
+    .cs-conf-text { font-size:14px; color:rgba(255,255,255,0.75); line-height:1.65; margin:0; }
+    .cs-conf-btn { display:inline-block; background:#fff; color:#0a2d45; border-radius:20px; padding:12px 24px; font-size:14px; font-weight:700; text-decoration:none; white-space:nowrap; transition:opacity 0.2s; flex-shrink:0; }
+    .cs-conf-btn:hover { opacity:0.88; }
 
+    /* SCROLL REVEAL */
     .aw-reveal { opacity:0; transform:translateY(20px); transition:opacity 0.52s ease,transform 0.52s ease; }
     .aw-reveal.visible { opacity:1; transform:none; }
 
-    @media (max-width:900px) { .dt-grid { grid-template-columns:repeat(2,1fr); } .lb-prev { left:-44px; } .lb-next { right:-44px; } }
-    @media (max-width:660px) { .lb-prev, .lb-next { display:none; } }
-    @media (max-width:540px) { .dt-grid { grid-template-columns:repeat(2,1fr); gap:10px; } }
-    /* --- Hero overrides --- */
-    .dt-hero { padding:100px 0 64px; }
-    .dt-hero::after { display:none; }
-    .back-btn { display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:700; color:rgba(255,255,255,0.9); text-decoration:none; padding:8px 18px; border-radius:20px; border:1px solid rgba(255,255,255,0.3); background:rgba(255,255,255,0.15); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); transition:background 0.2s; margin-bottom:24px; }
-    .back-btn:hover { background:rgba(255,255,255,0.25); color:#fff; }
-    .dt-eyebrow { font-size:12px; letter-spacing:0.1em; margin-bottom:12px; }
-    .dt-title { font-size:clamp(36px,5vw,56px); letter-spacing:-1.5px; line-height:1.08; margin-bottom:16px; }
-    .dt-subtitle { font-size:16px; color:rgba(255,255,255,0.85); max-width:560px; line-height:1.6; margin:0; }
-    .dt-hero-inner { position:relative; z-index:2; }
-    .dt-hero-deco { animation:awFadeIn 0.6s ease 0.4s both; }
-    @media (max-width:768px) { .dt-title { font-size:36px; } .dt-subtitle { font-size:14px; max-width:100%; } }
+    @media (max-width:900px) { .cs-stats { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:768px) { .dt-title { font-size:36px; } .dt-subtitle { font-size:14px; max-width:100%; } .cs-confidential { flex-direction:column; } .cs-card { padding:22px 20px; } }
   </style>
 </head>
 <body>
@@ -126,57 +99,88 @@
 
   <main>
     <div class="container">
-      <!-- What I Do -->
-      <div class="dt-what-i-do aw-reveal">
-        <h2 class="dt-wid-heading">What I Do</h2>
-        <div class="dt-wid-grid">
-          <div class="dt-wid-card">
-            <div class="dt-wid-icon">📢</div>
-            <h3>Internal Communication</h3>
-            <p>Newsletter, announcement, internal campaigns</p>
-          </div>
-          <div class="dt-wid-card">
-            <div class="dt-wid-icon">🎯</div>
-            <h3>Corporate Events</h3>
-            <p>Town halls, company gatherings, activations</p>
-          </div>
-          <div class="dt-wid-card">
-            <div class="dt-wid-icon">🤝</div>
-            <h3>Employee Engagement</h3>
-            <p>Culture programs, engagement initiatives</p>
-          </div>
+
+      <!-- SECTION 1: Overview Stats -->
+      <div class="cs-stats aw-reveal">
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">4+</div>
+          <div class="cs-stat-lbl">Internal Programs</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">10+</div>
+          <div class="cs-stat-lbl">Corporate Events</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">3</div>
+          <div class="cs-stat-lbl">Company Publications</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">5+</div>
+          <div class="cs-stat-lbl">Divisions Coordinated</div>
         </div>
       </div>
 
-      <div class="dt-section">
+      <!-- SECTION 2: Case Study Cards -->
+      <div class="cs-case-section">
 
-        <!-- Info note -->
-        <div class="dt-note aw-reveal">
-          <div class="dt-note-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+        <div class="cs-card aw-reveal">
+          <div class="cs-card-header">
+            <span class="cs-card-label">HASTARI CORPORATION · 2024–PRESENT</span>
+            <span class="cs-impact-badge">4 Editions Published</span>
           </div>
-          <div class="dt-note-text">
-            <p><strong>Hastari Corp · Internal Communication &amp; Events</strong></p>
-            <p>Dokumentasi lengkap kegiatan internal, event perusahaan, dan materi komunikasi karyawan tersedia secara terbatas. Untuk melihat portofolio lengkap, silakan hubungi langsung.</p>
-            <a href="mailto:rdpangestu8@gmail.com" class="dt-req">Request Full Documentation →</a>
+          <h2 class="cs-card-title">Corporate Bulletin Publication</h2>
+          <p class="cs-card-desc">Initiated and managed end-to-end production of Hastari Corp's internal corporate bulletin — from concept, content writing, visual design, to distribution. Successfully delivered 4 editions within one year.</p>
+          <div class="cs-card-tags">
+            <span class="cs-tag">Internal Comm</span>
+            <span class="cs-tag">Publication Design</span>
+            <span class="cs-tag">Content Writing</span>
           </div>
         </div>
 
-        <div class="dt-grid" id="dt-grid"></div>
+        <div class="cs-card aw-reveal">
+          <div class="cs-card-header">
+            <span class="cs-card-label">HASTARI CORPORATION · 2024–PRESENT</span>
+            <span class="cs-impact-badge">10+ Events Executed</span>
+          </div>
+          <h2 class="cs-card-title">Employee Engagement &amp; Corporate Events</h2>
+          <p class="cs-card-desc">Planned and executed end-to-end corporate events including town halls, company gatherings, Hastari 5th Anniversary, Annual Strategic Meeting 2025, and internal culture activation programs.</p>
+          <div class="cs-card-tags">
+            <span class="cs-tag">Event Management</span>
+            <span class="cs-tag">Employee Engagement</span>
+            <span class="cs-tag">Internal Activation</span>
+          </div>
+        </div>
+
+        <div class="cs-card aw-reveal">
+          <div class="cs-card-header">
+            <span class="cs-card-label">HASTARI CORPORATION · 2024–PRESENT</span>
+            <span class="cs-impact-badge">5+ Divisions Coordinated</span>
+          </div>
+          <h2 class="cs-card-title">Stakeholder &amp; Communication Coordination</h2>
+          <p class="cs-card-desc">Coordinated communication strategies across 5+ divisions ensuring aligned messaging for corporate initiatives, announcements, and campaign rollouts. Managed executive communication materials including leadership messages and presentation decks.</p>
+          <div class="cs-card-tags">
+            <span class="cs-tag">Stakeholder Management</span>
+            <span class="cs-tag">Executive Comm</span>
+            <span class="cs-tag">Strategic Messaging</span>
+          </div>
+        </div>
+
       </div>
+
+      <!-- SECTION 3: Confidential Notice -->
+      <div class="cs-confidential aw-reveal">
+        <div class="cs-conf-left">
+          <span class="cs-conf-icon">🔒</span>
+          <div>
+            <h3 class="cs-conf-title">Full Documentation Available</h3>
+            <p class="cs-conf-text">Detailed work samples, campaign materials, and internal publications are available upon request for verified recruiters and employers.</p>
+          </div>
+        </div>
+        <a href="mailto:rdpangestu8@gmail.com?subject=Request%20Portfolio%20-%20Internal%20Comm%20%26%20Events&body=Hi%20Rizki%2C%20I%27d%20like%20to%20request%20full%20documentation%20for%20your%20Internal%20Communication%20%26%20Events%20portfolio." class="cs-conf-btn">Request Documentation →</a>
+      </div>
+
     </div>
   </main>
-
-  <div class="lb-overlay" id="lb-overlay">
-    <div class="lb-inner">
-      <span class="lb-counter" id="lb-counter"></span>
-      <button class="lb-close" id="lb-close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-      <button class="lb-arrow lb-prev" id="lb-prev"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
-      <button class="lb-arrow lb-next" id="lb-next"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg></button>
-      <div class="lb-img-wrap" id="lb-img-wrap"></div>
-      <div class="lb-info"><div class="lb-info-left"><span class="lb-info-badge">Corporate Comm</span><span class="lb-info-title" id="lb-title"></span><span class="lb-info-company">Hastari Corporation · Internal Comm</span></div></div>
-    </div>
-  </div>
 
   <footer class="footer-new">
     <div class="fn-cta"><div class="container"><div class="fn-cta-inner"><div class="fn-cta-text"><div class="fn-cta-line"></div><h2 class="fn-cta-title">Let's Work Together</h2><p class="fn-cta-sub">Open for collaborations, projects, and full-time opportunities in Corporate Communication, Employee Relations and Public Relations.</p></div><div class="fn-cta-btns"><a href="mailto:rdpangestu8@gmail.com" class="fn-cta-btn-primary">Get In Touch &rarr;</a><a href="artsworks.html" class="fn-cta-btn-ghost">View My Works &rarr;</a></div></div></div></div>
@@ -187,43 +191,8 @@
   <script>(function(){var cols=document.querySelectorAll('.fn-col');if(!('IntersectionObserver' in window)){cols.forEach(function(c){c.classList.add('fn-visible');});return;}var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var delay=parseInt(e.target.dataset.fnDelay)||0;setTimeout(function(){e.target.classList.add('fn-visible');},delay);obs.unobserve(e.target);}});},{threshold:0.1});cols.forEach(function(c,i){c.dataset.fnDelay=i*100;obs.observe(c);});})();</script>
   <script src="js/main.js"></script>
   <script>
-    var ITEMS = [
-      { img:'image/artsworks/hastari-sosmed-1.jpg', title:'Hastari Corp · Internal Comm 1' },
-      { img:'image/artsworks/hastari-sosmed-2.jpg', title:'Hastari Corp · Internal Comm 2' },
-      { img:'image/artsworks/hastari-sosmed-3.jpg', title:'Hastari Corp · Internal Comm 3' },
-    ];
-    var currentIndex = 0;
-
-    var revObs = new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');revObs.unobserve(e.target);}});},{threshold:0.04,rootMargin:'0px 0px 80px 0px'});
-
-    var grid = document.getElementById('dt-grid');
-    ITEMS.forEach(function(item, idx) {
-      var card = document.createElement('div');
-      card.className = 'dt-card';
-      card.style.transitionDelay = (idx * 0.08) + 's';
-      card.innerHTML = '<span class="dt-badge">Hastari Corp</span><img src="' + item.img + '" alt="' + item.title + '" loading="lazy"><div class="dt-overlay"><div class="dt-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div><span class="dt-overlay-name">' + item.title + '</span></div>';
-      card.addEventListener('click', function(){ openLightbox(idx); });
-      grid.appendChild(card);
-      revObs.observe(card);
-    });
-
-    function openLightbox(idx) { currentIndex = idx; updateLightbox(); document.getElementById('lb-overlay').classList.add('active'); document.body.style.overflow='hidden'; }
-    function closeLightbox() { document.getElementById('lb-overlay').classList.remove('active'); document.body.style.overflow=''; }
-    function navLightbox(dir) { currentIndex = (currentIndex + dir + ITEMS.length) % ITEMS.length; updateLightbox(); }
-    function updateLightbox() {
-      var item = ITEMS[currentIndex];
-      document.getElementById('lb-counter').textContent = (currentIndex+1) + ' / ' + ITEMS.length;
-      document.getElementById('lb-img-wrap').innerHTML = '<img src="' + item.img + '" alt="' + item.title + '">';
-      document.getElementById('lb-title').textContent = item.title;
-    }
-    document.getElementById('lb-close').addEventListener('click', closeLightbox);
-    document.getElementById('lb-prev').addEventListener('click', function(){ navLightbox(-1); });
-    document.getElementById('lb-next').addEventListener('click', function(){ navLightbox(1); });
-    document.getElementById('lb-overlay').addEventListener('click', function(e){ if(e.target===this) closeLightbox(); });
-    document.addEventListener('keydown', function(e){ if(!document.getElementById('lb-overlay').classList.contains('active')) return; if(e.key==='Escape') closeLightbox(); if(e.key==='ArrowLeft') navLightbox(-1); if(e.key==='ArrowRight') navLightbox(1); });
-
-    var staticObs = new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');staticObs.unobserve(e.target);}});},{threshold:0.08});
-    document.querySelectorAll('.aw-reveal').forEach(function(el){staticObs.observe(el);});
+    var obs = new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08});
+    document.querySelectorAll('.aw-reveal').forEach(function(el){obs.observe(el);});
   </script>
 </body>
 </html>
