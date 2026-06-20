@@ -117,6 +117,14 @@
     transform: scale(1.03);
   }
   .idx-contact-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+  /* Stats card hover */
+  .mhero-stat { transition: transform 0.25s ease, box-shadow 0.25s ease; cursor: pointer; }
+  .mhero-stat:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(18,135,193,0.3); }
+  /* Scroll hint */
+  @keyframes scrollHintPulse { 0%,100%{opacity:0.4} 50%{opacity:0.8} }
+  .mhero-scroll-wrap { position:absolute; bottom:16px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:7px; z-index:3; }
+  .mhero-scroll-hint { font-size:10px; color:rgba(255,255,255,0.4); letter-spacing:0.08em; text-transform:uppercase; animation:scrollHintPulse 2s ease-in-out infinite; white-space:nowrap; }
+  .mhero-scroll-wrap .mhero-scroll { position:static; transform:none; }
   </style>
 </head>
 <body>
@@ -233,11 +241,14 @@
     </div>
 
     <!-- Scroll indicator -->
-    <a href="#leadership" class="mhero-scroll" aria-label="Scroll to next section">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13">
-        <polyline points="6 9 12 15 18 9"/>
-      </svg>
-    </a>
+    <div class="mhero-scroll-wrap">
+      <span class="mhero-scroll-hint">Scroll to explore</span>
+      <a href="#leadership" class="mhero-scroll" aria-label="Scroll to next section">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </a>
+    </div>
   </section>
 
   <!-- ===== LEADERSHIP EXPERIENCE ===== -->

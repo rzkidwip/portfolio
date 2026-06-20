@@ -197,17 +197,18 @@
       display: flex; align-items: flex-start; gap: 16px;
       padding: 20px 22px; border-radius: 18px;
       border: 1.5px solid; border-left: 4px solid;
-      background: #fff; transition: transform 0.28s cubic-bezier(.2,.82,.4,1), box-shadow 0.28s;
+      background: #fff; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      cursor: pointer;
     }
-    .ab-ach-card:hover { transform: translateY(-5px); }
+    .ab-ach-card:hover { transform: translateY(-6px); }
     .ab-ach-card.national { border-color: rgba(245,158,11,0.22); border-left-color: #f59e0b; background: rgba(254,252,244,0.8); }
-    .ab-ach-card.national:hover { box-shadow: 0 18px 52px rgba(245,158,11,0.2); }
+    .ab-ach-card.national:hover { box-shadow: 0 12px 28px rgba(245,158,11,0.25); border-color: rgba(245,158,11,0.55); }
     .ab-ach-card.academic  { border-color: rgba(18,135,193,0.2);  border-left-color: #1287c1; background: rgba(244,250,255,0.8); }
-    .ab-ach-card.academic:hover  { box-shadow: 0 18px 52px rgba(18,135,193,0.18); }
+    .ab-ach-card.academic:hover  { box-shadow: 0 12px 28px rgba(18,135,193,0.22); border-color: rgba(18,135,193,0.5); }
     .ab-ach-card.competition { border-color: rgba(16,185,129,0.2); border-left-color: #10b981; background: rgba(244,255,251,0.8); }
-    .ab-ach-card.competition:hover { box-shadow: 0 18px 52px rgba(16,185,129,0.18); }
+    .ab-ach-card.competition:hover { box-shadow: 0 12px 28px rgba(16,185,129,0.22); border-color: rgba(16,185,129,0.5); }
     .ab-ach-card.professional { border-color: rgba(124,58,237,0.2); border-left-color: #7c3aed; background: rgba(250,247,255,0.8); }
-    .ab-ach-card.professional:hover { box-shadow: 0 18px 52px rgba(124,58,237,0.18); }
+    .ab-ach-card.professional:hover { box-shadow: 0 12px 28px rgba(124,58,237,0.22); border-color: rgba(124,58,237,0.5); }
 
     .ab-ach-logo {
       width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0;
@@ -304,10 +305,10 @@
       padding: 28px 28px 24px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.05);
       opacity: 0; transform: translateY(28px);
-      transition: opacity 0.55s ease, transform 0.55s ease, box-shadow 0.28s;
+      transition: opacity 0.55s ease, transform 0.55s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
     .ctk-card.ctk-in { opacity: 1; transform: none; }
-    .ctk-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.10); }
+    .ctk-card:hover { border-color: var(--cat, #1287c1); box-shadow: 0 8px 20px rgba(18,135,193,0.12); }
     .ctk-cat-head {
       display: flex; align-items: center; gap: 10px;
       margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border);
@@ -347,6 +348,21 @@
       flex-shrink: 0; text-transform: uppercase;
     }
     @media (max-width: 860px) { .ctk-grid { grid-template-columns: 1fr; } }
+
+    /* Photo entrance animation */
+    @keyframes photoEntrance { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+    .ab-photo-img img { animation: photoEntrance 0.6s ease-out 0.2s both; }
+
+    /* Hero quote */
+    .ab-quote { font-size: 14px; font-style: italic; color: rgba(255,255,255,0.7); border-left: 2px solid rgba(255,255,255,0.3); padding-left: 12px; margin-top: 16px; margin-bottom: 0; line-height: 1.6; }
+
+    /* About hero scroll indicator */
+    @keyframes abBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(5px)} }
+    .ab-scroll-wrap { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 5; }
+    .ab-scroll-btn { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.35); display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; animation: abBounce 2s ease-in-out infinite; }
+
+    /* Most Used badge */
+    .ctk-most-used-badge { position: absolute; top: -6px; right: -6px; background: #1287c1; color: #fff; font-size: 9px; padding: 2px 6px; border-radius: 10px; font-weight: 700; line-height: 1; white-space: nowrap; pointer-events: none; }
   </style>
 </head>
 <body>
@@ -404,6 +420,7 @@
 
           <p class="ab-bio">Employee Relations and Corporate Communication professional with experience in employee engagement, internal communication, culture initiatives, employer branding, and project coordination.</p>
           <p class="ab-bio">Proven ability to manage internal programs, cross-functional stakeholders, corporate publications, and employee experience initiatives within dynamic organizations.</p>
+          <p class="ab-quote">"Great communication isn't about saying more — it's about being understood."</p>
 
           <div class="ab-stats" id="ab-stats">
             <div class="ab-stat">
@@ -438,10 +455,17 @@
 
       </div>
     </div>
+    <div class="ab-scroll-wrap">
+      <a href="#ab-comp" class="ab-scroll-btn" aria-label="Scroll down">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </a>
+    </div>
   </section>
 
   <!-- ===== CORE COMPETENCY ===== -->
-  <section class="ab-comp-section">
+  <section class="ab-comp-section" id="ab-comp">
     <div class="container">
       <span class="ab-section-eyebrow ab-reveal">Core Expertise</span>
       <h2 class="ab-section-heading ab-reveal">Core Competency</h2>
@@ -527,7 +551,7 @@
           </div>
         </div>
 
-        <div class="ab-ach-card professional ab-reveal" style="transition-delay:0.1s">
+        <div class="ab-ach-card professional ab-reveal" style="transition-delay:0.4s">
           <div class="ab-ach-logo">
             <img src="image/logos/logo-bnsp.png" alt="BNSP">
           </div>
@@ -539,7 +563,7 @@
           </div>
         </div>
 
-        <div class="ab-ach-card academic ab-reveal" style="transition-delay:0.2s">
+        <div class="ab-ach-card academic ab-reveal" style="transition-delay:0.5s">
           <div class="ab-ach-logo">
             <img src="image/logos/logo-upi.png" alt="UPI" style="width:100%;height:100%;object-fit:cover;">
           </div>
@@ -622,10 +646,10 @@
             <span class="ctk-cat-name">Design &amp; Visual</span>
           </div>
           <div class="ctk-pills">
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/illustrator.png" alt="Adobe Illustrator" loading="lazy">Adobe Illustrator</span>
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/photoshop.png" alt="Adobe Photoshop" loading="lazy">Adobe Photoshop</span>
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/figma.png" alt="Figma" loading="lazy">Figma</span>
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/canva.png" alt="Canva" loading="lazy">Canva</span>
+            <span class="ctk-pill" title="Used for brand identity & vector graphics"><img class="ctk-icon-local" src="image/icons/illustrator.png" alt="Adobe Illustrator" loading="lazy">Adobe Illustrator</span>
+            <span class="ctk-pill" title="Used for photo editing & digital imaging"><img class="ctk-icon-local" src="image/icons/photoshop.png" alt="Adobe Photoshop" loading="lazy">Adobe Photoshop</span>
+            <span class="ctk-pill" title="Used for UI design & prototyping"><img class="ctk-icon-local" src="image/icons/figma.png" alt="Figma" loading="lazy">Figma</span>
+            <span class="ctk-pill" style="position:relative" title="Used for social media content & quick designs"><img class="ctk-icon-local" src="image/icons/canva.png" alt="Canva" loading="lazy">Canva<span class="ctk-most-used-badge">Most Used</span></span>
           </div>
         </div>
 
@@ -636,12 +660,12 @@
             <span class="ctk-cat-name">Video Production</span>
           </div>
           <div class="ctk-pills">
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/premiere-pro.png" alt="Adobe Premiere Pro" loading="lazy">Adobe Premiere Pro</span>
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/after-effects.png" alt="Adobe After Effects" loading="lazy">Adobe After Effects</span>
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/capcut.png" alt="CapCut" loading="lazy">CapCut</span>
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/vn.png" alt="VN" loading="lazy">VN</span>
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/filmora.png" alt="Filmora" loading="lazy">Filmora</span>
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/davinci.png" alt="DaVinci Resolve" loading="lazy">DaVinci Resolve</span>
+            <span class="ctk-pill" style="position:relative" title="Used for video editing & post-production"><img class="ctk-icon-local" src="image/icons/premiere-pro.png" alt="Adobe Premiere Pro" loading="lazy">Adobe Premiere Pro<span class="ctk-most-used-badge">Most Used</span></span>
+            <span class="ctk-pill" title="Used for motion graphics & visual effects"><img class="ctk-icon-local" src="image/icons/after-effects.png" alt="Adobe After Effects" loading="lazy">Adobe After Effects</span>
+            <span class="ctk-pill" title="Used for quick mobile video edits"><img class="ctk-icon-local" src="image/icons/capcut.png" alt="CapCut" loading="lazy">CapCut</span>
+            <span class="ctk-pill" title="Used for mobile video editing"><img class="ctk-icon-local" src="image/icons/vn.png" alt="VN" loading="lazy">VN</span>
+            <span class="ctk-pill" title="Used for beginner-friendly video production"><img class="ctk-icon-local" src="image/icons/filmora.png" alt="Filmora" loading="lazy">Filmora</span>
+            <span class="ctk-pill" title="Used for color grading & professional editing"><img class="ctk-icon-local" src="image/icons/davinci.png" alt="DaVinci Resolve" loading="lazy">DaVinci Resolve</span>
           </div>
         </div>
 
@@ -652,9 +676,9 @@
             <span class="ctk-cat-name">Audio Production</span>
           </div>
           <div class="ctk-pills">
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/audition.png" alt="Adobe Audition" loading="lazy">Adobe Audition</span>
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/audacity.png" alt="Audacity" loading="lazy">Audacity</span>
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/fl-studio.jpg" alt="FL Studio" loading="lazy">FL Studio</span>
+            <span class="ctk-pill" title="Used for podcast editing & audio post-production"><img class="ctk-icon-local" src="image/icons/audition.png" alt="Adobe Audition" loading="lazy">Adobe Audition</span>
+            <span class="ctk-pill" title="Used for basic audio recording & editing"><img class="ctk-icon-local" src="image/icons/audacity.png" alt="Audacity" loading="lazy">Audacity</span>
+            <span class="ctk-pill" title="Used for music production & audio creation"><img class="ctk-icon-local" src="image/icons/fl-studio.jpg" alt="FL Studio" loading="lazy">FL Studio</span>
           </div>
         </div>
 
@@ -665,8 +689,8 @@
             <span class="ctk-cat-name">Live &amp; Broadcast</span>
           </div>
           <div class="ctk-pills">
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/vmix.webp" alt="vMix" loading="lazy">vMix</span>
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/obs-studio.webp" alt="OBS Studio" loading="lazy">OBS Studio</span>
+            <span class="ctk-pill" title="Used for live streaming & broadcast production"><img class="ctk-icon-local" src="image/icons/vmix.webp" alt="vMix" loading="lazy">vMix</span>
+            <span class="ctk-pill" title="Used for live streaming & screen recording"><img class="ctk-icon-local" src="image/icons/obs-studio.webp" alt="OBS Studio" loading="lazy">OBS Studio</span>
           </div>
         </div>
 
@@ -677,13 +701,13 @@
             <span class="ctk-cat-name">Communication &amp; Writing</span>
           </div>
           <div class="ctk-pills">
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/word.png" alt="Microsoft Word" loading="lazy">Microsoft Word</span>
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/powerpoint.png" alt="Microsoft PowerPoint" loading="lazy">Microsoft PowerPoint</span>
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/excel.png" alt="Microsoft Excel" loading="lazy">Microsoft Excel</span>
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/googledocs/4285F4" alt="" loading="lazy">Google Docs</span>
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/googleslides/FBBC04" alt="" loading="lazy" data-fallback="📊" data-name="Google Slides">Google Slides</span>
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/googlesheets/34A853" alt="" loading="lazy">Google Sheets</span>
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/grammarly/15C39A" alt="" loading="lazy">Grammarly</span>
+            <span class="ctk-pill" title="Used for drafting reports, proposals & corporate documents"><img class="ctk-icon-local" src="image/icons/word.png" alt="Microsoft Word" loading="lazy">Microsoft Word</span>
+            <span class="ctk-pill" title="Used for presentation design & pitch decks"><img class="ctk-icon-local" src="image/icons/powerpoint.png" alt="Microsoft PowerPoint" loading="lazy">Microsoft PowerPoint</span>
+            <span class="ctk-pill" title="Used for data tracking & reporting"><img class="ctk-icon-local" src="image/icons/excel.png" alt="Microsoft Excel" loading="lazy">Microsoft Excel</span>
+            <span class="ctk-pill" title="Used for collaborative document writing"><img class="ctk-icon" src="https://cdn.simpleicons.org/googledocs/4285F4" alt="" loading="lazy">Google Docs</span>
+            <span class="ctk-pill" title="Used for collaborative presentations"><img class="ctk-icon" src="https://cdn.simpleicons.org/googleslides/FBBC04" alt="" loading="lazy" data-fallback="📊" data-name="Google Slides">Google Slides</span>
+            <span class="ctk-pill" title="Used for collaborative data management"><img class="ctk-icon" src="https://cdn.simpleicons.org/googlesheets/34A853" alt="" loading="lazy">Google Sheets</span>
+            <span class="ctk-pill" title="Used for writing quality checks & proofreading"><img class="ctk-icon" src="https://cdn.simpleicons.org/grammarly/15C39A" alt="" loading="lazy">Grammarly</span>
           </div>
         </div>
 
@@ -694,11 +718,11 @@
             <span class="ctk-cat-name">Social Media &amp; Digital</span>
           </div>
           <div class="ctk-pills">
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/meta/0081FB" alt="" loading="lazy">Meta Business Suite</span>
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/linkedin.svg" alt="LinkedIn" loading="lazy" style="width:22px;height:22px">LinkedIn Campaign Manager</span>
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/google-analytics.webp" alt="Google Analytics" loading="lazy">Google Analytics</span>
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/google-search.webp" alt="Google Search Console" loading="lazy">Google Search Console</span>
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/hootsuite/000000" alt="" loading="lazy">Hootsuite</span>
+            <span class="ctk-pill" title="Used for managing Facebook & Instagram ads"><img class="ctk-icon" src="https://cdn.simpleicons.org/meta/0081FB" alt="" loading="lazy">Meta Business Suite</span>
+            <span class="ctk-pill" title="Used for professional network advertising"><img class="ctk-icon-local" src="image/icons/linkedin.svg" alt="LinkedIn" loading="lazy" style="width:22px;height:22px">LinkedIn Campaign Manager</span>
+            <span class="ctk-pill" title="Used for digital content performance tracking"><img class="ctk-icon-local" src="image/icons/google-analytics.webp" alt="Google Analytics" loading="lazy">Google Analytics</span>
+            <span class="ctk-pill" title="Used for SEO monitoring & keyword tracking"><img class="ctk-icon-local" src="image/icons/google-search.webp" alt="Google Search Console" loading="lazy">Google Search Console</span>
+            <span class="ctk-pill" title="Used for social media scheduling & management"><img class="ctk-icon" src="https://cdn.simpleicons.org/hootsuite/000000" alt="" loading="lazy">Hootsuite</span>
           </div>
         </div>
 
@@ -709,13 +733,13 @@
             <span class="ctk-cat-name">Collaboration &amp; Productivity</span>
           </div>
           <div class="ctk-pills">
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/zoom/2D8CFF" alt="" loading="lazy">Zoom</span>
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/googlemeet/00897B" alt="" loading="lazy">Google Meet</span>
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/ms-teams.png" alt="Microsoft Teams" loading="lazy">Microsoft Teams</span>
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/mailchimp/241C15" alt="" loading="lazy">Mailchimp</span>
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/trello/0052CC" alt="" loading="lazy">Trello</span>
-            <span class="ctk-pill"><img class="ctk-icon" src="https://cdn.simpleicons.org/notion/000000" alt="" loading="lazy">Notion</span>
-            <span class="ctk-pill"><img class="ctk-icon-local" src="image/icons/python.webp" alt="Python" loading="lazy">Python</span>
+            <span class="ctk-pill" title="Used for virtual meetings & webinars"><img class="ctk-icon" src="https://cdn.simpleicons.org/zoom/2D8CFF" alt="" loading="lazy">Zoom</span>
+            <span class="ctk-pill" title="Used for internal video conferences"><img class="ctk-icon" src="https://cdn.simpleicons.org/googlemeet/00897B" alt="" loading="lazy">Google Meet</span>
+            <span class="ctk-pill" title="Used for corporate communication & collaboration"><img class="ctk-icon-local" src="image/icons/ms-teams.png" alt="Microsoft Teams" loading="lazy">Microsoft Teams</span>
+            <span class="ctk-pill" title="Used for email marketing campaigns"><img class="ctk-icon" src="https://cdn.simpleicons.org/mailchimp/241C15" alt="" loading="lazy">Mailchimp</span>
+            <span class="ctk-pill" title="Used for project & task management"><img class="ctk-icon" src="https://cdn.simpleicons.org/trello/0052CC" alt="" loading="lazy">Trello</span>
+            <span class="ctk-pill" title="Used for documentation & knowledge management"><img class="ctk-icon" src="https://cdn.simpleicons.org/notion/000000" alt="" loading="lazy">Notion</span>
+            <span class="ctk-pill" title="Used for data automation & basic scripting"><img class="ctk-icon-local" src="image/icons/python.webp" alt="Python" loading="lazy">Python</span>
           </div>
         </div>
 
