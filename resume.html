@@ -373,24 +373,27 @@
       padding: 12px 14px;
       border-radius: 12px;
       border: 1.5px solid;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: all 0.25s ease;
     }
     .rv-achieve-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
     }
     .rv-achieve-card.gold {
       background: rgba(251,191,36,0.06);
       border-color: rgba(251,191,36,0.28);
     }
+    .rv-achieve-card.gold:hover { border-color: rgba(251,191,36,0.65); }
     .rv-achieve-card.blue {
       background: rgba(18,135,193,0.06);
       border-color: rgba(18,135,193,0.22);
     }
+    .rv-achieve-card.blue:hover { border-color: rgba(18,135,193,0.55); }
     .rv-achieve-card.national {
       background: rgba(212,175,55,0.07);
       border-color: rgba(212,175,55,0.35);
     }
+    .rv-achieve-card.national:hover { border-color: rgba(212,175,55,0.7); }
     .rv-achieve-year {
       font-size: 0.62rem; font-weight: 700;
       color: var(--light); margin-top: 2px;
@@ -432,8 +435,8 @@
       cursor: default;
     }
     .rv-tool-card:hover {
-      background: rgba(18,135,193,0.08);
-      border-color: rgba(18,135,193,0.28);
+      background: rgba(18,135,193,0.05);
+      border-color: #1287c1;
       transform: translateY(-1px);
     }
     .rv-tool-emoji { font-size: 1rem; }
@@ -548,21 +551,20 @@
     }
     .rv-tl-loc svg { width: 11px; height: 11px; }
     .rv-tl-logo {
-      width: 72px; height: 72px;
-      border-radius: 12px;
+      width: 48px; height: 48px;
+      border-radius: 8px;
       overflow: hidden;
-      border: 1px solid #e2e8f0;
+      border: 1px solid #e8f4fb;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 8px;
+      padding: 6px;
       flex-shrink: 0;
       background: #fff;
       box-shadow: 0 2px 8px rgba(0,0,0,0.07);
     }
     .rv-tl-logo img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
-    .rv-tl-logo.dark { background: #1c1c2e; border-color: #2d2d42; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
-    .rv-tl-logo img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+    .rv-tl-logo.dark { background: #1c1c2e; border-color: #2d2d42; }
     .rv-tl-bullets {
       margin-top: 10px;
       display: flex;
@@ -584,8 +586,8 @@
       flex-shrink: 0;
       margin-top: 8px;
     }
-    .rv-extra-bullets { display: none; }
-    .rv-extra-bullets.open { display: flex; flex-direction: column; gap: 5px; }
+    .rv-extra-bullets { display: flex; flex-direction: column; gap: 5px; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, opacity 0.3s ease; }
+    .rv-extra-bullets.open { max-height: 600px; opacity: 1; }
     .rv-show-more-btn {
       margin-top: 8px;
       display: inline-flex;
@@ -625,9 +627,9 @@
       transition: opacity 0.55s ease, transform 0.55s ease;
     }
     .rv-reveal.visible { opacity: 1; transform: none; }
-    .rv-reveal-delay-1 { transition-delay: 0.1s; }
-    .rv-reveal-delay-2 { transition-delay: 0.2s; }
-    .rv-reveal-delay-3 { transition-delay: 0.3s; }
+    .rv-reveal-delay-1 { transition-delay: 0.08s; }
+    .rv-reveal-delay-2 { transition-delay: 0.16s; }
+    .rv-reveal-delay-3 { transition-delay: 0.24s; }
 
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 860px) {
@@ -640,6 +642,48 @@
     @media (max-width: 520px) {
       .rv-tools-grid { grid-template-columns: 1fr 1fr; }
       .rv-photo { width: 100px; height: 100px; }
+    }
+
+    /* ===== STICKY SIDEBAR ===== */
+    @media (min-width: 1024px) {
+      .rv-grid aside {
+        position: sticky;
+        top: 100px;
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(18,135,193,0.3) transparent;
+      }
+      .rv-grid aside::-webkit-scrollbar { width: 4px; }
+      .rv-grid aside::-webkit-scrollbar-track { background: transparent; }
+      .rv-grid aside::-webkit-scrollbar-thumb { background: rgba(18,135,193,0.3); border-radius: 4px; }
+    }
+
+    /* ===== HIGHLIGHT CARD (Hastari & PwC) ===== */
+    .rv-tl-card.rv-card-highlight {
+      background: linear-gradient(135deg, rgba(18,135,193,0.03) 0%, rgba(255,255,255,1) 100%);
+      box-shadow: 0 4px 16px rgba(18,135,193,0.08);
+    }
+    .rv-tl-card.rv-card-highlight:hover {
+      box-shadow: 0 12px 32px rgba(18,135,193,0.14);
+    }
+
+    /* ===== CONTEXT BADGE ===== */
+    .rv-context-badge {
+      font-size: 12px;
+      color: #5a7080;
+      font-weight: 500;
+      margin-bottom: 16px;
+      padding-left: 58px;
+    }
+
+    /* ===== CERTIFICATION CARD HOVER ===== */
+    .rv-cert-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .rv-cert-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(18,135,193,0.25);
     }
   </style>
 </head>
@@ -834,7 +878,7 @@
           </div>
 
           <!-- CERTIFICATION -->
-          <div class="rv-card rv-reveal rv-reveal-delay-1" style="padding:0;overflow:hidden;background:none;border:none;box-shadow:none;">
+          <div class="rv-card rv-reveal rv-reveal-delay-1" style="padding:0;overflow:visible;background:none;border:none;box-shadow:none;">
             <div class="rv-cert-card">
               <div class="rv-cert-icon">🏅</div>
               <div class="rv-cert-name">Public Relations Certification</div>
@@ -950,12 +994,14 @@
 
           <div class="rv-timeline">
 
+            <p class="rv-context-badge">1 Full-Time Role &middot; 3 Internships &middot; 2 Part-Time</p>
+
             <!-- Hastari Corporation -->
             <div class="rv-tl-item rv-reveal">
               <div class="rv-tl-dot">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 7h-4V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-6 0h-4V5h4v2z"/></svg>
               </div>
-              <div class="rv-tl-card">
+              <div class="rv-tl-card rv-card-highlight">
                 <div class="rv-tl-head">
                   <div class="rv-tl-info">
                     <span class="rv-tl-badge full">Full Time</span>
@@ -998,11 +1044,11 @@
             </div>
 
             <!-- PwC Indonesia -->
-            <div class="rv-tl-item rv-reveal rv-reveal-delay-1">
+            <div class="rv-tl-item rv-reveal" style="transition-delay:0.1s">
               <div class="rv-tl-dot">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 7h-4V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-6 0h-4V5h4v2z"/></svg>
               </div>
-              <div class="rv-tl-card">
+              <div class="rv-tl-card rv-card-highlight">
                 <div class="rv-tl-head">
                   <div class="rv-tl-info">
                     <span class="rv-tl-badge intern">Internship</span>
@@ -1034,7 +1080,7 @@
             </div>
 
             <!-- MojadiApp -->
-            <div class="rv-tl-item rv-reveal rv-reveal-delay-2">
+            <div class="rv-tl-item rv-reveal" style="transition-delay:0.2s">
               <div class="rv-tl-dot">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 7h-4V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-6 0h-4V5h4v2z"/></svg>
               </div>
@@ -1069,7 +1115,7 @@
             </div>
 
             <!-- MAPEI Indonesia -->
-            <div class="rv-tl-item rv-reveal">
+            <div class="rv-tl-item rv-reveal" style="transition-delay:0.3s">
               <div class="rv-tl-dot">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 7h-4V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-6 0h-4V5h4v2z"/></svg>
               </div>
@@ -1102,7 +1148,7 @@
             </div>
 
             <!-- UPI -->
-            <div class="rv-tl-item rv-reveal rv-reveal-delay-1">
+            <div class="rv-tl-item rv-reveal" style="transition-delay:0.4s">
               <div class="rv-tl-dot">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 7h-4V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-6 0h-4V5h4v2z"/></svg>
               </div>
@@ -1146,7 +1192,7 @@
             </div>
 
             <!-- MRO Indonesia -->
-            <div class="rv-tl-item rv-reveal rv-reveal-delay-2">
+            <div class="rv-tl-item rv-reveal" style="transition-delay:0.5s">
               <div class="rv-tl-dot">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 7h-4V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-6 0h-4V5h4v2z"/></svg>
               </div>
@@ -1371,6 +1417,21 @@
       btn.classList.toggle('open', isOpen);
       btn.querySelector('.rv-btn-text').textContent = isOpen ? 'Show less' : 'Show more';
     }
+
+    /* ----- Timeline stagger reveal (threshold 0.15) ----- */
+    (function() {
+      var tlItems = document.querySelectorAll('.rv-tl-item.rv-reveal');
+      if (!('IntersectionObserver' in window) || !tlItems.length) return;
+      var tlObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            tlObs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      tlItems.forEach(function(item) { tlObs.observe(item); });
+    })();
   </script>
 </body>
 </html>
