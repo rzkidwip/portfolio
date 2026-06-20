@@ -44,6 +44,12 @@
       text-transform: uppercase; color: #fff;
       background: rgba(255,255,255,0.15);
       border: 1px solid rgba(255,255,255,0.3);
+      animation: widBadgePulse 2.5s ease-in-out infinite;
+    }
+    @keyframes widBadgePulse {
+      0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0.4); }
+      70%  { box-shadow: 0 0 0 8px rgba(255,255,255,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
     }
     .wid-eyebrow {
       font-size: 0.72rem; font-weight: 700; letter-spacing: 3.5px;
@@ -94,19 +100,30 @@
       box-shadow: 0 2px 12px rgba(0,0,0,0.05);
       opacity: 0; transform: translateY(28px);
       transition: opacity 0.55s ease, transform 0.55s ease,
-                  box-shadow 0.28s, border-left-color 0.28s;
+                  box-shadow 0.3s ease, border-left-color 0.3s ease;
+      cursor: pointer;
     }
     .wid-card.wid-in { opacity: 1; transform: none; }
     .wid-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 18px 52px rgba(0,0,0,0.12);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.1);
+      border-left-color: color-mix(in srgb, var(--accent, #1287c1) 70%, white);
     }
     .wid-card-icon {
-      width: 52px; height: 52px; border-radius: 50%;
+      width: 44px; height: 44px; border-radius: 12px;
       background: var(--icon-bg, rgba(18,135,193,0.1));
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; margin-bottom: 18px;
+      font-size: 1.25rem; margin-bottom: 18px;
+      transition: transform 0.3s ease;
     }
+    .wid-card:hover .wid-card-icon { transform: scale(1.08); }
+    .wid-card-link {
+      display: inline-block; margin-top: 14px;
+      font-size: 12px; font-weight: 600;
+      color: var(--accent, #1287c1); text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+    .wid-card-link:hover { opacity: 0.75; }
     .wid-card-title {
       font-size: 1.05rem; font-weight: 800; color: var(--text);
       margin-bottom: 10px; letter-spacing: -0.3px;
@@ -274,6 +291,7 @@
             <span class="wid-tag">Corporate Writing</span>
             <span class="wid-tag">Campaign Content</span>
           </div>
+          <a href="artsworks-copywriting.html" class="wid-card-link">See related work →</a>
         </div>
 
         <div class="wid-card" style="--accent:#059669;--icon-bg:rgba(5,150,105,0.1)">
@@ -286,6 +304,7 @@
             <span class="wid-tag">Community Mgmt</span>
             <span class="wid-tag">Analytics</span>
           </div>
+          <a href="artsworks-social-media.html" class="wid-card-link">See related work →</a>
         </div>
 
         <div class="wid-card" style="--accent:#DC2626;--icon-bg:rgba(220,38,38,0.1)">
@@ -313,18 +332,6 @@
         </div>
 
       </div><!-- /wid-grid -->
-
-      <!-- CTA -->
-      <div class="wid-cta wid-reveal">
-        <div class="wid-cta-inner">
-          <h2 class="wid-cta-title">Let's Create Something Meaningful</h2>
-          <p class="wid-cta-sub">Whether you're looking for a dedicated team member or a trusted project collaborator — I'd love to connect.</p>
-          <div class="wid-cta-btns">
-            <a href="mailto:rdpangestu8@gmail.com" class="wid-btn-primary">Get In Touch &rarr;</a>
-            <a href="artsworks.html" class="wid-btn-ghost">View My Works &rarr;</a>
-          </div>
-        </div>
-      </div>
 
     </div>
   </section>
@@ -458,9 +465,9 @@
             obs.unobserve(e.target);
           }
         });
-      }, { threshold: 0.06 });
+      }, { threshold: 0.15 });
       cards.forEach(function(card, i) {
-        card.dataset.widDelay = i * 90;
+        card.dataset.widDelay = i * 100;
         obs.observe(card);
       });
     })();
