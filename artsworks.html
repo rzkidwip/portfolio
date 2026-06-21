@@ -134,7 +134,7 @@
       transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
     }
     .cat-card.vis { opacity: 1; transform: translateY(0); }
-    .cat-card.vis:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(0,0,0,0.16); }
+    .cat-card.vis:hover { transform: translateY(-6px); box-shadow: 0 16px 36px rgba(0,0,0,0.12); transition: transform 0.3s ease, box-shadow 0.3s ease; }
 
     /* COVER */
     .cat-cover {
@@ -168,12 +168,13 @@
       text-transform: uppercase;
       color: #fff;
     }
-    .cl-social   { background: #1287c1; }
-    .cl-video    { background: #cc0000; }
-    .cl-copy     { background: #f97316; }
-    .cl-employer { background: #059669; }
-    .cl-design   { background: #7c3aed; }
-    .cl-corp     { background: #1e3a5f; }
+    .cl-social    { background: #1287c1; }
+    .cl-video     { background: #cc0000; }
+    .cl-copy      { background: #f97316; }
+    .cl-employer  { background: #059669; }
+    .cl-design    { background: #7c3aed; }
+    .cl-corp      { background: #1e3a5f; }
+    .cl-webdesign { background: #4338ca; }
 
     /* COPYWRITING COVER GRADIENT */
     .cat-cover-copy {
@@ -425,13 +426,14 @@
     }
     .cat-btn:hover { opacity: 0.88; transform: translateY(-1px); }
     .cat-badge-avail {
-      font-size: 0.67rem;
+      font-size: 11px;
       font-weight: 600;
-      color: #7c3aed;
-      background: rgba(124,58,237,0.08);
-      border: 1px solid rgba(124,58,237,0.2);
-      padding: 4px 10px;
-      border-radius: 99px;
+      color: #6366f1;
+      background: rgba(99,102,241,0.1);
+      border: 1px solid rgba(99,102,241,0.3);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-top: 8px;
     }
 
     /* PDF SECTION */
@@ -532,6 +534,7 @@
           <button class="aw-f-btn" data-filter="social-media">Social Media</button>
           <button class="aw-f-btn" data-filter="video">Video</button>
           <button class="aw-f-btn" data-filter="copywriting">Copywriting</button>
+          <button class="aw-f-btn" data-filter="corporate-comm">Corporate Comm</button>
           <button class="aw-f-btn" data-filter="design">Design</button>
         </div>
       </div>
@@ -587,7 +590,7 @@
           </article>
 
           <!-- Card 3: Corporate Comm -->
-          <article class="cat-card" data-cats="design">
+          <article class="cat-card" data-cats="corporate-comm">
             <div class="cat-cover">
               <img src="image/artsworks/lifeathastari-sosmed-3.jpg.jpg" alt="Internal Communication" loading="lazy" />
               <div class="cat-cover-overlay"></div>
@@ -610,7 +613,7 @@
           </article>
 
           <!-- Card 4: Employer Branding -->
-          <article class="cat-card" data-cats="social-media">
+          <article class="cat-card" data-cats="corporate-comm">
             <div class="cat-cover">
               <img src="image/artsworks/lifeathastari-sosmed-1.jpg.jpg" alt="Employer Branding" loading="lazy" />
               <div class="cat-cover-overlay"></div>
@@ -687,7 +690,7 @@
           <!-- Card 7: Web Design -->
           <article class="cat-card" data-cats="design">
             <div class="cat-cover-web">
-              <span class="cat-label" style="background:#6366f1;">WEB DESIGN</span>
+              <span class="cat-label cl-webdesign">WEBSITE</span>
               <div class="cat-browser-mockup">
                 <div class="cat-browser-bar">
                   <div class="cat-browser-dots">
@@ -712,7 +715,7 @@
               </div>
               <div class="cat-footer" style="flex-direction:column;align-items:flex-start;">
                 <a href="mailto:rdpangestu8@gmail.com?subject=Request%20Portfolio%20-%20Hastari%20Website&body=Hi%20Rizki%2C%20I%27d%20like%20to%20request%20access%20to%20view%20the%20Hastari%20Corporation%20website%20portfolio." class="cat-btn-outline">Request to View →</a>
-                <span style="font-size:11px;color:#999;font-style:italic;margin-top:6px;">🔒 Available upon request</span>
+                <span class="cat-badge-avail">Available on Request</span>
               </div>
             </div>
           </article>
@@ -730,6 +733,7 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
             Full Document
           </p>
+          <p style="font-size:13px;color:#5a7080;font-weight:500;margin-bottom:8px;">A visual showcase of selected works in PDF format — browse directly in your browser</p>
           <h2 class="aw-pdf-title">Full Portfolio Document</h2>
           <p class="aw-pdf-subtitle">Browse the complete portfolio directly in your browser — no download required.</p>
         </div>
@@ -836,16 +840,67 @@
 
   <script src="js/main.js"></script>
   <script>
-    /* FILTER */
+    /* FILTER — smooth fade transition */
     document.querySelectorAll('.aw-f-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
         document.querySelectorAll('.aw-f-btn').forEach(function(b) { b.classList.remove('active'); });
         btn.classList.add('active');
         var filter = btn.dataset.filter;
-        document.querySelectorAll('.cat-card').forEach(function(card) {
+        var cards = Array.from(document.querySelectorAll('.cat-card'));
+        var toShow = [], toHide = [];
+
+        cards.forEach(function(card) {
           var cats = card.dataset.cats ? card.dataset.cats.split(' ') : [];
-          card.style.display = (filter === 'all' || cats.includes(filter)) ? '' : 'none';
+          if (filter === 'all' || cats.includes(filter)) toShow.push(card);
+          else toHide.push(card);
         });
+
+        var visible = cards.filter(function(c) { return c.style.display !== 'none'; });
+
+        // Phase 1: fade out all visible cards
+        visible.forEach(function(card) {
+          card.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(0) scale(0.95)';
+          card.style.pointerEvents = 'none';
+        });
+
+        setTimeout(function() {
+          // Phase 2: hide non-matching, set up matching
+          toHide.forEach(function(card) {
+            card.style.display = 'none';
+            card.style.transition = '';
+            card.style.opacity = '';
+            card.style.transform = '';
+            card.style.pointerEvents = '';
+          });
+
+          toShow.forEach(function(card) {
+            card.style.display = '';
+            card.style.transition = 'none';
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(0) scale(0.95)';
+          });
+
+          document.getElementById('cat-grid').offsetHeight; // force reflow
+
+          // Phase 3: stagger fade in
+          toShow.forEach(function(card, i) {
+            setTimeout(function() {
+              card.style.transition = 'opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease';
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0) scale(1)';
+              card.style.pointerEvents = '';
+
+              // Phase 4: clear inline after animation so hover works
+              setTimeout(function() {
+                card.style.transition = '';
+                card.style.opacity = '';
+                card.style.transform = '';
+              }, 350);
+            }, i * 50);
+          });
+        }, 220);
       });
     });
 
@@ -860,14 +915,19 @@
       catObs.observe(card);
     });
 
-    /* COUNTER ANIMATION */
+    /* COUNTER ANIMATION — ease-out, 1.5s, RAF */
     function animCount(el, target) {
-      var current = 0;
-      var timer = setInterval(function() {
-        current++;
-        el.textContent = current;
-        if (current >= target) { el.textContent = target; clearInterval(timer); }
-      }, 1200 / target);
+      var duration = 1500;
+      var start = null;
+      function step(ts) {
+        if (!start) start = ts;
+        var p = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - p, 2); // ease-out quad
+        el.textContent = Math.round(eased * target);
+        if (p < 1) requestAnimationFrame(step);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(step);
     }
     var counted = false;
     var statsObs = new IntersectionObserver(function(entries) {
