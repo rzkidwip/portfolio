@@ -462,6 +462,163 @@
     .aw-pdf-frame-wrap iframe { width: 100%; height: 700px; border: none; display: block; }
     .aw-pdf-actions { display: flex; justify-content: center; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
 
+    /* CLIENT SPOTLIGHT */
+    .cl-spot-section {
+      padding: 72px 0 84px;
+      border-top: 1.5px solid var(--border);
+      background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
+    }
+    .cl-spot-head { text-align: center; margin-bottom: 48px; }
+    .cl-spot-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: #1287c1;
+      margin-bottom: 12px;
+    }
+    .cl-spot-eyebrow svg { width: 14px; height: 14px; }
+    .cl-spot-title {
+      font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -1.2px;
+      margin-bottom: 10px;
+      line-height: 1.1;
+    }
+    .cl-spot-sub {
+      font-size: 0.88rem;
+      color: var(--muted);
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+    .cl-spot-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .cl-brand-card {
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 2px 18px rgba(0,0,0,0.07);
+      border: 1px solid #e8f0f6;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    .cl-brand-card.vis { opacity: 1; transform: translateY(0); }
+    .cl-brand-card:hover { transform: translateY(-6px); box-shadow: 0 14px 36px rgba(0,0,0,0.12); }
+    .cl-brand-top {
+      padding: 24px 20px 20px;
+      position: relative;
+      overflow: hidden;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .cl-brand-top::before { content: ''; position: absolute; inset: 0; }
+    .cl-brand-top-mro::before    { background: linear-gradient(135deg, #0077b6 0%, #023e8a 100%); }
+    .cl-brand-top-hastari::before { background: linear-gradient(135deg, #1e3a5f 0%, #0a1628 100%); }
+    .cl-brand-top-pwc::before    { background: linear-gradient(135deg, #c0392b 0%, #7b1010 100%); }
+    .cl-brand-top-life::before   { background: linear-gradient(135deg, #059669 0%, #064e3b 100%); }
+    .cl-brand-top::after {
+      content: '';
+      position: absolute;
+      top: -28px; right: -28px;
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+      pointer-events: none;
+    }
+    .cl-brand-deco-circle {
+      position: absolute;
+      bottom: -16px; left: -16px;
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      pointer-events: none;
+    }
+    .cl-brand-initial {
+      position: relative;
+      z-index: 1;
+      width: 42px; height: 42px;
+      border-radius: 11px;
+      background: rgba(255,255,255,0.18);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .cl-brand-name {
+      position: relative;
+      z-index: 1;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .cl-brand-type {
+      position: relative;
+      z-index: 1;
+      font-size: 0.61rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .cl-brand-body { padding: 18px 20px 20px; }
+    .cl-brand-desc {
+      font-size: 0.79rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+    .cl-brand-roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 16px;
+    }
+    .cl-brand-role {
+      padding: 3px 9px;
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 0.67rem;
+      font-weight: 600;
+      border-radius: 99px;
+    }
+    .cl-brand-ig-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 99px;
+      border: 1.5px solid #e2e8f0;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #334155;
+      text-decoration: none;
+      transition: all 0.2s;
+      background: #f8fafc;
+    }
+    .cl-brand-ig-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .cl-brand-ig-btn:hover { border-color: #E1306C; color: #E1306C; background: rgba(225,48,108,0.06); }
+
+    @media (max-width: 1024px) { .cl-spot-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; } }
+    @media (max-width: 600px)  { .cl-spot-grid { grid-template-columns: 1fr; gap: 16px; } }
+
     /* SCROLL REVEAL */
     .aw-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.52s ease, transform 0.52s ease; }
     .aw-reveal.visible { opacity: 1; transform: none; }
@@ -726,6 +883,113 @@
 
     </div>
 
+    <!-- CLIENT SPOTLIGHT -->
+    <div class="cl-spot-section">
+      <div class="container">
+
+        <div class="cl-spot-head aw-reveal">
+          <p class="cl-spot-eyebrow">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Featured Collaborations
+          </p>
+          <h2 class="cl-spot-title">Brands I've Contributed To</h2>
+          <p class="cl-spot-sub">From aviation MRO to Big Four professional services — delivering strategic communication across industries and organizations.</p>
+        </div>
+
+        <div class="cl-spot-grid">
+
+          <!-- MRO Indonesia -->
+          <div class="cl-brand-card">
+            <div class="cl-brand-top cl-brand-top-mro">
+              <div class="cl-brand-deco-circle"></div>
+              <div class="cl-brand-initial">MRO</div>
+              <div class="cl-brand-name">MRO Indonesia</div>
+              <div class="cl-brand-type">Aviation · MRO Services</div>
+            </div>
+            <div class="cl-brand-body">
+              <p class="cl-brand-desc">Strategic social media content and corporate visual communication for Indonesia's leading aviation maintenance, repair &amp; overhaul service provider.</p>
+              <div class="cl-brand-roles">
+                <span class="cl-brand-role">Social Media</span>
+                <span class="cl-brand-role">Visual Design</span>
+                <span class="cl-brand-role">Content Strategy</span>
+              </div>
+              <a href="https://www.instagram.com/mro.indonesia/" target="_blank" rel="noopener noreferrer" class="cl-brand-ig-btn">
+                <svg viewBox="0 0 24 24" fill="#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                View on Instagram
+              </a>
+            </div>
+          </div>
+
+          <!-- Hastari Corp -->
+          <div class="cl-brand-card">
+            <div class="cl-brand-top cl-brand-top-hastari">
+              <div class="cl-brand-deco-circle"></div>
+              <div class="cl-brand-initial">HC</div>
+              <div class="cl-brand-name">Hastari Corp</div>
+              <div class="cl-brand-type">Corporate · Holding Group</div>
+            </div>
+            <div class="cl-brand-body">
+              <p class="cl-brand-desc">End-to-end corporate communication — internal publications, stakeholder management, executive content, and cross-divisional event execution.</p>
+              <div class="cl-brand-roles">
+                <span class="cl-brand-role">Internal Comm</span>
+                <span class="cl-brand-role">Events</span>
+                <span class="cl-brand-role">Publication</span>
+              </div>
+              <a href="https://www.instagram.com/hastarijayasentosa/" target="_blank" rel="noopener noreferrer" class="cl-brand-ig-btn">
+                <svg viewBox="0 0 24 24" fill="#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                View on Instagram
+              </a>
+            </div>
+          </div>
+
+          <!-- PwC Indonesia -->
+          <div class="cl-brand-card">
+            <div class="cl-brand-top cl-brand-top-pwc">
+              <div class="cl-brand-deco-circle"></div>
+              <div class="cl-brand-initial">PwC</div>
+              <div class="cl-brand-name">PwC Indonesia</div>
+              <div class="cl-brand-type">Professional Services · Big Four</div>
+            </div>
+            <div class="cl-brand-body">
+              <p class="cl-brand-desc">Corporate visual design and communication materials for PricewaterhouseCoopers Indonesia — one of the world's leading professional services networks.</p>
+              <div class="cl-brand-roles">
+                <span class="cl-brand-role">Visual Design</span>
+                <span class="cl-brand-role">Corporate Comm</span>
+                <span class="cl-brand-role">Branding</span>
+              </div>
+              <a href="https://www.instagram.com/pwc_indonesia/" target="_blank" rel="noopener noreferrer" class="cl-brand-ig-btn">
+                <svg viewBox="0 0 24 24" fill="#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                View on Instagram
+              </a>
+            </div>
+          </div>
+
+          <!-- Life at Hastari -->
+          <div class="cl-brand-card">
+            <div class="cl-brand-top cl-brand-top-life">
+              <div class="cl-brand-deco-circle"></div>
+              <div class="cl-brand-initial">LaH</div>
+              <div class="cl-brand-name">Life at Hastari</div>
+              <div class="cl-brand-type">Employer Branding · Culture</div>
+            </div>
+            <div class="cl-brand-body">
+              <p class="cl-brand-desc">Employer branding content strategy and visual execution for Hastari Corporation's dedicated employee culture and talent acquisition channel.</p>
+              <div class="cl-brand-roles">
+                <span class="cl-brand-role">Employer Branding</span>
+                <span class="cl-brand-role">Content Creation</span>
+                <span class="cl-brand-role">Recruitment</span>
+              </div>
+              <a href="https://www.instagram.com/lifeathastari/" target="_blank" rel="noopener noreferrer" class="cl-brand-ig-btn">
+                <svg viewBox="0 0 24 24" fill="#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                View on Instagram
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
     <!-- PDF SECTION -->
     <div class="aw-pdf-section">
       <div class="container">
@@ -914,6 +1178,18 @@
     document.querySelectorAll('.cat-card').forEach(function(card, i) {
       card.style.transitionDelay = (i * 0.08) + 's';
       catObs.observe(card);
+    });
+
+    /* BRAND CARD REVEAL */
+    var brandObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('vis'); brandObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.cl-brand-card').forEach(function(card, i) {
+      card.style.transitionDelay = (i * 0.09) + 's';
+      card.style.transition = 'opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease';
+      brandObs.observe(card);
     });
 
     /* COUNTER ANIMATION — ease-out, 1.5s, RAF */

@@ -178,6 +178,98 @@
     .lb-info-title { font-size: 1rem; font-weight: 700; color: #fff; }
     .lb-info-company { font-size: 0.8rem; color: rgba(255,255,255,0.52); }
 
+    /* BRAND CONTEXT STRIP */
+    .bc-section {
+      margin-bottom: 36px;
+    }
+    .bc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .bc-card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #e8f0f6;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      display: flex;
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .bc-card.vis { opacity: 1; transform: translateY(0); }
+    .bc-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.10); }
+    .bc-accent {
+      width: 5px;
+      flex-shrink: 0;
+      border-radius: 0;
+    }
+    .bc-accent-pwc     { background: linear-gradient(180deg, #c0392b, #7b1010); }
+    .bc-accent-hastari { background: linear-gradient(180deg, #1e3a5f, #0a1628); }
+    .bc-accent-mro     { background: linear-gradient(180deg, #0077b6, #023e8a); }
+    .bc-body {
+      padding: 16px 18px;
+      flex: 1;
+      min-width: 0;
+    }
+    .bc-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .bc-avatar {
+      width: 36px; height: 36px;
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 900;
+      color: #fff;
+      flex-shrink: 0;
+      letter-spacing: -0.3px;
+    }
+    .bc-avatar-pwc     { background: linear-gradient(135deg, #c0392b, #7b1010); }
+    .bc-avatar-hastari { background: linear-gradient(135deg, #1e3a5f, #0a1628); }
+    .bc-avatar-mro     { background: linear-gradient(135deg, #0077b6, #023e8a); }
+    .bc-name {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #0d2a3d;
+      line-height: 1.2;
+    }
+    .bc-type {
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: #94a3b8;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .bc-desc {
+      font-size: 0.76rem;
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .bc-ig-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 13px;
+      border-radius: 99px;
+      border: 1.5px solid #e2e8f0;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #475569;
+      text-decoration: none;
+      background: #f8fafc;
+      transition: all 0.2s;
+    }
+    .bc-ig-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+    .bc-ig-btn:hover { border-color: #E1306C; color: #E1306C; background: rgba(225,48,108,0.05); }
+
+    @media (max-width: 768px) { .bc-grid { grid-template-columns: 1fr; } }
+
     /* REVEAL */
     .aw-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.52s ease, transform 0.52s ease; }
     .aw-reveal.visible { opacity: 1; transform: none; }
@@ -266,6 +358,70 @@
           <button class="dt-f-btn" data-filter="pwc">PwC Indonesia</button>
           <button class="dt-f-btn" data-filter="hastari">Hastari</button>
           <button class="dt-f-btn" data-filter="mro">MRO Indonesia</button>
+        </div>
+      </div>
+
+      <!-- BRAND CONTEXT -->
+      <div class="bc-section">
+        <div class="bc-grid">
+
+          <!-- PwC Indonesia -->
+          <div class="bc-card">
+            <div class="bc-accent bc-accent-pwc"></div>
+            <div class="bc-body">
+              <div class="bc-header">
+                <div class="bc-avatar bc-avatar-pwc">PwC</div>
+                <div>
+                  <div class="bc-name">PwC Indonesia</div>
+                  <div class="bc-type">Professional Services · Big Four</div>
+                </div>
+              </div>
+              <p class="bc-desc">Corporate social media design and visual communication assets for PricewaterhouseCoopers Indonesia — one of the world's leading professional services networks.</p>
+              <a href="https://www.instagram.com/pwc_indonesia/" target="_blank" rel="noopener noreferrer" class="bc-ig-btn">
+                <svg viewBox="0 0 24 24" fill="#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                View on Instagram
+              </a>
+            </div>
+          </div>
+
+          <!-- Hastari Corp -->
+          <div class="bc-card">
+            <div class="bc-accent bc-accent-hastari"></div>
+            <div class="bc-body">
+              <div class="bc-header">
+                <div class="bc-avatar bc-avatar-hastari">HC</div>
+                <div>
+                  <div class="bc-name">Hastari Corp</div>
+                  <div class="bc-type">Corporate · Holding Group</div>
+                </div>
+              </div>
+              <p class="bc-desc">Corporate social media branding and visual content for Hastari Jaya Sentosa — covering company milestones, programs, and strategic corporate communications.</p>
+              <a href="https://www.instagram.com/hastarijayasentosa/" target="_blank" rel="noopener noreferrer" class="bc-ig-btn">
+                <svg viewBox="0 0 24 24" fill="#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                View on Instagram
+              </a>
+            </div>
+          </div>
+
+          <!-- MRO Indonesia -->
+          <div class="bc-card">
+            <div class="bc-accent bc-accent-mro"></div>
+            <div class="bc-body">
+              <div class="bc-header">
+                <div class="bc-avatar bc-avatar-mro">MRO</div>
+                <div>
+                  <div class="bc-name">MRO Indonesia</div>
+                  <div class="bc-type">Aviation · MRO Services</div>
+                </div>
+              </div>
+              <p class="bc-desc">Strategic social media content and infographic design for MRO Indonesia — delivering educational and promotional content for Indonesia's aviation industry.</p>
+              <a href="https://www.instagram.com/mro.indonesia/" target="_blank" rel="noopener noreferrer" class="bc-ig-btn">
+                <svg viewBox="0 0 24 24" fill="#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                View on Instagram
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -480,6 +636,17 @@
     document.querySelectorAll('.aw-reveal').forEach(function(el){staticObs.observe(el);});
 
     renderGrid();
+
+    /* Brand card reveal */
+    var bcObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('vis'); bcObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.bc-card').forEach(function(c, i){
+      c.style.transition = 'opacity 0.45s ease '+(i*0.08)+'s, transform 0.45s ease '+(i*0.08)+'s, box-shadow 0.28s ease';
+      bcObs.observe(c);
+    });
   </script>
 </body>
 </html>
