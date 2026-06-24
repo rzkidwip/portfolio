@@ -619,6 +619,45 @@
     @media (max-width: 1024px) { .cl-spot-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; } }
     @media (max-width: 600px)  { .cl-spot-grid { grid-template-columns: 1fr; gap: 16px; } }
 
+    /* GALLERY CORNER */
+    .gc-section { padding: 64px 0 72px; border-top: 1.5px solid var(--border); }
+    .gc-eyebrow {
+      font-size: 11px; font-weight: 700; color: #1287c1;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      display: block; margin-bottom: 6px;
+    }
+    .gc-title { font-size: 24px; font-weight: 800; color: #0d2a3d; margin: 6px 0; }
+    .gc-sub { font-size: 14px; color: #5a7080; margin-bottom: 24px; line-height: 1.5; }
+    .gc-carousel {
+      display: flex; gap: 10px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      padding-bottom: 12px; cursor: grab;
+      -webkit-overflow-scrolling: touch;
+    }
+    .gc-carousel.dragging { cursor: grabbing; user-select: none; }
+    .gc-carousel::-webkit-scrollbar { height: 4px; }
+    .gc-carousel::-webkit-scrollbar-track { background: transparent; }
+    .gc-carousel::-webkit-scrollbar-thumb { background: rgba(18,135,193,0.25); border-radius: 4px; }
+    .gc-img-wrap {
+      position: relative; flex-shrink: 0;
+      width: 320px; height: 200px;
+      border-radius: 14px; overflow: hidden;
+      scroll-snap-align: start;
+    }
+    .gc-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.3s ease;
+      pointer-events: none;
+    }
+    .gc-img-wrap:hover img { transform: scale(1.03); }
+    .gc-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.12));
+      opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
+    }
+    .gc-img-wrap:hover .gc-img-overlay { opacity: 1; }
+    .gc-hint { font-size: 11px; color: #999; text-align: center; margin-top: 10px; font-style: italic; }
+
     /* SCROLL REVEAL */
     .aw-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.52s ease, transform 0.52s ease; }
     .aw-reveal.visible { opacity: 1; transform: none; }
@@ -990,6 +1029,30 @@
       </div>
     </div>
 
+    <!-- GALLERY CORNER -->
+    <div class="gc-section">
+      <div class="container">
+        <span class="gc-eyebrow">Behind the Scenes</span>
+        <h2 class="gc-title">Gallery Corner</h2>
+        <p class="gc-sub">A glimpse into the work — events, activations, and moments along the way.</p>
+        <div class="gc-carousel" id="gc-carousel">
+          <div class="gc-img-wrap"><img src="assets/gallery/gallery%201.png"  alt="Behind the scenes 1"  loading="lazy"><div class="gc-img-overlay"></div></div>
+          <div class="gc-img-wrap"><img src="assets/gallery/gallery%202.png"  alt="Behind the scenes 2"  loading="lazy"><div class="gc-img-overlay"></div></div>
+          <div class="gc-img-wrap"><img src="assets/gallery/gallery%203.png"  alt="Behind the scenes 3"  loading="lazy"><div class="gc-img-overlay"></div></div>
+          <div class="gc-img-wrap"><img src="assets/gallery/gallery%204.png"  alt="Behind the scenes 4"  loading="lazy"><div class="gc-img-overlay"></div></div>
+          <div class="gc-img-wrap"><img src="assets/gallery/gallery%205.png"  alt="Behind the scenes 5"  loading="lazy"><div class="gc-img-overlay"></div></div>
+          <div class="gc-img-wrap"><img src="assets/gallery/gallery%206.png"  alt="Behind the scenes 6"  loading="lazy"><div class="gc-img-overlay"></div></div>
+          <div class="gc-img-wrap"><img src="assets/gallery/gallery%207.png"  alt="Behind the scenes 7"  loading="lazy"><div class="gc-img-overlay"></div></div>
+          <div class="gc-img-wrap"><img src="assets/gallery/gallery%208.png"  alt="Behind the scenes 8"  loading="lazy"><div class="gc-img-overlay"></div></div>
+          <div class="gc-img-wrap"><img src="assets/gallery/gallery%209.png"  alt="Behind the scenes 9"  loading="lazy"><div class="gc-img-overlay"></div></div>
+          <div class="gc-img-wrap"><img src="assets/gallery/gallery%2010.png" alt="Behind the scenes 10" loading="lazy"><div class="gc-img-overlay"></div></div>
+          <div class="gc-img-wrap"><img src="assets/gallery/gallery%2011.png" alt="Behind the scenes 11" loading="lazy"><div class="gc-img-overlay"></div></div>
+          <div class="gc-img-wrap"><img src="assets/gallery/gallery%2012.png" alt="Behind the scenes 12" loading="lazy"><div class="gc-img-overlay"></div></div>
+        </div>
+        <p class="gc-hint">← Drag or scroll to explore →</p>
+      </div>
+    </div>
+
     <!-- PDF SECTION -->
     <div class="aw-pdf-section">
       <div class="container">
@@ -1227,6 +1290,26 @@
       });
     }, { threshold: 0.08 });
     document.querySelectorAll('.aw-reveal').forEach(function(el) { staticObs.observe(el); });
+
+    /* GALLERY CORNER — drag to scroll */
+    (function(){
+      var c = document.getElementById('gc-carousel');
+      if (!c) return;
+      var isDown = false, startX, scrollLeft;
+      c.addEventListener('mousedown', function(e) {
+        isDown = true; c.classList.add('dragging');
+        startX = e.pageX - c.offsetLeft;
+        scrollLeft = c.scrollLeft;
+      });
+      c.addEventListener('mouseleave', function() { isDown = false; c.classList.remove('dragging'); });
+      c.addEventListener('mouseup',    function() { isDown = false; c.classList.remove('dragging'); });
+      c.addEventListener('mousemove',  function(e) {
+        if (!isDown) return;
+        e.preventDefault();
+        var x = e.pageX - c.offsetLeft;
+        c.scrollLeft = scrollLeft - (x - startX) * 1.2;
+      });
+    })();
   </script>
 </body>
 </html>

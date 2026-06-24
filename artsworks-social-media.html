@@ -290,6 +290,64 @@
     .dt-filter-wrap { padding-top:48px; padding-bottom:32px; }
     .dt-f-btn:hover:not(.active) { border-color:rgba(18,135,193,0.5); color:#1287c1; background:rgba(18,135,193,0.08); }
     @media (max-width:768px) { .dt-title { font-size:36px; } .dt-subtitle { font-size:14px; max-width:100%; } }
+
+    /* FOLLOW ON INSTAGRAM */
+    .follow-section { margin-bottom: 32px; }
+    .follow-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #1287c1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 24px;
+    }
+    .follow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .follow-card {
+      background: #fff;
+      border: 0.5px solid #e8f4fb;
+      border-radius: 0 0 12px 12px;
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .follow-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+    .follow-card-pwc     { border-top: 3px solid #E24B4A; }
+    .follow-card-hastari { border-top: 3px solid #185FA5; }
+    .follow-card-mro     { border-top: 3px solid #3B6D11; }
+    .follow-card-life    { border-top: 3px solid #3C3489; }
+    .follow-icon-box {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .follow-icon-pwc     { background: #FAEBEB; }
+    .follow-icon-hastari { background: #E6F1FB; }
+    .follow-icon-mro     { background: #EAF3DE; }
+    .follow-icon-life    { background: #EEEDFE; }
+    .follow-card-title { font-size: 14px; font-weight: 600; color: #0d2a3d; line-height: 1.3; }
+    .follow-card-sub   { font-size: 12px; color: #5a7080; line-height: 1.4; }
+    .follow-ig-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #1287c1;
+      text-decoration: none;
+      margin-top: auto;
+    }
+    .follow-ig-link svg { width: 12px; height: 12px; flex-shrink: 0; }
+    @media (max-width: 900px) { .follow-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px) { .follow-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -429,6 +487,83 @@
       <div class="dt-section">
         <div class="dt-grid" id="dt-grid"></div>
       </div>
+      <!-- FOLLOW ON INSTAGRAM -->
+      <div class="follow-section">
+        <span class="follow-label">See More on Instagram</span>
+        <div class="follow-grid">
+
+          <!-- PwC Indonesia -->
+          <a href="https://www.instagram.com/pwc_indonesia/" target="_blank" rel="noopener noreferrer" class="follow-card follow-card-pwc">
+            <div class="follow-icon-box follow-icon-pwc">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#791F1F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/>
+                <path d="M9 21v-4a2 2 0 0 1 4 0v4"/>
+                <circle cx="9" cy="10" r=".6" fill="#791F1F"/><circle cx="15" cy="10" r=".6" fill="#791F1F"/>
+                <circle cx="9" cy="14" r=".6" fill="#791F1F"/><circle cx="15" cy="14" r=".6" fill="#791F1F"/>
+              </svg>
+            </div>
+            <div class="follow-card-title">PwC Indonesia</div>
+            <div class="follow-card-sub">Big four professional services</div>
+            <span class="follow-ig-link">
+              <svg viewBox="0 0 24 24" fill="#1287c1"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+              Instagram →
+            </span>
+          </a>
+
+          <!-- Hastari Corp -->
+          <a href="https://www.instagram.com/hastarijayasentosa/" target="_blank" rel="noopener noreferrer" class="follow-card follow-card-hastari">
+            <div class="follow-icon-box follow-icon-hastari">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0C447C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18"/>
+                <rect x="4" y="8" width="16" height="13" rx="1"/>
+                <path d="M9 8V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/>
+                <path d="M10 21v-4h4v4"/>
+                <circle cx="9" cy="13" r=".6" fill="#0C447C"/><circle cx="12" cy="13" r=".6" fill="#0C447C"/><circle cx="15" cy="13" r=".6" fill="#0C447C"/>
+              </svg>
+            </div>
+            <div class="follow-card-title">Hastari Corp</div>
+            <div class="follow-card-sub">Holding &amp; corporate group</div>
+            <span class="follow-ig-link">
+              <svg viewBox="0 0 24 24" fill="#1287c1"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+              Instagram →
+            </span>
+          </a>
+
+          <!-- MRO Indonesia -->
+          <a href="https://www.instagram.com/mro.indonesia/" target="_blank" rel="noopener noreferrer" class="follow-card follow-card-mro">
+            <div class="follow-icon-box follow-icon-mro">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#27500A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+              </svg>
+            </div>
+            <div class="follow-card-title">MRO Indonesia</div>
+            <div class="follow-card-sub">Aviation &amp; MRO services</div>
+            <span class="follow-ig-link">
+              <svg viewBox="0 0 24 24" fill="#1287c1"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+              Instagram →
+            </span>
+          </a>
+
+          <!-- Life at Hastari -->
+          <a href="https://www.instagram.com/lifeathastari/" target="_blank" rel="noopener noreferrer" class="follow-card follow-card-life">
+            <div class="follow-icon-box follow-icon-life">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#26215C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                <path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"/>
+                <path d="m18 15-2-2m-3 3-2-2"/>
+              </svg>
+            </div>
+            <div class="follow-card-title">Life at Hastari</div>
+            <div class="follow-card-sub">Employer branding &amp; culture</div>
+            <span class="follow-ig-link">
+              <svg viewBox="0 0 24 24" fill="#1287c1"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+              Instagram →
+            </span>
+          </a>
+
+        </div>
+      </div>
+
       <p class="aw-disclaimer">Some works are confidential and cannot be displayed publicly. <a href="mailto:rdpangestu8@gmail.com">Contact me</a> for full portfolio.</p>
 
     </div>
