@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="Logo Favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ER Dashboard — Rizki Dwi Pangestu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style-premium.css" />
+  <style>
+    /* HERO */
+    .dt-hero {
+      background: linear-gradient(135deg, #3b1fa8 0%, #4c35b5 40%, #1e1b7e 100%);
+      padding: 100px 0 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .dt-hero-deco { animation: awFadeIn 0.6s ease 0.4s both; }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.9);
+      text-decoration: none; padding: 8px 18px; border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);
+      transition: background 0.2s; margin-bottom: 24px;
+    }
+    .back-btn:hover { background: rgba(255,255,255,0.25); color: #fff; }
+    .dt-eyebrow {
+      font-size: 12px; font-weight: 800; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(255,255,255,0.6);
+      margin-bottom: 12px; display: block;
+    }
+    .dt-title {
+      font-size: clamp(36px,5vw,56px); font-weight: 900; color: #fff;
+      letter-spacing: -1.5px; line-height: 1.08; margin-bottom: 16px;
+    }
+    .dt-subtitle {
+      font-size: 16px; color: rgba(255,255,255,0.85);
+      max-width: 560px; line-height: 1.6; margin: 0 0 24px;
+    }
+    .dt-hero-badges {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 0;
+    }
+    .dt-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 99px;
+      font-size: 12px; font-weight: 700;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.9);
+    }
+    .dt-badge svg { width: 13px; height: 13px; }
+    .dt-live-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 12px 24px; border-radius: 99px;
+      font-size: 14px; font-weight: 700; text-decoration: none;
+      background: #fff; color: #3b1fa8;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .dt-live-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* MOCKUP PREVIEW SECTION */
+    .db-preview-section {
+      background: #f5f4ff;
+      padding: 64px 0;
+      border-bottom: 1.5px solid #e5e4ff;
+    }
+    .db-browser {
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(59,31,168,0.2), 0 4px 16px rgba(0,0,0,0.1);
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .db-browser-bar {
+      background: #2d2b55;
+      padding: 10px 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .db-dots { display: flex; gap: 7px; flex-shrink: 0; }
+    .db-dots span { width: 10px; height: 10px; border-radius: 50%; display: block; }
+    .db-dots span:nth-child(1) { background: #ff5f57; }
+    .db-dots span:nth-child(2) { background: #febc2e; }
+    .db-dots span:nth-child(3) { background: #28c840; }
+    .db-url-bar {
+      flex: 1; background: rgba(255,255,255,0.12);
+      border-radius: 6px; padding: 5px 14px;
+      font-size: 11px; color: rgba(255,255,255,0.6);
+      font-family: 'Courier New', monospace;
+    }
+    .db-browser-screen img {
+      width: 100%; display: block; height: auto;
+    }
+
+    /* SCREENSHOT GALLERY */
+    .db-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 960px;
+      margin: 32px auto 0;
+    }
+    .db-gallery-item {
+      border-radius: 12px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .db-gallery-item:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.15); }
+    .db-gallery-item img { width: 100%; display: block; height: 200px; object-fit: cover; object-position: top; }
+    .db-gallery-label {
+      position: absolute; bottom: 10px; left: 10px;
+      background: rgba(59,31,168,0.85); color: #fff;
+      font-size: 11px; font-weight: 700;
+      padding: 4px 10px; border-radius: 6px;
+      backdrop-filter: blur(6px);
+    }
+
+    /* STATS OVERVIEW */
+    .cs-stats {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 16px; margin: 48px 0;
+    }
+    .cs-stat-card {
+      background: #fff; border: 1px solid #ede9fe;
+      border-radius: 12px; padding: 24px; text-align: center;
+    }
+    .cs-stat-num {
+      font-size: 28px; font-weight: 800; color: #4c35b5;
+      line-height: 1.1; margin-bottom: 6px;
+    }
+    .cs-stat-lbl { font-size: 12px; color: #5a7080; font-weight: 500; line-height: 1.4; }
+
+    /* FEATURE CARDS */
+    .db-features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .db-feat-card {
+      background: #fff;
+      border: 1px solid #ede9fe;
+      border-top: 3px solid #4c35b5;
+      border-radius: 12px;
+      padding: 24px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .db-feat-card:hover {
+      box-shadow: 0 8px 24px rgba(76,53,181,0.12);
+      transform: translateY(-3px);
+    }
+    .db-feat-icon {
+      font-size: 28px; margin-bottom: 12px; display: block;
+    }
+    .db-feat-title {
+      font-size: 16px; font-weight: 800; color: #1a1060;
+      margin: 0 0 8px; line-height: 1.3;
+    }
+    .db-feat-desc {
+      font-size: 13px; color: #5a7080; line-height: 1.65; margin: 0;
+    }
+
+    /* TECH STACK */
+    .db-tech-section {
+      background: #faf9ff;
+      border: 1px solid #ede9fe;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 40px;
+    }
+    .db-tech-title { font-size: 17px; font-weight: 800; color: #1a1060; margin: 0 0 18px; }
+    .db-tech-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .db-tech-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 99px;
+      background: #ede9fe; color: #4c35b5;
+      font-size: 12px; font-weight: 700;
+    }
+
+    /* CTA BANNER */
+    .db-cta {
+      background: linear-gradient(135deg, #3b1fa8, #4c35b5);
+      border-radius: 16px;
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 80px;
+    }
+    .db-cta-text h3 {
+      font-size: 22px; font-weight: 800; color: #fff;
+      margin: 0 0 8px; line-height: 1.2;
+    }
+    .db-cta-text p {
+      font-size: 14px; color: rgba(255,255,255,0.78);
+      line-height: 1.6; margin: 0;
+    }
+    .db-cta-btns { display: flex; flex-wrap: wrap; gap: 10px; flex-shrink: 0; }
+    .db-cta-btn-white {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 12px 24px; border-radius: 99px;
+      background: #fff; color: #3b1fa8;
+      font-size: 14px; font-weight: 700; text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .db-cta-btn-white:hover { opacity: 0.88; }
+    .db-cta-btn-outline {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 11px 22px; border-radius: 99px;
+      background: transparent; color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.5);
+      font-size: 14px; font-weight: 700; text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .db-cta-btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+    /* SECTION HEADING */
+    .db-section-head { margin-bottom: 28px; }
+    .db-section-eyebrow {
+      font-size: 11px; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: #4c35b5; margin-bottom: 8px; display: block;
+    }
+    .db-section-title {
+      font-size: clamp(22px, 3vw, 30px); font-weight: 900;
+      color: #0d1a2d; letter-spacing: -0.8px;
+      line-height: 1.15; margin: 0 0 8px;
+    }
+    .db-section-sub { font-size: 14px; color: #5a7080; line-height: 1.6; max-width: 500px; }
+
+    /* SCROLL REVEAL */
+    .aw-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.52s ease, transform 0.52s ease; }
+    .aw-reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      .cs-stats { grid-template-columns: repeat(2,1fr); }
+      .db-features-grid { grid-template-columns: repeat(2,1fr); }
+      .db-gallery { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .dt-title { font-size: 34px; }
+      .db-features-grid { grid-template-columns: 1fr; }
+      .db-cta { flex-direction: column; }
+      .db-cta-btns { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar hero-nav" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Portfolio</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="resume.html">My Resume</a></li>
+        <li><a href="index.html#leadership">Leadership</a></li>
+        <li><a href="services.html">Expertise</a></li>
+        <li><a href="artsworks.html" class="active">Artsworks</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="nav-search">
+          <input type="search" id="search-input" placeholder="Search my project.." autocomplete="off" />
+          <button onclick="goSearch()" aria-label="Search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </div>
+        <a href="about.html" class="btn-hello">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+          Hello!
+        </a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <header class="dt-hero">
+    <div class="dt-hero-deco" aria-hidden="true">
+      <svg style="position:absolute;top:50%;right:80px;transform:translateY(-50%);" width="140" height="140" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="120" height="120" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1" transform="rotate(45 70 70)"/>
+        <rect x="28" y="28" width="84" height="84" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" transform="rotate(45 70 70)"/>
+      </svg>
+      <div style="position:absolute;top:0;right:260px;bottom:0;width:60px;background:rgba(255,255,255,0.02);transform:skewX(-15deg);pointer-events:none;"></div>
+      <div style="position:absolute;bottom:48px;left:80px;width:48px;height:2px;background:rgba(255,255,255,0.35);border-radius:2px;"></div>
+    </div>
+    <div class="container dt-hero-inner" style="position:relative;z-index:2;">
+      <a href="artsworks.html" class="back-btn">← Back to Portfolio</a>
+      <span class="dt-eyebrow">Web Design &amp; Development</span>
+      <h1 class="dt-title">ER Dashboard<br>Portal Hastarian</h1>
+      <p class="dt-subtitle">Platform manajemen Employee Relations berbasis web untuk Hastari Group — mengelola 94 karyawan, 7 divisi, dan budget ER dalam satu sistem terintegrasi.</p>
+      <div class="dt-hero-badges">
+        <span class="dt-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+          Live Demo Available
+        </span>
+        <span class="dt-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+          HTML / CSS / JS / Apps Script
+        </span>
+        <span class="dt-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+          6 Modul Terintegrasi
+        </span>
+        <span class="dt-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+          Hastari Corporation · 2025
+        </span>
+      </div>
+      <div style="margin-top:28px;">
+        <a href="https://rzkidwip.github.io/er-dashboard-hastari/" target="_blank" rel="noopener noreferrer" class="dt-live-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+          Lihat Live Demo
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- BROWSER PREVIEW -->
+  <section class="db-preview-section">
+    <div class="container">
+      <div class="db-browser aw-reveal">
+        <div class="db-browser-bar">
+          <div class="db-dots"><span></span><span></span><span></span></div>
+          <div class="db-url-bar">rzkidwip.github.io/er-dashboard-hastari/</div>
+        </div>
+        <div class="db-browser-screen">
+          <img src="image/artsworks/dashboard/dashboard-hero.png" alt="ER Dashboard Hastarian — Hero Section" />
+        </div>
+      </div>
+
+      <div class="db-gallery aw-reveal">
+        <div class="db-gallery-item">
+          <img src="image/artsworks/dashboard/dashboard-section2.png" alt="Modul-modul Dashboard" />
+          <span class="db-gallery-label">6 Fitur Lengkap</span>
+        </div>
+        <div class="db-gallery-item">
+          <img src="image/artsworks/dashboard/dashboard-stats.png" alt="Data Real-time & Entitas" />
+          <span class="db-gallery-label">Data Real-time</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="container">
+
+      <!-- OVERVIEW STATS -->
+      <div class="cs-stats aw-reveal">
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">94</div>
+          <div class="cs-stat-lbl">Karyawan Dikelola<br>dari 7 Divisi</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">6</div>
+          <div class="cs-stat-lbl">Modul Terintegrasi<br>dalam Satu Platform</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">7</div>
+          <div class="cs-stat-lbl">Entitas Grup Hastari<br>Terhubung</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">37.9M</div>
+          <div class="cs-stat-lbl">Budget ER Dikelola<br>Real-time</div>
+        </div>
+      </div>
+
+      <!-- FEATURES -->
+      <div class="aw-reveal">
+        <div class="db-section-head">
+          <span class="db-section-eyebrow">Fitur Platform</span>
+          <h2 class="db-section-title">6 Modul untuk Semua Kebutuhan ER</h2>
+          <p class="db-section-sub">Setiap modul dirancang untuk memenuhi kebutuhan spesifik tim Employee Relations secara efisien dan terpusat.</p>
+        </div>
+        <div class="db-features-grid">
+
+          <div class="db-feat-card">
+            <span class="db-feat-icon">📊</span>
+            <h3 class="db-feat-title">Dashboard KPI</h3>
+            <p class="db-feat-desc">Overview performa real-time — KPI engagement, birthday tracker karyawan, dan statistik program dalam satu tampilan terpusat.</p>
+          </div>
+
+          <div class="db-feat-card">
+            <span class="db-feat-icon">👥</span>
+            <h3 class="db-feat-title">Manajemen Karyawan</h3>
+            <p class="db-feat-desc">Database 94 karyawan dari 7 divisi aktif — filter cepat, detail profil lengkap, dan pengelolaan data jabatan.</p>
+          </div>
+
+          <div class="db-feat-card">
+            <span class="db-feat-icon">📅</span>
+            <h3 class="db-feat-title">Events &amp; Calendar</h3>
+            <p class="db-feat-desc">Kalender kerja terintegrasi dengan hari libur nasional, jadwal event mendatang, dan dokumentasi program yang sudah berjalan.</p>
+          </div>
+
+          <div class="db-feat-card">
+            <span class="db-feat-icon">🏆</span>
+            <h3 class="db-feat-title">Sports Tracker</h3>
+            <p class="db-feat-desc">Lacak kehadiran olahraga rutin karyawan, visualisasi heatmap partisipasi, dan ranking engagement per divisi.</p>
+          </div>
+
+          <div class="db-feat-card">
+            <span class="db-feat-icon">📱</span>
+            <h3 class="db-feat-title">Social Media Monitor</h3>
+            <p class="db-feat-desc">Monitor postingan dan analitik engagement konten ER di semua platform, termasuk content planner terintegrasi.</p>
+          </div>
+
+          <div class="db-feat-card">
+            <span class="db-feat-icon">💰</span>
+            <h3 class="db-feat-title">Expenses &amp; Budget</h3>
+            <p class="db-feat-desc">Tracking anggaran ER secara real-time — perbandingan antar periode, laporan pengeluaran, dan proyeksi budget.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- TECH STACK -->
+      <div class="db-tech-section aw-reveal">
+        <h3 class="db-tech-title">Tech Stack</h3>
+        <div class="db-tech-list">
+          <span class="db-tech-tag">HTML5</span>
+          <span class="db-tech-tag">CSS3</span>
+          <span class="db-tech-tag">Vanilla JavaScript</span>
+          <span class="db-tech-tag">Google Apps Script</span>
+          <span class="db-tech-tag">Google Sheets API</span>
+          <span class="db-tech-tag">Chart.js</span>
+          <span class="db-tech-tag">GitHub Pages</span>
+          <span class="db-tech-tag">Responsive Design</span>
+        </div>
+      </div>
+
+      <!-- CASE STUDY NOTES -->
+      <div class="aw-reveal" style="margin-bottom:40px;">
+        <div class="db-section-head">
+          <span class="db-section-eyebrow">Konteks Proyek</span>
+          <h2 class="db-section-title">Dari Kebutuhan Nyata di Lapangan</h2>
+        </div>
+
+        <div style="background:#fff;border:1px solid #ede9fe;border-left:4px solid #4c35b5;border-radius:12px;padding:28px 32px;margin-bottom:20px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:8px;">
+            <span style="font-size:11px;color:#4c35b5;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">HASTARI CORPORATION · 2025</span>
+            <span style="background:#4c35b5;color:#fff;border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;">94 Karyawan · 7 Divisi</span>
+          </div>
+          <h3 style="font-size:19px;font-weight:800;color:#0d2a3d;margin:0 0 10px;line-height:1.3;">Satu Platform untuk Semua Program ER</h3>
+          <p style="font-size:14px;color:#5a7080;line-height:1.7;margin:0 0 16px;">Dibangun untuk menjawab kebutuhan nyata tim Employee Relations Hastari Corp yang sebelumnya mengelola data karyawan, event, budget, dan konten sosial media secara terpisah di berbagai spreadsheet. Dashboard ini menyatukan semua data dalam satu antarmuka yang intuitif dan mudah diakses.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;">
+            <span style="background:#f0f0ff;color:#4c35b5;font-size:11px;font-weight:600;padding:4px 12px;border-radius:99px;">Employee Relations</span>
+            <span style="background:#f0f0ff;color:#4c35b5;font-size:11px;font-weight:600;padding:4px 12px;border-radius:99px;">Web Design</span>
+            <span style="background:#f0f0ff;color:#4c35b5;font-size:11px;font-weight:600;padding:4px 12px;border-radius:99px;">Data Visualization</span>
+            <span style="background:#f0f0ff;color:#4c35b5;font-size:11px;font-weight:600;padding:4px 12px;border-radius:99px;">Internal Tools</span>
+          </div>
+        </div>
+
+        <div style="background:#fff;border:1px solid #ede9fe;border-left:4px solid #4c35b5;border-radius:12px;padding:28px 32px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:8px;">
+            <span style="font-size:11px;color:#4c35b5;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">DESIGN APPROACH</span>
+            <span style="background:#4c35b5;color:#fff;border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;">Full Responsive</span>
+          </div>
+          <h3 style="font-size:19px;font-weight:800;color:#0d2a3d;margin:0 0 10px;line-height:1.3;">UI/UX yang Bersih dan Fungsional</h3>
+          <p style="font-size:14px;color:#5a7080;line-height:1.7;margin:0 0 16px;">Desain mengutamakan kemudahan navigasi dengan sidebar yang terstruktur, warna ungu sebagai identitas visual Portal Hastarian, serta layout data yang bersih agar pengguna non-teknis sekalipun bisa mengoperasikan dengan mudah. Setiap modul dibangun dengan prinsip minimal klik, maksimal informasi.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;">
+            <span style="background:#f0f0ff;color:#4c35b5;font-size:11px;font-weight:600;padding:4px 12px;border-radius:99px;">UI/UX Design</span>
+            <span style="background:#f0f0ff;color:#4c35b5;font-size:11px;font-weight:600;padding:4px 12px;border-radius:99px;">Mobile Responsive</span>
+            <span style="background:#f0f0ff;color:#4c35b5;font-size:11px;font-weight:600;padding:4px 12px;border-radius:99px;">User-Centered Design</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="db-cta aw-reveal">
+        <div class="db-cta-text">
+          <h3>Tertarik dengan Proyek Serupa?</h3>
+          <p>Dashboard ini open to collaboration — saya terbuka untuk membangun internal tools, web app, dan sistem HR digital untuk perusahaan Anda.</p>
+        </div>
+        <div class="db-cta-btns">
+          <a href="https://rzkidwip.github.io/er-dashboard-hastari/" target="_blank" rel="noopener noreferrer" class="db-cta-btn-white">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:15px;height:15px;"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+            Lihat Live Demo
+          </a>
+          <a href="mailto:rdpangestu8@gmail.com?subject=Kolaborasi%20Web%20Design%20%2F%20Dashboard&body=Hi%20Rizki%2C%20saya%20tertarik%20dengan%20proyek%20ER%20Dashboard%20dan%20ingin%20mendiskusikan%20kemungkinan%20kolaborasi." class="db-cta-btn-outline">
+            Diskusi Proyek →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer-new">
+    <div class="fn-cta"><div class="container"><div class="fn-cta-inner"><div class="fn-cta-text"><div class="fn-cta-line"></div><h2 class="fn-cta-title">Let's Work Together</h2><p class="fn-cta-sub">Open for collaborations, projects, and full-time opportunities in Corporate Communication, Employee Relations and Public Relations.</p></div><div class="fn-cta-btns"><a href="mailto:rdpangestu8@gmail.com" class="fn-cta-btn-primary">Get In Touch &rarr;</a><a href="artsworks.html" class="fn-cta-btn-ghost">View My Works &rarr;</a></div></div></div></div>
+    <div class="fn-main"><div class="container fn-inner"><div class="fn-grid"><div class="fn-col fn-brand"><a href="index.html" class="fn-logo">Portfolio</a><p class="fn-tagline">Corporate Communication &amp; Public Relations</p><p class="fn-desc">Crafting strategic narratives that build brands and drive meaningful impact.</p><div class="fn-brand-divider"></div><div class="fn-brand-socials"><a href="https://linkedin.com/in/rizkidwipangestu" target="_blank" class="fn-bs" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="mailto:rdpangestu8@gmail.com" class="fn-bs" aria-label="Email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a></div></div><div class="fn-col"><h3 class="fn-heading">Navigation</h3><ul class="fn-links"><li><a href="about.html">About Me</a></li><li><a href="resume.html">My Resume</a></li><li><a href="artsworks.html">Artsworks</a></li></ul></div><div class="fn-col"><h3 class="fn-heading">Contact</h3><ul class="fn-contact-list"><li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg><a href="mailto:rdpangestu8@gmail.com">rdpangestu8@gmail.com</a></li></ul></div><div class="fn-col fn-social-col"><h3 class="fn-heading">Find Me On</h3><div class="fn-socials"><a href="https://linkedin.com/in/rizkidwipangestu" target="_blank" class="fn-social" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="mailto:rdpangestu8@gmail.com" class="fn-social" aria-label="Email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a></div></div></div><div class="fn-divider"></div></div></div>
+    <div class="fn-bottom-wrap"><div class="container"><div class="fn-bottom"><p class="fn-copy">&copy; 2026 <strong>Rizki Dwi Pangestu</strong>. All rights reserved.</p><p class="fn-made">Telling stories, one pixel at a time.</p></div></div></div>
+  </footer>
+
+  <script>(function(){var cols=document.querySelectorAll('.fn-col');if(!('IntersectionObserver' in window)){cols.forEach(function(c){c.classList.add('fn-visible');});return;}var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var delay=parseInt(e.target.dataset.fnDelay)||0;setTimeout(function(){e.target.classList.add('fn-visible');},delay);obs.unobserve(e.target);}});},{threshold:0.1});cols.forEach(function(c,i){c.dataset.fnDelay=i*100;obs.observe(c);});})();</script>
+  <script src="js/main.js"></script>
+  <script>
+    var obs = new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08});
+    document.querySelectorAll('.aw-reveal').forEach(function(el){obs.observe(el);});
+  </script>
+</body>
+</html>

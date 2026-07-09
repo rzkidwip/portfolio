@@ -713,8 +713,8 @@
       <h1 class="aw-hero-title">Things I've Created</h1>
       <p class="aw-hero-subtitle">Strategic communication work across social media, video, copywriting, and design — delivered for 6 companies.</p>
       <div class="aw-hero-stats">
-        <span class="aw-hero-stat"><span class="cnt" id="cnt-cats">6</span> Categories</span>
-        <span class="aw-hero-stat"><span class="cnt" id="cnt-works">24</span>+ Works</span>
+        <span class="aw-hero-stat"><span class="cnt" id="cnt-cats">7</span> Categories</span>
+        <span class="aw-hero-stat"><span class="cnt" id="cnt-works">25</span>+ Works</span>
         <span class="aw-hero-stat"><span class="cnt" id="cnt-companies">6</span> Companies</span>
       </div>
     </div>
@@ -733,6 +733,7 @@
           <button class="aw-f-btn" data-filter="copywriting">Copywriting</button>
           <button class="aw-f-btn" data-filter="corporate-comm">Corporate Comm</button>
           <button class="aw-f-btn" data-filter="design">Design</button>
+          <button class="aw-f-btn" data-filter="web-design">Web Design</button>
         </div>
       </div>
 
@@ -885,7 +886,7 @@
           </article>
 
           <!-- Card 7: Web Design -->
-          <article class="cat-card" data-cats="design">
+          <article class="cat-card" data-cats="design web-design">
             <div class="cat-cover-web">
               <span class="cat-label cl-webdesign">WEBSITE</span>
               <div class="cat-browser-mockup">
@@ -913,6 +914,40 @@
               <div class="cat-footer" style="flex-direction:column;align-items:flex-start;">
                 <a href="mailto:rdpangestu8@gmail.com?subject=Request%20Portfolio%20-%20Hastari%20Website&body=Hi%20Rizki%2C%20I%27d%20like%20to%20request%20access%20to%20view%20the%20Hastari%20Corporation%20website%20portfolio." class="cat-btn-outline">Request to View →</a>
                 <span class="cat-badge-avail">Available on Request</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 8: ER Dashboard -->
+          <article class="cat-card" data-cats="design web-design">
+            <div class="cat-cover-web" style="background:#1e1b4b;">
+              <span class="cat-label" style="background:#4c35b5;top:12px;left:12px;z-index:2;padding:4px 11px;border-radius:6px;font-size:0.58rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#fff;position:absolute;">ER DASHBOARD</span>
+              <div class="cat-browser-mockup">
+                <div class="cat-browser-bar" style="background:#2d2b55;">
+                  <div class="cat-browser-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="cat-browser-url-bar">rzkidwip.github.io/er-dashboard-hastari/</div>
+                </div>
+                <div class="cat-browser-screen">
+                  <img src="image/artsworks/dashboard/dashboard-hero.png" alt="ER Dashboard Hastarian Preview" />
+                  <div class="cat-browser-screen-overlay" style="background:linear-gradient(transparent,rgba(30,27,75,0.6));"></div>
+                </div>
+              </div>
+            </div>
+            <div class="cat-body">
+              <h2 class="cat-title">ER Dashboard — Portal Hastarian</h2>
+              <p class="cat-desc">Platform manajemen Employee Relations berbasis web untuk Hastari Group — 6 modul terintegrasi, data real-time dari Google Sheets.</p>
+              <div class="cat-stats">94 Karyawan · 6 Modul · 7 Entitas Grup</div>
+              <div class="cat-tags">
+                <span class="cat-tag">Web Design</span>
+                <span class="cat-tag">UI/UX</span>
+                <span class="cat-tag">JavaScript</span>
+                <span class="cat-tag">Data Dashboard</span>
+              </div>
+              <div class="cat-footer">
+                <a href="artsworks-dashboard.html" class="cat-btn">View Case Study →</a>
+                <a href="https://rzkidwip.github.io/er-dashboard-hastari/" target="_blank" rel="noopener noreferrer" class="cat-btn-outline" style="font-size:0.72rem;">Live Demo ↗</a>
               </div>
             </div>
           </article>
@@ -1274,8 +1309,8 @@
       entries.forEach(function(e) {
         if (e.isIntersecting && !counted) {
           counted = true;
-          animCount(document.getElementById('cnt-cats'), 6);
-          animCount(document.getElementById('cnt-works'), 24);
+          animCount(document.getElementById('cnt-cats'), 7);
+          animCount(document.getElementById('cnt-works'), 25);
           animCount(document.getElementById('cnt-companies'), 6);
         }
       });
