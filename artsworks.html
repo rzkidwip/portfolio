@@ -177,11 +177,15 @@
     .cl-corp      { background: #1e3a5f; }
     .cl-webdesign { background: #4338ca; }
 
-    /* COPYWRITING COVER GRADIENT */
+    /* COPYWRITING COVER — real article cover photo with orange brand tint */
     .cat-cover-copy {
       width: 100%;
       aspect-ratio: 16 / 9;
-      background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+      background:
+        linear-gradient(135deg, rgba(249,115,22,0.86) 0%, rgba(234,88,12,0.9) 100%),
+        url('image/artsworks/copywriting-cover-thumb.jpg');
+      background-size: cover;
+      background-position: center;
       position: relative;
       overflow: hidden;
       display: flex;
@@ -228,45 +232,20 @@
       position: relative; z-index: 1;
     }
 
-    /* DESIGN COVER GRADIENT */
+    /* DESIGN COVER — Brand Guidelines cover slide */
     .cat-cover-design {
       width: 100%;
       aspect-ratio: 16 / 9;
-      background: linear-gradient(135deg, #7C3AED 0%, #5b21b6 50%, #4c1d95 100%);
+      background: url('image/artsworks/hastari-brand-guidelines-cover.png') center / cover no-repeat;
       position: relative;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .cat-cover-design::before {
-      content: '';
-      position: absolute;
-      top: -40px; right: -40px;
-      width: 160px; height: 160px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.07);
-    }
-    .cat-cover-design::after {
-      content: '';
-      position: absolute;
-      bottom: -30px; left: -30px;
-      width: 110px; height: 110px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.05);
-    }
-    .cat-design-icon {
-      width: 60px; height: 60px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.18);
-      border: 1.5px solid rgba(255,255,255,0.3);
-      display: flex; align-items: center; justify-content: center;
-      position: relative; z-index: 1;
-    }
-    .cat-design-icon svg { width: 30px; height: 30px; color: rgba(255,255,255,0.92); }
     .cat-label-design-overlay {
       position: absolute;
-      top: 12px; left: 12px;
+      top: 12px; right: 12px;
       z-index: 2;
       padding: 4px 11px;
       border-radius: 6px;
@@ -330,6 +309,11 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+    .cat-url-blur {
+      filter: blur(3px);
+      user-select: none;
+      -webkit-user-select: none;
+    }
     .cat-browser-screen {
       position: relative;
       overflow: hidden;
@@ -346,6 +330,13 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(transparent, rgba(30,27,75,0.6));
+    }
+
+    /* PREVIEW THUMBNAIL — light blur, UI/layout still readable, opens modal on click */
+    .cat-card--preview { cursor: pointer; }
+    .cat-browser-screen.is-preview img {
+      filter: blur(2px) saturate(1.04);
+      transform: scale(1.03);
     }
     .cat-btn-outline {
       display: inline-flex;
@@ -435,6 +426,68 @@
       padding: 4px 12px;
       border-radius: 20px;
       margin-top: 8px;
+    }
+
+    /* PROJECT PREVIEW MODAL */
+    .pv-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(10,10,20,0.72);
+      backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .pv-overlay.active { opacity: 1; pointer-events: all; }
+    .pv-modal {
+      position: relative;
+      width: 100%; max-width: 640px; max-height: 88vh;
+      background: #fff; border-radius: 18px; overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+      display: flex; flex-direction: column;
+      transform: translateY(18px) scale(0.97);
+      transition: transform 0.28s ease;
+    }
+    .pv-overlay.active .pv-modal { transform: translateY(0) scale(1); }
+    .pv-close {
+      position: absolute; top: 14px; right: 14px; z-index: 3;
+      width: 34px; height: 34px; border-radius: 50%;
+      background: rgba(15,15,35,0.55);
+      border: 1px solid rgba(255,255,255,0.25);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.18s;
+    }
+    .pv-close:hover { background: rgba(15,15,35,0.82); }
+    .pv-close svg { width: 16px; height: 16px; color: #fff; }
+    .pv-img-wrap {
+      width: 100%; aspect-ratio: 16 / 9; flex-shrink: 0;
+      overflow: hidden; background: #1e1b4b;
+    }
+    .pv-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+    .pv-body { padding: 24px 26px 28px; overflow-y: auto; }
+    .pv-badge {
+      display: inline-block;
+      padding: 4px 11px; border-radius: 6px;
+      font-size: 0.58rem; font-weight: 800;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: #fff; margin-bottom: 12px;
+    }
+    .pv-title {
+      font-size: 1.22rem; font-weight: 800;
+      color: var(--text); letter-spacing: -0.4px;
+      margin-bottom: 10px; line-height: 1.3;
+    }
+    .pv-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+    .pv-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 11px 22px; background: #1287c1; color: #fff;
+      border-radius: 99px; font-size: 0.83rem; font-weight: 700;
+      text-decoration: none; transition: opacity 0.2s, transform 0.18s;
+    }
+    .pv-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+    @media (max-width: 600px) {
+      .pv-overlay { padding: 0; align-items: flex-end; }
+      .pv-modal { max-width: 100%; max-height: 92vh; border-radius: 18px 18px 0 0; }
     }
 
     /* PDF SECTION */
@@ -863,9 +916,6 @@
           <article class="cat-card" data-cats="design">
             <div class="cat-cover-design">
               <span class="cat-label-design-overlay">Design</span>
-              <div class="cat-design-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C6.49 22 2 17.51 2 12S6.49 2 12 2s10 4.04 10 9c0 3.31-2.69 6-6 6h-1.77c-.28 0-.5.22-.5.5 0 .12.05.23.13.33.41.47.64 1.06.64 1.67A2.5 2.5 0 0112 22zm0-18c-4.41 0-8 3.59-8 8s3.59 8 8 8c.28 0 .5-.22.5-.5a.54.54 0 00-.14-.35c-.41-.46-.63-1.05-.63-1.65a2.5 2.5 0 012.5-2.5H16c2.21 0 4-1.79 4-4 0-3.86-3.59-7-8-7z"/></svg>
-              </div>
             </div>
             <div class="cat-body">
               <h2 class="cat-title">Corporate Visual Design</h2>
@@ -886,7 +936,7 @@
           </article>
 
           <!-- Card 7: Web Design -->
-          <article class="cat-card" data-cats="design web-design">
+          <article class="cat-card cat-card--preview" data-cats="design web-design" data-preview="hastari">
             <div class="cat-cover-web">
               <span class="cat-label cl-webdesign">WEBSITE</span>
               <div class="cat-browser-mockup">
@@ -894,10 +944,10 @@
                   <div class="cat-browser-dots">
                     <span></span><span></span><span></span>
                   </div>
-                  <div class="cat-browser-url-bar">hastari-website.vercel.app</div>
+                  <div class="cat-browser-url-bar">hastari-website.<span class="cat-url-blur">vercel.app</span></div>
                 </div>
-                <div class="cat-browser-screen">
-                  <img src="hastari-website-preview.png" alt="Hastari Corporation Website Preview" />
+                <div class="cat-browser-screen is-preview">
+                  <img src="image/artsworks/web/hastari-website-thumb.jpg" alt="Hastari Corporation Website Preview" loading="lazy" />
                   <div class="cat-browser-screen-overlay"></div>
                 </div>
               </div>
@@ -911,15 +961,11 @@
                 <span class="cat-tag">UI/UX</span>
                 <span class="cat-tag">Corporate Branding</span>
               </div>
-              <div class="cat-footer" style="flex-direction:column;align-items:flex-start;">
-                <a href="mailto:rdpangestu8@gmail.com?subject=Request%20Portfolio%20-%20Hastari%20Website&body=Hi%20Rizki%2C%20I%27d%20like%20to%20request%20access%20to%20view%20the%20Hastari%20Corporation%20website%20portfolio." class="cat-btn-outline">Request to View →</a>
-                <span class="cat-badge-avail">Available on Request</span>
-              </div>
             </div>
           </article>
 
           <!-- Card 8: ER Dashboard -->
-          <article class="cat-card" data-cats="design web-design">
+          <article class="cat-card cat-card--preview" data-cats="design web-design" data-preview="dashboard">
             <div class="cat-cover-web" style="background:#1e1b4b;">
               <span class="cat-label" style="background:#4c35b5;top:12px;left:12px;z-index:2;padding:4px 11px;border-radius:6px;font-size:0.58rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#fff;position:absolute;">ER + SOCIAL</span>
               <div class="cat-browser-mockup">
@@ -929,8 +975,8 @@
                   </div>
                   <div class="cat-browser-url-bar">rzkidwip.github.io/er-dashboard-hastari/</div>
                 </div>
-                <div class="cat-browser-screen">
-                  <img src="image/artsworks/dashboard/dashboard-hero.png" alt="ER Dashboard Hastarian Preview" />
+                <div class="cat-browser-screen is-preview">
+                  <img src="image/artsworks/dashboard/dashboard-thumb.jpg" alt="ER Dashboard Hastarian Preview" loading="lazy" />
                   <div class="cat-browser-screen-overlay" style="background:linear-gradient(transparent,rgba(30,27,75,0.6));"></div>
                 </div>
               </div>
@@ -944,10 +990,6 @@
                 <span class="cat-tag">ER Management</span>
                 <span class="cat-tag">Social Analytics</span>
                 <span class="cat-tag">Data Dashboard</span>
-              </div>
-              <div class="cat-footer" style="flex-direction:column;align-items:flex-start;">
-                <a href="mailto:rdpangestu8@gmail.com?subject=Request%20Portfolio%20-%20ER%20Dashboard%20Hastarian&body=Hi%20Rizki%2C%20I%27d%20like%20to%20request%20access%20to%20view%20the%20ER%20Dashboard%20Hastarian%20portfolio." class="cat-btn-outline">Request to View →</a>
-                <span class="cat-badge-avail">Available on Request</span>
               </div>
             </div>
           </article>
@@ -1113,6 +1155,24 @@
       </div>
     </div>
   </main>
+
+  <!-- PROJECT PREVIEW MODAL -->
+  <div class="pv-overlay" id="pv-overlay">
+    <div class="pv-modal">
+      <button class="pv-close" id="pv-close" aria-label="Close preview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="pv-img-wrap">
+        <img id="pv-img" src="" alt="" />
+      </div>
+      <div class="pv-body">
+        <span class="pv-badge" id="pv-badge"></span>
+        <h3 class="pv-title" id="pv-title"></h3>
+        <p class="pv-desc" id="pv-desc"></p>
+        <a class="pv-cta" id="pv-cta" href="#">Request Full Access →</a>
+      </div>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="footer-new">
@@ -1344,6 +1404,61 @@
         var x = e.pageX - c.offsetLeft;
         c.scrollLeft = scrollLeft - (x - startX) * 1.2;
       });
+    })();
+
+    /* PROJECT PREVIEW MODAL */
+    (function(){
+      var previewData = {
+        hastari: {
+          img: 'image/artsworks/web/hastari-website-thumb.jpg',
+          badge: 'WEBSITE',
+          badgeColor: '#4338ca',
+          title: 'Corporate Website Design',
+          desc: 'End-to-end corporate website design for Hastari Corporation — covering structure, content architecture, and visual direction. Built to reflect the company’s brand identity while staying easy to navigate for internal and external audiences. [Add project notes here]',
+          ctaHref: 'mailto:rdpangestu8@gmail.com?subject=Request%20Portfolio%20-%20Hastari%20Website&body=Hi%20Rizki%2C%20I%27d%20like%20to%20request%20access%20to%20view%20the%20Hastari%20Corporation%20website%20portfolio.'
+        },
+        dashboard: {
+          img: 'image/artsworks/dashboard/dashboard-thumb.jpg',
+          badge: 'ER + SOCIAL',
+          badgeColor: '#4c35b5',
+          title: 'ER & Social Media Intelligence Dashboard',
+          desc: 'Web platform built to centralize Employee Relations operations and social media reporting for Hastari Group — from people data and program budgets to content analytics, all in one dashboard. Designed to help cross-functional teams track ER performance and engagement in a single place. [Add project notes here]',
+          ctaHref: 'mailto:rdpangestu8@gmail.com?subject=Request%20Portfolio%20-%20ER%20Dashboard%20Hastarian&body=Hi%20Rizki%2C%20I%27d%20like%20to%20request%20access%20to%20view%20the%20ER%20Dashboard%20Hastarian%20portfolio.'
+        }
+      };
+
+      var overlay = document.getElementById('pv-overlay');
+      if (!overlay) return;
+      var imgEl   = document.getElementById('pv-img');
+      var badgeEl = document.getElementById('pv-badge');
+      var titleEl = document.getElementById('pv-title');
+      var descEl  = document.getElementById('pv-desc');
+      var ctaEl   = document.getElementById('pv-cta');
+
+      function openPreview(key) {
+        var d = previewData[key];
+        if (!d) return;
+        imgEl.src = d.img;
+        imgEl.alt = d.title + ' Preview';
+        badgeEl.textContent = d.badge;
+        badgeEl.style.background = d.badgeColor;
+        titleEl.textContent = d.title;
+        descEl.textContent = d.desc;
+        ctaEl.href = d.ctaHref;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+      function closePreview() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('[data-preview]').forEach(function(card) {
+        card.addEventListener('click', function() { openPreview(card.dataset.preview); });
+      });
+      document.getElementById('pv-close').addEventListener('click', closePreview);
+      overlay.addEventListener('click', function(e) { if (e.target === overlay) closePreview(); });
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePreview(); });
     })();
   </script>
 </body>
