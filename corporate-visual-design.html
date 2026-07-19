@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="Logo Favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Corporate Visual Design — Rizki Dwi Pangestu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style-premium.css" />
+  <style>
+    /* HERO */
+    .dt-hero { background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 45%, #2e1065 100%); padding: 100px 0 64px; position: relative; overflow: hidden; }
+    .dt-hero-inner { position: relative; z-index: 2; }
+    .dt-hero-deco { animation: awFadeIn 0.6s ease 0.4s both; }
+    .back-btn { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.9); text-decoration: none; padding: 8px 18px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transition: background 0.2s; margin-bottom: 24px; }
+    .back-btn:hover { background: rgba(255,255,255,0.25); color: #fff; }
+    .dt-eyebrow { font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 12px; display: block; }
+    .dt-title { font-size: clamp(36px, 5vw, 56px); font-weight: 900; color: #fff; letter-spacing: -1.5px; line-height: 1.08; margin-bottom: 16px; }
+    .dt-subtitle { font-size: 16px; color: rgba(255,255,255,0.85); max-width: 580px; line-height: 1.6; margin: 0; }
+
+    /* FILTER BAR */
+    .dt-filter-wrap { padding: 48px 0 32px; border-bottom: 1.5px solid var(--border); margin-bottom: 8px; }
+    .dt-filter-inner { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .dt-f-btn { padding: 7px 18px; border-radius: 99px; border: 1.5px solid var(--border); background: transparent; font-size: 0.8rem; font-weight: 600; color: var(--muted); cursor: pointer; font-family: inherit; transition: all 0.2s; white-space: nowrap; }
+    .dt-f-btn:hover:not(.active) { border-color: rgba(124,58,237,0.5); color: #7c3aed; background: rgba(124,58,237,0.08); }
+    .dt-f-btn.active { background: #7c3aed; border-color: #7c3aed; color: #fff; }
+
+    /* OVERVIEW STATS */
+    .cs-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 40px 0 48px; }
+    .cs-stat-card { background: #f8fafc; border: 1px solid #ece4fb; border-radius: 12px; padding: 24px; text-align: center; }
+    .cs-stat-num { font-size: 28px; font-weight: 800; color: #7c3aed; line-height: 1.1; margin-bottom: 6px; }
+    .cs-stat-lbl { font-size: 12px; color: #5a7080; font-weight: 500; line-height: 1.4; }
+
+    /* TEXT-BASED CASE STUDY CARDS */
+    .cs-case-section { margin-bottom: 40px; }
+    .cs-card { background: #fff; border: 1px solid #e8f4fb; border-left: 4px solid #7c3aed; border-radius: 12px; padding: 28px 32px; margin-bottom: 20px; }
+    .cs-card-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
+    .cs-card-label { font-size: 11px; color: #7c3aed; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cs-impact-badge { background: #7c3aed; color: #fff; border-radius: 20px; padding: 4px 12px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+    .cs-card-title { font-size: 20px; font-weight: 800; color: #0d2a3d; margin: 0 0 10px; line-height: 1.3; }
+    .cs-card-desc { font-size: 14px; color: #5a7080; line-height: 1.7; margin: 0 0 16px; }
+    .cs-card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .cs-tag { background: #f4f0fe; color: #7c3aed; font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 99px; }
+
+    /* CARD COLOR VARIANTS */
+    .cs-card.tone-red { border-left-color: #A11D1D; }
+    .cs-card.tone-red .cs-card-label { color: #A11D1D; }
+    .cs-card.tone-red .cs-impact-badge { background: #A11D1D; }
+    .cs-card.tone-red .cs-tag { background: rgba(161,29,29,0.07); color: #A11D1D; }
+
+    .cs-card.tone-purple { border-left-color: #7c3aed; }
+    .cs-card.tone-purple .cs-card-label { color: #7c3aed; }
+    .cs-card.tone-purple .cs-impact-badge { background: #7c3aed; }
+    .cs-card.tone-purple .cs-tag { background: #f4f0fe; color: #7c3aed; }
+
+    .cs-card.tone-blue { border-left-color: #1287c1; }
+    .cs-card.tone-blue .cs-card-label { color: #1287c1; }
+    .cs-card.tone-blue .cs-impact-badge { background: #1287c1; }
+    .cs-card.tone-blue .cs-tag { background: #f0f8ff; color: #1287c1; }
+
+    .cs-card.tone-green { border-left-color: #059669; }
+    .cs-card.tone-green .cs-card-label { color: #059669; }
+    .cs-card.tone-green .cs-impact-badge { background: #059669; }
+    .cs-card.tone-green .cs-tag { background: rgba(5,150,105,0.08); color: #059669; }
+
+    /* CONFIDENTIAL / DOCUMENTATION NOTICE */
+    .cs-confidential { background: linear-gradient(135deg, #2e1065, #7c3aed); border-radius: 16px; padding: 32px 36px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 80px; }
+    .cs-conf-left { display: flex; align-items: flex-start; gap: 16px; flex: 1; min-width: 0; }
+    .cs-conf-icon { font-size: 28px; flex-shrink: 0; line-height: 1.3; }
+    .cs-conf-title { font-size: 20px; font-weight: 800; color: #fff; margin: 0 0 6px; line-height: 1.2; }
+    .cs-conf-text { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.65; margin: 0; }
+    .cs-conf-btn { display: inline-block; background: #fff; color: #2e1065; border-radius: 20px; padding: 12px 24px; font-size: 14px; font-weight: 700; text-decoration: none; white-space: nowrap; transition: opacity 0.2s; flex-shrink: 0; }
+    .cs-conf-btn:hover { opacity: 0.88; }
+
+    /* SCROLL REVEAL */
+    .aw-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.52s ease, transform 0.52s ease; }
+    .aw-reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) { .cs-stats { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) {
+      .dt-title { font-size: 36px; }
+      .dt-subtitle { font-size: 14px; max-width: 100%; }
+      .cs-confidential { flex-direction: column; }
+      .cs-card { padding: 22px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar hero-nav" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Portfolio</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="resume.html">My Resume</a></li>
+        <li><a href="index.html#leadership">Leadership</a></li>
+        <li><a href="services.html">Expertise</a></li>
+        <li><a href="artsworks.html" class="active">Artsworks</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="nav-search">
+          <input type="search" id="search-input" placeholder="Search my project.." autocomplete="off" />
+          <button onclick="goSearch()" aria-label="Search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </div>
+        <a href="about.html" class="btn-hello">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+          Hello!
+        </a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="dt-hero">
+    <div class="dt-hero-deco" aria-hidden="true">
+      <svg style="position:absolute;top:50%;right:60px;transform:translateY(-50%);" width="170" height="220" viewBox="0 0 170 220" xmlns="http://www.w3.org/2000/svg">
+        <rect x="30" y="10" width="90" height="56" rx="10" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.13)" stroke-width="1" transform="rotate(12 75 38)"/>
+        <rect x="50" y="86" width="80" height="50" rx="10" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.1)" stroke-width="1" transform="rotate(-13 90 111)"/>
+        <rect x="20" y="152" width="96" height="54" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.09)" stroke-width="1" transform="rotate(10 68 179)"/>
+      </svg>
+      <svg style="position:absolute;bottom:40px;right:80px;" width="90" height="68" viewBox="0 0 90 68" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="8" r="2.5" fill="rgba(255,255,255,0.18)"/><circle cx="26" cy="8" r="2.5" fill="rgba(255,255,255,0.18)"/><circle cx="44" cy="8" r="2.5" fill="rgba(255,255,255,0.18)"/><circle cx="62" cy="8" r="2.5" fill="rgba(255,255,255,0.18)"/><circle cx="80" cy="8" r="2.5" fill="rgba(255,255,255,0.18)"/>
+        <circle cx="8" cy="24" r="2.5" fill="rgba(255,255,255,0.14)"/><circle cx="26" cy="24" r="2.5" fill="rgba(255,255,255,0.18)"/><circle cx="44" cy="24" r="2.5" fill="rgba(255,255,255,0.14)"/><circle cx="62" cy="24" r="2.5" fill="rgba(255,255,255,0.18)"/><circle cx="80" cy="24" r="2.5" fill="rgba(255,255,255,0.14)"/>
+        <circle cx="8" cy="40" r="2.5" fill="rgba(255,255,255,0.18)"/><circle cx="26" cy="40" r="2.5" fill="rgba(255,255,255,0.14)"/><circle cx="44" cy="40" r="2.5" fill="rgba(255,255,255,0.18)"/><circle cx="62" cy="40" r="2.5" fill="rgba(255,255,255,0.14)"/><circle cx="80" cy="40" r="2.5" fill="rgba(255,255,255,0.18)"/>
+        <circle cx="8" cy="56" r="2.5" fill="rgba(255,255,255,0.14)"/><circle cx="26" cy="56" r="2.5" fill="rgba(255,255,255,0.18)"/><circle cx="44" cy="56" r="2.5" fill="rgba(255,255,255,0.14)"/><circle cx="62" cy="56" r="2.5" fill="rgba(255,255,255,0.18)"/><circle cx="80" cy="56" r="2.5" fill="rgba(255,255,255,0.14)"/>
+      </svg>
+    </div>
+    <div class="container dt-hero-inner">
+      <a href="artsworks.html" class="back-btn">← Back to Portfolio</a><span class="dt-eyebrow">Design</span>
+      <h1 class="dt-title">Corporate Visual Design</h1>
+      <p class="dt-subtitle">Corporate visual identity, communication materials, and design assets for multinational conglomerate — from brand systems to presentation templates.</p>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <div class="container">
+
+      <!-- FILTER -->
+      <div class="dt-filter-wrap aw-reveal">
+        <div class="dt-filter-inner">
+          <button class="dt-f-btn active" data-filter="all">All</button>
+          <button class="dt-f-btn" data-filter="brand-guidelines">Brand Guidelines</button>
+          <button class="dt-f-btn" data-filter="presentation">Presentation Design</button>
+          <button class="dt-f-btn" data-filter="graphic-system">Graphic System</button>
+          <button class="dt-f-btn" data-filter="templates">Templates</button>
+        </div>
+      </div>
+
+      <!-- OVERVIEW STATS -->
+      <div class="cs-stats aw-reveal">
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">1</div>
+          <div class="cs-stat-lbl">Brand Guideline</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">7</div>
+          <div class="cs-stat-lbl">Graphic Elements</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">2+</div>
+          <div class="cs-stat-lbl">PPT Templates</div>
+        </div>
+        <div class="cs-stat-card">
+          <div class="cs-stat-num">3+</div>
+          <div class="cs-stat-lbl">Design Categories</div>
+        </div>
+      </div>
+
+      <!-- CASE STUDY CARDS -->
+      <div class="cs-case-section">
+
+        <!-- Card 1: Brand Guidelines -->
+        <div class="cs-card tone-red aw-reveal" data-cat="brand-guidelines">
+          <div class="cs-card-header">
+            <span class="cs-card-label">HASTARI CORPORATION · 2024–PRESENT</span>
+            <span class="cs-impact-badge">32-Slide Deck</span>
+          </div>
+          <h2 class="cs-card-title">Corporate Brand Guidelines — Hastari Corporation</h2>
+          <p class="cs-card-desc">Comprehensive brand guideline document — logo usage, color system (#A11D1D dark red), typography (Poppins), and tone of voice.</p>
+          <div class="cs-card-tags">
+            <span class="cs-tag">Brand Identity</span>
+            <span class="cs-tag">Typography</span>
+            <span class="cs-tag">Color System</span>
+            <span class="cs-tag">Documentation</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Graphic System & Visual Elements -->
+        <div class="cs-card tone-purple aw-reveal" data-cat="graphic-system">
+          <div class="cs-card-header">
+            <span class="cs-card-label">HASTARI CORPORATION · 2024–PRESENT</span>
+            <span class="cs-impact-badge">7 Elements</span>
+          </div>
+          <h2 class="cs-card-title">Graphic System &amp; Visual Elements</h2>
+          <p class="cs-card-desc">Seven custom graphic elements derived from the brand logo's visual DNA — Sapuan, Bidang, Sudut Naik, Garis Tegas, Lengkung Dinamis, Blok Warna, and Pola Radial — designed for consistent application across corporate materials.</p>
+          <div class="cs-card-tags">
+            <span class="cs-tag">Visual Identity</span>
+            <span class="cs-tag">Design System</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Presentation Design -->
+        <div class="cs-card tone-red aw-reveal" data-cat="presentation">
+          <div class="cs-card-header">
+            <span class="cs-card-label">HASTARI CORPORATION · 2024–PRESENT</span>
+            <span class="cs-impact-badge">2+ Templates</span>
+          </div>
+          <h2 class="cs-card-title">Corporate Presentation Templates</h2>
+          <p class="cs-card-desc">Designed multiple PowerPoint templates for internal and external corporate decks, including a 32-slide brand guideline presentation modeled for consistent brand storytelling.</p>
+          <div class="cs-card-tags">
+            <span class="cs-tag">PowerPoint Design</span>
+            <span class="cs-tag">Corporate Deck</span>
+            <span class="cs-tag">Presentation</span>
+          </div>
+        </div>
+
+        <!-- Card 4: Company Profile Design -->
+        <div class="cs-card tone-blue aw-reveal" data-cat="company-profile">
+          <div class="cs-card-header">
+            <span class="cs-card-label">HASTARI CORPORATION · 2024–PRESENT</span>
+            <span class="cs-impact-badge">3+ Entities</span>
+          </div>
+          <h2 class="cs-card-title">Company Profile Design</h2>
+          <p class="cs-card-desc">Corporate company profile document design across multiple entities under Hastari Corporation — company overview, business lines, and organizational credentials for external stakeholders.</p>
+          <div class="cs-card-tags">
+            <span class="cs-tag">Company Profile</span>
+            <span class="cs-tag">Corporate Document</span>
+            <span class="cs-tag">Layout Design</span>
+          </div>
+        </div>
+
+        <!-- Card 5: Social Media Template System -->
+        <div class="cs-card tone-green aw-reveal" data-cat="templates">
+          <div class="cs-card-header">
+            <span class="cs-card-label">HASTARI CORPORATION · 2024–PRESENT</span>
+            <span class="cs-impact-badge">3 Templates</span>
+          </div>
+          <h2 class="cs-card-title">Social Media Template System</h2>
+          <p class="cs-card-desc">Reusable social media design templates built for consistent brand application across multiple content types.</p>
+          <div class="cs-card-tags">
+            <span class="cs-tag">Template Design</span>
+            <span class="cs-tag">Social Media System</span>
+            <span class="cs-tag">Canva/Figma</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FULL DOCUMENTATION NOTICE -->
+      <div class="cs-confidential aw-reveal">
+        <div class="cs-conf-left">
+          <span class="cs-conf-icon">🔒</span>
+          <div>
+            <h3 class="cs-conf-title">Full Documentation Available</h3>
+            <p class="cs-conf-text">Detailed brand guidelines, design files, and template assets are available upon request for verified recruiters and employers.</p>
+          </div>
+        </div>
+        <a href="mailto:rdpangestu8@gmail.com?subject=Request%20Portfolio%20-%20Corporate%20Visual%20Design&body=Hi%20Rizki%2C%20I%27d%20like%20to%20request%20full%20documentation%20for%20your%20Corporate%20Visual%20Design%20portfolio." class="cs-conf-btn">Request Documentation →</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-new">
+    <div class="fn-cta">
+      <div class="container">
+        <div class="fn-cta-inner">
+          <div class="fn-cta-text">
+            <div class="fn-cta-line"></div>
+            <h2 class="fn-cta-title">Let's Work Together</h2>
+            <p class="fn-cta-sub">Open for collaborations, projects, and full-time opportunities in Corporate Communication, Employee Relations and Public Relations.</p>
+          </div>
+          <div class="fn-cta-btns">
+            <a href="mailto:rdpangestu8@gmail.com" class="fn-cta-btn-primary">Get In Touch &rarr;</a>
+            <a href="artsworks.html" class="fn-cta-btn-ghost">View My Works &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fn-main">
+      <div class="container fn-inner">
+        <div class="fn-grid">
+          <div class="fn-col fn-brand">
+            <a href="index.html" class="fn-logo">Portfolio</a>
+            <p class="fn-tagline">Corporate Communication &amp; Public Relations</p>
+            <p class="fn-desc">Crafting strategic narratives that build brands and drive meaningful impact.</p>
+            <div class="fn-brand-divider"></div>
+            <div class="fn-brand-socials">
+              <a href="https://linkedin.com/in/rizkidwipangestu" target="_blank" class="fn-bs" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+              <a href="https://instagram.com/rizkidwipangestu" target="_blank" class="fn-bs" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+              <a href="mailto:rdpangestu8@gmail.com" class="fn-bs" aria-label="Email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+            </div>
+          </div>
+          <div class="fn-col">
+            <h3 class="fn-heading">Navigation</h3>
+            <ul class="fn-links">
+              <li><a href="about.html">About Me</a></li>
+              <li><a href="resume.html">My Resume</a></li>
+              <li><a href="index.html#leadership">Leadership</a></li>
+              <li><a href="services.html">Expertise</a></li>
+              <li><a href="artsworks.html">Artsworks</a></li>
+            </ul>
+          </div>
+          <div class="fn-col">
+            <h3 class="fn-heading">Contact</h3>
+            <ul class="fn-contact-list">
+              <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg><a href="mailto:rdpangestu8@gmail.com">rdpangestu8@gmail.com</a></li>
+              <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span>Jakarta, Indonesia</span></li>
+            </ul>
+          </div>
+          <div class="fn-col fn-social-col">
+            <h3 class="fn-heading">Find Me On</h3>
+            <div class="fn-socials">
+              <a href="https://linkedin.com/in/rizkidwipangestu" target="_blank" class="fn-social" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+              <a href="https://instagram.com/rizkidwipangestu" target="_blank" class="fn-social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+              <a href="mailto:rdpangestu8@gmail.com" class="fn-social" aria-label="Email"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <div class="fn-divider"></div>
+      </div>
+    </div>
+    <div class="fn-bottom-wrap">
+      <div class="container">
+        <div class="fn-bottom">
+          <p class="fn-copy">&copy; 2026 <strong>Rizki Dwi Pangestu</strong>. All rights reserved.</p>
+          <p class="fn-made">Telling stories, one pixel at a time.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>(function(){var cols=document.querySelectorAll('.fn-col');if(!('IntersectionObserver' in window)){cols.forEach(function(c){c.classList.add('fn-visible');});return;}var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var delay=parseInt(e.target.dataset.fnDelay)||0;setTimeout(function(){e.target.classList.add('fn-visible');},delay);obs.unobserve(e.target);}});},{threshold:0.1});cols.forEach(function(c,i){c.dataset.fnDelay=i*100;obs.observe(c);});})();</script>
+  <script src="js/main.js"></script>
+  <script>
+    /* FILTER — shows/hides case study cards by data-cat */
+    document.querySelectorAll('.dt-f-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.dt-f-btn').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        var filter = btn.dataset.filter;
+        document.querySelectorAll('.cs-card').forEach(function(card) {
+          var match = filter === 'all' || card.dataset.cat === filter;
+          card.style.display = match ? '' : 'none';
+        });
+      });
+    });
+
+    var staticObs = new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');staticObs.unobserve(e.target);}});},{threshold:0.08});
+    document.querySelectorAll('.aw-reveal').forEach(function(el){staticObs.observe(el);});
+  </script>
+</body>
+</html>
